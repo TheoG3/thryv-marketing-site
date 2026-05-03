@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thryv Logo Variations</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #F8F9FB; margin: 0; padding: 40px; }
+  h1 { font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #9CA3AF; margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .card { border-radius: 16px; overflow: hidden; }
+  .card-inner { padding: 48px 40px; display: flex; flex-direction: column; gap: 12px; }
+  .card-light { background: white; border: 1px solid #E5E7EB; }
+  .card-dark  { background: #070F2B; }
+  .card-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #9CA3AF; }
+  .card-use   { font-size: 12px; color: #6B7280; }
+  .card-dark .card-label { color: rgba(255,255,255,.4); }
+  .card-dark .card-use   { color: rgba(255,255,255,.3); }
+  img, object { display: block; }
+  .icon-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .icon-row img { width: 52px; height: 52px; }
+</style>
+</head>
+<body>
+<h1>Thryv Marketing Solutions — Logo Variations</h1>
+<div class="grid">
+
+  <div class="card card-light">
+    <div class="card-inner">
+      <div class="card-label">V1 — Color Horizontal</div>
+      <img src="logo-v1-color-horizontal.svg" style="height:60px;width:auto;">
+      <div class="card-use">Use on: nav, email headers, documents, light backgrounds</div>
+    </div>
+  </div>
+
+  <div class="card card-dark">
+    <div class="card-inner">
+      <div class="card-label">V4 — White Reverse</div>
+      <img src="logo-v4-white-reverse.svg" style="height:60px;width:auto;">
+      <div class="card-use">Use on: footer, dark hero sections, colored backgrounds</div>
+    </div>
+  </div>
+
+  <div class="card card-light">
+    <div class="card-inner">
+      <div class="card-label">V2 — Color Stacked</div>
+      <img src="logo-v2-color-stacked.svg" style="height:76px;width:auto;">
+      <div class="card-use">Use on: square formats, social profiles, app stores, email signatures</div>
+    </div>
+  </div>
+
+  <div class="card card-light">
+    <div class="card-inner">
+      <div class="card-label">V3 — Icon Mark Only</div>
+      <div class="icon-row">
+        <img src="logo-v3-icon-mark.svg">
+        <img src="logo-v3-icon-mark.svg" style="width:36px;height:36px;">
+        <img src="logo-v3-icon-mark.svg" style="width:24px;height:24px;">
+      </div>
+      <div class="card-use">Use on: favicon, profile avatars, small placements</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

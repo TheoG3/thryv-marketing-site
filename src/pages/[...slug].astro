@@ -1,0 +1,704 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import pagesData from '../data/pages.json';
+
+export async function getStaticPaths() {
+  return pagesData.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+
+// ── Display name maps ────────────────────────────────────────────────
+const serviceLabel: Record<string, string> = {
+  'GBP Management':        'Google Business Profile Management',
+  'Local SEO':             'Local SEO',
+  'Google Ads':            'Google Ads Management',
+  'Reputation Management': 'Reputation Management',
+  'Social Media Ads':      'Social Media Advertising',
+  'Website Design':        'Website Design & Development',
+  'AI Automation':         'AI Marketing Automation',
+};
+
+const serviceDir: Record<string, string> = {
+  'GBP Management':        'gbp',
+  'Local SEO':             'seo',
+  'Google Ads':            'ads',
+  'Reputation Management': 'reputation',
+  'Social Media Ads':      'social-ads',
+  'Website Design':        'web-design',
+  'AI Automation':         'ai',
+};
+
+const nicheLabel: Record<string, string> = {
+  'Plumbing':                     'Plumbers',
+  'HVAC':                         'HVAC Companies',
+  'Dental':                       'Dental Practices',
+  'Roofing':                      'Roofing Companies',
+  'Electricians':                 'Electricians',
+  'Lawyers':                      'Law Firms',
+  'Real Estate':                  'Real Estate Agents',
+  'Restaurants':                  'Restaurants',
+  'Landscaping':                  'Landscaping Companies',
+  'Pest Control':                 'Pest Control Companies',
+  'Moving Companies':             'Moving Companies',
+  'General Contractors':          'General Contractors',
+  'Auto Repair':                  'Auto Repair Shops',
+  'Cleaning Services':            'Cleaning Services',
+  'Hair Salons & Beauty':         'Hair Salons',
+  'Gyms & Fitness':               'Gyms & Fitness Studios',
+  'Chiropractors':                'Chiropractors',
+  'Veterinary & Pet Care':        'Veterinarians',
+  'Retail':                       'Retail Stores',
+  'Multiple':                     'Local Businesses',
+  'Painting':                     'Painting Contractors',
+  'Flooring':                     'Flooring Companies',
+  'Kitchen & Bath Remodeling':    'Kitchen & Bath Remodelers',
+  'Impact Windows & Doors':       'Impact Window Companies',
+  'Fencing':                      'Fencing Contractors',
+  'Pool & Spa':                   'Pool & Spa Companies',
+  'Pressure Washing':             'Pressure Washing Companies',
+  'Solar':                        'Solar Installers',
+  'Concrete & Masonry':           'Concrete & Masonry Contractors',
+  'Drywall & Interiors':          'Drywall Contractors',
+  '40-Year Recertification':      'Building Recertification Companies',
+  'Structural Engineering':       'Structural Engineering Firms',
+  'Concrete Restoration':         'Concrete Restoration Contractors',
+  'Facade & Balcony Repair':      'Facade & Balcony Repair Contractors',
+  'Wind Mitigation Inspection':   'Wind Mitigation Inspectors',
+  'Building Permit Expediting':   'Permit Expediting Services',
+  'Waterproofing':                'Waterproofing Contractors',
+  'Condo & HOA Consulting':       'Condo & HOA Consultants',
+  'Roof Certification':           'Roof Certification Inspectors',
+  'Building Code Compliance':     'Building Code Compliance Consultants',
+  'Elevator Inspection':          'Elevator Inspection Companies',
+  'Commercial Painting':          'Commercial Painting Contractors',
+  'Balcony Waterproofing':        'Balcony Waterproofing Contractors',
+  'Building Inspection':          'Building Inspection Companies',
+  'Condo Reserve Study':          'Reserve Study Consultants',
+};
+
+const nicheWord: Record<string, string> = {
+  'Plumbing':                     'plumbing',
+  'HVAC':                         'HVAC',
+  'Dental':                       'dental',
+  'Roofing':                      'roofing',
+  'Electricians':                 'electrical',
+  'Lawyers':                      'legal',
+  'Real Estate':                  'real estate',
+  'Restaurants':                  'restaurant',
+  'Landscaping':                  'landscaping',
+  'Pest Control':                 'pest control',
+  'Moving Companies':             'moving',
+  'General Contractors':          'contracting',
+  'Auto Repair':                  'auto repair',
+  'Cleaning Services':            'cleaning',
+  'Hair Salons & Beauty':         'salon',
+  'Gyms & Fitness':               'fitness',
+  'Chiropractors':                'chiropractic',
+  'Veterinary & Pet Care':        'veterinary',
+  'Retail':                       'retail',
+  'Multiple':                     'local',
+  'Painting':                     'painting',
+  'Flooring':                     'flooring',
+  'Kitchen & Bath Remodeling':    'remodeling',
+  'Impact Windows & Doors':       'impact window',
+  'Fencing':                      'fencing',
+  'Pool & Spa':                   'pool',
+  'Pressure Washing':             'pressure washing',
+  'Solar':                        'solar',
+  'Concrete & Masonry':           'concrete',
+  'Drywall & Interiors':          'drywall',
+  '40-Year Recertification':      'recertification',
+  'Structural Engineering':       'structural engineering',
+  'Concrete Restoration':         'concrete restoration',
+  'Facade & Balcony Repair':      'facade repair',
+  'Wind Mitigation Inspection':   'wind mitigation',
+  'Building Permit Expediting':   'permit expediting',
+  'Waterproofing':                'waterproofing',
+  'Condo & HOA Consulting':       'condo association',
+  'Roof Certification':           'roof certification',
+  'Building Code Compliance':     'code compliance',
+  'Elevator Inspection':          'elevator',
+  'Commercial Painting':          'commercial painting',
+  'Balcony Waterproofing':        'balcony waterproofing',
+  'Building Inspection':          'building inspection',
+  'Condo Reserve Study':          'reserve study',
+};
+
+// ── Service-specific hero copy ───────────────────────────────────────
+type HeroCopyFn = (niche: string, loc: string) => string;
+const heroCopy: Record<string, HeroCopyFn> = {
+  'GBP Management':        (n, l) => `Your ${nicheWord[n] || 'local'} business shows up first on Google Maps in ${l}. We manage every detail so you don't have to.`,
+  'Local SEO':             (n, l) => `${nicheLabel[n] || 'Local businesses'} in ${l} that rank higher get more calls. We build the rankings that compound month after month.`,
+  'Google Ads':            (n, l) => `Get in front of ${l} customers the moment they search for ${nicheWord[n] || 'local'} services. Paid search built for local intent.`,
+  'Reputation Management': (n, l) => `More 5-star reviews for your ${nicheWord[n] || 'local'} business in ${l}. Automated, consistent, and fully compliant.`,
+  'Social Media Ads':      (n, l) => `Put your ${nicheWord[n] || 'local'} business in front of ${l} residents before they ever search Google. Social ads that build recognition and generate calls.`,
+  'Website Design':        (n, l) => `A fast, conversion-built website for ${nicheLabel[n] || 'local businesses'} in ${l}. Done in weeks. Built to rank and built to close.`,
+  'AI Automation':         (n, l) => `AI that answers calls, captures leads, and follows up 24/7 for your ${nicheWord[n] || 'local'} business in ${l}. Never miss a job again.`,
+};
+
+// ── Service features (3 per service) ────────────────────────────────
+const features: Record<string, string[]> = {
+  'GBP Management':        ['Full profile setup and optimization across every field Google ranks', 'Weekly posts, Q&A management, and photo updates to stay active', 'Monthly reporting on calls, views, and direction requests from your listing'],
+  'Local SEO':             ['On-page optimization targeting your exact service area keywords', 'Citation building across 60+ local directories for consistent NAP signals', 'Google Maps strategy with neighborhood-level targeting for your top service areas'],
+  'Google Ads':            ['Search campaigns built around high-intent local keywords in your service area', 'Location targeting and bid adjustments by neighborhood and time of day', 'Conversion tracking tied to calls and form fills, not just clicks'],
+  'Reputation Management': ['Automated review requests via SMS after every completed job', 'Real-time monitoring across Google, Yelp, and Facebook', 'Drafted responses for every review — you approve, we post'],
+  'Social Media Ads':      ['Radius-targeted campaigns on Instagram and Facebook in your service area', 'Creative built around your services, reviews, and local credibility', 'Lead generation ads that capture name, phone, and service needed'],
+  'Website Design':        ['Mobile-first, fast-loading sites built to convert local visitors into callers', 'Local SEO baked in from day one: schema, page speed, heading structure', 'Fixed-price builds with no ongoing license fees or platform lock-in'],
+  'AI Automation':         ['AI phone receptionist that answers, qualifies, and books in English and Spanish', 'Website chat agent that captures leads and alerts you via text instantly', 'Automated follow-up sequences that respond to new leads in under 60 seconds'],
+};
+
+// ── FAQs (5 per service) ─────────────────────────────────────────────
+type FAQFn = (niche: string, loc: string) => { q: string; a: string }[];
+const faqs: Record<string, FAQFn> = {
+  'GBP Management': (n, l) => [
+    { q: `Why does Google Business Profile matter for ${nicheLabel[n] || 'local businesses'} in ${l}?`, a: `Google Maps is where most ${nicheWord[n] || 'local'} customers in ${l} make their decision. A fully optimized profile ranks higher, shows more trust signals, and converts more views into calls than a bare-bones listing.` },
+    { q: `What does monthly GBP management include?`, a: `Full profile optimization, keyword-rich business description, weekly Google Posts, photo uploads, Q&A monitoring, review response support, and monthly reporting on calls, views, and direction requests.` },
+    { q: `How soon will I see results from GBP optimization?`, a: `Most clients see movement in 30 to 60 days. Google Maps ranking factors update frequently, and consistent activity (posts, photos, Q&A) compounds over time. The business that stays active wins.` },
+    { q: `Do you optimize for Spanish-language searches in ${l}?`, a: `Yes. Miami and South Florida have significant Spanish-speaking search volume that most agencies ignore. We optimize your profile and posts for both English and Spanish queries.` },
+    { q: `Is there a long-term contract?`, a: `No. All packages are month-to-month. You can cancel any time. We earn your business every month by delivering results, not by locking you in.` },
+  ],
+  'Local SEO': (n, l) => [
+    { q: `How long does local SEO take for ${nicheLabel[n] || 'local businesses'} in ${l}?`, a: `Most clients see meaningful Google Maps movement within 60 to 90 days. Competitive areas like Brickell and Coral Gables can take 3 to 5 months to crack the top 3. Rankings compound: work done in month 1 keeps paying in month 12.` },
+    { q: `What does local SEO include?`, a: `Google Business Profile optimization, on-page website optimization, local citation building across 60+ directories, neighborhood keyword targeting, review generation automation, and monthly plain-English reporting.` },
+    { q: `How much does local SEO cost in ${l}?`, a: `Our Growth package starts at $1,199/month. No setup fees, no contracts, cancel anytime. Most ${l} businesses see positive ROI within 90 days based on call volume increase.` },
+    { q: `Do you target Spanish-language searches in ${l}?`, a: `Yes. Miami-area Spanish searches have high volume and lower competition than English equivalents. We optimize for both and target bilingual queries your competitors miss.` },
+    { q: `What makes your approach different from other SEO agencies?`, a: `We focus exclusively on local businesses in competitive markets. No national playbooks, no junior account managers. Your strategy is built for your exact neighborhood, your actual competitors, and the customers searching your service area.` },
+  ],
+  'Google Ads': (n, l) => [
+    { q: `How quickly can Google Ads generate calls for my ${nicheWord[n] || 'local'} business in ${l}?`, a: `Campaigns go live within 5 business days. You can receive calls on day one. The first 30 days are a refinement period where we tighten targeting, pause wasted spend, and optimize bids from real conversion data.` },
+    { q: `What keywords do you target for ${nicheLabel[n] || 'local businesses'} in ${l}?`, a: `High-intent local keywords: service + city, service + neighborhood, emergency terms, and Spanish-language searches where CPCs are often lower and competition is thinner.` },
+    { q: `How much ad budget do I need to start?`, a: `We recommend a minimum of $1,000/month in ad spend for the ${l} market. Our management fee is separate and billed monthly with no contract.` },
+    { q: `Do you manage Google Local Services Ads too?`, a: `Yes. We manage both traditional search campaigns and Google Local Services Ads (LSA) depending on your service type and budget. LSAs often deliver the lowest cost per lead for home service businesses.` },
+    { q: `Can I pause or cancel if I get too busy?`, a: `Yes, any time. No long-term contracts, no penalties. We have had clients pause during slow seasons and reactivate when they need volume again.` },
+  ],
+  'Reputation Management': (n, l) => [
+    { q: `How does automated review generation work for ${nicheLabel[n] || 'local businesses'}?`, a: `After each completed job or appointment, our system sends a personalized SMS or email asking the customer to leave a Google review. The timing and message are optimized for response rate. You get more reviews without chasing anyone manually.` },
+    { q: `How fast can my Google rating improve?`, a: `Businesses averaging 5 to 10 new jobs per week typically see noticeable rating improvement within 30 to 60 days once automation is running.` },
+    { q: `What happens when I get a negative review?`, a: `We monitor all review platforms in real time. When a negative review comes in, you get an instant alert. We draft a professional response for you to approve and coach on whether escalation or resolution is the right move.` },
+    { q: `Which platforms do you monitor?`, a: `Google, Yelp, Facebook, and industry-specific platforms. For ${nicheLabel[n] || 'local businesses'} in ${l}, Google and Yelp are the highest priority, but we set alerts everywhere your customers leave feedback.` },
+    { q: `Do you buy or incentivize reviews?`, a: `No. All review generation is compliant with Google and Yelp guidelines. We only ask real customers who have experienced your service. Fake or incentivized reviews create legal and platform risk. We do not offer them.` },
+  ],
+  'Social Media Ads': (n, l) => [
+    { q: `Why run social ads for a ${nicheWord[n] || 'local'} business in ${l}?`, a: `Social ads put your business in front of ${l} residents before they have a problem. When they do need a ${nicheWord[n] || 'local'} service, they call the name they recognize. Brand presence in a hyperlocal radius is one of the most underused advantages in local marketing.` },
+    { q: `What does a typical social campaign look like?`, a: `A 3 to 5 mile radius campaign on Instagram and Facebook targeting your core demographics. Creative built around trust signals: reviews, before/after results, and local credibility. We test two to three creative variants per month.` },
+    { q: `How much should I budget for social ads in ${l}?`, a: `We recommend a minimum of $600/month in ad spend. Our management fee covers creative production, targeting setup, monthly optimization, and reporting.` },
+    { q: `How soon will I see results?`, a: `Brand awareness builds over 60 to 90 days. Lead generation campaigns with direct call or form CTAs can generate inquiries within the first two weeks of launch.` },
+    { q: `Is there a contract?`, a: `No. Month-to-month, cancel anytime. We stop earning your business the month we stop delivering results.` },
+  ],
+  'Website Design': (n, l) => [
+    { q: `What does a website build for a ${nicheWord[n] || 'local'} business include?`, a: `Custom design, mobile-first development, local SEO foundation (schema markup, page speed optimization, heading structure), contact form with spam protection, Google Analytics setup, and on-page content written for your service and market.` },
+    { q: `How long does a build take?`, a: `Standard sites deliver in 3 to 4 weeks. More complex sites with multiple service areas take 5 to 7 weeks. We set expectations in a kick-off call before any work begins.` },
+    { q: `Will my site rank on Google after the build?`, a: `A well-built site with proper SEO foundation will outperform a template site significantly. For serious ranking results, pair the build with our Local SEO package. The site creates the foundation; ongoing SEO builds the traffic.` },
+    { q: `Do you use templates or build custom?`, a: `We use Astro and Tailwind: modern tools that produce fast, custom-looking sites at fixed prices. Your site will not look like a template and will load faster than competitors using WordPress page builders.` },
+    { q: `What happens after the site launches?`, a: `We offer optional $299/month maintenance covering hosting, security updates, content edits, and monthly performance checks. No lock-in, month-to-month.` },
+  ],
+  'AI Automation': (n, l) => [
+    { q: `What AI tools do you offer for ${nicheLabel[n] || 'local businesses'} in ${l}?`, a: `AI phone receptionist (answers calls, qualifies leads, books appointments), website chat agent (captures and routes leads 24/7), automated follow-up sequences (SMS and email within 60 seconds of lead submission), and AI review automation.` },
+    { q: `How does the AI phone receptionist work?`, a: `A voice AI answers your inbound calls when you are unavailable, asks qualifying questions, collects customer info, and can book appointments directly into your calendar. You get a text summary of every call. It speaks both English and Spanish.` },
+    { q: `Will it sound robotic to my customers?`, a: `Modern AI voice is significantly more natural than it was a few years ago. We configure the voice, tone, and script to match your brand. Customers are told upfront they are speaking with an AI assistant for your business.` },
+    { q: `How fast is the lead follow-up automation?`, a: `Under 60 seconds from lead submission to first contact. Response time is the single biggest factor in converting inbound leads. Most ${nicheWord[n] || 'local'} competitors take hours or days.` },
+    { q: `Is there a long-term contract for AI tools?`, a: `No. AI automation tools are billed month-to-month. Add or remove them from your package any time.` },
+  ],
+};
+
+// ── Derive values ────────────────────────────────────────────────────
+const svc   = page.service;
+const niche = page.niche;
+const loc   = page.location;
+
+const svcName    = serviceLabel[svc]  || svc;
+const nicheName  = nicheLabel[niche]  || niche;
+const nicheWord2 = nicheWord[niche]   || 'local';
+const hero       = (heroCopy[svc] || (() => `${svcName} for ${nicheName} in ${loc}`))(niche, loc);
+const pageFeatures = features[svc] || ['Full setup and ongoing optimization', 'Monthly strategy and reporting', 'Month-to-month, no contracts'];
+const pageFaqs   = (faqs[svc] || (() => []))(niche, loc);
+const svcDirSlug = serviceDir[svc] || 'services';
+
+const title      = `${svcName} for ${nicheName} in ${loc} | Thryv Marketing Solutions`;
+const metaDesc   = `${hero} Month-to-month, no lock-ins. Miami-based agency serving ${loc}.`;
+const canonical  = `https://thryvmarketingsolutions.com/${page.slug}`;
+
+// Related pages — same service OR same location (max 6)
+const related = pagesData
+  .filter(p => p.slug !== page.slug && (p.service === svc || p.location === loc))
+  .slice(0, 6);
+
+// Schema
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${canonical}#breadcrumb`,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://thryvmarketingsolutions.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Services",  "item": "https://thryvmarketingsolutions.com/#services" },
+        { "@type": "ListItem", "position": 3, "name": svcName,     "item": `https://thryvmarketingsolutions.com/services/${svcDirSlug}/` },
+        { "@type": "ListItem", "position": 4, "name": `${nicheName} in ${loc}`, "item": canonical }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": title,
+      "description": metaDesc,
+      "isPartOf": { "@id": "https://thryvmarketingsolutions.com/#website" },
+      "publisher": { "@id": "https://thryvmarketingsolutions.com/#organization" },
+      "breadcrumb": { "@id": `${canonical}#breadcrumb` }
+    },
+    {
+      "@type": "Service",
+      "name": `${svcName} for ${nicheName} in ${loc}`,
+      "provider": { "@type": "Organization", "@id": "https://thryvmarketingsolutions.com/#organization" },
+      "areaServed": { "@type": "City", "name": loc, "addressRegion": "FL" },
+      "description": metaDesc,
+      "url": canonical
+    },
+    ...(pageFaqs.length ? [{
+      "@type": "FAQPage",
+      "mainEntity": pageFaqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }] : [])
+  ]
+};
+
+const chk = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px;color:var(--blue);flex-shrink:0;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>`;
+---
+
+<BaseLayout title={title} description={metaDesc} canonical={canonical} schema={schema}>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions">
+        <img src="/logos/logo-trimmed.png" alt="Thryv Marketing Solutions" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-blue">Get Free Audit</a>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a href="/#services" class="mobile-link">Services</a>
+  <a href="/#pricing" class="mobile-link">Pricing</a>
+  <a href="/#about" class="mobile-link">About</a>
+  <a href="/blog/" class="mobile-link">Blog</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn btn-primary">Get Free Audit</a>
+</div>
+
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" style="background:var(--light);border-bottom:1px solid var(--border);padding:14px 0;">
+  <div class="container">
+    <ol style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);list-style:none;flex-wrap:wrap;">
+      <li><a href="/" style="color:var(--blue);font-weight:600;">Home</a></li>
+      <li aria-hidden="true" style="opacity:.4;">/</li>
+      <li><a href="/#services" style="color:var(--blue);font-weight:600;">Services</a></li>
+      <li aria-hidden="true" style="opacity:.4;">/</li>
+      <li style="font-weight:600;color:var(--dark);">{svcName} for {nicheName} in {loc}</li>
+    </ol>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background:linear-gradient(135deg,var(--blue-deeper) 0%,var(--blue-dark) 60%,#1a3a7a 100%);padding:80px 0 64px;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 700px 500px at 65% 50%,rgba(245,166,35,.07) 0%,transparent 70%);pointer-events:none;"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="max-width:700px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:20px;">
+        <span style="display:inline-block;width:24px;height:2px;background:var(--orange);border-radius:2px;"></span>
+        {svcName} · {loc}, FL
+      </div>
+      <h1 style="font-size:clamp(30px,5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--white);margin-bottom:20px;">
+        {svcName} for<br />
+        <em style="font-style:normal;color:var(--orange);">{nicheName}</em> in {loc}
+      </h1>
+      <p style="font-size:17px;line-height:1.7;color:rgba(255,255,255,.72);margin-bottom:32px;max-width:560px;">
+        {hero} No 12-month contracts. No hidden fees. Results you can see, billing you can cancel.
+      </p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Audit
+        </a>
+        <a href="/#pricing" class="btn btn-outline">See Pricing</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;">
+        <div class="hero-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          Month-to-month, always
+        </div>
+        <div class="hero-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          Live results dashboard
+        </div>
+        <div class="hero-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          Hablamos Español
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">What You Get</div>
+      <h2>{svcName} Built for {nicheName} in {loc}</h2>
+      <p class="lead">No generic playbooks. Every strategy is built for your market, your competition, and your customers searching in {loc}.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      {pageFeatures.map((feat, i) => (
+        <div class="service-card reveal" style={`animation-delay:${i * 100}ms`}>
+          <div class="service-icon">
+            {i === 0 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/><circle cx="12" cy="12" r="10"/></svg>}
+            {i === 1 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>}
+            {i === 2 && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>}
+          </div>
+          <p style="font-size:15px;line-height:1.7;color:var(--gray);margin:0;">{feat}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WHY THRYV -->
+<section class="section why-section">
+  <div class="container">
+    <div class="section-head center why-head reveal">
+      <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Why Thryv</div>
+      <h2>We Do What the Big Agencies Won't</h2>
+      <p class="lead center" style="color:rgba(255,255,255,.65);">No 12-month lock-ins. No junior account managers. No quarterly PDF reports nobody reads.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>No Hidden Fees</h3>
+        <p>What you see is what you pay. No setup fees, no platform fees, no surprise invoices.</p>
+        <div class="vs">vs. Hibu, Scorpion, Podium</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+        <h3>Month-to-Month</h3>
+        <p>No 12-month contracts. No early termination fees. We earn your business every single month.</p>
+        <div class="vs">vs. Scorpion's 12-month lock-in</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>Bilingual Service</h3>
+        <p>We reach your Spanish-speaking customers too. Campaigns, listings, and communication in both languages.</p>
+        <div class="vs">vs. national agencies with no bilingual capability</div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Reports You Can Read</h3>
+        <p>Plain-English updates that connect the work we did to the business outcomes you care about.</p>
+        <div class="vs">vs. quarterly PDFs nobody opens</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Our Packages</div>
+      <h2>Pricing You Can See Without a Sales Call</h2>
+      <p class="lead center">Three tiers. Month-to-month on all of them. Pick what fits your goals right now.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal reveal-delay-1">
+        <div class="price-tier">Starter</div>
+        <div class="price-num">$299<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Build the foundation your business runs on. Google Maps, reviews, and a profile that earns trust before a prospect ever calls.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={chk} />GMB full setup &amp; optimization</div>
+          <div class="price-feature"><Fragment set:html={chk} />4 Google posts per month</div>
+          <div class="price-feature"><Fragment set:html={chk} />Review request automation</div>
+          <div class="price-feature"><Fragment set:html={chk} />Review response management</div>
+          <div class="price-feature"><Fragment set:html={chk} />Monthly performance report</div>
+        </div>
+        <a href="#contact" class="btn btn-blue">Claim My Free Audit</a>
+      </div>
+      <div class="price-card featured reveal reveal-delay-2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-num">$1,199<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Everything in Starter, plus local SEO that compounds over time. The package most clients start with and never leave.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={chk} />Everything in Starter</div>
+          <div class="price-feature"><Fragment set:html={chk} />Local SEO (on-page + citations)</div>
+          <div class="price-feature"><Fragment set:html={chk} />10 GMB posts per month</div>
+          <div class="price-feature"><Fragment set:html={chk} />Competitor ranking tracker</div>
+          <div class="price-feature"><Fragment set:html={chk} />Bi-weekly reports</div>
+          <div class="price-feature"><Fragment set:html={chk} />Monthly strategy call</div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Claim My Free Audit</a>
+      </div>
+      <div class="price-card reveal reveal-delay-3">
+        <div class="price-tier">Scale</div>
+        <div class="price-num">$2,499<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Organic and paid running together. For businesses that want to own every channel in their market.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={chk} />Everything in Growth</div>
+          <div class="price-feature"><Fragment set:html={chk} />Google Ads management</div>
+          <div class="price-feature"><Fragment set:html={chk} />Instagram Ads management</div>
+          <div class="price-feature"><Fragment set:html={chk} />Live analytics dashboard</div>
+          <div class="price-feature"><Fragment set:html={chk} />Weekly reports</div>
+          <div class="price-feature"><Fragment set:html={chk} />Weekly strategy call</div>
+        </div>
+        <a href="#contact" class="btn btn-blue">Claim My Free Audit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+{pageFaqs.length > 0 && (
+  <section class="section" style="background:var(--light);" id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <div class="label">Common Questions</div>
+        <h2>{svcName} FAQ for {nicheName} in {loc}</h2>
+      </div>
+      <div style="max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
+        {pageFaqs.map((faq, i) => (
+          <details
+            class="reveal"
+            style={`background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;transition-delay:${i * 80}ms`}
+          >
+            <summary style="font-size:16px;font-weight:700;color:var(--dark);cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;">
+              {faq.q}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" style="flex-shrink:0;"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <p style="font-size:15px;line-height:1.75;color:var(--gray);margin-top:14px;">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Free Audit</div>
+        <h2>Let's See What You're Missing.</h2>
+        <p class="lead">Tell us about your {nicheWord2} business in {loc}. We'll review your local presence and send you a plain-English breakdown. No charge. No pressure.</p>
+        <p style="margin-top:14px;font-size:15px;font-weight:600;color:var(--orange);">¿Prefieres en Español? Llámanos, hablamos con gusto.</p>
+        <div class="contact-details" style="margin-top:40px;">
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16l.01-.08z"/></svg></div>
+            <div class="contact-detail-text"><strong>Call or Text</strong><span>(305) 555-0100</span></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="contact-detail-text"><strong>Email</strong><span>hello@thryvmarketingsolutions.com</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <div class="form-title">Request Your Free Audit</div>
+        <div id="form-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;height:1px;overflow:hidden;"></div>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
+          <input type="hidden" name="subject" value={`Audit Request — ${svcName} · ${nicheName} · ${loc}`} />
+          <input type="hidden" name="page_source" value={page.slug} />
+          <input type="hidden" name="redirect" value="" />
+          <input type="text" name="honeypot" class="honeypot" tabindex="-1" autocomplete="off" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" placeholder="Juan" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" placeholder="Garcia" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" placeholder="juan@yourbusiness.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(305) 555-0100" />
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business</label>
+            <textarea id="message" name="message" placeholder={`What's your biggest challenge for your ${loc} ${nicheWord2} business right now?`}></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Get My Free Audit
+            </button>
+          </div>
+          <p class="form-note">We'll respond within 24 hours. No obligation.</p>
+        </form>
+        <div class="form-success" id="formSuccess" style="display:none;text-align:center;padding:32px;">
+          <div style="width:64px;height:64px;border-radius:50%;background:#DCFCE7;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2.5" style="width:32px;height:32px;"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3 style="font-size:20px;font-weight:800;color:var(--dark);margin-bottom:8px;">Got it! We'll be in touch.</h3>
+          <p style="font-size:14px;color:var(--gray);">Expect a response within 24 hours. Gracias.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED PAGES -->
+{related.length > 0 && (
+  <section style="background:var(--light);padding:56px 0;" aria-label="Related services">
+    <div class="container">
+      <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:20px;">Related Services</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        {related.map(p => (
+          <a
+            href={`/${p.slug}`}
+            style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--blue);background:var(--blue-light);border-radius:100px;padding:7px 14px;transition:background .18s,color .18s;"
+          >
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            {serviceLabel[p.service] || p.service} · {nicheLabel[p.niche] || p.niche} · {p.location}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/logos/logo-white.png" alt="Thryv Marketing Solutions" style="height:36px;width:auto;" />
+        <p style="margin-top:16px;">Miami-based growth marketing agency. AI-powered automation. Month-to-month. No lock-ins.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="/#services">GMB Management</a>
+        <a href="/#services">Local SEO</a>
+        <a href="/#services">Google Ads</a>
+        <a href="/#ai-services">AI Automation</a>
+        <a href="/#tools">Free Tools</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/#about">About</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h4>Miami Areas</h4>
+        <a href="/services/seo/plumbing-miami">Miami</a>
+        <a href="/services/seo/hvac-coral-gables">Coral Gables</a>
+        <a href="/services/ads/plumbing-doral">Doral</a>
+        <a href="/services/gbp/plumbing-brickell">Brickell</a>
+        <a href="/services/seo/plumbing-hialeah">Hialeah</a>
+        <a href="/services/ads/restaurants-wynwood">Wynwood</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
+      <p class="hablamos">Hablamos Español</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const isOpen = mobileMenu.classList.contains('open');
+    hamburger.setAttribute('aria-expanded', isOpen.toString());
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      if (res.ok) {
+        form.style.display = 'none'; success.style.display = 'block';
+        if (window.posthog) posthog.capture('audit_request_submitted', { source: window.location.pathname });
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = 'Get My Free Audit'; btn.disabled = false;
+      alert('Something went wrong. Please email hello@thryvmarketingsolutions.com');
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 16px rgba(0,0,0,.06)';
+  }, { passive: true });
+</script>
+
+</BaseLayout>

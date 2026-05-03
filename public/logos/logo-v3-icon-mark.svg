@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" role="img" aria-label="Thryv icon mark">
+  <!--
+    V3 — Icon Mark Only
+    Use on: favicon, app icon, profile avatars, small placements ≤ 48px
+    Blue square background, white V left leg, orange V right leg + arrow
+  -->
+
+  <!-- Blue rounded square -->
+  <rect width="52" height="52" rx="10" fill="#2456B4"/>
+
+  <!-- V left leg in white -->
+  <line x1="9" y1="11" x2="26" y2="43"
+    stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- V right leg + upward arrow in orange -->
+  <!-- Extends from V bottom past top of left leg as growth arrow -->
+  <line x1="26" y1="43" x2="41" y2="7"
+    stroke="#F59022" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Arrowhead at (41, 7) -->
+  <!-- Direction: (15,-36), roughly 23° from vertical -->
+  <polygon points="41,7 32,15 43,19" fill="#F59022"/>
+</svg>

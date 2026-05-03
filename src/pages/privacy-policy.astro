@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Privacy Policy | Thryv Marketing Solutions"
+  description="Privacy policy for Thryv Marketing Solutions. How we collect, use, and protect your information."
+  canonical="https://thryvmarketingsolutions.com/privacy-policy/"
+>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><img src="/logos/logo-trimmed.png" alt="Thryv Marketing Solutions" /></a>
+      <ul class="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#contact" class="btn btn-blue">Get Free Audit</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<main style="max-width:760px;margin:0 auto;padding:80px 24px;">
+  <h1 style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--dark);margin-bottom:8px;">Privacy Policy</h1>
+  <p style="font-size:14px;color:var(--gray);margin-bottom:48px;">Last updated: May 1, 2026</p>
+
+  <div style="display:flex;flex-direction:column;gap:32px;font-size:16px;line-height:1.75;color:var(--gray);">
+    <section>
+      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Information We Collect</h2>
+      <p>We collect information you provide directly to us through our contact form, including your name, email address, phone number, and information about your business. We also collect usage data through PostHog analytics, including pages visited and interactions with our site tools.</p>
+    </section>
+    <section>
+      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">How We Use Your Information</h2>
+      <p>We use the information you provide to respond to audit requests and inquiries, send service-related communications, and improve our website and services. We do not sell, rent, or share your personal information with third parties for their marketing purposes.</p>
+    </section>
+    <section>
+      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Cookies and Analytics</h2>
+      <p>We use PostHog for anonymous usage analytics. PostHog may set cookies to track page visits and user interactions. You can opt out of analytics tracking by using a browser extension that blocks analytics scripts.</p>
+    </section>
+    <section>
+      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Contact</h2>
+      <p>For privacy-related questions, contact us at <a href="mailto:hello@thryvmarketingsolutions.com" style="color:var(--blue);font-weight:600;">hello@thryvmarketingsolutions.com</a>.</p>
+    </section>
+  </div>
+</main>
+<footer>
+  <div class="container">
+    <div class="footer-bottom" style="padding:32px 0;">
+      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
+      <p class="hablamos">Hablamos Español</p>
+    </div>
+  </div>
+</footer>
+</BaseLayout>

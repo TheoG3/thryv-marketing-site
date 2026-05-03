@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -28 268 118" role="img" aria-label="Thryv Marketing Solutions">
+  <!--
+    V2 — Full Color Stacked
+    Use on: square formats, social profiles, app stores, email signatures
+    Wordmark + thin rule + centered subtitle
+  -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- THRY wordmark in blue -->
+  <text y="68"
+    font-family="Montserrat, 'Arial Black', Arial, sans-serif"
+    font-weight="800" font-size="68" fill="#2456B4">THRY</text>
+
+  <!-- V left leg (blue) -->
+  <polygon points="181,22 192,17 215,64 203,70" fill="#2456B4"/>
+
+  <!-- V right leg + arrow shaft (orange) -->
+  <polygon points="204,66 216,70 241,-3 229,-8" fill="#F59022"/>
+
+  <!-- Arrowhead -->
+  <polygon points="249,-20 234,-10 255,-3" fill="#F59022"/>
+
+  <!-- Thin rule separator -->
+  <line x1="0" y1="76" x2="255" y2="76" stroke="#CBD5E1" stroke-width="1"/>
+
+  <!-- Subtitle centered under rule -->
+  <text text-anchor="middle" x="127" y="96"
+    font-family="Montserrat, Arial, sans-serif"
+    font-weight="700" font-size="13" letter-spacing="2.8">
+    <tspan fill="#2456B4">MARKETING </tspan><tspan fill="#F59022">SOLUTIONS</tspan>
+  </text>
+</svg>

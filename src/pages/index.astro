@@ -1,0 +1,949 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://thryvmarketingsolutions.com/#organization",
+      "name": "Thryv Marketing Solutions",
+      "url": "https://thryvmarketingsolutions.com",
+      "logo": { "@type": "ImageObject", "url": "https://thryvmarketingsolutions.com/logos/logo-trimmed.png" },
+      "sameAs": ["https://twitter.com/thryvmarketing"]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://thryvmarketingsolutions.com/#localbusiness",
+      "name": "Thryv Marketing Solutions",
+      "description": "Miami-based growth marketing agency using AI automation, local SEO, and paid media to help businesses dominate their market. Month-to-month, no lock-ins.",
+      "url": "https://thryvmarketingsolutions.com",
+      "telephone": "+13055550100",
+      "email": "hello@thryvmarketingsolutions.com",
+      "priceRange": "$$",
+      "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
+      "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "09:00", "closes": "19:00" },
+      "areaServed": "United States",
+      "serviceType": ["Local SEO","Google Business Profile Management","Google Ads","Website Design","Reputation Management","AI Marketing Automation"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://thryvmarketingsolutions.com/#website",
+      "url": "https://thryvmarketingsolutions.com",
+      "name": "Thryv Marketing Solutions"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://thryvmarketingsolutions.com/",
+      "url": "https://thryvmarketingsolutions.com/",
+      "name": "Thryv Marketing Solutions | AI-Powered Growth Marketing Agency",
+      "description": "Thryv Marketing Solutions is a Miami-based growth marketing agency using AI automation, local SEO, and paid media to help businesses dominate their market.",
+      "isPartOf": { "@id": "https://thryvmarketingsolutions.com/#website" },
+      "publisher": { "@id": "https://thryvmarketingsolutions.com/#organization" }
+    }
+  ]
+};
+
+const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+---
+
+<BaseLayout
+  title="Thryv Marketing Solutions | AI-Powered Growth Marketing Agency"
+  description="Thryv Marketing Solutions is a Miami-based growth marketing agency using AI automation, local SEO, and paid media to help businesses dominate their market. Month-to-month. No lock-ins."
+  canonical="https://thryvmarketingsolutions.com/"
+  schema={schema}
+>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions">
+        <img src="/logos/logo-trimmed.png" alt="Thryv Marketing Solutions" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#ai-services">AI Tools</a></li>
+        <li><a href="#tools">Free Tools</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-blue">Get Free Audit</a>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#ai-services" class="mobile-link">AI Tools</a>
+  <a href="#tools" class="mobile-link">Free Tools</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="/blog/" class="mobile-link">Blog</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn btn-primary">Get Free Audit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span></span> Miami-Based Growth Marketing Agency
+        </div>
+        <h1>
+          The Agency That Earns<br />
+          Your Business<br />
+          <em>Every Month.</em>
+        </h1>
+        <p class="hero-sub">
+          No 12-month contracts. No hidden fees. No junior account managers.
+          AI-powered local marketing (SEO, Google Ads, reviews, and automation) with results you can see and billing you can cancel any time.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get Free Audit
+          </a>
+          <a href="#pricing" class="btn btn-outline">See Pricing</a>
+        </div>
+        <div class="hero-pills">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Month-to-month, always
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Live results dashboard
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            AI automation included
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-label">What We Track</div>
+          <div class="hero-card-metric" style="font-size:22px;line-height:1.3;">Rankings. Reviews. Revenue.</div>
+          <div class="hero-card-sub" style="margin-top:6px;">Every report connects activity to outcomes, not vanity metrics.</div>
+        </div>
+        <div class="hero-cards-row">
+          <div class="hero-card">
+            <div class="hero-card-label">Billing</div>
+            <div class="hero-card-metric">Month<br />-to-Month</div>
+            <div class="hero-card-sub">No long contracts. Ever.</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Technology</div>
+            <div class="hero-card-metric">AI-First</div>
+            <div class="hero-card-sub">Automation that works while you sleep.</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Our Promise</div>
+          <div class="hero-card-metric" style="font-size:22px;line-height:1.3;">No lock-ins. No surprises. Cancel anytime.</div>
+          <div class="hero-card-sub" style="margin-top:8px;">Unlike Scorpion, Hibu, and Podium: we earn your business every month.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num" data-target="6">6</div>
+        <div class="stat-desc">Revenue-generating services</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Lock-in contracts. Ever.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Hidden fees. Ever.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-desc">AI automation. Never clocks out.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">What We Do</div>
+      <h2>Six Services. One Goal:<br />More Revenue for Your Business.</h2>
+      <p class="lead">We focus only on the channels that generate real, measurable returns. No bloat. No upsells you don't need.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Google Business Profile</h3>
+        <p>Show up in Google Maps before your competitors do. We handle every part of your listing (posts, photos, Q&amp;A) so Google has every reason to rank you first.</p>
+        <div class="service-price">From $199/mo</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Reputation Management</h3>
+        <p>More 5-star reviews, on autopilot. We send requests after every job, monitor Google and Yelp, and handle responses so your rating keeps climbing without you chasing anyone.</p>
+        <div class="service-price">From $99/mo</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Local SEO</h3>
+        <p>Get found by customers searching your exact service in your exact neighborhood. Rankings that build over time: the longer we work together, the harder it pays off.</p>
+        <div class="service-price">From $999/mo</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>Website Builds &amp; Fixes</h3>
+        <p>Clean, fast, mobile-first websites built to convert. Whether you need a fresh site or a broken one fixed, we deliver results without the agency markup.</p>
+        <div class="service-price">From $2,500 one-time</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <h3>Google Ads Management</h3>
+        <p>Search campaigns built for local intent. When organic alone isn't enough, paid search gets you in front of buyers actively looking for what you offer.</p>
+        <div class="service-price">Ask about availability</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <h3>Social Media Ads</h3>
+        <p>Put your business in front of people in your zip code before they ever search Google. Instagram and Facebook ads that build name recognition and generate direct inquiries.</p>
+        <div class="service-price">Ask about availability</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI SERVICES -->
+<section class="section ai-section" id="ai-services">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-head center ai-head reveal">
+      <div class="label" style="background:rgba(27,79,168,.15);color:#7EB3FF;">AI-Powered Add-Ons</div>
+      <h2>Marketing Automation<br />That Never Clocks Out</h2>
+      <p class="lead center" style="color:rgba(255,255,255,.6);">AI tools that handle your calls, chats, follow-ups, and reviews around the clock, so you capture leads whether you're open or not.</p>
+    </div>
+    <div class="ai-grid">
+
+      <div class="ai-card reveal reveal-delay-1">
+        <div class="ai-badge">⚡ 24/7 Coverage</div>
+        <div class="ai-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16l.01-.08z"/></svg>
+        </div>
+        <h3>AI Phone Receptionist</h3>
+        <p>Never miss a call. Our AI voice agent answers inbound calls, qualifies leads with smart questions, books appointments directly into your calendar, and sends you a summary. All without lifting a finger.</p>
+        <div class="ai-features">
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Answers calls in English &amp; Spanish</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Books appointments to your calendar</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Sends you a call summary via SMS</div>
+        </div>
+      </div>
+
+      <div class="ai-card reveal reveal-delay-2">
+        <div class="ai-badge">💬 Lead Capture</div>
+        <div class="ai-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <h3>AI Website Chat Agent</h3>
+        <p>A smart chat widget that lives on your site and works 24/7: qualifying visitors, answering common questions, and routing hot leads to you instantly via text or email. More conversations, more booked jobs.</p>
+        <div class="ai-features">
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Qualifies visitors before they bounce</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Instant lead alerts via text</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Fully branded to your business</div>
+        </div>
+      </div>
+
+      <div class="ai-card reveal reveal-delay-3">
+        <div class="ai-badge">🚀 Speed to Lead</div>
+        <div class="ai-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>AI Lead Follow-Up</h3>
+        <p>The moment a new lead comes in (from your website, GMB, or ads) an automated sequence fires off: instant SMS, personalized email, and a follow-up if they don't respond. Most competitors take hours. You respond in seconds.</p>
+        <div class="ai-features">
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Responds in under 60 seconds</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Automated SMS + email sequences</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Works across all lead sources</div>
+        </div>
+      </div>
+
+      <div class="ai-card reveal reveal-delay-4">
+        <div class="ai-badge">⭐ Reputation</div>
+        <div class="ai-card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>AI Review Automation</h3>
+        <p>After every job or appointment, your AI automatically sends a review request via SMS. When reviews come in (on Google, Yelp, or anywhere else) it drafts a thoughtful response for you to approve in one click.</p>
+        <div class="ai-features">
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Auto-sends review requests post-service</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Monitors Google, Yelp, Facebook</div>
+          <div class="ai-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>AI-drafted responses, you approve</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="ai-cta reveal">
+      <a href="#contact" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Add AI Automation to Your Package
+      </a>
+      <p>Ask about AI tools when you request your free audit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THRYV -->
+<section class="section why-section" id="why">
+  <div class="container">
+    <div class="section-head center why-head reveal">
+      <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Why Thryv</div>
+      <h2>We Do What the Big Agencies Won't</h2>
+      <p class="lead center" style="color:rgba(255,255,255,.6);">Scorpion, Hibu, and Podium hide their prices and lock you in for a year. We don't.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>No Hidden Fees</h3>
+        <p>What you see is what you pay. No setup fees buried in the contract, no "platform fees" added later, no surprise invoices.</p>
+        <div class="vs">vs. Hibu, Scorpion, Podium: all have hidden fees</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+        <h3>Month-to-Month Only</h3>
+        <p>No 12-month contracts. No early termination fees. No proprietary CMS that makes switching painful. We earn your business every month.</p>
+        <div class="vs">vs. Scorpion's 12-month SEO lock-in</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Reports You Can Actually Read</h3>
+        <p>No jargon-heavy PDFs buried in a portal. We send plain-English updates that connect the work we did to the business outcomes you care about.</p>
+        <div class="vs">vs. quarterly PDF reports nobody reads</div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>Bilingual Service</h3>
+        <p>Reaching Spanish-speaking customers is a competitive advantage most agencies miss. We run campaigns, manage listings, and communicate fluently in English and Español.</p>
+        <div class="vs">vs. national agencies with no bilingual capability</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">The Process</div>
+      <h2>Up and Running in 5 Business Days</h2>
+      <p class="lead center">Three steps. No complexity. Most clients see their first results before they've had time to second-guess the decision.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal reveal-delay-1">
+        <div class="step-num">1</div>
+        <h3>Free Audit</h3>
+        <p>We review your GMB, website, local rankings, and reputation. You get a plain-English breakdown of what's costing you customers. No charge. No obligation.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-2">
+        <div class="step-num">2</div>
+        <h3>Custom Plan</h3>
+        <p>We recommend only the services that fit your goals and budget. No bloated packages. You pick what makes sense. We show you the ROI projection first.</p>
+      </div>
+      <div class="step-card reveal reveal-delay-3">
+        <div class="step-num">3</div>
+        <h3>Launch &amp; Grow</h3>
+        <p>We go live within 5 business days. You get a live dashboard to track results. Monthly reports in plain English: what changed and what it's worth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Our Packages</div>
+      <h2>Pricing You Can See<br />Without a Sales Call</h2>
+      <p class="lead center">Three tiers. Month-to-month on all of them. Pick what fits your goals right now and scale when you're ready.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card reveal reveal-delay-1">
+        <div class="price-tier">Starter</div>
+        <div class="price-num">$299<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Build the foundation your business runs on. Google Maps, reviews, and a profile that earns trust before a prospect ever calls.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={checkIcon} />GMB full setup &amp; optimization</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />4 Google posts per month</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Review request automation</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Review response management</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Monthly performance report</div>
+        </div>
+        <a href="#contact" class="btn btn-blue">Claim My Free Audit</a>
+      </div>
+
+      <div class="price-card featured reveal reveal-delay-2">
+        <div class="popular-badge">Most Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-num">$1,199<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Everything in Starter, plus local SEO that compounds over time. The package most clients start with and never leave.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={checkIcon} />Everything in Starter</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Local SEO (on-page + citations)</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />10 GMB posts per month</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Competitor ranking tracker</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Bi-weekly reports</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Monthly strategy call</div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Claim My Free Audit</a>
+      </div>
+
+      <div class="price-card reveal reveal-delay-3">
+        <div class="price-tier">Scale</div>
+        <div class="price-num">$2,499<span>/mo</span></div>
+        <div class="price-period">Month-to-month · Cancel anytime</div>
+        <div class="price-desc">Organic and paid running together. For businesses that want to own every channel in their market: search, maps, and social.</div>
+        <div class="price-divider"></div>
+        <div class="price-features">
+          <div class="price-feature"><Fragment set:html={checkIcon} />Everything in Growth</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Google Ads management</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Instagram Ads management</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Live analytics dashboard</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Weekly reports</div>
+          <div class="price-feature"><Fragment set:html={checkIcon} />Weekly strategy call</div>
+        </div>
+        <a href="#contact" class="btn btn-blue">Claim My Free Audit</a>
+      </div>
+
+    </div>
+    <p class="price-note">
+      <strong>Need a website?</strong> Standalone builds start at $2,500 one-time + optional $299/mo maintenance.
+      All packages are month-to-month with zero lock-in contracts.
+    </p>
+
+    <div class="custom-plan reveal">
+      <div class="custom-plan-inner">
+        <div class="custom-plan-left">
+          <div class="label label-orange">Bespoke</div>
+          <h3>Nothing Quite Fits? Let's Build It.</h3>
+          <p>Not every business maps neatly to a package. If you need a mix of services, a different scope, or just want to talk through what makes sense before committing to anything — that's exactly what the free audit is for.</p>
+        </div>
+        <div class="custom-plan-right">
+          <a href="#contact" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Start with a Free Conversation
+          </a>
+          <p class="custom-note">No pitch. No obligation. Just an honest look at what would actually move the needle for your business.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about" style="background:var(--light);">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap reveal">
+        <div class="founder-photo-wrap">
+          <div class="founder-photo-placeholder">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="34" r="20" fill="rgba(255,255,255,0.18)"/>
+              <path d="M8 92 Q50 64 92 92" fill="rgba(255,255,255,0.14)"/>
+            </svg>
+            <div class="founder-photo-placeholder-label">Photo Coming Soon</div>
+          </div>
+        </div>
+        <div class="founder-creds">
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            Google Ads Certified
+          </span>
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            Meta Blueprint Certified
+          </span>
+          <span class="founder-cred founder-cred-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Miami, FL
+          </span>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num" style="font-size:22px;letter-spacing:-.01em;">Miami</div>
+          <div class="about-badge-text">Founded &amp; Based Here</div>
+        </div>
+      </div>
+      <div class="about-content reveal reveal-delay-2">
+        <div class="label">Meet the Founder</div>
+        <h2>Built Because Local Businesses Deserve Better</h2>
+        <p>I started Thryv because I kept watching great local businesses get buried by competitors who weren't better. Just better marketed. Restaurants, contractors, clinics, law firms: the same story everywhere. A big agency charges a big retainer, assigns a junior account manager, and delivers a quarterly report that says "impressions are up."</p>
+        <p>I built Thryv to be the opposite. Every client works directly with me. Every strategy is built from scratch for your market, your competition, and your goals. And when something isn't working, you hear it from me, not a PDF three weeks later.</p>
+        <p>We started in Miami because it's where the pressure is real: hyper-competitive, bilingual, zero tolerance for generic playbooks. That edge is what we bring to every market we work in.</p>
+        <div class="founder-quote">"Most agencies sell deliverables. I sell outcomes. That one distinction changes every decision we make."</div>
+        <div class="founder-sig">
+          <div>
+            <div class="founder-sig-name">Theodore G.</div>
+            <div class="founder-sig-title">Founder, Thryv Marketing Solutions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section tools-section" id="tools">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Free Tools</div>
+      <h2>See Where You Stand Right Now</h2>
+      <p class="lead center">Two free tools. No email required. Get real numbers on your reviews and Google Business Profile in under a minute.</p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="tool-card reveal reveal-delay-1">
+        <div class="tool-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>Review Rating Calculator</h3>
+        <p>Find out exactly how many 5-star reviews you need to hit your target rating on Google.</p>
+        <div class="tool-field">
+          <label for="rc-count">How many reviews do you currently have?</label>
+          <input type="number" id="rc-count" min="1" placeholder="e.g. 24" />
+        </div>
+        <div class="tool-field">
+          <label for="rc-current">What's your current average rating?</label>
+          <select id="rc-current">
+            <option value="">Select current rating</option>
+            <option value="1.0">1.0 ★</option>
+            <option value="1.5">1.5 ★</option>
+            <option value="2.0">2.0 ★</option>
+            <option value="2.5">2.5 ★</option>
+            <option value="3.0">3.0 ★</option>
+            <option value="3.5">3.5 ★</option>
+            <option value="3.8">3.8 ★</option>
+            <option value="4.0">4.0 ★</option>
+            <option value="4.2">4.2 ★</option>
+            <option value="4.5">4.5 ★</option>
+            <option value="4.7">4.7 ★</option>
+            <option value="4.8">4.8 ★</option>
+          </select>
+        </div>
+        <div class="tool-field">
+          <label for="rc-target">What rating are you aiming for?</label>
+          <select id="rc-target">
+            <option value="">Select target rating</option>
+            <option value="4.5">4.5 ★ Good</option>
+            <option value="4.7">4.7 ★ Great</option>
+            <option value="4.8">4.8 ★ Excellent</option>
+            <option value="4.9">4.9 ★ Elite</option>
+          </select>
+        </div>
+        <button class="tool-btn" onclick="calcReviews()">Calculate</button>
+        <div class="tool-result" id="rc-result">
+          <div class="tool-result-num" id="rc-num">—</div>
+          <div class="tool-result-label" id="rc-label">5-star reviews needed</div>
+          <div class="tool-result-cta">Want help getting them? <a href="#contact">We automate review requests.</a></div>
+        </div>
+      </div>
+
+      <div class="tool-card reveal reveal-delay-2">
+        <div class="tool-icon" style="background:rgba(245,166,35,.12);border-color:rgba(245,166,35,.3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="color:#F5A623;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Google Business Profile Score</h3>
+        <p>Check off everything you have set up. We'll score your GBP completeness out of 100.</p>
+        <div class="checklist" id="gbp-checklist">
+          <label class="check-item"><input type="checkbox" data-pts="10" onchange="calcGBP()" /><span>Business name is accurate and consistent</span><span class="pts">10 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="10" onchange="calcGBP()" /><span>Primary category is correctly set</span><span class="pts">10 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="8" onchange="calcGBP()" /><span>Address is verified by Google</span><span class="pts">8 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="5" onchange="calcGBP()" /><span>Phone number is listed</span><span class="pts">5 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="5" onchange="calcGBP()" /><span>Website URL is linked</span><span class="pts">5 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="5" onchange="calcGBP()" /><span>Business hours are set (including holidays)</span><span class="pts">5 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="7" onchange="calcGBP()" /><span>Business description is written (750 chars)</span><span class="pts">7 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="8" onchange="calcGBP()" /><span>Photos added (exterior, interior, team)</span><span class="pts">8 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="7" onchange="calcGBP()" /><span>Services or products are listed</span><span class="pts">7 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="5" onchange="calcGBP()" /><span>Q&A section has answers</span><span class="pts">5 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="8" onchange="calcGBP()" /><span>Posts published in the last 30 days</span><span class="pts">8 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="12" onchange="calcGBP()" /><span>You have 10 or more Google reviews</span><span class="pts">12 pts</span></label>
+          <label class="check-item"><input type="checkbox" data-pts="10" onchange="calcGBP()" /><span>You respond to reviews regularly</span><span class="pts">10 pts</span></label>
+        </div>
+        <div class="score-bar"><div class="score-bar-fill" id="gbp-bar"></div></div>
+        <div class="score-label" id="gbp-label">Check items above to see your score</div>
+        <div class="tool-result" id="gbp-result">
+          <div class="tool-result-num" id="gbp-score-num">0/100</div>
+          <div class="tool-result-label" id="gbp-grade">—</div>
+          <div class="tool-result-cta" id="gbp-cta"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Free Audit</div>
+        <h2>Let's See What You're Missing.</h2>
+        <p class="lead">Tell us about your business. We'll review your local presence and send you a plain-English breakdown. No charge. No pressure.</p>
+        <p style="margin-top:14px;font-size:15px;font-weight:600;color:var(--orange);">¿Prefieres en Español? Llámanos, hablamos con gusto.</p>
+        <div class="contact-details" style="margin-top:40px;">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16l.01-.08z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Call or Text</strong>
+              <span>(305) 555-0100</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              <span>hello@thryvmarketingsolutions.com</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Service Area</strong>
+              <span>Local businesses nationwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <div class="form-title">Request Your Free Audit</div>
+        <div id="form-status" role="status" aria-live="polite" aria-atomic="true" style="position:absolute;left:-9999px;height:1px;overflow:hidden;"></div>
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
+          <input type="hidden" name="subject" value="New Audit Request — Thryv Marketing Solutions" />
+          <input type="hidden" name="redirect" value="" />
+          <input type="text" name="honeypot" class="honeypot" tabindex="-1" autocomplete="off" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="first_name" placeholder="Juan" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="last_name" placeholder="Garcia" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Business Email</label>
+            <input type="email" id="email" name="email" placeholder="juan@yourbusiness.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(305) 555-0100" />
+          </div>
+          <div class="form-group">
+            <label for="service">I'm most interested in...</label>
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option>Google Business Profile Management</option>
+              <option>Reputation / Google Reviews</option>
+              <option>Local SEO</option>
+              <option>Website Build or Fix</option>
+              <option>Google Ads</option>
+              <option>Instagram Ads</option>
+              <option>AI Phone Receptionist</option>
+              <option>AI Chat Agent</option>
+              <option>AI Lead Follow-Up</option>
+              <option>Full Growth Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about your business</label>
+            <textarea id="message" name="message" placeholder="What do you do, where are you located, and what's your biggest marketing challenge right now?"></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Get My Free Audit
+            </button>
+          </div>
+          <p class="form-note">We'll respond within 24 hours. No obligation.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Got it! We'll be in touch.</h3>
+          <p>Expect a response within 24 hours (sooner if you called). Gracias.</p>
+          <p style="margin-top:14px;font-size:13px;color:var(--gray);">In the meantime: <a href="#pricing" style="color:var(--blue);font-weight:700;">review our packages</a> or <a href="/blog/" style="color:var(--blue);font-weight:700;">read the blog</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/logos/logo-white.png" alt="Thryv Marketing Solutions" style="height:36px;width:auto;" />
+        <p style="margin-top:16px;">Miami-based growth marketing agency. AI-powered automation. Month-to-month. No lock-ins.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">GMB Management</a>
+        <a href="#services">Reputation Management</a>
+        <a href="#services">Local SEO</a>
+        <a href="#services">Website Builds</a>
+        <a href="#services">Google Ads</a>
+        <a href="#services">Social Media Ads</a>
+        <a href="#ai-services">AI Automation</a>
+        <a href="#tools">Free Tools</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+      </div>
+      <div class="footer-col">
+        <h4>Who We Help</h4>
+        <a href="#">Restaurants</a>
+        <a href="#">Law Firms</a>
+        <a href="#">HVAC &amp; Home Services</a>
+        <a href="#">Dental &amp; Medical</a>
+        <a href="#">Real Estate</a>
+        <a href="#">Retail &amp; E-commerce</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Thryv Marketing Solutions. All rights reserved. &nbsp;·&nbsp; <a href="/privacy-policy/" style="color:rgba(255,255,255,.4);text-decoration:none;">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms/" style="color:rgba(255,255,255,.4);text-decoration:none;">Terms</a></p>
+      <p class="hablamos">Hablamos Español</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer scroll reveals
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const isOpen = mobileMenu.classList.contains('open');
+    hamburger.setAttribute('aria-expanded', isOpen.toString());
+    hamburger.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+
+  // Contact form
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  const formStatus = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    formStatus.textContent = 'Submitting your request...';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+        formStatus.textContent = 'Your audit request has been sent. We will respond within 24 hours.';
+        if (window.posthog) posthog.capture('audit_request_submitted');
+      } else { throw new Error('Form error'); }
+    } catch {
+      btn.textContent = 'Get My Free Audit'; btn.disabled = false;
+      formStatus.textContent = 'Error sending your request. Please email hello@thryvmarketingsolutions.com directly.';
+      alert('Something went wrong. Please email us directly at hello@thryvmarketingsolutions.com');
+    }
+  });
+
+  // Review rating calculator
+  function calcReviews() {
+    const N = parseInt(document.getElementById('rc-count').value);
+    const R = parseFloat(document.getElementById('rc-current').value);
+    const T = parseFloat(document.getElementById('rc-target').value);
+    const res = document.getElementById('rc-result');
+    const numEl = document.getElementById('rc-num');
+    const lblEl = document.getElementById('rc-label');
+    if (!N || !R || !T) { alert('Please fill in all three fields.'); return; }
+    if (T <= R) { numEl.textContent = '0'; lblEl.textContent = "You're already there! Keep collecting reviews to maintain it."; res.classList.add('show'); return; }
+    if (T >= 5) { numEl.textContent = '∞'; lblEl.textContent = 'A perfect 5.0 is mathematically unreachable at scale.'; res.classList.add('show'); return; }
+    const x = Math.ceil(N * (T - R) / (5 - T));
+    numEl.textContent = x.toLocaleString();
+    lblEl.textContent = `5-star reviews needed to reach ${T} ★`;
+    res.classList.add('show');
+    if (window.posthog) posthog.capture('tool_review_calc_used', { count: N, current: R, target: T, result: x });
+  }
+
+  // GBP score calculator
+  function calcGBP() {
+    const checks = document.querySelectorAll('#gbp-checklist input[type=checkbox]');
+    let score = 0;
+    checks.forEach(c => { if (c.checked) score += parseInt(c.dataset.pts); });
+    const bar = document.getElementById('gbp-bar');
+    const label = document.getElementById('gbp-label');
+    const res = document.getElementById('gbp-result');
+    const numEl = document.getElementById('gbp-score-num');
+    const gradeEl = document.getElementById('gbp-grade');
+    const ctaEl = document.getElementById('gbp-cta');
+    bar.style.transform = 'scaleX(' + (score / 100) + ')';
+    let grade, cta;
+    if (score === 0) { label.textContent = 'Check items above to see your score'; return; }
+    else if (score < 40) { grade = '🚨 Needs Urgent Attention'; cta = 'Your profile is costing you customers. <a href="#contact">Let\'s fix it.</a>'; }
+    else if (score < 65) { grade = '⚠️ Room for Improvement'; cta = 'You\'re missing easy wins. <a href="#contact">We\'ll handle it for you.</a>'; }
+    else if (score < 85) { grade = '✅ Pretty Good'; cta = 'A few gaps are holding you back. <a href="#contact">We can close them.</a>'; }
+    else { grade = '🏆 Fully Optimized'; cta = 'Great work! Keep it consistent. <a href="#contact">Ask us about staying on top.</a>'; }
+    label.textContent = `Your score: ${score}/100`;
+    numEl.textContent = score + '/100';
+    gradeEl.textContent = grade;
+    ctaEl.innerHTML = cta;
+    res.classList.add('show');
+    if (window.posthog) posthog.capture('tool_gbp_score_used', { score });
+  }
+
+  // Counter animation
+  const counters = document.querySelectorAll('.stat-num[data-target]');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const duration = 1200;
+      let start = null;
+      function tick(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(ease * target);
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // Sticky nav shadow
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.style.boxShadow = window.scrollY > 20 ? '0 4px 24px rgba(0,0,0,.12)' : '0 2px 16px rgba(0,0,0,.06)';
+  }, { passive: true });
+
+  // Active section nav tracking
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const pageSections = document.querySelectorAll('section[id]');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('nav-active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+  pageSections.forEach(s => sectionObserver.observe(s));
+
+  // Hero floating cards after entrance
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setTimeout(() => {
+      const heroVisual = document.querySelector('.hero-visual');
+      if (heroVisual) {
+        const cards = heroVisual.querySelectorAll(':scope > .hero-card');
+        const row = heroVisual.querySelector('.hero-cards-row');
+        if (cards[0]) cards[0].classList.add('hero-float');
+        if (row) row.classList.add('hero-float-mid');
+        if (cards[1]) cards[1].classList.add('hero-float-last');
+      }
+    }, 900);
+  }
+
+  // Mobile menu: close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+</script>
+
+</BaseLayout>

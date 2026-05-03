@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Thryv Marketing Solutions Blog",
+  "url": "https://thryvmarketingsolutions.com/blog/",
+  "description": "Marketing insights, local SEO tips, and growth strategies for local businesses.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Thryv Marketing Solutions",
+    "url": "https://thryvmarketingsolutions.com"
+  }
+};
+
+const posts = [
+  {
+    title: "Why Miami Local Businesses Lose to Competitors with Worse Services",
+    slug: "#",
+    date: "April 28, 2026",
+    category: "Local SEO",
+    excerpt: "The business that ranks first on Google Maps isn't always the best one. It's the one that's been doing the right things consistently. Here's what that looks like in practice.",
+    readTime: "5 min read"
+  },
+  {
+    title: "Google Business Profile vs. Your Website: Which Actually Drives Calls?",
+    slug: "#",
+    date: "April 20, 2026",
+    category: "GBP Management",
+    excerpt: "For most local service businesses, the GBP listing drives more inbound calls than the website. Understanding why changes how you prioritize your marketing budget.",
+    readTime: "4 min read"
+  },
+  {
+    title: "How Many 5-Star Reviews Do You Actually Need to Beat Your Competition?",
+    slug: "#",
+    date: "April 12, 2026",
+    category: "Reputation",
+    excerpt: "It's not about having the most reviews. It's about having enough at the right rating threshold. The math is simpler than you think.",
+    readTime: "3 min read"
+  },
+  {
+    title: "The Real Reason Agencies Lock You Into 12-Month Contracts",
+    slug: "#",
+    date: "April 5, 2026",
+    category: "Agency Transparency",
+    excerpt: "Long-term contracts aren't about aligning incentives. They're about protecting agencies from the consequences of underperformance. Here's how to spot the red flags.",
+    readTime: "6 min read"
+  },
+  {
+    title: "AI Phone Receptionists: What Actually Works for Local Service Businesses",
+    slug: "#",
+    date: "March 28, 2026",
+    category: "AI Automation",
+    excerpt: "Not all AI voice tools are equal. After testing five different solutions with real plumbing and HVAC clients, here's what we found actually converts.",
+    readTime: "7 min read"
+  },
+  {
+    title: "Bilingual SEO in Miami: The Opportunity Most Agencies Miss Completely",
+    slug: "#",
+    date: "March 20, 2026",
+    category: "Local SEO",
+    excerpt: "Spanish-language search terms for local services in Miami-Dade often have lower CPCs and thinner competition. Most agencies don't touch them. We do.",
+    readTime: "5 min read"
+  }
+];
+
+const categories = ["All", "Local SEO", "GBP Management", "Reputation", "AI Automation", "Agency Transparency"];
+---
+
+<BaseLayout
+  title="Blog | Thryv Marketing Solutions"
+  description="Marketing insights, local SEO tips, and growth strategies for local businesses — from the team at Thryv Marketing Solutions."
+  canonical="https://thryvmarketingsolutions.com/blog/"
+  schema={schema}
+>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions">
+        <img src="/logos/logo-trimmed.png" alt="Thryv Marketing Solutions" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/blog/" class="nav-active">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="/#contact" class="btn btn-blue">Get Free Audit</a>
+        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
+  <a href="/#services" class="mobile-link">Services</a>
+  <a href="/#pricing" class="mobile-link">Pricing</a>
+  <a href="/#about" class="mobile-link">About</a>
+  <a href="/blog/" class="mobile-link">Blog</a>
+  <a href="/#contact" class="mobile-link">Contact</a>
+  <a href="/#contact" class="btn btn-primary">Get Free Audit</a>
+</div>
+
+<!-- Blog Hero -->
+<section style="background:linear-gradient(135deg,var(--blue-deeper) 0%,var(--blue-dark) 100%);padding:72px 0 56px;">
+  <div class="container">
+    <div style="max-width:600px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">
+        <span style="display:inline-block;width:24px;height:2px;background:var(--orange);border-radius:2px;"></span>
+        Thryv Blog
+      </div>
+      <h1 style="font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;">
+        Marketing That Actually Works<br />for Local Businesses
+      </h1>
+      <p style="font-size:17px;line-height:1.7;color:rgba(255,255,255,.65);">Practical insights on local SEO, reputation management, AI automation, and everything else that drives real growth for service businesses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Posts -->
+<section class="section" style="background:var(--light);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;">
+      {posts.map((post, i) => (
+        <article
+          class="reveal"
+          style={`background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:box-shadow .25s,transform .25s;transition-delay:${(i % 3) * 0.08}s`}
+        >
+          <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);border-radius:100px;padding:4px 12px;margin-bottom:16px;">
+            {post.category}
+          </div>
+          <h2 style="font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:12px;">
+            <a href={post.slug} style="color:inherit;">{post.title}</a>
+          </h2>
+          <p style="font-size:14px;line-height:1.7;color:var(--gray);margin-bottom:20px;">{post.excerpt}</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--gray-light);border-top:1px solid var(--border);padding-top:16px;">
+            <span>{post.date}</span>
+            <span>{post.readTime}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div style="text-align:center;margin-top:64px;padding:48px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);">
+      <div class="label" style="display:inline-flex;">More Posts Coming</div>
+      <h3 style="font-size:22px;font-weight:800;color:var(--dark);margin-bottom:12px;">Get Notified When We Publish</h3>
+      <p style="font-size:15px;color:var(--gray);max-width:400px;margin:0 auto 24px;">New articles on local SEO, Google Ads, AI tools, and what's actually working for Miami businesses.</p>
+      <a href="/#contact" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/logos/logo-white.png" alt="Thryv Marketing Solutions" style="height:36px;width:auto;" />
+        <p style="margin-top:16px;">Miami-based growth marketing agency. AI-powered automation. Month-to-month. No lock-ins.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="/#services">GMB Management</a>
+        <a href="/#services">Local SEO</a>
+        <a href="/#services">Google Ads</a>
+        <a href="/#ai-services">AI Automation</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/#about">About</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms/">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
+      <p class="hablamos">Hablamos Español</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const isOpen = mobileMenu.classList.contains('open');
+    hamburger.setAttribute('aria-expanded', isOpen.toString());
+    const spans = hamburger.querySelectorAll('span');
+    if (isOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    });
+  });
+</script>
+
+</BaseLayout>

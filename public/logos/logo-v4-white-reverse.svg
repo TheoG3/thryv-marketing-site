@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -28 268 116" role="img" aria-label="Thryv Marketing Solutions">
+  <!--
+    V4 — White Reverse
+    Use on: dark backgrounds, site footer, dark hero sections, colored backgrounds
+    THRY + V left leg in white, orange arrow + arrowhead unchanged, subtitle in white
+  -->
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- THRY wordmark in white -->
+  <text y="68"
+    font-family="Montserrat, 'Arial Black', Arial, sans-serif"
+    font-weight="800" font-size="68" fill="#FFFFFF">THRY</text>
+
+  <!-- V left leg in white -->
+  <polygon points="181,22 192,17 215,64 203,70" fill="#FFFFFF"/>
+
+  <!-- V right leg + arrow shaft in orange (same as all versions) -->
+  <polygon points="204,66 216,70 241,-3 229,-8" fill="#F59022"/>
+
+  <!-- Arrowhead in orange -->
+  <polygon points="249,-20 234,-10 255,-3" fill="#F59022"/>
+
+  <!-- Subtitle: MARKETING white at 70% opacity, SOLUTIONS orange -->
+  <text y="88"
+    font-family="Montserrat, Arial, sans-serif"
+    font-weight="700" font-size="13" letter-spacing="2.8">
+    <tspan fill="white" opacity="0.7">MARKETING </tspan><tspan fill="#F59022">SOLUTIONS</tspan>
+  </text>
+</svg>
