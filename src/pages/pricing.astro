@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '$297',
+    period: '/mo',
+    tagline: 'GBP Management only',
+    highlight: false,
+    features: [
+      'Monthly GBP optimization',
+      'Q&A and post management',
+      'Photo and update uploads',
+      'Keyword targeting for local search',
+      'Monthly performance report',
+    ],
+    serviceDefault: 'gbp',
+  },
+  {
+    name: 'Growth',
+    price: '$797',
+    period: '/mo',
+    tagline: 'GBP + Reputation + Local SEO',
+    highlight: true,
+    features: [
+      'Everything in Starter',
+      'Review request automation',
+      'Response to all reviews within 48h',
+      'Local citation building',
+      'On-page SEO optimization',
+      'Monthly strategy call',
+    ],
+    serviceDefault: 'seo',
+  },
+  {
+    name: 'Pro',
+    price: '$1,497',
+    period: '/mo',
+    tagline: 'Full growth package',
+    highlight: false,
+    features: [
+      'Everything in Growth',
+      'Google Ads management (spend separate)',
+      'Instagram/Facebook Ads (spend separate)',
+      'Monthly reporting dashboard',
+      'Priority support and response',
+    ],
+    serviceDefault: 'gads',
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are there setup fees?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No setup fees on any plan. You pay the monthly rate starting from day one." }
+    },
+    {
+      "@type": "Question",
+      "name": "What about Google Ads spend?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Ad spend goes directly to Google. Our management fee covers strategy, setup, and ongoing optimization." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upgrade or downgrade my plan?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. You can change plans at any time with 30 days notice." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer discounts for nonprofits?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer discounted rates for registered nonprofits. Contact us to learn more." }
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Pricing | Thryv Marketing Solutions — Month-to-Month, No Contracts"
+  description="Simple, transparent pricing for Miami business marketing. Starter at $297/mo, Growth at $797/mo, Pro at $1,497/mo. No setup fees, no long-term contracts."
+  canonical="https://thryvmarketingsolutions.com/pricing/"
+  schema={schema}
+>
+
+  <section class="pricing-hero">
+    <div class="container">
+      <span class="label">Pricing</span>
+      <h1>Simple Pricing. No Surprises.</h1>
+      <p class="lead">Month-to-month on everything. Cancel with 30 days notice. No setup fees. No fine print.</p>
+    </div>
+  </section>
+
+  <section class="section plans-section">
+    <div class="container">
+      <div class="plans-grid">
+        {plans.map(p => (
+          <div class={`plan-card reveal ${p.highlight ? 'plan-highlighted' : ''}`}>
+            {p.highlight && <div class="plan-badge">Most Popular</div>}
+            <div class="plan-name">{p.name}</div>
+            <div class="plan-tagline">{p.tagline}</div>
+            <div class="plan-price-row">
+              <span class="plan-price">{p.price}</span>
+              <span class="plan-period">{p.period}</span>
+            </div>
+            <ul class="plan-features">
+              {p.features.map(f => <li>{f}</li>)}
+            </ul>
+            <a href="/contact/" class={`btn ${p.highlight ? 'btn-primary' : 'btn-blue'}`} style="justify-content:center;width:100%;">
+              Get Started
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section addons-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Add-Ons</span>
+        <h2>Additional Services</h2>
+        <p class="lead center">Available standalone or alongside any monthly plan.</p>
+      </div>
+      <div class="addons-grid">
+        <div class="addon-card reveal">
+          <span class="addon-icon">💻</span>
+          <h3>Website Design</h3>
+          <div class="addon-price">From $1,497</div>
+          <p class="addon-note">One-time fee</p>
+        </div>
+        <div class="addon-card reveal">
+          <span class="addon-icon">🤖</span>
+          <h3>AI Automation</h3>
+          <div class="addon-price">From $297/mo</div>
+          <p class="addon-note">Included in Growth and Pro</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Pricing Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>Are there setup fees?</summary><p>No setup fees on any plan. You pay the monthly rate starting from day one.</p></details>
+        <details class="faq-item reveal"><summary>What about Google Ads spend?</summary><p>Ad spend goes directly to Google. Our management fee covers strategy, setup, and ongoing optimization.</p></details>
+        <details class="faq-item reveal"><summary>Can I upgrade or downgrade my plan?</summary><p>Yes. You can change plans at any time with 30 days notice.</p></details>
+        <details class="faq-item reveal"><summary>Do you offer discounts for nonprofits?</summary><p>Yes. We offer discounted rates for registered nonprofits. Contact us to learn more.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>Not Sure Which Plan Fits?</h2>
+          <p class="lead" style="margin-bottom:24px;">Start with a free audit. We will look at your business and tell you honestly which plan would move the needle most for you.</p>
+        </div>
+        <ContactForm title="Get Your Free Audit" subject="New Pricing Page Inquiry — Thryv" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .pricing-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); text-align: center; }
+  .pricing-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .pricing-hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px auto; color: var(--white); max-width: 600px; }
+  .pricing-hero .lead { color: rgba(255,255,255,.8); max-width: 480px; margin: 0 auto; }
+
+  .plans-section { background: var(--light); }
+  .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .plan-card { position: relative; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; display: flex; flex-direction: column; gap: 20px; }
+  .plan-highlighted { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,168,.15); }
+  .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); font-size: 12px; font-weight: 800; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
+  .plan-name { font-size: 22px; font-weight: 800; color: var(--dark); }
+  .plan-tagline { font-size: 13px; color: var(--gray); }
+  .plan-price-row { display: flex; align-items: baseline; gap: 4px; }
+  .plan-price { font-size: 48px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; }
+  .plan-period { font-size: 16px; color: var(--gray); }
+  .plan-features { display: flex; flex-direction: column; gap: 10px; flex: 1; list-style: none; border-top: 1.5px solid var(--border); padding-top: 20px; }
+  .plan-features li { font-size: 14px; color: var(--dark); padding-left: 26px; position: relative; line-height: 1.5; }
+  .plan-features li::before { content: ''; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; }
+
+  .addons-section { background: var(--white); }
+  .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 720px; margin: 0 auto; }
+  .addon-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px; text-align: center; }
+  .addon-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+  .addon-card h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .addon-price { font-size: 22px; font-weight: 800; color: var(--blue); margin-bottom: 6px; }
+  .addon-note { font-size: 13px; color: var(--gray); }
+
+  .faq-section { background: var(--light); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+    .addons-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

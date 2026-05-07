@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",                             "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services",                         "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "Google Business Profile Management", "item": "https://thryvmarketingsolutions.com/services/google-business-profile/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Google Business Profile management?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Business Profile (formerly Google My Business) is the listing that appears when someone searches for your business on Google Maps or Google Search. Management means keeping it optimized, updated, and active so more customers find you." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I see results from GBP management?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses notice increased profile views and phone calls within the first 60 days. Full results depend on your market competition and how incomplete your profile was to start." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a website to benefit from GBP management?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Many businesses get leads purely through their GBP listing before they have a strong website. That said, a fast, professional website amplifies your GBP results significantly." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Google Business Profile Management Miami | Thryv Marketing Solutions"
+  description="Professional Google Business Profile management for Miami businesses. Optimize your listing, get more calls, and rank higher in Google Maps. $297/mo, no contracts."
+  canonical="https://thryvmarketingsolutions.com/services/google-business-profile/"
+  schema={schema}
+>
+
+  <section class="svc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><span>Google Business Profile</span>
+      </nav>
+      <span class="label">Service</span>
+      <h1>Google Business Profile Management</h1>
+      <p class="lead">Your GBP is often the first thing a customer sees. We make sure it is complete, optimized, and working every month to bring you more calls and visits.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Audit
+        </a>
+        <div class="hero-price">Starting at <strong>$297/mo</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">The Problem</span>
+          <h2>An Incomplete GBP Costs You Customers Every Day</h2>
+          <p>Google ranks well-managed profiles higher in local search results. If your profile has missing info, old photos, no posts, or unanswered reviews — Google and potential customers notice.</p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li>Wrong or missing business hours confuse customers</li>
+            <li>No posts means Google sees you as inactive</li>
+            <li>Unanswered reviews signal poor customer service</li>
+            <li>Bad or missing photos reduce click-through rates</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <span class="label">Our Solution</span>
+          <h2>Monthly GBP Management That Keeps You Competitive</h2>
+          <p>We handle everything required to keep your Google Business Profile optimized, active, and converting searchers into customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section includes-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">What's Included</span>
+        <h2>Everything in the $297/mo Plan</h2>
+      </div>
+      <div class="includes-grid">
+        <div class="inc-card reveal">
+          <div class="inc-icon">📝</div>
+          <h3>Monthly Optimization</h3>
+          <p>We audit and update every field in your profile — categories, attributes, description, services, and products.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📸</div>
+          <h3>Photo and Update Uploads</h3>
+          <p>Fresh photos and updates keep your profile active and give customers a current view of your business.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📢</div>
+          <h3>Weekly GBP Posts</h3>
+          <p>We create and publish posts to your profile every week to signal activity and promote your services.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">🔍</div>
+          <h3>Keyword Targeting</h3>
+          <p>We optimize your profile around the exact search terms your customers use when looking for businesses like yours.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">❓</div>
+          <h3>Q&A Management</h3>
+          <p>We monitor and answer questions posted to your profile so potential customers always get accurate information.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📊</div>
+          <h3>Monthly Performance Report</h3>
+          <p>A clear report showing profile views, call clicks, direction requests, and what changed from the prior month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="pricing-box reveal">
+        <div>
+          <span class="label">Pricing</span>
+          <h2>$297/mo — Month-to-Month</h2>
+          <p class="lead">No contracts. Cancel with 30 days notice. No setup fee.</p>
+          <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get Started
+          </a>
+        </div>
+        <div class="pricing-note-list">
+          <div class="pnl-item"><span class="pnl-check">✓</span> Monthly GBP optimization</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Weekly posts</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Photo uploads</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Q&A management</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Monthly report</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> No contracts</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is Google Business Profile management?</summary><p>Google Business Profile (formerly Google My Business) is the listing that appears when someone searches for your business on Google Maps or Search. Management means keeping it optimized, updated, and active so more customers find you.</p></details>
+        <details class="faq-item reveal"><summary>How long until I see results?</summary><p>Most businesses notice increased profile views and phone calls within the first 60 days. Full results depend on your market competition and how incomplete your profile was to start.</p></details>
+        <details class="faq-item reveal"><summary>Do I need a website to benefit from GBP management?</summary><p>No. Many businesses get leads purely through their GBP listing before they have a strong website. That said, a fast, professional website amplifies your GBP results significantly.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>We'll Audit Your GBP at No Charge</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will review your Google Business Profile and tell you exactly what is holding it back.</p>
+        </div>
+        <ContactForm title="Get My Free GBP Audit" subject="GBP Management Inquiry — Thryv" serviceDefault="gbp" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .svc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .svc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .svc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 640px; }
+  .svc-hero .lead { color: rgba(255,255,255,.8); max-width: 540px; margin-bottom: 32px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); }
+  .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); }
+  .hero-price strong { color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .includes-section { background: var(--light); }
+  .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .inc-icon { font-size: 36px; margin-bottom: 12px; }
+  .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .pricing-section { background: var(--white); }
+  .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
+  .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
+  .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
+  .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
+  .faq-section { background: var(--light); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .includes-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-box { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .includes-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

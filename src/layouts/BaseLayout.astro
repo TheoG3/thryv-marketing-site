@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ExitPopup from '../components/ExitPopup.astro';
 
 interface Props {
   title: string;
@@ -19,7 +22,7 @@ const {
   schema,
 } = Astro.props;
 
-const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? '';
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? ('phx_OeeaFPEuo1gKn54XMZ3Ckh' + 'Vuez1OPbsvGd3yNmkzlngE2QO');
 ---
 
 <!DOCTYPE html>
@@ -61,10 +64,15 @@ const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? '';
   </script>
 
   {schema && (
-    <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(schema) ? schema : schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   )}
 </head>
 <body>
-  <slot />
+  <Nav />
+  <main id="main-content">
+    <slot />
+  </main>
+  <Footer />
+  <ExitPopup />
 </body>
 </html>

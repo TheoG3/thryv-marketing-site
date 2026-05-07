@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://thryvmarketingsolutions.com/free-tools/" }
+  ]
+};
+---
+
+<BaseLayout
+  title="Free Marketing Tools for Miami Businesses | Thryv Marketing Solutions"
+  description="Free review revenue calculator and Google Business Profile audit scorer. See what your online presence is costing you — or earning you."
+  canonical="https://thryvmarketingsolutions.com/free-tools/"
+  schema={schema}
+>
+
+  <section class="tools-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>Free Tools</span>
+      </nav>
+      <span class="label">Free Tools</span>
+      <h1>Free Marketing Tools for Miami Businesses</h1>
+      <p class="lead">Two calculators. Click a card to open the tool.</p>
+    </div>
+  </section>
+
+  <section class="section tools-section">
+    <div class="container">
+
+      <!-- Tile row -->
+      <div class="tiles-row">
+
+        <!-- TOOL 1 -->
+        <div class="tool-accordion reveal" id="acc-1">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-1" data-acc="1">
+            <div class="tile-left">
+              <span class="tile-icon">💰</span>
+              <div>
+                <div class="tile-name">Review Revenue Calculator</div>
+                <div class="tile-desc">See how much a higher Google rating could earn you</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+
+          <div class="tool-body" id="body-1" role="region" aria-labelledby="acc-1" hidden>
+            <div class="tool-body-inner">
+              <div class="calc-grid">
+                <div class="calc-form">
+                  <div class="calc-field">
+                    <label for="monthly-revenue">Monthly Revenue</label>
+                    <div class="input-prefix"><span>$</span><input type="number" id="monthly-revenue" placeholder="50000" min="0" /></div>
+                  </div>
+                  <div class="calc-field">
+                    <label for="avg-ticket">Average Transaction Value</label>
+                    <div class="input-prefix"><span>$</span><input type="number" id="avg-ticket" placeholder="500" min="1" /></div>
+                  </div>
+                  <div class="calc-field">
+                    <label for="current-rating">Current Star Rating</label>
+                    <select id="current-rating">
+                      <option value="3.0">3.0 stars</option>
+                      <option value="3.5">3.5 stars</option>
+                      <option value="4.0">4.0 stars</option>
+                      <option value="4.3">4.3 stars</option>
+                      <option value="4.5" selected>4.5 stars</option>
+                    </select>
+                  </div>
+                  <button id="calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Opportunity</button>
+                </div>
+                <div class="calc-result" id="calc-result" style="display:none;">
+                  <div class="result-label">Estimated Additional Monthly Revenue</div>
+                  <div class="result-amount" id="result-amount">$0</div>
+                  <p class="result-note">Estimated additional revenue if your rating improved from <span id="result-from">—</span> to 4.8 stars, based on higher search conversion rates.</p>
+                  <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get Help Improving My Rating</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 2 -->
+        <div class="tool-accordion reveal" id="acc-2">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-2" data-acc="2">
+            <div class="tile-left">
+              <span class="tile-icon">📋</span>
+              <div>
+                <div class="tile-name">GBP Audit Scorer</div>
+                <div class="tile-desc">10 yes/no questions — get your Google profile score</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+
+          <div class="tool-body" id="body-2" role="region" aria-labelledby="acc-2" hidden>
+            <div class="tool-body-inner">
+              <form id="audit-form">
+                <ol class="audit-questions">
+                  {[
+                    'Is your Google Business Profile verified?',
+                    'Does your profile have 10 or more photos?',
+                    'Is your business description fully filled out?',
+                    'Do you have your primary service category set correctly?',
+                    'Are your hours listed and up to date?',
+                    'Do you have at least 10 Google reviews?',
+                    'Is your average rating 4.0 or above?',
+                    'Have you posted to your GBP in the last 30 days?',
+                    'Do you respond to all your reviews?',
+                    'Does your website link in GBP go to a working page?',
+                  ].map((q, i) => (
+                    <li class="audit-q">
+                      <span class="q-text">{q}</span>
+                      <div class="q-opts">
+                        <label><input type="radio" name={`q${i+1}`} value="1" required /> Yes</label>
+                        <label><input type="radio" name={`q${i+1}`} value="0" /> No</label>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My Score</button>
+              </form>
+              <div class="audit-result" id="audit-result" style="display:none;">
+                <div class="score-display">
+                  <span class="score-num" id="score-num">0</span><span class="score-denom">/10</span>
+                </div>
+                <p class="score-msg" id="score-msg"></p>
+                <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free GBP Audit</a>
+                <button class="btn-retake" id="retake-btn">Retake the quiz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Next Step</span>
+          <h2>Want Us to Fix What the Tools Found?</h2>
+          <p class="lead" style="margin-bottom:24px;">Get a free professional audit from our team. We will dig into your GBP, reviews, SEO, and website and tell you exactly what to fix.</p>
+        </div>
+        <ContactForm title="Get Your Free Audit" subject="New Free Tools Page Inquiry — Thryv" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .tools-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .tools-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .tools-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 640px; }
+  .tools-hero .lead { color: rgba(255,255,255,.8); }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .tools-section { background: var(--white); }
+  .tiles-row { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; }
+
+  /* ── ACCORDION ─────────────────────────── */
+  .tool-accordion { border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow .2s; }
+  .tool-accordion.open { box-shadow: var(--shadow-lg); border-color: var(--blue); }
+
+  .tile-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; padding: 24px 28px;
+    background: var(--white); border: none; cursor: pointer;
+    text-align: left; font-family: var(--font);
+    transition: background .15s;
+  }
+  .tile-btn:hover { background: var(--light); }
+  .tool-accordion.open .tile-btn { background: var(--blue-light); }
+
+  .tile-left { display: flex; align-items: center; gap: 18px; }
+  .tile-icon { font-size: 36px; line-height: 1; flex-shrink: 0; }
+  .tile-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .tile-desc { font-size: 14px; color: var(--gray); }
+
+  .tile-chevron svg { color: var(--blue); transition: transform .25s ease; flex-shrink: 0; }
+  .tool-accordion.open .tile-chevron svg { transform: rotate(180deg); }
+
+  /* ── BODY ANIMATION ────────────────────── */
+  .tool-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
+  .tool-body:not([hidden]) { display: grid; }
+  .tool-body[hidden] { display: grid; visibility: hidden; }
+  .tool-accordion.open .tool-body { grid-template-rows: 1fr; }
+  .tool-accordion.open .tool-body[hidden] { visibility: visible; }
+  .tool-body-inner { overflow: hidden; padding: 0 28px; }
+  .tool-accordion.open .tool-body-inner { padding: 0 28px 32px; }
+
+  /* ── CALCULATOR ────────────────────────── */
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-top: 24px; }
+  .calc-field { margin-bottom: 16px; }
+  .calc-field label { display: block; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .input-prefix { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); overflow: hidden; }
+  .input-prefix span { padding: 11px 14px; background: var(--light); color: var(--gray); font-weight: 700; font-size: 14px; border-right: 1.5px solid var(--border); }
+  .input-prefix input { flex: 1; border: none; outline: none; padding: 11px 14px; font-size: 14px; color: var(--dark); background: var(--white); font-family: var(--font); }
+  .calc-field select { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; font-size: 14px; color: var(--dark); background: var(--white); font-family: var(--font); outline: none; }
+  .calc-result { background: var(--light); border-radius: var(--radius-lg); padding: 28px; text-align: center; border: 1.5px solid var(--border); }
+  .result-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--gray); margin-bottom: 8px; }
+  .result-amount { font-size: 52px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; line-height: 1; margin-bottom: 12px; }
+  .result-note { font-size: 13px; line-height: 1.6; color: var(--gray); }
+
+  /* ── GBP AUDIT ─────────────────────────── */
+  .audit-questions { display: flex; flex-direction: column; gap: 10px; padding: 24px 0 0; list-style: none; }
+  .audit-q { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); gap: 16px; }
+  .q-text { font-size: 14px; color: var(--dark); font-weight: 500; flex: 1; }
+  .q-opts { display: flex; gap: 20px; flex-shrink: 0; }
+  .q-opts label { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--gray); cursor: pointer; }
+  .q-opts input[type="radio"] { accent-color: var(--blue); }
+  .audit-result { text-align: center; padding: 32px 0 8px; }
+  .score-display { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 12px; }
+  .score-num { font-size: 80px; font-weight: 800; color: var(--blue); line-height: 1; }
+  .score-denom { font-size: 28px; color: var(--gray); }
+  .score-msg { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+  .btn-retake { display: block; margin: 10px auto 0; background: none; border: none; color: var(--blue); font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: underline; font-family: var(--font); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .tile-btn { padding: 20px; }
+    .tool-body-inner { padding: 0 20px; }
+    .tool-accordion.open .tool-body-inner { padding: 0 20px 24px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 560px) {
+    .audit-q { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Accordion
+  document.querySelectorAll<HTMLButtonElement>('.tile-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const accId = btn.dataset.acc!;
+      const accordion = document.getElementById('acc-' + accId)!;
+      const body      = document.getElementById('body-' + accId)!;
+      const isOpen    = accordion.classList.contains('open');
+
+      if (isOpen) {
+        accordion.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        body.setAttribute('hidden', '');
+      } else {
+        accordion.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        body.removeAttribute('hidden');
+      }
+    });
+  });
+
+  // Revenue Calculator
+  document.getElementById('calc-btn')?.addEventListener('click', () => {
+    const revenue = parseFloat((document.getElementById('monthly-revenue') as HTMLInputElement).value) || 0;
+    const rating  = parseFloat((document.getElementById('current-rating') as HTMLSelectElement).value);
+    const gap = Math.max(0, 4.8 - rating);
+    const additional = Math.round(revenue * gap * 0.1 / 100) * 100;
+    const resultEl = document.getElementById('calc-result') as HTMLElement;
+    (document.getElementById('result-amount') as HTMLElement).textContent = '$' + additional.toLocaleString();
+    (document.getElementById('result-from') as HTMLElement).textContent = rating.toFixed(1);
+    resultEl.style.display = 'block';
+  });
+
+  // GBP Audit
+  const auditForm   = document.getElementById('audit-form')   as HTMLFormElement;
+  const auditResult = document.getElementById('audit-result') as HTMLElement;
+
+  auditForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(auditForm);
+    let score = 0;
+    for (let i = 1; i <= 10; i++) { if (data.get('q' + i) === '1') score++; }
+    (document.getElementById('score-num') as HTMLElement).textContent = String(score);
+    const msg = score <= 4
+      ? 'Your GBP needs serious work. Let us fix it.'
+      : score <= 7
+      ? 'You are halfway there. A few fixes could move the needle.'
+      : 'Solid GBP. Let us look at what else could be driving more leads.';
+    (document.getElementById('score-msg') as HTMLElement).textContent = msg;
+    auditForm.style.display   = 'none';
+    auditResult.style.display = 'block';
+  });
+
+  document.getElementById('retake-btn')?.addEventListener('click', () => {
+    (auditForm as HTMLFormElement).reset();
+    auditForm.style.display   = 'block';
+    auditResult.style.display = 'none';
+  });
+</script>

@@ -1,0 +1,334 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits", "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Overtown",   "item": "https://thryvmarketingsolutions.com/nonprofits/overtown/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you work with smaller nonprofits that don't have big marketing budgets?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Month-to-month pricing, no long-term contracts. Most nonprofit clients start with one service, usually Google Business Profile or the Ad Grant application, and expand as they see results. The Ad Grant alone can deliver $10,000/month in free traffic for qualifying organizations." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Google Ad Grant work for nonprofits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google for Nonprofits provides up to $10,000/month in free Google Ads credits to qualifying 501(c)(3) organizations. We handle the eligibility check, application, campaign setup, and ongoing management." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer discounted rates for nonprofits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer discounted pricing for registered 501(c)(3) organizations. Contact us to discuss your budget and what services would have the most impact for your mission." }
+      }
+    ]
+  }
+];
+
+const causes = [
+  { name: 'Cultural Preservation', desc: "Protecting the Harlem of the South's legacy, arts, and identity" },
+  { name: 'Youth Development and Education', desc: 'After-school programs, swimming, sports, arts, mentorship' },
+  { name: 'Affordable Housing and Anti-Displacement', desc: 'Keeping longtime residents in the neighborhood they built' },
+  { name: 'Food Access and Community Health', desc: 'Pantries, nutrition programs, community wellness initiatives' },
+  { name: 'Economic Opportunity', desc: 'Small business ownership, job training, financial literacy' },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing for Overtown, Miami | Thryv Marketing Solutions"
+  description="Thryv helps Overtown nonprofits get found by donors, grant officers, and community members. Google Ad Grants, local SEO, Google Business Profile. Miami-based. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/overtown/"
+  schema={schema}
+>
+
+  <section class="ot-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/nonprofits/">Nonprofits</a><span> › </span><span>Overtown</span>
+      </nav>
+      <span class="label">Nonprofit Marketing</span>
+      <h1>Nonprofit Marketing for Overtown, Miami</h1>
+      <p class="lead">We help Overtown nonprofits get found by donors, grant officers, and community members — on Google, on Maps, and everywhere they search before they give or fund.</p>
+      <a href="#contact" class="btn btn-primary" style="margin-top:32px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Get a Free Nonprofit Audit
+      </a>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Real Problem</span>
+          <h2>The organizations doing the most for Overtown are the hardest ones to find online.</h2>
+          <p>Overtown sits on the Miami Rock Ridge, nine feet above sea level, one of the few Miami neighborhoods that will not flood as sea levels rise. Developers know it. Climate gentrification is the new I-95, and the pressure is real and accelerating.</p>
+          <p style="margin-top:16px;">The after-school programs, the food pantries, the housing advocates, the arts organizations keeping the Harlem of the South alive: they are doing the work. But funders searching for exactly what they offer cannot find them. That is the gap we close.</p>
+          <p style="margin-top:16px;">The Knight Foundation, the Miami Foundation, and Miami-Dade County actively fund Overtown organizations. They look you up before they write the check. We make sure what they find matches what you actually do.</p>
+        </div>
+        <div class="stat-pills reveal">
+          <div class="stat-pill">
+            <div class="stat-num">15,000</div>
+            <div class="stat-lbl">Residents displaced when I-95 was built through the Harlem of the South in 1965</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">9 ft</div>
+            <div class="stat-lbl">Overtown's elevation above sea level — why climate gentrification is the neighborhood's next big challenge</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">$39M</div>
+            <div class="stat-lbl">HUD redevelopment funding flowing into the neighborhood, bringing both opportunity and displacement pressure</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">$10K/mo</div>
+            <div class="stat-lbl">Free Google ad spend available to qualifying Overtown nonprofits through Google's Ad Grant program</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">What We Do</span>
+        <h2>Marketing built for Overtown nonprofits, not adapted from a generic playbook.</h2>
+        <p class="lead">Donors look you up. Funders Google you. Community members search for you by name. Every service gets you found and found looking credible.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3>Google Business Profile Management</h3>
+            <p>When a grant officer searches for youth programs in Overtown, your organization appears first. Reviews, photos, hours, and programs clearly listed.</p>
+            <span class="svc-tag">Donor Visibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <h3>Local SEO</h3>
+            <p>Rank for what your community searches: "youth programs Overtown," "food assistance 33136," "cultural events Miami." In English and in Spanish.</p>
+            <span class="svc-tag">Community Reach</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3>Google Ad Grants for Nonprofits</h3>
+            <p>Qualifying 501(c)(3)s get up to <strong>$10,000/month in free Google ad spend</strong>. We apply on your behalf, set up the campaigns, and manage them month to month.</p>
+            <span class="svc-tag">Free Ad Spend</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3>Website Design</h3>
+            <p>A site that reflects the weight of your mission. Mobile-first, bilingual, with donation flows, volunteer sign-ups, and program pages that turn visitors into supporters.</p>
+            <span class="svc-tag">Grant Credibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3>Reputation and Review Management</h3>
+            <p>Before a donor gives, they check reviews. Before a funder writes the check, they verify your profile. We build the trust signals that make both a yes.</p>
+            <span class="svc-tag">Funder Trust</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>AI Phone Receptionist</h3>
+            <p>Answer every call 24/7 in English and Spanish. Qualify community members, route to the right program, capture intake info — even at 2am when a family needs help now.</p>
+            <span class="svc-tag">Community Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhood-section">
+    <div class="container">
+      <div class="nbhd-inner">
+        <div class="nbhd-copy reveal">
+          <span class="label">We Know Overtown</span>
+          <h2>Miami-based. Overtown's history is not context to us. It is the core of every story we tell.</h2>
+          <p>We know that before I-95 split the neighborhood in half, Overtown was where Nat King Cole performed, where Muhammad Ali trained, where Miami's Black community built something extraordinary from the ground up. That story does not start with a problem. It starts with a culture.</p>
+          <p style="margin-top:16px;">We know climate gentrification is today's pressure: that Overtown's elevation on the Miami Rock Ridge is the reason developers are circling. We know the difference between displacement as a statistic and displacement as a lived reality for families who have been here for generations.</p>
+          <p style="margin-top:16px;">That understanding shapes every keyword we target, every piece of content we write, and every grant-credibility signal we build for your organization.</p>
+          <ul class="know-list">
+            <li>We lead with Overtown's culture and legacy, not its challenges</li>
+            <li>We write in English and Spanish. Hablamos Espa&ntilde;ol.</li>
+            <li>We know what funders like Knight Foundation and Miami Foundation prioritize</li>
+            <li>We know the neighborhood's geography shapes its future and its story</li>
+          </ul>
+        </div>
+        <div class="causes-box reveal">
+          <h4>Causes We Serve in Overtown</h4>
+          {causes.map(c => (
+            <div class="cause-row">
+              <div class="cause-dot"></div>
+              <div>
+                <div class="cause-name">{c.name}</div>
+                <div class="cause-desc">{c.desc}</div>
+              </div>
+            </div>
+          ))}
+          <p class="cause-footer">Whatever your cause, if Overtown is your home, it is our job to tell that story right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Overtown Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do you work with smaller nonprofits that don't have big marketing budgets?</summary>
+          <p>Yes. Month-to-month pricing, no long-term contracts. Most nonprofit clients start with one service, usually Google Business Profile or the Ad Grant application, and expand as they see results. The Ad Grant alone can deliver $10,000/month in free traffic for qualifying organizations.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does the Google Ad Grant work for nonprofits?</summary>
+          <p>Google for Nonprofits provides up to $10,000/month in free Google Ads credits to qualifying 501(c)(3) organizations. We handle the eligibility check, application, campaign setup, and ongoing management.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Do you offer discounted rates for nonprofits?</summary>
+          <p>Yes. We offer discounted pricing for registered 501(c)(3) organizations. Contact us to discuss your budget and what services would have the most impact for your mission.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for You</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a grant officer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Overtown Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .ot-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .ot-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .ot-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .ot-hero .lead { color: rgba(255,255,255,.8); max-width: 560px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .svc-card { display: flex; gap: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .svc-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 12px; }
+  .svc-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--blue-light); color: var(--blue); padding: 3px 10px; border-radius: 100px; }
+
+  .neighborhood-section { background: var(--blue-deeper); color: var(--white); }
+  .neighborhood-section .label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+  .nbhd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .nbhd-copy h2 { color: var(--white); }
+  .nbhd-copy p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.75); }
+  .know-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .know-list li { font-size: 15px; color: rgba(255,255,255,.85); padding-left: 20px; position: relative; }
+  .know-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .causes-box { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(255,255,255,.12); }
+  .causes-box h4 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+  .cause-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .cause-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--orange); margin-top: 4px; }
+  .cause-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .cause-desc { font-size: 13px; color: rgba(255,255,255,.6); }
+  .cause-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .stat-pills { grid-template-columns: 1fr 1fr; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .nbhd-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .stat-pills { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', () => {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('nonprofit_audit_request_submitted', { neighborhood: 'overtown' });
+      }
+    });
+  }
+</script>

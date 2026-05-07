@@ -28,10 +28,10 @@ brainstorm
 preview
 videos
 
-# Old flat HTML source (Astro src/ is the live code now)
-index.html
-services/
-blog/index.html
-privacy-policy.html
-terms.html
-sitemap.xml
+# Old flat HTML source at repo root (Astro src/ is the live code now)
+/index.html
+/services/
+/blog/index.html
+/privacy-policy.html
+/terms.html
+/sitemap.xml

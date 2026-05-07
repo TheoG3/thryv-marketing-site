@@ -1,0 +1,178 @@
+---
+interface Props {
+  title?: string;
+  offer?: string;
+}
+
+const {
+  title = "Before You Go...",
+  offer = "Get a free audit before you leave. We will look at your Google Business Profile, reviews, and website — no charge, no obligation.",
+} = Astro.props;
+---
+
+<div id="exitPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
+  <div class="popup-card">
+    <button id="popupClose" class="popup-close" aria-label="Close popup">&times;</button>
+
+    <div class="popup-badge">Free Audit</div>
+    <h2 id="popup-title">{title}</h2>
+    <p>{offer}</p>
+
+    <form id="popupForm" action="https://api.web3forms.com/submit" method="POST" class="popup-form">
+      <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
+      <input type="hidden" name="subject" value="Exit Popup — Free Audit Request" />
+      <input type="text" name="honeypot" class="honeypot" tabindex="-1" autocomplete="off" />
+
+      <input type="text"  name="name"  placeholder="Your name"        required />
+      <input type="email" name="email" placeholder="Business email"   required />
+      <input type="tel"   name="phone" placeholder="Phone (optional)" />
+
+      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Send My Free Audit
+      </button>
+    </form>
+
+    <div class="popup-success" id="popupSuccess" style="display:none;">
+      <div class="popup-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <p>Got it. We will be in touch within 24 hours.</p>
+    </div>
+
+    <p class="popup-note">No spam. No obligation. Cancel anytime.</p>
+  </div>
+</div>
+
+<style>
+  .honeypot { display: none; }
+
+  .popup-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(7,15,43,.6); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .popup-overlay.active { opacity: 1; pointer-events: auto; }
+  .popup-overlay[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+
+  .popup-card {
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 40px 36px; max-width: 440px; width: 100%;
+    box-shadow: 0 24px 80px rgba(0,0,0,.25);
+    position: relative;
+    transform: translateY(20px); transition: transform .3s ease;
+  }
+  .popup-overlay.active .popup-card { transform: translateY(0); }
+
+  .popup-close {
+    position: absolute; top: 14px; right: 18px;
+    background: none; border: none; font-size: 24px; line-height: 1;
+    color: var(--gray-light); cursor: pointer;
+    transition: color .2s;
+  }
+  .popup-close:hover { color: var(--dark); }
+
+  .popup-badge {
+    display: inline-flex; font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .12em;
+    color: var(--orange-dark); background: #FFF8EC;
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 12px;
+  }
+
+  .popup-card h2 { font-size: 24px; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.2; }
+  .popup-card > p { font-size: 15px; line-height: 1.65; color: var(--gray); margin-bottom: 24px; }
+
+  .popup-form { display: flex; flex-direction: column; gap: 12px; }
+  .popup-form input {
+    width: 100%; font-family: var(--font); font-size: 14px; color: var(--dark);
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .popup-form input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,168,.12); }
+
+  .popup-note { font-size: 12px; color: var(--gray-light); text-align: center; margin-top: 12px; }
+
+  .popup-success { text-align: center; padding: 16px 0; }
+  .popup-check { width: 56px; height: 56px; border-radius: 50%; background: #DCFCE7; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+  .popup-check svg { width: 28px; height: 28px; stroke: #16A34A; }
+  .popup-success p { font-size: 15px; font-weight: 700; color: var(--dark); }
+</style>
+
+<script>
+  const STORAGE_KEY = 'thryv_popup_dismissed';
+  const overlay = document.getElementById('exitPopup') as HTMLElement;
+  const closeBtn = document.getElementById('popupClose') as HTMLButtonElement;
+  const form     = document.getElementById('popupForm') as HTMLFormElement;
+  const success  = document.getElementById('popupSuccess') as HTMLElement;
+
+  function showPopup() {
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function hidePopup() {
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  }
+
+  // Don't show if already dismissed this session or already converted
+  if (!sessionStorage.getItem(STORAGE_KEY) && !localStorage.getItem(STORAGE_KEY + '_converted')) {
+
+    // Only arm triggers after 45 seconds on page — prevents firing on bounces
+    const ARM_DELAY = 45_000;
+    let armed = false;
+    setTimeout(() => { armed = true; }, ARM_DELAY);
+
+    // Exit intent — desktop only, must be armed first
+    document.addEventListener('mouseleave', (e) => {
+      if (!armed) return;
+      if (e.clientY <= 0) showPopup();
+    }, { once: false });
+
+    // Scroll-based trigger — mobile fallback, 80% scroll + armed + 1.5s delay
+    let scrollTriggered = false;
+    window.addEventListener('scroll', () => {
+      if (scrollTriggered || !armed) return;
+      const scrollPct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      if (scrollPct >= 80) {
+        scrollTriggered = true;
+        setTimeout(showPopup, 1500);
+      }
+    }, { passive: true });
+  }
+
+  // Close handlers
+  closeBtn?.addEventListener('click', hidePopup);
+  overlay?.addEventListener('click', (e) => {
+    if (e.target === overlay) hidePopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('active')) hidePopup();
+  });
+
+  // Form submit
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      if (res.ok) {
+        form.style.display  = 'none';
+        success.style.display = 'block';
+        localStorage.setItem(STORAGE_KEY + '_converted', '1');
+        if ((window as any).posthog) (window as any).posthog.capture('exit_popup_submitted');
+        setTimeout(hidePopup, 3000);
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = 'Send My Free Audit'; btn.disabled = false;
+    }
+  });
+</script>
