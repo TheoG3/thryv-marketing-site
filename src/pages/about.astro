@@ -60,9 +60,9 @@ const convictions = [
           <video
             class="founder-video"
             src="/founder-morph.mp4"
-            autoplay
             muted
             playsinline
+            preload="auto"
             aria-label="Theodore Grimes, Founder of Thryv Marketing Solutions"
           ></video>
           <div class="founder-block">
@@ -188,4 +188,14 @@ const convictions = [
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const video = document.querySelector('.founder-video') as HTMLVideoElement | null;
+  if (video) {
+    const vio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { video.play(); vio.unobserve(video); }
+      });
+    }, { threshold: 0.3 });
+    vio.observe(video);
+  }
 </script>
