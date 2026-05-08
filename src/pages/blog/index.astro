@@ -64,8 +64,6 @@ const posts = [
     readTime: "5 min read"
   }
 ];
-
-const categories = ["All", "Local SEO", "GBP Management", "Reputation", "AI Automation", "Agency Transparency"];
 ---
 
 <BaseLayout
@@ -76,75 +74,30 @@ const categories = ["All", "Local SEO", "GBP Management", "Reputation", "AI Auto
   schema={schema}
 >
 
-<a href="#main-content" class="skip-link">Skip to main content</a>
-
-<nav>
+<section class="blog-hero">
   <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions">
-        <img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/#about">About</a></li>
-        <li><a href="/blog/" class="nav-active">Blog</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="/#contact" class="btn btn-blue">Get Free Audit</a>
-        <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<main id="main-content">
-
-<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Navigation menu">
-  <a href="/#services" class="mobile-link">Services</a>
-  <a href="/#pricing" class="mobile-link">Pricing</a>
-  <a href="/#about" class="mobile-link">About</a>
-  <a href="/blog/" class="mobile-link">Blog</a>
-  <a href="/#contact" class="mobile-link">Contact</a>
-  <a href="/#contact" class="btn btn-primary">Get Free Audit</a>
-</div>
-
-<!-- Blog Hero -->
-<section style="background:linear-gradient(135deg,var(--blue-deeper) 0%,var(--blue-dark) 100%);padding:72px 0 56px;">
-  <div class="container">
-    <div style="max-width:600px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;">
-        <span style="display:inline-block;width:24px;height:2px;background:var(--orange);border-radius:2px;"></span>
+    <div class="hero-inner">
+      <div class="blog-eyebrow">
+        <span class="eyebrow-bar"></span>
         Thryv Blog
       </div>
-      <h1 style="font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.15;letter-spacing:-0.02em;color:var(--white);margin-bottom:16px;">
-        Marketing That Actually Works<br />for Local Businesses
-      </h1>
-      <p style="font-size:17px;line-height:1.7;color:rgba(255,255,255,.65);">Practical insights on local SEO, reputation management, AI automation, and everything else that drives real growth for service businesses.</p>
+      <h1>Marketing That Actually Works<br />for Local Businesses</h1>
+      <p class="lead">Practical insights on local SEO, reputation management, AI automation, and everything else that drives real growth for service businesses.</p>
     </div>
   </div>
 </section>
 
-<!-- Posts -->
-<section class="section" style="background:var(--light);">
+<section class="posts-section">
   <div class="container">
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;">
+    <div class="posts-grid">
       {posts.map((post, i) => (
-        <article
-          class="reveal"
-          style={`background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;transition:box-shadow .25s,transform .25s;transition-delay:${(i % 3) * 0.08}s`}
-        >
-          <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);border-radius:100px;padding:4px 12px;margin-bottom:16px;">
-            {post.category}
-          </div>
-          <h2 style="font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:12px;">
-            <a href={post.slug} style="color:inherit;">{post.title}</a>
+        <article class="post-card reveal" style={`transition-delay:${(i % 3) * 0.08}s`}>
+          <div class="post-category">{post.category}</div>
+          <h2 class="post-title">
+            <a href={post.slug}>{post.title}</a>
           </h2>
-          <p style="font-size:14px;line-height:1.7;color:var(--gray);margin-bottom:20px;">{post.excerpt}</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--gray-light);border-top:1px solid var(--border);padding-top:16px;">
+          <p class="post-excerpt">{post.excerpt}</p>
+          <div class="post-meta">
             <span>{post.date}</span>
             <span>{post.readTime}</span>
           </div>
@@ -152,11 +105,11 @@ const categories = ["All", "Local SEO", "GBP Management", "Reputation", "AI Auto
       ))}
     </div>
 
-    <div style="text-align:center;margin-top:64px;padding:48px;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--border);">
-      <div class="label" style="display:inline-flex;">More Posts Coming</div>
-      <h3 style="font-size:22px;font-weight:800;color:var(--dark);margin-bottom:12px;">Get Notified When We Publish</h3>
-      <p style="font-size:15px;color:var(--gray);max-width:400px;margin:0 auto 24px;">New articles on local SEO, Google Ads, AI tools, and what's actually working for Miami businesses.</p>
-      <a href="/#contact" class="btn btn-primary">
+    <div class="more-coming">
+      <div class="label">More Posts Coming</div>
+      <h3>Get Notified When We Publish</h3>
+      <p>New articles on local SEO, Google Ads, AI tools, and what's actually working for Miami businesses.</p>
+      <a href="/contact/" class="btn btn-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Contact Us
       </a>
@@ -164,70 +117,91 @@ const categories = ["All", "Local SEO", "GBP Management", "Reputation", "AI Auto
   </div>
 </section>
 
-</main>
+<style>
+  .blog-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 72px 0 56px;
+    color: var(--white);
+  }
+  .hero-inner { max-width: 600px; }
+  .blog-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 20px;
+  }
+  .eyebrow-bar { display: inline-block; width: 24px; height: 2px; background: var(--orange); border-radius: 2px; }
+  .blog-hero h1 {
+    font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px;
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.7); }
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="/logos/logo-white.webp" alt="Thryv Marketing Solutions" style="height:36px;width:auto;" />
-        <p style="margin-top:16px;">Miami-based growth marketing agency. AI-powered automation. Month-to-month. No lock-ins.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <a href="/#services">GMB Management</a>
-        <a href="/#services">Local SEO</a>
-        <a href="/#services">Google Ads</a>
-        <a href="/#ai-services">AI Automation</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="/#about">About</a>
-        <a href="/#pricing">Pricing</a>
-        <a href="/blog/">Blog</a>
-        <a href="/#contact">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/terms/">Terms of Service</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
-      <p class="hablamos">Hablamos Español</p>
-    </div>
-  </div>
-</footer>
+  .posts-section { background: var(--light); padding: 64px 0; }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 48px;
+  }
+
+  .post-card {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 32px;
+    transition: box-shadow .25s, transform .25s;
+  }
+  .post-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
+
+  .post-category {
+    display: inline-flex; font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--blue); background: #EEF4FF;
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px;
+  }
+  .post-title { font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.35; margin-bottom: 12px; }
+  .post-title a { color: inherit; text-decoration: none; }
+  .post-title a:hover { color: var(--blue); }
+  .post-excerpt { font-size: 14px; line-height: 1.7; color: var(--gray); margin-bottom: 20px; }
+  .post-meta {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--gray-light);
+    border-top: 1px solid var(--border); padding-top: 16px;
+  }
+
+  .more-coming {
+    text-align: center; padding: 48px;
+    background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--border);
+  }
+  .more-coming .label { display: inline-flex; margin-bottom: 12px; }
+  .more-coming h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .more-coming p { font-size: 15px; color: var(--gray); max-width: 400px; margin: 0 auto 24px; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px; border-radius: 8px; font-size: 14px;
+    font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { opacity: .9; }
+
+  /* reveal animation */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .blog-hero { padding: 48px 0 40px; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .more-coming { padding: 32px 20px; }
+  }
+</style>
 
 <script>
   const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    }),
+    { threshold: 0.1 }
+  );
   revealEls.forEach(el => observer.observe(el));
-
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    const isOpen = mobileMenu.classList.contains('open');
-    hamburger.setAttribute('aria-expanded', isOpen.toString());
-    const spans = hamburger.querySelectorAll('span');
-    if (isOpen) {
-      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-      spans[1].style.opacity = '0';
-      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-    } else {
-      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-    }
-  });
-  document.querySelectorAll('.mobile-link').forEach(l => {
-    l.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-    });
-  });
 </script>
 
 </BaseLayout>
