@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+
+const neighborhoods = [
+  { name: 'Overtown', slug: 'overtown', live: true, desc: 'Historic Black community, climate gentrification pressure, active donor and funder ecosystem.' },
+  { name: 'Liberty City', slug: 'liberty-city', live: false, desc: 'Longtime Black Miami neighborhood with strong youth program and community advocacy organizations.' },
+  { name: 'Little Haiti', slug: 'little-haiti', live: false, desc: "Miami's Haitian community hub. Cultural preservation, immigration support, and workforce development orgs." },
+  { name: 'Little Havana', slug: 'little-havana', live: false, desc: "Calle Ocho corridor. Cuban-American cultural nonprofits, senior services, and arts organizations." },
+  { name: 'Homestead', slug: 'homestead', live: false, desc: 'Agricultural community with migrant worker support, food access, and housing nonprofits.' },
+  { name: 'Wynwood', slug: 'wynwood', live: false, desc: 'Arts district with emerging nonprofit ecosystem focused on arts access and creative workforce development.' },
+];
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits", "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Miami", "item": "https://thryvmarketingsolutions.com/nonprofits/miami/" },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing in Miami, FL | Thryv Marketing Solutions"
+  description="Marketing for Miami nonprofits. Google Ad Grants, local SEO, and GBP management for organizations in Overtown, Liberty City, Little Haiti, and across Miami-Dade. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/miami/"
+  schema={schema}
+>
+
+  <section class="miami-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href="/nonprofits/">Nonprofits</a><span> › </span>
+        <span>Miami</span>
+      </nav>
+      <span class="label">Miami, FL</span>
+      <h1>Nonprofit Marketing in Miami, Florida</h1>
+      <p class="lead">Miami-Dade County has one of the largest nonprofit ecosystems in the Southeast — and some of the most underfunded organizations in the country. We help Miami nonprofits get found by the donors, funders, and community members they are trying to reach.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section nbhd-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Miami Neighborhoods</span>
+        <h2>Nonprofit Marketing by Miami Neighborhood</h2>
+        <p class="lead">Each Miami neighborhood is a distinct ecosystem with different funders, different community needs, and different search behavior. We build strategies for the specific neighborhood your organization calls home.</p>
+      </div>
+      <div class="nbhd-grid">
+        {neighborhoods.map(n => (
+          <div class={`nbhd-card reveal${!n.live ? ' nbhd-coming' : ''}`}>
+            <div class="nbhd-top">
+              <div class="nbhd-name">{n.name}</div>
+              {n.live
+                ? <span class="nbhd-badge live">Active</span>
+                : <span class="nbhd-badge">Coming Soon</span>
+              }
+            </div>
+            <p class="nbhd-desc">{n.desc}</p>
+            {n.live
+              ? <a href={`/nonprofits/miami/${n.slug}/`} class="nbhd-link">View {n.name} →</a>
+              : <span class="nbhd-link muted">Expanding soon</span>
+            }
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section miami-context-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">Miami Nonprofit Ecosystem</span>
+          <h2>Why Miami Nonprofits Face Unique Marketing Challenges</h2>
+          <p>Miami-Dade County is one of the most diverse and complex metro areas in the country. Your community speaks Spanish, Haitian Creole, and dozens of other languages. Your funders include local foundations, federal agencies, and international donors. Your competition for attention is intense.</p>
+          <p style="margin-top:16px;">At the same time, the opportunities are significant. The Knight Foundation, the Miami Foundation, Miami-Dade County, and dozens of other funders actively invest in Miami nonprofits. They search for organizations like yours. We make sure they find you — and find you presenting your best work.</p>
+          <ul class="context-list">
+            <li>We know Miami's foundation landscape and what funders prioritize</li>
+            <li>We write in English and Spanish — and work with Creole-fluent partners</li>
+            <li>We know the difference between Liberty City, Little Haiti, and Overtown</li>
+            <li>We understand climate gentrification, displacement, and the community pressures your org navigates</li>
+          </ul>
+        </div>
+        <div class="miami-stats reveal">
+          <div class="miami-stat">
+            <div class="ms-num">8,000+</div>
+            <div class="ms-lbl">Registered nonprofits in Miami-Dade County</div>
+          </div>
+          <div class="miami-stat accent">
+            <div class="ms-num">70%</div>
+            <div class="ms-lbl">of Miami-Dade residents born outside the U.S. — bilingual presence is not optional</div>
+          </div>
+          <div class="miami-stat">
+            <div class="ms-num">$10K</div>
+            <div class="ms-lbl">Free monthly Google ad spend available to qualifying Miami nonprofits through the Ad Grant</div>
+          </div>
+          <div class="miami-stat accent">
+            <div class="ms-num">0</div>
+            <div class="ms-lbl">Long-term contracts — we work month-to-month, aligned with your grant cycles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>Let's See What Funders Find When They Search for Your Miami Nonprofit</h2>
+          <p class="lead" style="margin-bottom:24px;">We audit your Google Business Profile, search rankings, and website — and tell you exactly what a Miami Foundation grant officer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Miami Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .miami-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .miami-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .miami-hero h1 { font-size: clamp(28px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .miami-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; font-size: 16px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .nbhd-section { background: var(--light); }
+  .nbhd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+  .nbhd-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+  .nbhd-coming { opacity: .75; }
+  .nbhd-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .nbhd-name { font-size: 18px; font-weight: 800; color: var(--dark); }
+  .nbhd-badge { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; background: var(--border); color: var(--gray); }
+  .nbhd-badge.live { background: #DCFCE7; color: #16A34A; }
+  .nbhd-desc { font-size: 13px; line-height: 1.6; color: var(--gray); margin-bottom: 16px; }
+  .nbhd-link { font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; }
+  .nbhd-link:hover { text-decoration: underline; }
+  .nbhd-link.muted { color: var(--gray); font-style: italic; }
+
+  .miami-context-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .two-col h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.2; }
+  .two-col p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+  .context-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .context-list li { font-size: 15px; color: var(--dark); padding-left: 20px; position: relative; }
+  .context-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .miami-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .miami-stat { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .miami-stat.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .ms-num { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .miami-stat.accent .ms-num { color: var(--white); }
+  .ms-lbl { font-size: 12px; line-height: 1.5; color: var(--gray); }
+  .miami-stat.accent .ms-lbl { color: rgba(255,255,255,.75); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .miami-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

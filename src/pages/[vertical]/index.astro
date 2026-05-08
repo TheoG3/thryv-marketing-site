@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import { verticals, services, getServiceDef } from '../../data/ecosystem.ts';
+import type { Vertical, ServiceSlug } from '../../data/ecosystem.ts';
+
+export async function getStaticPaths() {
+  return verticals.map(v => ({
+    params: { vertical: v.slug },
+    props: { vertical: v },
+  }));
+}
+
+interface Props { vertical: Vertical; }
+const { vertical: v } = Astro.props;
+
+const BASE = 'https://thryvmarketingsolutions.com';
+const canonical = `${BASE}/${v.slug}/`;
+
+const titleMap: Record<string, string> = {
+  contractors: 'Contractor Marketing Miami | Thryv Marketing Solutions',
+  'cleaning-services': 'Cleaning Company Marketing Miami | Thryv',
+  landscaping: 'Landscaping Marketing Miami | Thryv Marketing Solutions',
+  'moving-companies': 'Moving Company Marketing Miami | Thryv',
+  dentists: 'Dental Office Marketing Miami | Thryv Marketing Solutions',
+  medspas: 'Med Spa Marketing Miami | Thryv Marketing Solutions',
+  'yacht-services': 'Yacht Service Marketing Miami | Thryv',
+  'real-estate-agents': 'Real Estate Agent Marketing Miami | Thryv',
+  'immigration-lawyers': 'Immigration Lawyer Marketing Miami | Thryv',
+  'beauty-salons': 'Beauty Salon Marketing Miami | Thryv Marketing Solutions',
+};
+
+const descMap: Record<string, string> = {
+  contractors: 'Marketing for contractors in Miami. Google Business Profile, SEO, Google Ads, and reputation management. Get found when homeowners search. Free audit.',
+  'cleaning-services': 'Marketing for Miami cleaning companies. GBP, SEO, and review management to attract higher-value residential and commercial clients. Free audit.',
+  landscaping: 'Marketing for Miami landscapers. Google Business Profile, SEO, and Google Ads to keep your calendar full year-round. Miami-based. Free audit.',
+  'moving-companies': 'Marketing for Miami moving companies. Capture high-intent moving searches with GBP, SEO, and Google Ads. Build your review profile. Free audit.',
+  dentists: 'Marketing for Miami dental offices. Attract more cosmetic and private-pay patients with targeted SEO, Google Ads, and reputation management. Free audit.',
+  medspas: 'Marketing for Miami med spas. Social ads, GBP, and reputation management to keep your treatment rooms booked. Miami-based. Free audit.',
+  'yacht-services': 'Marketing for Miami yacht services. SEO, GBP, and Google Ads to reach yacht owners before they call anyone else. Miami marine market. Free audit.',
+  'real-estate-agents': 'Marketing for Miami real estate agents. Own your farm area in search with SEO, GBP, and social ads. Stop paying portal fees. Free audit.',
+  'immigration-lawyers': 'Marketing for Miami immigration lawyers. Bilingual SEO, GBP, and Google Ads to turn urgent searches into consultations. Miami-based. Free audit.',
+  'beauty-salons': 'Marketing for Miami beauty salons. GBP, SEO, and Instagram ads to keep your chairs booked. Build your review profile in your neighborhood. Free audit.',
+};
+
+const pageTitle = titleMap[v.slug] ?? `${v.name} Marketing Miami | Thryv Marketing Solutions`;
+const pageDesc = descMap[v.slug] ?? `Marketing for ${v.name.toLowerCase()} in Miami. Google Business Profile, SEO, Google Ads, and reputation management. Free audit.`;
+
+const svcIcons: Record<ServiceSlug, string> = {
+  'google-business-profile': '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>',
+  seo: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>',
+  'google-ads': '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  'reputation-management': '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+  'website-design': '<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+  'social-media-ads': '<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>',
+};
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE}/` },
+      { "@type": "ListItem", "position": 2, "name": v.name, "item": canonical },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": v.faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} canonical={canonical} schema={schema}>
+
+  <section class="v-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><span>{v.name}</span>
+      </nav>
+      <span class="label">Who We Serve</span>
+      <h1>{v.pillarHeadline}</h1>
+      <p class="lead">{v.pillarLead}</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Our Services for {v.name}</span>
+        <h2>Every service we offer, built specifically for {v.name.toLowerCase()} in Miami.</h2>
+      </div>
+      <div class="svc-grid">
+        {v.services.map(sSlug => {
+          const svc = getServiceDef(sSlug);
+          const config = v.serviceConfigs[sSlug];
+          return (
+            <a href={`/${v.slug}/${sSlug}/`} class="svc-card reveal">
+              <div class="svc-icon-wrap">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" set:html={svcIcons[sSlug]} />
+              </div>
+              <div class="svc-body">
+                <h3>{svc.name}</h3>
+                <p>{config?.lead ?? svc.defaultIncludes[0]}</p>
+                <div class="svc-price">{svc.price}</div>
+              </div>
+              <svg class="svc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Problem</span>
+          <h2>{v.problemHeadline}</h2>
+          <p>{v.problemBody}</p>
+        </div>
+        <div class="stat-pills reveal">
+          {v.stats.map(s => (
+            <div class={`stat-pill${s.accent ? ' accent' : ''}`}>
+              <div class="stat-num">{s.num}</div>
+              <div class="stat-lbl">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Why Thryv</span>
+        <h2>Miami-based. Built for local service businesses. No long-term contracts.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">📍</div>
+          <h3>We Know Miami</h3>
+          <p>We are based in Miami. We know the neighborhoods, the competition, and what Miami consumers actually respond to. Every strategy is built for this market, not adapted from a generic playbook.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">📊</div>
+          <h3>Measurable Results</h3>
+          <p>Every service we run is tracked. You get monthly reports showing rankings, leads, review growth, and what moved. No vanity metrics — just the numbers that matter for your business.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">🤝</div>
+          <h3>Month-to-Month</h3>
+          <p>No contracts. No lock-ins. We earn your business every month. If you are not seeing results, you can cancel with 30 days notice. We stay because our work works, not because of paperwork.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from {v.name} in Miami</h2>
+      </div>
+      <div class="faq-list">
+        {v.faqs.map(f => (
+          <details class="faq-item reveal">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>See What Your Competition Sees When They Search for {v.singular === 'Dental Office' || v.singular === 'Med Spa' ? 'a ' + v.singular : 'a ' + v.singular} in Miami</h2>
+          <p class="lead" style="margin-bottom:24px;">We audit your Google Business Profile, search rankings, and reviews — and tell you exactly where you stand versus your top competitors in Miami.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol</p>
+        </div>
+        <ContactForm
+          title="Get My Free Audit"
+          subject={`${v.name} Marketing Inquiry — Thryv`}
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .v-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .v-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .v-hero h1 { font-size: clamp(28px, 4.5vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 700px; }
+  .v-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s, background .2s; }
+  .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .svc-card { display: flex; align-items: flex-start; gap: 16px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+  .svc-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.1); }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-body { flex: 1; }
+  .svc-body h3 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .svc-body p { font-size: 13px; line-height: 1.6; color: var(--gray); margin-bottom: 10px; }
+  .svc-price { font-size: 13px; font-weight: 700; color: var(--blue); }
+  .svc-arrow { stroke: var(--blue); opacity: .5; flex-shrink: 0; margin-top: 4px; transition: opacity .2s; }
+  .svc-card:hover .svc-arrow { opacity: 1; }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.2; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .why-section { background: var(--light); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .why-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+  .why-icon { font-size: 36px; margin-bottom: 16px; }
+  .why-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .why-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .svc-grid { grid-template-columns: 1fr; }
+    .stat-pills { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

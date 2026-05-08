@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../../components/ContactForm.astro';
+import { verticals, getServiceDef, neighborhoods, getNeighborhood } from '../../../../../data/ecosystem.ts';
+import type { ServiceSlug } from '../../../../../data/ecosystem.ts';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  const cities = [{ slug: 'miami', name: 'Miami', state: 'FL' }];
+  const miamiNeighborhoods = neighborhoods.filter(n => n.citySlug === 'miami');
+  for (const v of verticals) {
+    for (const sSlug of v.services) {
+      const svc = getServiceDef(sSlug);
+      if (svc) {
+        for (const city of cities) {
+          for (const nbhd of miamiNeighborhoods) {
+            paths.push({
+              params: { vertical: v.slug, service: sSlug, city: city.slug, neighborhood: nbhd.slug },
+              props: { vertical: v, service: svc, city, neighborhood: nbhd },
+            });
+          }
+        }
+      }
+    }
+  }
+  return paths;
+}
+
+const { vertical: v, service: svc, city, neighborhood: nbhd } = Astro.props;
+const config = v.serviceConfigs[svc.slug as ServiceSlug];
+const includes = config?.includes ?? svc.defaultIncludes;
+
+const BASE = 'https://thryvmarketingsolutions.com';
+const canonical = `${BASE}/${v.slug}/${svc.slug}/${city.slug}/${nbhd.slug}/`;
+
+const h1 = `${svc.shortName} for ${v.name} in ${nbhd.name}`;
+const pageTitle = `${svc.shortName} for ${v.name} in ${nbhd.name} | Thryv`.slice(0, 60);
+const pageDesc = `${svc.shortName} for ${v.name.toLowerCase()} in ${nbhd.name}, Miami. Rank higher in local Google search and Maps. Miami-based team. Free audit.`.slice(0, 160);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE}/` },
+      { "@type": "ListItem", "position": 2, "name": v.name, "item": `${BASE}/${v.slug}/` },
+      { "@type": "ListItem", "position": 3, "name": svc.shortName, "item": `${BASE}/${v.slug}/${svc.slug}/` },
+      { "@type": "ListItem", "position": 4, "name": city.name, "item": `${BASE}/${v.slug}/${svc.slug}/${city.slug}/` },
+      { "@type": "ListItem", "position": 5, "name": nbhd.name, "item": canonical },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": canonical,
+    "url": canonical,
+    "name": h1,
+    "description": pageDesc,
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thryv Marketing Solutions",
+      "url": BASE,
+    },
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} canonical={canonical} schema={schema}>
+
+  <section class="nbhd-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href={`/${v.slug}/`}>{v.name}</a><span> › </span>
+        <a href={`/${v.slug}/${svc.slug}/`}>{svc.shortName}</a><span> › </span>
+        <a href={`/${v.slug}/${svc.slug}/${city.slug}/`}>{city.name}</a><span> › </span>
+        <span>{nbhd.name}</span>
+      </nav>
+      <span class="label">{nbhd.name}, {city.name}</span>
+      <h1>{h1}</h1>
+      <p class="lead">We help {v.name.toLowerCase()} in {nbhd.name} rank higher on Google and Google Maps — so clients in this neighborhood find you first, not your competitor.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Audit
+        </a>
+        <a href={`/${v.slug}/${svc.slug}/${city.slug}/`} class="btn btn-outline-white">
+          All {city.name} Neighborhoods
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section local-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">{nbhd.name}</span>
+          <h2>The {nbhd.name} Market for {v.name}</h2>
+          <p>{nbhd.desc}</p>
+          <p style="margin-top:16px;">{v.name} serving {nbhd.name} compete in a specific local market. The clients here search differently, have different expectations, and compare you against different competitors than they would in Kendall or Aventura. A {svc.shortName.toLowerCase()} strategy built for {nbhd.name} targets the exact searches and signals that matter here.</p>
+          <div class="local-pills">
+            <div class="local-pill">
+              <span class="pill-label">Neighborhood</span>
+              <span class="pill-val">{nbhd.name}</span>
+            </div>
+            <div class="local-pill">
+              <span class="pill-label">City</span>
+              <span class="pill-val">{city.name}, {city.state}</span>
+            </div>
+            <div class="local-pill">
+              <span class="pill-label">Service</span>
+              <span class="pill-val">{svc.shortName}</span>
+            </div>
+            <div class="local-pill">
+              <span class="pill-label">Industry</span>
+              <span class="pill-val">{v.name}</span>
+            </div>
+          </div>
+        </div>
+        <div class="includes-box reveal">
+          <h3>What's Included</h3>
+          <p class="includes-sub">{svc.shortName} for {v.name} in {nbhd.name} — {svc.price}</p>
+          <ul class="includes-list">
+            {includes.map(item => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">
+            Get a Free Audit
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section nearby-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Also Serving</span>
+        <h2>{svc.shortName} for {v.name} Near {nbhd.name}</h2>
+      </div>
+      <div class="nearby-grid">
+        {neighborhoods.filter(n => n.citySlug === city.slug && n.slug !== nbhd.slug).slice(0, 4).map(n => (
+          <a href={`/${v.slug}/${svc.slug}/${city.slug}/${n.slug}/`} class="nearby-card">
+            <span>{n.name}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>{svc.shortName} Audit for {v.name} in {nbhd.name}</h2>
+          <p class="lead" style="margin-bottom:24px;">We run a {svc.shortName.toLowerCase()} audit specific to {nbhd.name} and show you exactly where you stand versus every competitor in this neighborhood.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts &middot; Free</p>
+        </div>
+        <ContactForm
+          title="Get My Free Neighborhood Audit"
+          subject={`${svc.shortName} for ${v.name} in ${nbhd.name} — Thryv`}
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .nbhd-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .nbhd-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .nbhd-hero h1 { font-size: clamp(24px, 4vw, 44px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .nbhd-hero .lead { color: rgba(255,255,255,.8); max-width: 580px; font-size: 16px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .local-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .two-col h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+  .two-col p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+  .local-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+  .local-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
+  .pill-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gray); margin-bottom: 4px; }
+  .pill-val { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+  .includes-box { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .includes-box h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .includes-sub { font-size: 13px; color: var(--gray); margin-bottom: 20px; }
+  .includes-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .includes-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--dark); font-weight: 500; line-height: 1.5; }
+  .includes-list li svg { stroke: var(--blue); flex-shrink: 0; margin-top: 2px; }
+
+  .nearby-section { background: var(--light); }
+  .nearby-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 8px; }
+  .nearby-card { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); text-decoration: none; font-weight: 700; font-size: 14px; color: var(--dark); transition: border-color .2s, color .2s; }
+  .nearby-card:hover { border-color: var(--blue); color: var(--blue); }
+  .nearby-card svg { stroke: currentColor; opacity: .5; }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.3; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .local-pills { grid-template-columns: 1fr; }
+    .nearby-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

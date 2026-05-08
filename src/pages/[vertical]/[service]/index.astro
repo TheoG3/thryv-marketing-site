@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import { verticals, getServiceDef, neighborhoods } from '../../../data/ecosystem.ts';
+import type { ServiceSlug } from '../../../data/ecosystem.ts';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  for (const v of verticals) {
+    for (const sSlug of v.services) {
+      const svc = getServiceDef(sSlug);
+      if (svc) {
+        paths.push({
+          params: { vertical: v.slug, service: sSlug },
+          props: { vertical: v, service: svc },
+        });
+      }
+    }
+  }
+  return paths;
+}
+
+const { vertical: v, service: svc } = Astro.props;
+const config = v.serviceConfigs[svc.slug as ServiceSlug];
+
+const BASE = 'https://thryvmarketingsolutions.com';
+const canonical = `${BASE}/${v.slug}/${svc.slug}/`;
+
+const headline = config?.headline ?? `${svc.name} for Miami ${v.name}`;
+const lead = config?.lead ?? svc.defaultIncludes[0];
+const problem = config?.problem ?? '';
+const includes = config?.includes ?? svc.defaultIncludes;
+const faqs = svc.defaultFaqs;
+
+const pageTitle = `${svc.shortName} for Miami ${v.name} | Thryv Marketing Solutions`.slice(0, 60);
+const pageDesc = `${headline}. ${lead}`.slice(0, 160);
+
+const miamiNeighborhoods = neighborhoods.filter(n => n.citySlug === 'miami').slice(0, 8);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE}/` },
+      { "@type": "ListItem", "position": 2, "name": v.name, "item": `${BASE}/${v.slug}/` },
+      { "@type": "ListItem", "position": 3, "name": svc.shortName, "item": canonical },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} canonical={canonical} schema={schema}>
+
+  <section class="sv-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href={`/${v.slug}/`}>{v.name}</a><span> › </span>
+        <span>{svc.shortName}</span>
+      </nav>
+      <span class="label">{v.singular} Marketing</span>
+      <h1>{headline}</h1>
+      <p class="lead">{lead}</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Audit
+        </a>
+        <div class="hero-price">{svc.price}</div>
+      </div>
+    </div>
+  </section>
+
+  {problem && (
+    <section class="section problem-section">
+      <div class="container">
+        <div class="two-col">
+          <div class="reveal">
+            <span class="label">The Problem</span>
+            <h2>Why Most Miami {v.name} Are Invisible Online</h2>
+            <p>{problem}</p>
+          </div>
+          <div class="reveal">
+            <span class="label">Our Approach</span>
+            <h2>A {svc.shortName} Program Built for {v.name}</h2>
+            <p>We do not apply a generic {svc.shortName.toLowerCase()} playbook to your business. Every strategy is built around how {v.name.toLowerCase()} get found in Miami — the specific searches, the specific neighborhoods, the specific trust signals that matter in your industry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section includes-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">What's Included</span>
+        <h2>Everything in the {svc.price} Plan</h2>
+      </div>
+      <div class="includes-grid">
+        {includes.map(item => (
+          <div class="inc-card reveal">
+            <div class="inc-check">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <p>{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section coverage-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Miami Coverage</span>
+        <h2>{svc.shortName} for {v.name} Across Miami</h2>
+        <p class="lead">We serve {v.name.toLowerCase()} throughout Miami-Dade. Select your neighborhood for hyper-local strategy and ranking data.</p>
+      </div>
+      <div class="city-card">
+        <div class="city-card-header">
+          <div>
+            <div class="city-name">Miami, FL</div>
+            <div class="city-sub">All neighborhoods in Miami-Dade County</div>
+          </div>
+          <a href={`/${v.slug}/${svc.slug}/miami/`} class="btn btn-primary btn-sm">
+            View Miami
+          </a>
+        </div>
+        <div class="nbhd-chips">
+          {miamiNeighborhoods.map(n => (
+            <a href={`/${v.slug}/${svc.slug}/miami/${n.slug}/`} class="nbhd-chip">{n.name}</a>
+          ))}
+          <a href={`/${v.slug}/${svc.slug}/miami/`} class="nbhd-chip nbhd-more">+ more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>{svc.shortName} Questions from Miami {v.name}</h2>
+      </div>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details class="faq-item reveal">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>See Where You Stand on {svc.shortName} Right Now</h2>
+          <p class="lead" style="margin-bottom:24px;">We audit your current {svc.shortName.toLowerCase()} performance and show you exactly where the gaps are versus your top Miami competitors.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; No contracts &middot; Results in 24 hours</p>
+        </div>
+        <ContactForm
+          title={`Get My Free ${svc.shortName} Audit`}
+          subject={`${svc.shortName} for ${v.name} Inquiry — Thryv`}
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .sv-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .sv-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .sv-hero h1 { font-size: clamp(26px, 4vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 700px; }
+  .sv-hero .lead { color: rgba(255,255,255,.8); max-width: 580px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 32px; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); font-weight: 600; }
+
+  .problem-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+  .two-col p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+
+  .includes-section { background: var(--light); }
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; display: flex; align-items: flex-start; gap: 14px; }
+  .inc-check { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .inc-check svg { stroke: var(--blue); }
+  .inc-card p { font-size: 14px; line-height: 1.6; color: var(--dark); font-weight: 500; margin: 0; }
+
+  .coverage-section { background: var(--white); }
+  .city-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin-top: 8px; }
+  .city-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; }
+  .city-name { font-size: 20px; font-weight: 800; color: var(--dark); }
+  .city-sub { font-size: 13px; color: var(--gray); margin-top: 4px; }
+  .btn-sm { padding: 10px 20px; font-size: 13px; }
+  .nbhd-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .nbhd-chip { display: inline-block; padding: 6px 14px; border-radius: 100px; background: var(--white); border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; color: var(--dark); text-decoration: none; transition: border-color .2s, color .2s; }
+  .nbhd-chip:hover { border-color: var(--blue); color: var(--blue); }
+  .nbhd-more { color: var(--blue); border-color: var(--blue-light); background: var(--blue-light); }
+
+  .faq-section { background: var(--light); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.3; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .includes-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

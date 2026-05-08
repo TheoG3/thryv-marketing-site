@@ -1,0 +1,356 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits", "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you work with nonprofits that have limited marketing budgets?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Month-to-month pricing, no long-term contracts. Many nonprofit clients start with one service — usually Google Business Profile or the Google Ad Grant application — and expand as they see results. The Ad Grant alone can deliver $10,000/month in free ad traffic for qualifying 501(c)(3) organizations." },
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Google Ad Grant work for nonprofits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google for Nonprofits provides up to $10,000/month in free Google Ads credits to qualifying 501(c)(3) organizations. We handle the eligibility check, application, campaign setup, and ongoing management." },
+      },
+      {
+        "@type": "Question",
+        "name": "Can a nonprofit use grants to pay for marketing services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many foundations and government grants include allocations for marketing, communications, and capacity-building expenses. We can provide documentation and descriptions of our services to support your grant applications." },
+      },
+    ],
+  },
+];
+
+const markets = [
+  {
+    city: 'Miami',
+    slug: 'miami',
+    status: 'live',
+    desc: 'Active. Serving nonprofits across Miami-Dade County with neighborhood-specific strategies.',
+    neighborhoods: [
+      { name: 'Overtown', slug: 'overtown', live: true },
+      { name: 'Liberty City', slug: 'liberty-city', live: false },
+      { name: 'Little Haiti', slug: 'little-haiti', live: false },
+      { name: 'Little Havana', slug: 'little-havana', live: false },
+      { name: 'Homestead', slug: 'homestead', live: false },
+    ],
+  },
+  {
+    city: 'Atlanta',
+    slug: 'atlanta',
+    status: 'coming',
+    desc: 'Coming soon. Expanding to serve nonprofits in Atlanta\'s historic neighborhoods.',
+    neighborhoods: [],
+  },
+  {
+    city: 'Houston',
+    slug: 'houston',
+    status: 'coming',
+    desc: 'Coming soon. Expanding to serve nonprofits in Houston\'s diverse communities.',
+    neighborhoods: [],
+  },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing | Thryv Marketing Solutions"
+  description="Marketing for nonprofits. Google Ad Grants, local SEO, Google Business Profile, and website design built for mission-driven organizations. Miami-based. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/"
+  schema={schema}
+>
+
+  <section class="np-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><span>Nonprofits</span>
+      </nav>
+      <span class="label">Who We Serve</span>
+      <h1>Marketing Built for Nonprofits That Have a Mission to Fulfill</h1>
+      <p class="lead">Funders search for you before they write the check. Donors look you up before they give. Community members search for your programs before they walk in. We make sure what they find matches the work you actually do.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Nonprofit Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grant-section">
+    <div class="container">
+      <div class="grant-inner">
+        <div class="grant-copy reveal">
+          <span class="label">Google Ad Grant</span>
+          <h2>$10,000/Month in Free Google Ad Spend — For Qualifying Nonprofits</h2>
+          <p>Google for Nonprofits provides up to $10,000 per month in free Google Ads credits to qualifying 501(c)(3) organizations. Most nonprofits either do not know about it, have not applied, or have an account that is not being managed properly.</p>
+          <p style="margin-top:16px;">We handle the eligibility check, the application, the campaign build, and ongoing management. We have worked this program and know how to get the maximum value from every dollar of free spend.</p>
+          <a href="#contact" class="btn btn-primary" style="margin-top:28px;">Check Your Eligibility</a>
+        </div>
+        <div class="grant-stats reveal">
+          <div class="grant-stat">
+            <div class="gs-num">$10K</div>
+            <div class="gs-lbl">Free ad spend per month available through Google for Nonprofits</div>
+          </div>
+          <div class="grant-stat accent">
+            <div class="gs-num">$120K</div>
+            <div class="gs-lbl">Annual value of the Google Ad Grant — fully managed by our team</div>
+          </div>
+          <div class="grant-stat">
+            <div class="gs-num">~60</div>
+            <div class="gs-lbl">Days from application to first live campaign for qualifying organizations</div>
+          </div>
+          <div class="grant-stat accent">
+            <div class="gs-num">501(c)(3)</div>
+            <div class="gs-lbl">The only eligibility requirement — if you are registered, you likely qualify</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Why Nonprofits Work With Us</span>
+        <h2>We understand that your mission comes before marketing. We make the marketing serve the mission.</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <h3>Grant-Funded Marketing</h3>
+          <p>Many foundations and government grants include capacity-building allocations that cover marketing and communications. Our services qualify. We provide documentation to support your grant applications.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3>Google Ad Grant Management</h3>
+          <p>We apply on your behalf, set up the campaigns, and manage them month to month so you get the maximum value from $10,000/month in free ad spend. Most nonprofits leave most of this money on the table.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>Funder-Ready Visibility</h3>
+          <p>When the Knight Foundation, Miami Foundation, or any grant officer searches for your organization, we make sure what they find tells the right story — not just that you exist, but what you do and who you serve.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3>Neighborhood-Level Strategy</h3>
+          <p>Your community does not search "nonprofit Miami." They search "food pantry Overtown" or "after-school program Liberty City." We build the strategy that makes you findable for the exact searches your community uses.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Bilingual by Default</h3>
+          <p>We write in English and Spanish. For organizations serving Miami's Haitian community, we work with Creole-fluent partners. Your community speaks multiple languages. Your online presence should too.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Month-to-Month</h3>
+          <p>No long-term contracts. No lock-ins. We understand that nonprofit budgets change with grant cycles. You can start, pause, or adjust services without penalty.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section markets-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Where We Work</span>
+        <h2>Nonprofit Marketing by City and Neighborhood</h2>
+        <p class="lead">We build neighborhood-specific strategies because "nonprofit marketing" means something different in Overtown than it does in Kendall. Select your city and neighborhood for a tailored strategy.</p>
+      </div>
+      <div class="markets-grid">
+        {markets.map(m => (
+          <div class={`market-card reveal${m.status === 'coming' ? ' market-coming' : ''}`}>
+            <div class="market-header">
+              <div class="market-city">{m.city}</div>
+              {m.status === 'live'
+                ? <span class="market-badge live">Active</span>
+                : <span class="market-badge coming">Coming Soon</span>
+              }
+            </div>
+            <p class="market-desc">{m.desc}</p>
+            {m.neighborhoods.length > 0 && (
+              <div class="market-nbhds">
+                {m.neighborhoods.map(n => (
+                  n.live
+                    ? <a href={`/nonprofits/${m.slug}/${n.slug}/`} class="nbhd-chip live">{n.name}</a>
+                    : <span class="nbhd-chip">{n.name}</span>
+                ))}
+              </div>
+            )}
+            {m.status === 'live' && (
+              <a href={`/nonprofits/${m.slug}/`} class="market-link">
+                View {m.city} Nonprofits
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do you work with nonprofits that have limited marketing budgets?</summary>
+          <p>Yes. Month-to-month pricing, no long-term contracts. Many nonprofit clients start with one service — usually Google Business Profile or the Google Ad Grant application — and expand as they see results. The Ad Grant alone can deliver $10,000/month in free ad traffic for qualifying organizations.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does the Google Ad Grant work for nonprofits?</summary>
+          <p>Google for Nonprofits provides up to $10,000/month in free Google Ads credits to qualifying 501(c)(3) organizations. We handle the eligibility check, application, campaign setup, and ongoing management.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can a nonprofit use grants to pay for marketing services?</summary>
+          <p>Yes. Many foundations and government grants include allocations for marketing, communications, and capacity-building expenses. We can provide documentation and descriptions of our services to support your grant applications.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for You</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a grant officer sees when they look you up.</p>
+          <div class="contact-options">
+            <div class="contact-opt">
+              <div class="co-title">Get a Free Audit</div>
+              <div class="co-desc">We audit your full online presence and send back a report with specific, actionable findings.</div>
+            </div>
+            <div class="contact-opt">
+              <div class="co-title">Just Reach Out</div>
+              <div class="co-desc">Not ready for an audit? Email us directly at <a href="mailto:hello@thryvmarketingsolutions.com">hello@thryvmarketingsolutions.com</a></div>
+            </div>
+          </div>
+          <p style="font-size:14px;color:var(--gray);margin-top:16px;">Hablamos Espa&ntilde;ol</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .np-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .np-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .np-hero h1 { font-size: clamp(28px, 4.5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 720px; }
+  .np-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .grant-section { background: var(--white); }
+  .grant-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .grant-copy h2 { font-size: clamp(22px, 3vw, 34px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.2; }
+  .grant-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+  .grant-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grant-stat { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .grant-stat.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .grant-stat.accent .gs-num, .grant-stat.accent .gs-lbl { color: var(--white); }
+  .grant-stat.accent .gs-lbl { opacity: .8; }
+  .gs-num { font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .gs-lbl { font-size: 12px; line-height: 1.5; color: var(--gray); }
+
+  .why-section { background: var(--light); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .why-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .why-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .why-icon svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .why-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .why-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .markets-section { background: var(--white); }
+  .markets-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 8px; }
+  .market-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .market-coming { opacity: .7; }
+  .market-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .market-city { font-size: 20px; font-weight: 800; color: var(--dark); }
+  .market-badge { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+  .market-badge.live { background: #DCFCE7; color: #16A34A; }
+  .market-badge.coming { background: var(--border); color: var(--gray); }
+  .market-desc { font-size: 13px; line-height: 1.6; color: var(--gray); margin-bottom: 16px; }
+  .market-nbhds { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .nbhd-chip { display: inline-block; padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 600; background: var(--white); border: 1.5px solid var(--border); color: var(--gray); text-decoration: none; }
+  .nbhd-chip.live { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+  .nbhd-chip.live:hover { background: var(--blue); color: var(--white); }
+  .market-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--blue); text-decoration: none; }
+  .market-link:hover { text-decoration: underline; }
+
+  .faq-section { background: var(--light); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+  .contact-options { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+  .contact-opt { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+  .co-title { font-size: 14px; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .co-desc { font-size: 13px; line-height: 1.6; color: var(--gray); }
+  .co-desc a { color: var(--blue); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .grant-inner { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .markets-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .grant-stats { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

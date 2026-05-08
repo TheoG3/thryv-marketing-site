@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+import { verticals, getServiceDef, neighborhoods } from '../../../../data/ecosystem.ts';
+import type { ServiceSlug } from '../../../../data/ecosystem.ts';
+
+export async function getStaticPaths() {
+  const paths: any[] = [];
+  const cities = [{ slug: 'miami', name: 'Miami', state: 'FL' }];
+  for (const v of verticals) {
+    for (const sSlug of v.services) {
+      const svc = getServiceDef(sSlug);
+      if (svc) {
+        for (const city of cities) {
+          paths.push({
+            params: { vertical: v.slug, service: sSlug, city: city.slug },
+            props: { vertical: v, service: svc, city },
+          });
+        }
+      }
+    }
+  }
+  return paths;
+}
+
+const { vertical: v, service: svc, city } = Astro.props;
+const config = v.serviceConfigs[svc.slug as ServiceSlug];
+
+const BASE = 'https://thryvmarketingsolutions.com';
+const canonical = `${BASE}/${v.slug}/${svc.slug}/${city.slug}/`;
+
+const cityNeighborhoods = neighborhoods.filter(n => n.citySlug === city.slug);
+
+const h1 = `${svc.shortName} for ${v.name} in ${city.name}, ${city.state}`;
+const pageTitle = `${svc.shortName} for ${v.name} in ${city.name} | Thryv`.slice(0, 60);
+const pageDesc = `${svc.shortName} for ${v.name.toLowerCase()} in ${city.name}, FL. Rank higher in Google Maps and local search. Neighborhood-level targeting across Miami-Dade. Free audit.`.slice(0, 160);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE}/` },
+      { "@type": "ListItem", "position": 2, "name": v.name, "item": `${BASE}/${v.slug}/` },
+      { "@type": "ListItem", "position": 3, "name": svc.shortName, "item": `${BASE}/${v.slug}/${svc.slug}/` },
+      { "@type": "ListItem", "position": 4, "name": city.name, "item": canonical },
+    ],
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} canonical={canonical} schema={schema}>
+
+  <section class="city-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href={`/${v.slug}/`}>{v.name}</a><span> › </span>
+        <a href={`/${v.slug}/${svc.slug}/`}>{svc.shortName}</a><span> › </span>
+        <span>{city.name}</span>
+      </nav>
+      <span class="label">{city.name}, FL</span>
+      <h1>{h1}</h1>
+      <p class="lead">We help {v.name.toLowerCase()} across {city.name} rank higher in local search and Google Maps — from Brickell to Homestead, from Hialeah to Aventura. Select your neighborhood below for targeted strategy and local ranking data.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section nbhd-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Miami Neighborhoods</span>
+        <h2>{svc.shortName} for {v.name} — By Neighborhood</h2>
+        <p class="lead">Every Miami neighborhood is a different market. We target the specific keywords, search patterns, and local signals that matter in each one.</p>
+      </div>
+      <div class="nbhd-grid">
+        {cityNeighborhoods.map(n => (
+          <a href={`/${v.slug}/${svc.slug}/${city.slug}/${n.slug}/`} class="nbhd-card reveal">
+            <div class="nbhd-card-top">
+              <div class="nbhd-name">{n.name}</div>
+              <svg class="nbhd-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <p class="nbhd-desc">{n.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section why-miami-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">The Miami Advantage</span>
+          <h2>Why {city.name} {v.name} Need a Miami-Specific {svc.shortName} Strategy</h2>
+          <p>Miami is not a single market — it is a collection of distinct neighborhoods, each with its own demographics, competition level, and search behavior. A {svc.shortName.toLowerCase()} strategy built for Kendall is different from one built for Brickell or Hialeah. We build for the neighborhood, not just the city.</p>
+          <p style="margin-top:16px;">We are Miami-based. We know this market because we operate in it every day. Our team speaks Spanish. We know the difference between Little Havana, Little Haiti, and Hialeah — and we target accordingly.</p>
+        </div>
+        <div class="why-stats reveal">
+          <div class="why-stat">
+            <div class="why-stat-num">2.7M</div>
+            <div class="why-stat-lbl">People in Miami-Dade County — the market we help you reach</div>
+          </div>
+          <div class="why-stat accent">
+            <div class="why-stat-num">70%</div>
+            <div class="why-stat-lbl">of Miami-Dade residents were born outside the United States — bilingual presence is not optional</div>
+          </div>
+          <div class="why-stat">
+            <div class="why-stat-num">12</div>
+            <div class="why-stat-lbl">Miami neighborhoods we target with hyper-local {svc.shortName.toLowerCase()} strategy</div>
+          </div>
+          <div class="why-stat accent">
+            <div class="why-stat-num">#1</div>
+            <div class="why-stat-lbl">Goal: owning the top spot for {v.singular.toLowerCase()} searches in your neighborhood</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Audit</span>
+          <h2>{svc.shortName} Audit for {v.name} in {city.name}</h2>
+          <p class="lead" style="margin-bottom:24px;">We check your current rankings for {v.name.toLowerCase()} searches across {city.name} and show you exactly where the gaps are versus your top local competitors.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Get My Free Local Audit"
+          subject={`${svc.shortName} for ${v.name} in ${city.name} — Thryv`}
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .city-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .city-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .city-hero h1 { font-size: clamp(24px, 4vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .city-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; font-size: 16px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .nbhd-section { background: var(--light); }
+  .nbhd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 8px; }
+  .nbhd-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; text-decoration: none; transition: border-color .2s, box-shadow .2s; display: block; }
+  .nbhd-card:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.1); }
+  .nbhd-card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .nbhd-name { font-size: 17px; font-weight: 800; color: var(--dark); }
+  .nbhd-arrow { stroke: var(--blue); opacity: .5; transition: opacity .2s, transform .2s; }
+  .nbhd-card:hover .nbhd-arrow { opacity: 1; transform: translateX(4px); }
+  .nbhd-desc { font-size: 13px; line-height: 1.6; color: var(--gray); margin: 0; }
+
+  .why-miami-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .two-col h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.2; }
+  .two-col p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+  .why-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .why-stat { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; }
+  .why-stat.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .why-stat-num { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .why-stat.accent .why-stat-num { color: var(--white); }
+  .why-stat-lbl { font-size: 12px; line-height: 1.5; color: var(--gray); }
+  .why-stat.accent .why-stat-lbl { color: rgba(255,255,255,.75); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-split h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.3; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .nbhd-grid { grid-template-columns: 1fr; }
+    .why-stats { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
