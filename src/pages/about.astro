@@ -57,8 +57,15 @@ const convictions = [
           <p style="margin-top:16px;">Every service is month-to-month. Every price is published. Every client gets a real person to talk to.</p>
         </div>
         <div class="story-card reveal">
+          <video
+            class="founder-video"
+            src="/founder-morph.mp4"
+            autoplay
+            muted
+            playsinline
+            aria-label="Theodore Grimes, Founder of Thryv Marketing Solutions"
+          ></video>
           <div class="founder-block">
-            <img src="/founder-theodore-grimes.webp" alt="Theodore Grimes, Founder of Thryv Marketing Solutions" class="founder-avatar" />
             <div>
               <div class="founder-name">Theodore G.</div>
               <div class="founder-title">Founder, Thryv Marketing Solutions</div>
@@ -140,8 +147,8 @@ const convictions = [
   .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .story-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
   .story-card { background: var(--light); border-radius: var(--radius-lg); padding: 36px; border: 1.5px solid var(--border); }
+  .founder-video { width: 100%; border-radius: var(--radius); margin-bottom: 20px; display: block; }
   .founder-block { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-  .founder-avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
   .founder-name { font-weight: 800; font-size: 16px; color: var(--dark); }
   .founder-title { font-size: 13px; color: var(--gray); }
   blockquote { font-size: 15px; line-height: 1.75; color: var(--dark); font-style: italic; border-left: 3px solid var(--orange); padding-left: 20px; margin: 0; }
