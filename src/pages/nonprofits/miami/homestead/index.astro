@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits", "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Miami",      "item": "https://thryvmarketingsolutions.com/nonprofits/miami/" },
+      { "@type": "ListItem", "position": 4, "name": "Homestead",  "item": "https://thryvmarketingsolutions.com/nonprofits/miami/homestead/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://thryvmarketingsolutions.com/nonprofits/miami/homestead/",
+    "url": "https://thryvmarketingsolutions.com/nonprofits/miami/homestead/",
+    "name": "Nonprofit Marketing in Homestead, Miami | Thryv",
+    "description": "Thryv helps Homestead nonprofits get found by donors, grant officers, and the community they serve. Google Ad Grants, SEO, GBP management. Spanish-fluent. Free audit.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thryv Marketing Solutions",
+      "url": "https://thryvmarketingsolutions.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you work with nonprofits serving migrant farmworker communities?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Homestead's farmworker population has specific needs — seasonal schedules, language barriers, immigration concerns, and limited digital access. We build marketing strategies that reach your community where they are and funders who understand the complexity of agricultural service work." },
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Google Ad Grant and how does it help Homestead nonprofits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google for Nonprofits provides up to $10,000 per month in free Google Ads credits to qualifying 501(c)(3) organizations. For Homestead orgs, this means showing up when donors and community members search for food assistance, housing help, or farmworker legal services in south Miami-Dade." },
+      },
+      {
+        "@type": "Question",
+        "name": "Can federal agricultural grants cover marketing services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. USDA Rural Development grants, federal farmworker programs (MSFW), and foundation capacity-building grants often include communications and outreach allocations. We provide full documentation to support your grant applications and compliance reporting." },
+      },
+    ],
+  },
+];
+
+const causes = [
+  { name: 'Farmworker Rights and Legal Aid', desc: 'Labor rights, wage theft, housing conditions, and legal services for Homestead\'s agricultural workforce' },
+  { name: 'Food Access and Nutrition', desc: 'Food pantries, WIC navigation, community gardens, and nutrition programs in one of Miami-Dade\'s most underserved food areas' },
+  { name: 'Affordable Housing and Emergency Shelter', desc: 'Post-disaster housing recovery, transitional housing, and tenant protections for residents still rebuilding' },
+  { name: 'Youth Education and After-School Programs', desc: 'Academic support, bilingual tutoring, college pathways, and enrichment for children of farmworker families' },
+  { name: 'Immigration Legal Services', desc: 'Work visas, asylum support, DACA navigation, and family reunification for Homestead\'s agricultural immigrant community' },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing in Homestead, Miami | Thryv"
+  description="Thryv helps Homestead nonprofits get found by donors, grant officers, and the community they serve. Google Ad Grants, SEO, GBP management. Spanish-fluent. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/miami/homestead/"
+  schema={schema}
+>
+
+  <section class="hs-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href="/nonprofits/">Nonprofits</a><span> › </span>
+        <a href="/nonprofits/miami/">Miami</a><span> › </span>
+        <span>Homestead</span>
+      </nav>
+      <span class="label">Nonprofit Marketing</span>
+      <h1>Nonprofit Marketing for Homestead, FL</h1>
+      <p class="lead">Homestead rebuilt itself from nothing after Hurricane Andrew. The nonprofits that serve this agricultural community — farmworkers, immigrant families, food-insecure households — operate at the edge of everything and in the sight of almost no one. We change that.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Nonprofit Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Real Problem</span>
+          <h2>Homestead's nonprofits work in the most remote corner of Miami-Dade — and most funders have no idea they exist.</h2>
+          <p>On August 24, 1992, Hurricane Andrew made landfall just south of Homestead and destroyed approximately 95 percent of the city's structures. What came after was not just rebuilding — it was an entire community reassembling itself from the ground up. The Homestead that exists today was shaped by that storm: by the federal response, by the farmworker organizations that kept families fed during recovery, and by the civic organizations that decided to stay and rebuild when they could have left.</p>
+          <p style="margin-top:16px;">Homestead's agricultural economy draws thousands of seasonal farmworkers from Mexico and Central America every year — families who harvest the tomatoes, avocados, and strawberries that supply much of the Eastern Seaboard. The nonprofits serving these workers provide legal aid, healthcare navigation, housing, food access, and education. The work is invisible to most of Miami. The funders who could support it are often searching for exactly this kind of organization and cannot find it.</p>
+          <p style="margin-top:16px;">USDA Rural Development, federal farmworker grants, the Robert Wood Johnson Foundation, and Miami-Dade agricultural development funds all invest in communities like Homestead. We help your organization show up when they go looking.</p>
+        </div>
+        <div class="stat-pills reveal">
+          <div class="stat-pill">
+            <div class="stat-num">1992</div>
+            <div class="stat-lbl">Hurricane Andrew — 95% of Homestead structures destroyed. The nonprofit ecosystem that rebuilt the city still serves it today.</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">30,000+</div>
+            <div class="stat-lbl">Seasonal farmworkers passing through Homestead annually — one of the most underserved labor populations in Florida</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">33030</div>
+            <div class="stat-lbl">Homestead's primary ZIP — one of Miami-Dade's highest concentrations of food insecurity and limited healthcare access</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">$10K/mo</div>
+            <div class="stat-lbl">Free Google ad spend available to qualifying nonprofits through Google for Nonprofits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">What We Do</span>
+        <h2>Marketing built for the reality of Homestead — not designed for Brickell and retrofitted south.</h2>
+        <p class="lead">The funders who invest in agricultural communities, farmworker rights, and rural health are actively searching for organizations like yours. We make sure they find you.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-business-profile/">Google Business Profile Management</a></h3>
+            <p>When a USDA grant officer or foundation scout searches for farmworker services or food assistance in south Miami-Dade, your nonprofit appears first. Programs, hours, and reviews fully managed.</p>
+            <span class="svc-tag">Donor Visibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/seo/">SEO</a></h3>
+            <p>Rank for what Homestead searches: "ayuda con comida Homestead," "farmworker legal services Miami-Dade," "housing assistance south Florida." In English and Spanish.</p>
+            <span class="svc-tag">Community Reach</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-ads/">Google Ad Grants for Nonprofits</a></h3>
+            <p>Up to <strong>$10,000/month in free Google Ads</strong> for qualifying 501(c)(3)s. We apply on your behalf, build the campaigns, and manage them every month.</p>
+            <span class="svc-tag">Free Ad Spend</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/website-design/">Website Design</a></h3>
+            <p>A bilingual website that earns grant credibility and serves your community. Mobile-first — because Homestead's farmworker families search on phones, not desktops.</p>
+            <span class="svc-tag">Grant Credibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/reputation-management/">Reputation and Review Management</a></h3>
+            <p>Federal grant reviewers and foundation officers verify your organization before recommending funding. We build the trust signals that make every due diligence search a green light.</p>
+            <span class="svc-tag">Funder Trust</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>AI Phone Receptionist</h3>
+            <p>Answer every call 24/7 in English and Spanish. Route farmworker families, seasonal workers, and community members to the right service — any hour, any day.</p>
+            <span class="svc-tag">Community Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhood-section">
+    <div class="container">
+      <div class="nbhd-inner">
+        <div class="nbhd-copy reveal">
+          <span class="label">We Know Homestead</span>
+          <h2>Miami-based. Homestead's story does not start with a hurricane. It starts with the people who rebuilt it.</h2>
+          <p>We know that Andrew did not just damage buildings — it tested whether a community would stay. The families, churches, farmworker organizations, and civic groups that stayed and rebuilt Homestead made a choice most people never have to make. That is the foundation of every organization we work with here.</p>
+          <p style="margin-top:16px;">We know that Homestead's agricultural economy is invisible to most of Miami-Dade but essential to the region. The workers who harvest the Redland district's crops — tomatoes, avocados, strawberries, tropical fruit — live in conditions that most Miamians never see. The nonprofits that serve them navigate seasonal labor patterns, multi-language needs, immigration complexity, and acute poverty all at once.</p>
+          <p style="margin-top:16px;">We know USDA Rural Development, farmworker program grants (MSFW), and the foundations that fund agricultural communities. We know how to position a Homestead organization for funders who have never been south of Kendall. That positioning is what we build for you.</p>
+          <ul class="know-list">
+            <li>We write in English and Spanish. Hablamos Espa&ntilde;ol.</li>
+            <li>We understand federal agricultural funding and USDA grant requirements</li>
+            <li>We know Homestead's geography: Redland, Naranja, Florida City, and the Everglades edge</li>
+            <li>We lead with the community's resilience, not its hardship</li>
+          </ul>
+        </div>
+        <div class="causes-box reveal">
+          <h3>Causes We Serve in Homestead</h3>
+          {causes.map(c => (
+            <div class="cause-row">
+              <div class="cause-dot"></div>
+              <div>
+                <div class="cause-name">{c.name}</div>
+                <div class="cause-desc">{c.desc}</div>
+              </div>
+            </div>
+          ))}
+          <p class="cause-footer">Whatever your cause, if Homestead is your home, it is our job to tell that story right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Homestead Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do you work with nonprofits serving migrant farmworker communities?</summary>
+          <p>Yes. Homestead's farmworker population has specific needs — seasonal schedules, language barriers, immigration concerns, and limited digital access. We build marketing strategies that reach your community where they are and funders who understand the complexity of agricultural service work.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What is the Google Ad Grant and how does it help Homestead nonprofits?</summary>
+          <p>Google for Nonprofits provides up to $10,000 per month in free Google Ads credits to qualifying 501(c)(3) organizations. For Homestead orgs, this means showing up when donors and community members search for food assistance, housing help, or farmworker legal services in south Miami-Dade.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can federal agricultural grants cover marketing services?</summary>
+          <p>Yes. USDA Rural Development grants, federal farmworker programs (MSFW), and foundation capacity-building grants often include communications and outreach allocations. We provide full documentation to support your grant applications and compliance reporting.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for Your Homestead Organization</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a federal grant reviewer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Homestead Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .hs-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .hs-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .hs-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .hs-hero .lead { color: rgba(255,255,255,.8); max-width: 560px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .svc-card { display: flex; gap: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .svc-card h3 a { color: inherit; text-decoration: none; }
+  .svc-card h3 a:hover { color: var(--blue); }
+  .svc-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 12px; }
+  .svc-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--blue-light); color: var(--blue); padding: 3px 10px; border-radius: 100px; }
+
+  .neighborhood-section { background: var(--blue-deeper); color: var(--white); }
+  .neighborhood-section .label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+  .nbhd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .nbhd-copy h2 { color: var(--white); }
+  .nbhd-copy p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.75); }
+  .know-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .know-list li { font-size: 15px; color: rgba(255,255,255,.85); padding-left: 20px; position: relative; }
+  .know-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .causes-box { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(255,255,255,.12); }
+  .causes-box h3 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+  .cause-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .cause-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--orange); margin-top: 4px; }
+  .cause-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .cause-desc { font-size: 13px; color: rgba(255,255,255,.6); }
+  .cause-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .nbhd-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .stat-pills { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', () => {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('nonprofit_audit_request_submitted', { neighborhood: 'homestead' });
+      }
+    });
+  }
+</script>

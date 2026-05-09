@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",         "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits",   "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Miami",        "item": "https://thryvmarketingsolutions.com/nonprofits/miami/" },
+      { "@type": "ListItem", "position": 4, "name": "Little Haiti", "item": "https://thryvmarketingsolutions.com/nonprofits/miami/little-haiti/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://thryvmarketingsolutions.com/nonprofits/miami/little-haiti/",
+    "url": "https://thryvmarketingsolutions.com/nonprofits/miami/little-haiti/",
+    "name": "Nonprofit Marketing in Little Haiti, Miami | Thryv",
+    "description": "Thryv helps Little Haiti nonprofits get found by donors, grant officers, and community members. Google Ad Grants, SEO, GBP management. Haitian Creole support. Free audit.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thryv Marketing Solutions",
+      "url": "https://thryvmarketingsolutions.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can you help nonprofits that serve a Haitian Creole-speaking community?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Language matters in Little Haiti. We work with Haitian Creole-fluent partners to ensure your messaging, your website, and your digital presence reflect the language your community actually speaks. We also write in English and Spanish for broader reach." },
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Google Ad Grant and how does it benefit Little Haiti organizations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google for Nonprofits offers up to $10,000 per month in free advertising credits to qualifying 501(c)(3) organizations. For Little Haiti nonprofits, this means appearing at the top of Google when donors search for cultural organizations, immigration support, or housing services in your area." },
+      },
+      {
+        "@type": "Question",
+        "name": "Can grant funding cover your marketing services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many foundations — including those specifically focused on Haitian diaspora communities and immigrant services — include communications and capacity-building allocations. We provide documentation to support your applications and report-outs." },
+      },
+    ],
+  },
+];
+
+const causes = [
+  { name: 'Cultural Preservation and Haitian Heritage', desc: "Protecting Little Haiti's arts, language, music, and identity as a living Haitian cultural hub" },
+  { name: 'Immigration Legal Aid and Support', desc: 'Asylum navigation, legal assistance, and family reunification for Haitian immigrants and new arrivals' },
+  { name: 'Affordable Housing and Anti-Displacement', desc: 'Fighting gentrification pressure from the Magic City Innovation District and northward Brickell expansion' },
+  { name: 'Community Health and Mental Health Access', desc: 'Culturally competent care in Creole, addressing trauma, maternal health, and chronic disease' },
+  { name: 'Youth Education and Workforce Development', desc: 'Bilingual and Creole education programs, job training, entrepreneurship, and college pathways' },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing in Little Haiti, Miami | Thryv"
+  description="Thryv helps Little Haiti nonprofits get found by donors, grant officers, and community members. Google Ad Grants, SEO, GBP management. Haitian Creole support. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/miami/little-haiti/"
+  schema={schema}
+>
+
+  <section class="lh-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href="/nonprofits/">Nonprofits</a><span> › </span>
+        <a href="/nonprofits/miami/">Miami</a><span> › </span>
+        <span>Little Haiti</span>
+      </nav>
+      <span class="label">Nonprofit Marketing</span>
+      <h1>Nonprofit Marketing for Little Haiti, Miami</h1>
+      <p class="lead">Little Haiti has an extraordinary concentration of organizations doing critical work — cultural preservation, immigration support, affordable housing advocacy, and community health. The organizations that have built this neighborhood deserve to be found by the funders and donors who are actively looking for them.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Nonprofit Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Real Problem</span>
+          <h2>Little Haiti's nonprofits carry extraordinary weight — and most of them are nearly invisible to the funders who could support them.</h2>
+          <p>Little Haiti was shaped by two waves of immigration: the Haitian Boat People who arrived in the 1980s, establishing the neighborhood's identity and culture, and the second wave of families who came after the 2010 earthquake devastated Port-au-Prince. Today, the Little Haiti Cultural Center, Toussaint L'Ouverture Plaza, and the Caribbean Marketplace anchor a community that has preserved Haitian language, art, music, and identity in the heart of Miami.</p>
+          <p style="margin-top:16px;">But Little Haiti is also under pressure. The Magic City Innovation District proposal represents billions of dollars of development moving into the neighborhood. The organizations doing the most to keep longtime residents rooted — the immigration legal aid groups, the cultural institutions, the housing advocates — are scrambling for funding at the same time developers are scrambling for land.</p>
+          <p style="margin-top:16px;">Foundations focused on immigrant communities, cultural preservation, and housing equity are actively searching for organizations like yours. The gap is not the work you do. The gap is how visible you are when they go looking.</p>
+        </div>
+        <div class="stat-pills reveal">
+          <div class="stat-pill">
+            <div class="stat-num">50,000+</div>
+            <div class="stat-lbl">Haitian-Americans in Miami-Dade — the largest Haitian diaspora concentration outside of Haiti itself</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">2010</div>
+            <div class="stat-lbl">Year of the Haiti earthquake — the second wave that reshaped Little Haiti's population, needs, and nonprofit ecosystem</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">$1B+</div>
+            <div class="stat-lbl">Proposed Magic City development investment — driving displacement pressure that Little Haiti nonprofits are actively fighting</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">$10K/mo</div>
+            <div class="stat-lbl">Free Google ad spend available to qualifying nonprofits through Google for Nonprofits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">What We Do</span>
+        <h2>Marketing that respects Little Haiti's culture — and reaches the funders investing in it.</h2>
+        <p class="lead">Every funder who looks you up, every donor who searches your name, every community member asking for help — we make sure they find you and find you ready.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-business-profile/">Google Business Profile Management</a></h3>
+            <p>When a funder searches for cultural preservation orgs or immigration services in Little Haiti, your nonprofit appears first. Programs, hours, photos, and reviews professionally managed.</p>
+            <span class="svc-tag">Donor Visibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/seo/">SEO</a></h3>
+            <p>Rank for what your community searches in English, Spanish, and Haitian Creole: "èd imigrasyon Miami," "affordable housing Little Haiti," "Haitian cultural programs Miami."</p>
+            <span class="svc-tag">Community Reach</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-ads/">Google Ad Grants for Nonprofits</a></h3>
+            <p>Up to <strong>$10,000/month in free Google Ads</strong> for qualifying 501(c)(3)s. We apply on your behalf, build the campaigns, and manage them ongoing.</p>
+            <span class="svc-tag">Free Ad Spend</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/website-design/">Website Design</a></h3>
+            <p>A bilingual or trilingual website built for your mission and your community — with donation flows, volunteer sign-ups, and program pages that turn first-time visitors into committed supporters.</p>
+            <span class="svc-tag">Grant Credibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/reputation-management/">Reputation and Review Management</a></h3>
+            <p>Grant officers verify your organization before they recommend funding. We build the online trust signals that make every due diligence check a confirmation of your credibility.</p>
+            <span class="svc-tag">Funder Trust</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>AI Phone Receptionist</h3>
+            <p>Answer every call 24/7 in English, Spanish, and with Haitian Creole routing capability. Capture intake information and route community members to the right program, any hour of the day.</p>
+            <span class="svc-tag">Community Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhood-section">
+    <div class="container">
+      <div class="nbhd-inner">
+        <div class="nbhd-copy reveal">
+          <span class="label">We Know Little Haiti</span>
+          <h2>Miami-based. Little Haiti's history is not data to us. It is the lens through which we tell your story.</h2>
+          <p>We know that Little Haiti was not a planned community — it grew organically as Haitian immigrants settled near NE 2nd Avenue in the 1980s, building a neighborhood from their own hands: the botanicas, the Haitian restaurants, the murals, the community centers. We know the Little Haiti Cultural Center is more than a building — it is a living declaration that Haitian culture belongs in Miami.</p>
+          <p style="margin-top:16px;">We know that language in Little Haiti is not one-dimensional. Your community speaks Haitian Creole at home, Spanish in the street, and navigates English in every formal setting. We work with Haitian Creole-fluent partners so your digital presence speaks to your community in their language — not just a translation, but actual cultural resonance.</p>
+          <p style="margin-top:16px;">And we know the pressure the neighborhood is under. We understand the stakes of the Magic City development fight for your housing clients and community members. That context informs every word we put to work for your organization.</p>
+          <ul class="know-list">
+            <li>We work with Haitian Creole-fluent partners for authentic messaging</li>
+            <li>We understand the multi-language reality: Creole, Spanish, and English</li>
+            <li>We know Haitian diaspora funders and what they prioritize</li>
+            <li>We lead with the community's strength and cultural achievement, not its hardships</li>
+          </ul>
+        </div>
+        <div class="causes-box reveal">
+          <h3>Causes We Serve in Little Haiti</h3>
+          {causes.map(c => (
+            <div class="cause-row">
+              <div class="cause-dot"></div>
+              <div>
+                <div class="cause-name">{c.name}</div>
+                <div class="cause-desc">{c.desc}</div>
+              </div>
+            </div>
+          ))}
+          <p class="cause-footer">Whatever your cause, if Little Haiti is your home, it is our job to tell that story right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Little Haiti Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Can you help nonprofits that serve a Haitian Creole-speaking community?</summary>
+          <p>Yes. Language matters in Little Haiti. We work with Haitian Creole-fluent partners to ensure your messaging, your website, and your digital presence reflect the language your community actually speaks. We also write in English and Spanish for broader reach.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What is the Google Ad Grant and how does it benefit Little Haiti organizations?</summary>
+          <p>Google for Nonprofits offers up to $10,000 per month in free advertising credits to qualifying 501(c)(3) organizations. For Little Haiti nonprofits, this means appearing at the top of Google when donors search for cultural organizations, immigration support, or housing services in your area.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can grant funding cover your marketing services?</summary>
+          <p>Yes. Many foundations — including those specifically focused on Haitian diaspora communities and immigrant services — include communications and capacity-building allocations. We provide documentation to support your applications and report-outs.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for Your Little Haiti Organization</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a grant officer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Haitian Creole support available &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Little Haiti Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .lh-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .lh-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .lh-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .lh-hero .lead { color: rgba(255,255,255,.8); max-width: 560px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .svc-card { display: flex; gap: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .svc-card h3 a { color: inherit; text-decoration: none; }
+  .svc-card h3 a:hover { color: var(--blue); }
+  .svc-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 12px; }
+  .svc-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--blue-light); color: var(--blue); padding: 3px 10px; border-radius: 100px; }
+
+  .neighborhood-section { background: var(--blue-deeper); color: var(--white); }
+  .neighborhood-section .label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+  .nbhd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .nbhd-copy h2 { color: var(--white); }
+  .nbhd-copy p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.75); }
+  .know-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .know-list li { font-size: 15px; color: rgba(255,255,255,.85); padding-left: 20px; position: relative; }
+  .know-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .causes-box { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(255,255,255,.12); }
+  .causes-box h3 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+  .cause-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .cause-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--orange); margin-top: 4px; }
+  .cause-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .cause-desc { font-size: 13px; color: rgba(255,255,255,.6); }
+  .cause-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .nbhd-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .stat-pills { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', () => {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('nonprofit_audit_request_submitted', { neighborhood: 'little-haiti' });
+      }
+    });
+  }
+</script>

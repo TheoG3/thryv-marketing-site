@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",         "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits",   "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Miami",        "item": "https://thryvmarketingsolutions.com/nonprofits/miami/" },
+      { "@type": "ListItem", "position": 4, "name": "Liberty City", "item": "https://thryvmarketingsolutions.com/nonprofits/miami/liberty-city/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://thryvmarketingsolutions.com/nonprofits/miami/liberty-city/",
+    "url": "https://thryvmarketingsolutions.com/nonprofits/miami/liberty-city/",
+    "name": "Nonprofit Marketing in Liberty City, Miami | Thryv",
+    "description": "Thryv helps Liberty City nonprofits get found by donors, grant officers, and community members. Google Ad Grants, SEO, GBP management. Miami-based. Free audit.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thryv Marketing Solutions",
+      "url": "https://thryvmarketingsolutions.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you work with community-based nonprofits without dedicated marketing staff?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most Liberty City nonprofits we work with have lean teams where one person handles everything. We handle the marketing so your staff can focus on programs. Month-to-month pricing, no long-term contracts, and we start with what makes the biggest immediate impact." },
+      },
+      {
+        "@type": "Question",
+        "name": "How does the Google Ad Grant help Liberty City nonprofits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google for Nonprofits provides up to $10,000 per month in free Google Ads credits to qualifying 501(c)(3) organizations. For Liberty City orgs, that means appearing at the top of search results when donors and community members search for youth programs, food access, or housing assistance in your area." },
+      },
+      {
+        "@type": "Question",
+        "name": "Can grants cover the cost of marketing services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most foundation grants and federal Community Development Block Grants include capacity-building and communications allocations that can cover marketing services. We provide full documentation to support your grant applications and reporting." },
+      },
+    ],
+  },
+];
+
+const causes = [
+  { name: 'Youth Development and Mentorship', desc: 'After-school programs, sports leagues, mentorship, job readiness for Liberty City youth' },
+  { name: 'Affordable Housing and Tenant Rights', desc: 'Fighting displacement, supporting longtime residents, advocating for housing equity' },
+  { name: 'Economic Opportunity and Workforce Development', desc: 'Job training, small business support, financial literacy, entrepreneurship programs' },
+  { name: 'Criminal Justice Reform and Reentry', desc: 'Supporting residents returning from incarceration and their families' },
+  { name: 'Food Access and Community Nutrition', desc: 'Food pantries, community gardens, nutrition education, hunger relief programs' },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing in Liberty City, Miami | Thryv"
+  description="Thryv helps Liberty City nonprofits get found by donors, grant officers, and community members. Google Ad Grants, SEO, GBP management. Miami-based. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/miami/liberty-city/"
+  schema={schema}
+>
+
+  <section class="lc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href="/nonprofits/">Nonprofits</a><span> › </span>
+        <a href="/nonprofits/miami/">Miami</a><span> › </span>
+        <span>Liberty City</span>
+      </nav>
+      <span class="label">Nonprofit Marketing</span>
+      <h1>Nonprofit Marketing for Liberty City, Miami</h1>
+      <p class="lead">Liberty City has more community organizations fighting harder than almost any neighborhood in Miami-Dade. The problem is not the work — it is the visibility. We help Liberty City nonprofits get found by the donors, funders, and community members searching for exactly what you do.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Nonprofit Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Real Problem</span>
+          <h2>Liberty City's nonprofits are doing the most essential work in Miami — and too few funders can find them.</h2>
+          <p>Liberty City was built in the 1930s as one of Miami's first planned public housing developments for Black residents displaced by segregation. For nearly a century, the neighborhood has absorbed pressure — economic disinvestment, the trauma of the 1980 McDuffie riots, and now the creeping displacement driven by Miami's northward growth.</p>
+          <p style="margin-top:16px;">Through all of it, community organizations have built a dense ecosystem of services: youth programs, workforce development centers, food pantries, housing advocates. These organizations know their community in a way no outside agency ever will. But the funders who could support them often cannot find them online.</p>
+          <p style="margin-top:16px;">The Miami Foundation, Miami-Dade County, federal CDBG funding, and private foundations are all actively seeking to invest in Liberty City. We make sure they find your organization presenting its best work.</p>
+        </div>
+        <div class="stat-pills reveal">
+          <div class="stat-pill">
+            <div class="stat-num">33147</div>
+            <div class="stat-lbl">Liberty City's primary ZIP code — one of the most searched areas for youth and social services in Miami-Dade</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">1980</div>
+            <div class="stat-lbl">Year of the McDuffie riots — a turning point that reshaped community advocacy and civic organizing in Liberty City</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">$10K/mo</div>
+            <div class="stat-lbl">Free Google ad spend available through Google for Nonprofits for qualifying 501(c)(3) organizations</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">0</div>
+            <div class="stat-lbl">Long-term contracts — we work month-to-month, aligned with your grant cycles and program timelines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">What We Do</span>
+        <h2>Marketing built for Liberty City nonprofits — not adapted from a suburban playbook.</h2>
+        <p class="lead">Donors search. Funders verify. Community members look you up before they walk through your door. Every service we offer gets you found — and found looking credible.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-business-profile/">Google Business Profile Management</a></h3>
+            <p>When a grant officer searches for youth organizations in Liberty City, your nonprofit appears first. Photos, programs, hours, and reviews fully managed.</p>
+            <span class="svc-tag">Donor Visibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/seo/">SEO</a></h3>
+            <p>Rank for what your community searches: "youth programs Liberty City," "food pantry 33147," "job training northwest Miami." In English and in Spanish.</p>
+            <span class="svc-tag">Community Reach</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-ads/">Google Ad Grants for Nonprofits</a></h3>
+            <p>Qualifying 501(c)(3)s receive up to <strong>$10,000/month in free Google Ads</strong>. We apply, set up the campaigns, and manage them month to month on your behalf.</p>
+            <span class="svc-tag">Free Ad Spend</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/website-design/">Website Design</a></h3>
+            <p>A website that reflects the depth of your mission. Mobile-first, bilingual, with program pages, donation flows, and volunteer sign-ups that convert visitors into supporters.</p>
+            <span class="svc-tag">Grant Credibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/reputation-management/">Reputation and Review Management</a></h3>
+            <p>Before a funder writes the check, they verify your credibility online. We build the review profile and trust signals that make every due diligence search a yes.</p>
+            <span class="svc-tag">Funder Trust</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>AI Phone Receptionist</h3>
+            <p>Answer every call 24/7 in English and Spanish. Capture intake information, route community members to the right program, and never miss a call — even overnight.</p>
+            <span class="svc-tag">Community Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhood-section">
+    <div class="container">
+      <div class="nbhd-inner">
+        <div class="nbhd-copy reveal">
+          <span class="label">We Know Liberty City</span>
+          <h2>Miami-based. Liberty City's history is not background to us. It shapes every story we tell about your organization.</h2>
+          <p>We know that Liberty City was not named for freedom — it was named for a New Deal housing project built to contain Black Miami residents within designated boundaries. We know the neighborhood produced remarkable talent: Muhammad Ali trained nearby, 5000 Role Models of Excellence was founded here, and the community has generated civic leadership that shaped Miami-Dade County for generations.</p>
+          <p style="margin-top:16px;">We know the McDuffie riots were not a random explosion — they were a response to decades of economic exclusion and systemic injustice. And we know the organizations doing the most for Liberty City today are navigating that same long history while facing new pressures: gentrification from the south, disinvestment from government, and fierce competition for a small pool of foundation dollars.</p>
+          <p style="margin-top:16px;">That context shapes every keyword we target, every piece of content we write, and every grant-credibility signal we build for your organization.</p>
+          <ul class="know-list">
+            <li>We lead with Liberty City's resilience and legacy, not its challenges</li>
+            <li>We write in English and Spanish. Hablamos Espa&ntilde;ol.</li>
+            <li>We know Miami Foundation, Miami-Dade CDBG, and federal workforce funders</li>
+            <li>We understand what community-based organizations need to present to institutional funders</li>
+          </ul>
+        </div>
+        <div class="causes-box reveal">
+          <h3>Causes We Serve in Liberty City</h3>
+          {causes.map(c => (
+            <div class="cause-row">
+              <div class="cause-dot"></div>
+              <div>
+                <div class="cause-name">{c.name}</div>
+                <div class="cause-desc">{c.desc}</div>
+              </div>
+            </div>
+          ))}
+          <p class="cause-footer">Whatever your cause, if Liberty City is your home, it is our job to tell that story right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Liberty City Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do you work with community-based nonprofits without dedicated marketing staff?</summary>
+          <p>Yes. Most Liberty City nonprofits we work with have lean teams where one person handles everything. We handle the marketing so your staff can focus on programs. Month-to-month pricing, no long-term contracts, and we start with what makes the biggest immediate impact.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does the Google Ad Grant help Liberty City nonprofits?</summary>
+          <p>Google for Nonprofits provides up to $10,000 per month in free Google Ads credits to qualifying 501(c)(3) organizations. For Liberty City orgs, that means appearing at the top of search results when donors and community members search for youth programs, food access, or housing assistance in your area.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can grants cover the cost of marketing services?</summary>
+          <p>Yes. Most foundation grants and federal Community Development Block Grants include capacity-building and communications allocations that can cover marketing services. We provide full documentation to support your grant applications and reporting.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for Your Liberty City Organization</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a grant officer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Liberty City Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .lc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .lc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .lc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .lc-hero .lead { color: rgba(255,255,255,.8); max-width: 560px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .svc-card { display: flex; gap: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .svc-card h3 a { color: inherit; text-decoration: none; }
+  .svc-card h3 a:hover { color: var(--blue); }
+  .svc-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 12px; }
+  .svc-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--blue-light); color: var(--blue); padding: 3px 10px; border-radius: 100px; }
+
+  .neighborhood-section { background: var(--blue-deeper); color: var(--white); }
+  .neighborhood-section .label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+  .nbhd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .nbhd-copy h2 { color: var(--white); }
+  .nbhd-copy p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.75); }
+  .know-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .know-list li { font-size: 15px; color: rgba(255,255,255,.85); padding-left: 20px; position: relative; }
+  .know-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .causes-box { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(255,255,255,.12); }
+  .causes-box h3 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+  .cause-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .cause-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--orange); margin-top: 4px; }
+  .cause-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .cause-desc { font-size: 13px; color: rgba(255,255,255,.6); }
+  .cause-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .nbhd-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .stat-pills { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', () => {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('nonprofit_audit_request_submitted', { neighborhood: 'liberty-city' });
+      }
+    });
+  }
+</script>

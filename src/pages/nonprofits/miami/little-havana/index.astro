@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",          "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Nonprofits",    "item": "https://thryvmarketingsolutions.com/nonprofits/" },
+      { "@type": "ListItem", "position": 3, "name": "Miami",         "item": "https://thryvmarketingsolutions.com/nonprofits/miami/" },
+      { "@type": "ListItem", "position": 4, "name": "Little Havana", "item": "https://thryvmarketingsolutions.com/nonprofits/miami/little-havana/" },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://thryvmarketingsolutions.com/nonprofits/miami/little-havana/",
+    "url": "https://thryvmarketingsolutions.com/nonprofits/miami/little-havana/",
+    "name": "Nonprofit Marketing in Little Havana, Miami | Thryv",
+    "description": "Thryv helps Little Havana nonprofits get found by donors, grant officers, and the community they serve. Google Ad Grants, SEO, GBP management. Spanish-fluent. Free audit.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Thryv Marketing Solutions",
+      "url": "https://thryvmarketingsolutions.com",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you work with nonprofits serving elderly Cuban and Latino populations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Little Havana has one of the highest concentrations of elderly Cuban-American residents in the country. Many don't search in English — they rely on Spanish-language results, word of mouth, and family referrals. We build your presence to reach both the families looking for senior services and the funders investing in the aging population." },
+      },
+      {
+        "@type": "Question",
+        "name": "How can a small arts or cultural nonprofit benefit from digital marketing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cultural organizations in Little Havana — galleries, performance spaces, heritage groups — often rely on foot traffic and word of mouth. Digital marketing extends your reach to visiting donors, foundation scouts, and grant officers who are actively searching for cultural preservation organizations in Miami." },
+      },
+      {
+        "@type": "Question",
+        "name": "Can grants cover the cost of marketing services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most foundation grants include capacity-building allocations that cover communications, digital marketing, and website development. Cuban-American and Hispanic heritage foundations as well as federal arts grants often explicitly allow these costs. We provide documentation to support your grant applications." },
+      },
+    ],
+  },
+];
+
+const causes = [
+  { name: 'Cuban-American Heritage and Cultural Preservation', desc: 'Arts organizations, cultural institutions, and programs keeping Cuban and Latin American traditions alive on Calle Ocho' },
+  { name: 'Senior Services and Aging in Place', desc: 'Meal delivery, transportation, healthcare navigation, and companionship for Little Havana\'s large elderly population' },
+  { name: 'Youth Arts and Education', desc: 'After-school arts programs, music and dance education, and bilingual academic support' },
+  { name: 'Homelessness Prevention and Rehousing', desc: 'Emergency shelter, transitional housing, and reentry support serving Miami\'s most vulnerable residents' },
+  { name: 'Economic Empowerment for Immigrant Families', desc: 'Small business support, financial literacy, and workforce training for new arrivals along the Calle Ocho corridor' },
+];
+---
+
+<BaseLayout
+  title="Nonprofit Marketing in Little Havana, Miami | Thryv"
+  description="Thryv helps Little Havana nonprofits get found by donors, grant officers, and the community they serve. Google Ad Grants, SEO, GBP management. Spanish-fluent. Free audit."
+  canonical="https://thryvmarketingsolutions.com/nonprofits/miami/little-havana/"
+  schema={schema}
+>
+
+  <section class="lhav-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span>
+        <a href="/nonprofits/">Nonprofits</a><span> › </span>
+        <a href="/nonprofits/miami/">Miami</a><span> › </span>
+        <span>Little Havana</span>
+      </nav>
+      <span class="label">Nonprofit Marketing</span>
+      <h1>Nonprofit Marketing for Little Havana, Miami</h1>
+      <p class="lead">Little Havana carries the weight of Cuban-American history — the exiles, the art, the dominoes, the legacy of people who built a new life from nothing on Calle Ocho. The organizations preserving that legacy and serving this community deserve to be found. We make sure they are.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get a Free Nonprofit Audit
+        </a>
+        <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-inner">
+        <div class="problem-copy reveal">
+          <span class="label">The Real Problem</span>
+          <h2>Little Havana's nonprofits serve one of Miami's most complex populations — and most of them can barely be found online.</h2>
+          <p>When the first wave of Cuban exiles arrived in Miami after 1959, they did not plan to stay. They planned to return. Little Havana became a neighborhood built on the premise of return — a place-holder that became a home. The Freedom Tower, which processed more than 500,000 Cuban refugees, is now a museum. Domino Park still draws players every afternoon. The murals still speak in Spanish and tell the story of a diaspora that refused to disappear.</p>
+          <p style="margin-top:16px;">Today, Little Havana is home to one of the highest concentrations of elderly Cuban-Americans in the country — people in their 70s, 80s, and 90s who built Miami as it is. It is also home to newer waves of Latin American immigrants finding their footing. And it is home to the nonprofits carrying all of that: senior meal delivery programs, housing assistance organizations, arts groups keeping Cuban culture alive, and social services stretching to meet every need.</p>
+          <p style="margin-top:16px;">The Knight Foundation, the Cuban-American National Foundation, arts councils, and federal aging services grants all fund this work. They need to find your organization. We close that gap.</p>
+        </div>
+        <div class="stat-pills reveal">
+          <div class="stat-pill">
+            <div class="stat-num">500K+</div>
+            <div class="stat-lbl">Cuban refugees processed through the Freedom Tower — the neighborhood's anchor, now a museum and cultural landmark</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">1959</div>
+            <div class="stat-lbl">Year the Cuban Revolution reshaped Miami forever — Little Havana was built in the decades that followed</div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-num">SW 8th</div>
+            <div class="stat-lbl">Calle Ocho — the cultural spine of the neighborhood and one of Miami's most recognized corridors</div>
+          </div>
+          <div class="stat-pill accent">
+            <div class="stat-num">$10K/mo</div>
+            <div class="stat-lbl">Free Google ad spend available to qualifying 501(c)(3) nonprofits through Google for Nonprofits</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section services-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">What We Do</span>
+        <h2>Spanish-fluent marketing built for the depth of Little Havana's nonprofit community.</h2>
+        <p class="lead">Funders search. Donors verify. Community members look you up in Spanish before they walk through your door. Every service makes sure they find you first — and find you ready.</p>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-business-profile/">Google Business Profile Management</a></h3>
+            <p>When a grant officer or donor searches for senior services or cultural organizations in Little Havana, your nonprofit appears first. Programs, hours, and reviews professionally maintained.</p>
+            <span class="svc-tag">Donor Visibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/seo/">SEO</a></h3>
+            <p>Rank for what Little Havana searches: "servicios para adultos mayores Miami," "arte cubano Little Havana," "ayuda para inmigrantes Calle Ocho." In English and Spanish.</p>
+            <span class="svc-tag">Community Reach</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/google-ads/">Google Ad Grants for Nonprofits</a></h3>
+            <p>Up to <strong>$10,000/month in free Google Ads</strong> for qualifying 501(c)(3)s. We handle the application, campaign build, and ongoing management.</p>
+            <span class="svc-tag">Free Ad Spend</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/website-design/">Website Design</a></h3>
+            <p>A bilingual website worthy of your mission and your community. Donation flows, volunteer sign-ups, program pages, and a design that earns grant credibility on first impression.</p>
+            <span class="svc-tag">Grant Credibility</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div>
+            <h3><a href="/services/reputation-management/">Reputation and Review Management</a></h3>
+            <p>Foundation officers verify your organization before recommending funding. We build the trust profile that makes every due diligence search a confirmation, not a question mark.</p>
+            <span class="svc-tag">Funder Trust</span>
+          </div>
+        </div>
+        <div class="svc-card reveal">
+          <div class="svc-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <h3>AI Phone Receptionist</h3>
+            <p>Answer every call 24/7 in English and Spanish. Capture intake information and route community members — seniors, families, new arrivals — to exactly the right program.</p>
+            <span class="svc-tag">Community Access</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section neighborhood-section">
+    <div class="container">
+      <div class="nbhd-inner">
+        <div class="nbhd-copy reveal">
+          <span class="label">We Know Little Havana</span>
+          <h2>Miami-based. Little Havana's story is not a statistic to us. It is the foundation of everything we write for your organization.</h2>
+          <p>We know that Little Havana was built by people who intended to return home and instead built a home here. We know the weight of the dominoes in Maximo Gomez Park — the daily ritual of men who carried their culture from Havana and refused to put it down. We know the murals on Calle Ocho are not decoration. They are testimony.</p>
+          <p style="margin-top:16px;">We know that Little Havana today is layered: the original Cuban exile generation now in their 80s, their American-born grandchildren, and new arrivals from Venezuela, Nicaragua, and Colombia all sharing the same blocks. The nonprofit organizations serving this community have to speak to all of it — in Spanish, in English, in the language of federal grant applications and in the language of a family calling for the first time.</p>
+          <p style="margin-top:16px;">We write in both. And we build your digital presence to reach the funders, donors, and community members looking for exactly what your organization offers on Calle Ocho and beyond.</p>
+          <ul class="know-list">
+            <li>We write in English and Spanish. Hablamos Espa&ntilde;ol.</li>
+            <li>We understand the layered demographics: Cuban exile legacy + newer Latin American arrivals</li>
+            <li>We know arts, senior services, and housing funders active in Little Havana</li>
+            <li>We lead with cultural strength and community achievement, not hardship</li>
+          </ul>
+        </div>
+        <div class="causes-box reveal">
+          <h3>Causes We Serve in Little Havana</h3>
+          {causes.map(c => (
+            <div class="cause-row">
+              <div class="cause-dot"></div>
+              <div>
+                <div class="cause-name">{c.name}</div>
+                <div class="cause-desc">{c.desc}</div>
+              </div>
+            </div>
+          ))}
+          <p class="cause-footer">Whatever your cause, if Little Havana is your home, it is our job to tell that story right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Common Questions</span>
+        <h2>Questions from Little Havana Nonprofit Leaders</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Do you work with nonprofits serving elderly Cuban and Latino populations?</summary>
+          <p>Yes. Little Havana has one of the highest concentrations of elderly Cuban-American residents in the country. Many don't search in English — they rely on Spanish-language results, word of mouth, and family referrals. We build your presence to reach both the families looking for senior services and the funders investing in the aging population.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How can a small arts or cultural nonprofit benefit from digital marketing?</summary>
+          <p>Cultural organizations in Little Havana — galleries, performance spaces, heritage groups — often rely on foot traffic and word of mouth. Digital marketing extends your reach to visiting donors, foundation scouts, and grant officers who are actively searching for cultural preservation organizations in Miami.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can grants cover the cost of marketing services?</summary>
+          <p>Yes. Most foundation grants include capacity-building allocations that cover communications, digital marketing, and website development. Cuban-American and Hispanic heritage foundations as well as federal arts grants often explicitly allow these costs. We provide documentation to support your grant applications.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free Nonprofit Audit</span>
+          <h2>Let's See What Funders Find When They Search for Your Little Havana Organization</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will audit your Google Business Profile, search rankings, and website — and tell you exactly what a grant officer sees when they look you up.</p>
+          <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts</p>
+        </div>
+        <ContactForm
+          title="Request Your Free Nonprofit Audit"
+          subject="Little Havana Nonprofit Audit Request — Thryv"
+          showOrgField={true}
+        />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .lhav-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, #1a3a70 100%); color: var(--white); }
+  .lhav-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .lhav-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .lhav-hero .lead { color: rgba(255,255,255,.8); max-width: 560px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
+  .btn-outline-white:hover { border-color: var(--white); }
+
+  .problem-section { background: var(--white); }
+  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .problem-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
+  .stat-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 24px 20px; }
+  .stat-pill.accent { background: var(--blue-deeper); border-color: var(--blue-deeper); }
+  .stat-pill.accent .stat-num, .stat-pill.accent .stat-lbl { color: var(--white); }
+  .stat-pill.accent .stat-lbl { opacity: .8; }
+  .stat-num { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
+  .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .services-section { background: var(--light); }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .svc-card { display: flex; gap: 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .svc-icon-wrap { width: 44px; height: 44px; min-width: 44px; background: var(--blue-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  .svc-icon-wrap svg { width: 22px; height: 22px; stroke: var(--blue); }
+  .svc-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .svc-card h3 a { color: inherit; text-decoration: none; }
+  .svc-card h3 a:hover { color: var(--blue); }
+  .svc-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 12px; }
+  .svc-tag { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; background: var(--blue-light); color: var(--blue); padding: 3px 10px; border-radius: 100px; }
+
+  .neighborhood-section { background: var(--blue-deeper); color: var(--white); }
+  .neighborhood-section .label { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); }
+  .nbhd-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .nbhd-copy h2 { color: var(--white); }
+  .nbhd-copy p { font-size: 16px; line-height: 1.75; color: rgba(255,255,255,.75); }
+  .know-list { margin-top: 24px; display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .know-list li { font-size: 15px; color: rgba(255,255,255,.85); padding-left: 20px; position: relative; }
+  .know-list li::before { content: '→'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .causes-box { background: rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(255,255,255,.12); }
+  .causes-box h3 { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 20px; }
+  .cause-row { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 16px; }
+  .cause-dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--orange); margin-top: 4px; }
+  .cause-name { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .cause-desc { font-size: 13px; color: rgba(255,255,255,.6); }
+  .cause-footer { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-size: 13px; color: rgba(255,255,255,.5); font-style: italic; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .problem-inner { grid-template-columns: 1fr; gap: 40px; }
+    .svc-grid { grid-template-columns: 1fr; }
+    .nbhd-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .stat-pills { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', () => {
+      if ((window as any).posthog) {
+        (window as any).posthog.capture('nonprofit_audit_request_submitted', { neighborhood: 'little-havana' });
+      }
+    });
+  }
+</script>
