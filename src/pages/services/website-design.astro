@@ -158,6 +158,32 @@ const schema = [
     </div>
   </section>
 
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Related Services</span>
+        <h2>A Website Performs Best With These</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/local-seo/" class="related-card">
+          <h3>SEO</h3>
+          <p>A fast, well-built website is the foundation of SEO. Without it, rankings are hard to hold even when you earn them.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/google-ads/" class="related-card">
+          <h3>Google Ads</h3>
+          <p>Ads drive traffic instantly. A professional website is what turns that traffic into phone calls and form submissions.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/google-business-profile/" class="related-card">
+          <h3>GBP Management</h3>
+          <p>Your GBP drives discovery. Your website drives conversion. Both need to be sharp for the full customer journey to work.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section contact-section">
     <div class="container">
       <div class="contact-split">
@@ -205,6 +231,14 @@ const schema = [
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
   .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .related-section { background: var(--light); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
   .contact-section { background: var(--white); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
