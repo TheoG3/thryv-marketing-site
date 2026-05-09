@@ -3,12 +3,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
 
 const services = [
-  { slug: 'google-business-profile', icon: '📍', title: 'Google Business Profile Management', desc: 'Show up when local customers search. We optimize and manage your GBP every month.', price: '$297/mo' },
-  { slug: 'reputation-management',   icon: '⭐', title: 'Reputation Management',             desc: 'More 5-star reviews, professional responses, and a rating that builds trust.',   price: '$197/mo' },
-  { slug: 'local-seo',               icon: '🔍', title: 'Local SEO',                         desc: 'Rank in Google Maps and organic results for the keywords your customers use.',    price: '$497/mo' },
-  { slug: 'website-design',          icon: '💻', title: 'Website Design',                    desc: 'Fast, mobile-first websites built to convert visitors into calls and leads.',     price: 'From $1,497' },
-  { slug: 'google-ads',              icon: '📢', title: 'Google Ads',                        desc: 'Managed search campaigns that put you in front of ready-to-buy customers.',      price: '$597/mo + spend' },
-  { slug: 'social-media-ads',        icon: '📱', title: 'Instagram & Facebook Ads',          desc: 'Targeted social campaigns that build brand awareness and drive local traffic.',   price: '$497/mo + spend' },
+  { slug: 'google-business-profile', icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'Google Business Profile Management', desc: 'Show up when local customers search. We optimize and manage your GBP every month.', price: '$297/mo' },
+  { slug: 'reputation-management',   icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Reputation Management', desc: 'More 5-star reviews, professional responses, and a rating that builds trust.', price: '$197/mo' },
+  { slug: 'local-seo',               icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'SEO', desc: 'Rank in Google Maps and organic results for the keywords your customers use.', price: '$497/mo' },
+  { slug: 'website-design',          icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Website Design', desc: 'Fast, mobile-first websites built to convert visitors into calls and leads.', price: 'From $1,497' },
+  { slug: 'google-ads',              icon: `<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>`, title: 'Google Ads', desc: 'Managed search campaigns that put you in front of ready-to-buy customers.', price: '$597/mo + spend' },
+  { slug: 'social-media-ads',        icon: `<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>`, title: 'Instagram & Facebook Ads', desc: 'Targeted social campaigns that build brand awareness and drive local traffic.', price: '$497/mo + spend' },
 ];
 
 const schema = [
@@ -45,7 +45,7 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Marketing Services for Miami Businesses | Thryv Marketing Solutions"
+  title="Marketing Services for Miami Businesses | Thryv"
   description="Local SEO, Google Ads, reputation management, and website design. All month-to-month, no contracts. Miami-based team ready to grow your business."
   canonical="https://thryvmarketingsolutions.com/services/"
   ogImage="https://thryvmarketingsolutions.com/og-services.jpg"
@@ -68,8 +68,8 @@ const schema = [
       <div class="services-grid reveal">
         {services.map(s => (
           <a href={`/services/${s.slug}/`} class="svc-card">
-            <div class="svc-icon">{s.icon}</div>
-            <h2 class="svc-title">{s.title}</h2>
+            <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={s.icon} /></div>
+            <h3 class="svc-title">{s.title}</h3>
             <p class="svc-desc">{s.desc}</p>
             <div class="svc-foot">
               <span class="svc-price">{s.price}</span>
@@ -144,7 +144,7 @@ const schema = [
             <li>Website speed and mobile test</li>
           </ul>
         </div>
-        <ContactForm title="Get Your Free Audit" subject="New Services Inquiry — Thryv" />
+        <ContactForm title="Get Your Free Audit" subject="New Services Inquiry — Thryv" serviceDefault="seo" />
       </div>
     </div>
   </section>
@@ -163,7 +163,8 @@ const schema = [
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .svc-card { display: flex; flex-direction: column; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; text-decoration: none; color: inherit; transition: transform .2s, box-shadow .2s, border-color .2s; }
   .svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--blue); }
-  .svc-icon { font-size: 36px; margin-bottom: 16px; }
+  .svc-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+  .svc-icon svg { width: 26px; height: 26px; color: var(--blue); }
   .svc-title { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.3; }
   .svc-desc { font-size: 14px; line-height: 1.7; color: var(--gray); flex: 1; margin-bottom: 20px; }
   .svc-foot { display: flex; align-items: center; justify-content: space-between; }
