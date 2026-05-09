@@ -20,7 +20,7 @@ const schema = {
       "description": "Miami-based growth marketing agency using AI automation, local SEO, and paid media to help businesses dominate their market. Month-to-month, no lock-ins.",
       "url": "https://thryvmarketingsolutions.com",
       "email": "hello@thryvmarketingsolutions.com",
-      "telephone": "+1-305-000-0000",
+
       "priceRange": "$$",
       "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
       "areaServed": "United States",
@@ -45,6 +45,33 @@ const services = [
 ];
 
 const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
+
+// Flip to true once you have real client quotes — section goes live instantly
+const showTestimonials = false;
+
+const testimonials = [
+  {
+    quote: "",
+    name: "",
+    business: "",
+    service: "",
+    result: "",
+  },
+  {
+    quote: "",
+    name: "",
+    business: "",
+    service: "",
+    result: "",
+  },
+  {
+    quote: "",
+    name: "",
+    business: "",
+    service: "",
+    result: "",
+  },
+];
 ---
 
 <BaseLayout
@@ -253,6 +280,30 @@ const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS (hidden until showTestimonials = true) -->
+{showTestimonials && (
+<section class="section testimonials-section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Client Results</div>
+      <h2>What Miami Business Owners Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card reveal">
+          <div class="testimonial-result">{t.result}</div>
+          <blockquote class="testimonial-quote">"{t.quote}"</blockquote>
+          <div class="testimonial-footer">
+            <div class="testimonial-name">{t.name}</div>
+            <div class="testimonial-meta">{t.business} &middot; {t.service}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+)}
 
 <!-- TRUST BAR -->
 <section class="trust-bar">
@@ -533,6 +584,17 @@ const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" st
   .why-card p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.75); }
   .why-card .vs { font-size: 12px; font-weight: 700; color: var(--orange); margin-top: 12px; letter-spacing: .06em; }
   .why-head h2, .why-head .lead { color: var(--white); }
+
+  /* ── TESTIMONIALS ───────────────────────── */
+  .testimonials-section { background: var(--light); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .testimonial-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 16px; }
+  .testimonial-result { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1; }
+  .testimonial-quote { font-size: 15px; line-height: 1.7; color: var(--dark); font-style: italic; flex: 1; margin: 0; }
+  .testimonial-footer { border-top: 1px solid var(--border); padding-top: 16px; }
+  .testimonial-name { font-size: 14px; font-weight: 700; color: var(--dark); }
+  .testimonial-meta { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
 
   /* ── TRUST BAR ──────────────────────────── */
   .trust-bar { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; }
