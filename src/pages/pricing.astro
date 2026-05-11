@@ -2,10 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+// Update spotsRemaining as spots fill (starts at 5)
+const spotsRemaining = 5;
+const foundingDiscount = 30;
+
 const plans = [
   {
     name: 'Starter',
-    price: '$297',
+    price: '$207',
+    regularPrice: '$297',
+    savings: '$90',
     period: '/mo',
     tagline: 'GBP Management only',
     highlight: false,
@@ -20,9 +26,11 @@ const plans = [
   },
   {
     name: 'Growth',
-    price: '$797',
+    price: '$557',
+    regularPrice: '$797',
+    savings: '$240',
     period: '/mo',
-    tagline: 'GBP + Reputation + Local SEO',
+    tagline: 'GBP + Reputation + SEO',
     highlight: true,
     features: [
       'Everything in Starter',
@@ -36,7 +44,9 @@ const plans = [
   },
   {
     name: 'Pro',
-    price: '$1,497',
+    price: '$1,047',
+    regularPrice: '$1,497',
+    savings: '$450',
     period: '/mo',
     tagline: 'Full growth package',
     highlight: false,
@@ -57,6 +67,11 @@ const schema = {
   "mainEntity": [
     {
       "@type": "Question",
+      "name": "What is the founding client rate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The founding client rate is 30% off regular monthly pricing, locked in for as long as you remain a client. It is available to the first 5 clients only. Once those spots fill, pricing returns to standard rates." }
+    },
+    {
+      "@type": "Question",
       "name": "Are there setup fees?",
       "acceptedAnswer": { "@type": "Answer", "text": "No setup fees on any plan. You pay the monthly rate starting from day one." }
     },
@@ -72,16 +87,16 @@ const schema = {
     },
     {
       "@type": "Question",
-      "name": "Do you work with nonprofits?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We have a dedicated nonprofit marketing practice. Many nonprofits use Google Ad Grant funding — which provides up to $10,000/month in free Google Ads — to cover their marketing services. Visit our nonprofits page to learn more." }
+      "name": "Do you offer discounts for nonprofits?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer discounted rates for registered nonprofits. Contact us to learn more." }
     }
   ]
 };
 ---
 
 <BaseLayout
-  title="Marketing Pricing: Month-to-Month, No Contracts | Thryv"
-  description="Simple, transparent pricing for Miami business marketing. Starter at $297/mo, Growth at $797/mo, Pro at $1,497/mo. No setup fees, no long-term contracts."
+  title="Founding Client Pricing — 30% Off | Thryv Marketing Solutions"
+  description="First 5 clients lock in 30% off regular rates forever. Starter from $207/mo, Growth from $557/mo, Pro from $1,047/mo. Month-to-month, no contracts."
   canonical="https://thryvmarketingsolutions.com/pricing/"
   ogImage="https://thryvmarketingsolutions.com/og-pricing.jpg"
   schema={schema}
@@ -89,9 +104,14 @@ const schema = {
 
   <section class="pricing-hero">
     <div class="container">
+      <div class="founding-banner">
+        <span class="founding-fire">🔥</span>
+        <span><strong>Founding Client Offer:</strong> First {spotsRemaining} clients get {foundingDiscount}% off regular rates, locked in forever.</span>
+        <span class="spots-pill">{spotsRemaining} of 5 spots remaining</span>
+      </div>
       <span class="label">Pricing</span>
-      <h1>Simple Pricing. No Surprises.</h1>
-      <p class="lead">Month-to-month on everything. Cancel with 30 days notice. No setup fees. No fine print.</p>
+      <h1>Founding Client Pricing</h1>
+      <p class="lead">Lock in {foundingDiscount}% below regular rates for as long as you stay. These {spotsRemaining} spots are the only time this price exists. Month-to-month, no contracts.</p>
     </div>
   </section>
 
@@ -103,18 +123,39 @@ const schema = {
             {p.highlight && <div class="plan-badge">Most Popular</div>}
             <div class="plan-name">{p.name}</div>
             <div class="plan-tagline">{p.tagline}</div>
-            <div class="plan-price-row">
-              <span class="plan-price">{p.price}</span>
-              <span class="plan-period">{p.period}</span>
+
+            <div class="plan-price-block">
+              <div class="plan-regular-row">
+                <span class="plan-regular-label">Regular rate:</span>
+                <span class="plan-regular-price">{p.regularPrice}/mo</span>
+              </div>
+              <div class="plan-price-row">
+                <span class="plan-price">{p.price}</span>
+                <span class="plan-period">{p.period}</span>
+              </div>
+              <div class="plan-savings">You save {p.savings}/mo — locked in forever</div>
             </div>
+
             <ul class="plan-features">
               {p.features.map(f => <li>{f}</li>)}
             </ul>
+
             <a href="/contact/" class={`btn ${p.highlight ? 'btn-primary' : 'btn-blue'}`} style="justify-content:center;width:100%;">
-              Get Started
+              Claim Founding Rate
             </a>
           </div>
         ))}
+      </div>
+
+      <div class="spots-row">
+        <div class="spots-track">
+          {[1,2,3,4,5].map(n => (
+            <div class={`spot-dot ${n > spotsRemaining ? 'spot-taken' : ''}`}>
+              {n > spotsRemaining ? '✓' : n}
+            </div>
+          ))}
+        </div>
+        <p class="spots-note">When these {spotsRemaining} founding spots fill, pricing returns to standard rates. The founding rate is locked in forever for each client who claims it.</p>
       </div>
     </div>
   </section>
@@ -149,6 +190,7 @@ const schema = {
         <h2>Pricing Questions</h2>
       </div>
       <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is the founding client rate?</summary><p>The founding client rate is {foundingDiscount}% off regular monthly pricing, locked in for as long as you remain a client. It is available to the first 5 clients only. Once those spots fill, pricing returns to standard rates.</p></details>
         <details class="faq-item reveal"><summary>Are there setup fees?</summary><p>No setup fees on any plan. You pay the monthly rate starting from day one.</p></details>
         <details class="faq-item reveal"><summary>What about Google Ads spend?</summary><p>Ad spend goes directly to Google. Our management fee covers strategy, setup, and ongoing optimization.</p></details>
         <details class="faq-item reveal"><summary>Can I upgrade or downgrade my plan?</summary><p>Yes. You can change plans at any time with 30 days notice.</p></details>
@@ -161,11 +203,11 @@ const schema = {
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
-          <h2>Not Sure Which Plan Fits?</h2>
-          <p class="lead" style="margin-bottom:24px;">Start with a free audit. We will look at your business and tell you honestly which plan would move the needle most for you.</p>
+          <span class="label">Claim Your Spot</span>
+          <h2>Lock In Your Founding Rate Today</h2>
+          <p class="lead" style="margin-bottom:24px;">Start with a free audit. We will tell you honestly which plan fits your business best, then lock in your founding rate before the spots are gone.</p>
         </div>
-        <ContactForm title="Get Your Free Audit" subject="New Pricing Page Inquiry — Thryv" />
+        <ContactForm title="Claim My Founding Rate" subject="New Pricing Page Inquiry — Thryv" />
       </div>
     </div>
   </section>
@@ -178,19 +220,45 @@ const schema = {
   .pricing-hero h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px auto; color: var(--white); max-width: 600px; }
   .pricing-hero .lead { color: rgba(255,255,255,.8); max-width: 480px; margin: 0 auto; }
 
+  .founding-banner {
+    display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+    background: rgba(245,166,35,.15); border: 1.5px solid rgba(245,166,35,.4);
+    border-radius: 100px; padding: 10px 20px; margin-bottom: 32px;
+    font-size: 14px; color: var(--white);
+  }
+  .founding-fire { font-size: 18px; }
+  .spots-pill {
+    background: var(--orange); color: var(--white);
+    font-size: 12px; font-weight: 800; padding: 4px 12px; border-radius: 100px;
+  }
+
   .plans-section { background: var(--light); }
   .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
   .plan-card { position: relative; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; display: flex; flex-direction: column; gap: 20px; }
   .plan-highlighted { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,168,.15); }
   .plan-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); font-size: 12px; font-weight: 800; padding: 4px 14px; border-radius: 100px; white-space: nowrap; }
   .plan-name { font-size: 22px; font-weight: 800; color: var(--dark); }
   .plan-tagline { font-size: 13px; color: var(--gray); }
+
+  .plan-price-block { background: var(--light); border-radius: var(--radius); padding: 20px; border: 1.5px solid var(--border); }
+  .plan-regular-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .plan-regular-label { font-size: 12px; color: var(--gray); }
+  .plan-regular-price { font-size: 14px; color: var(--gray); text-decoration: line-through; }
   .plan-price-row { display: flex; align-items: baseline; gap: 4px; }
   .plan-price { font-size: 48px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; }
   .plan-period { font-size: 16px; color: var(--gray); }
+  .plan-savings { font-size: 12px; font-weight: 700; color: #16a34a; margin-top: 6px; }
+
   .plan-features { display: flex; flex-direction: column; gap: 10px; flex: 1; list-style: none; border-top: 1.5px solid var(--border); padding-top: 20px; }
   .plan-features li { font-size: 14px; color: var(--dark); padding-left: 26px; position: relative; line-height: 1.5; }
   .plan-features li::before { content: ''; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; }
+
+  .spots-row { margin-top: 40px; text-align: center; }
+  .spots-track { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; }
+  .spot-dot { width: 44px; height: 44px; border-radius: 50%; background: var(--blue); color: var(--white); font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+  .spot-taken { background: #d1d5db; color: #6b7280; }
+  .spots-note { font-size: 14px; color: var(--gray); max-width: 520px; margin: 0 auto; line-height: 1.7; }
 
   .addons-section { background: var(--white); }
   .addons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 720px; margin: 0 auto; }

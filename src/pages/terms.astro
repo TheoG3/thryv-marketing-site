@@ -1,59 +1,94 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+
 <BaseLayout
   title="Terms of Service | Thryv Marketing Solutions"
-  description="Terms of service for Thryv Marketing Solutions."
+  description="Terms of service for Thryv Marketing Solutions. Month-to-month agreements, payment terms, intellectual property, and limitations of liability."
   canonical="https://thryvmarketingsolutions.com/terms/"
 >
-<nav>
-  <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" /></a>
-      <ul class="nav-links">
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="/#contact" class="btn btn-blue">Get Free Audit</a>
+
+  <section class="legal-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>Terms of Service</span>
+      </nav>
+      <h1>Terms of Service</h1>
+      <p class="last-updated">Last updated: May 1, 2026</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <div class="container">
+      <div class="legal-content">
+
+        <section class="legal-section">
+          <h2>Services</h2>
+          <p>Thryv Marketing Solutions LLC ("Thryv") provides digital marketing services including local SEO, Google Business Profile management, reputation management, paid advertising, website design, and AI automation. All recurring services are provided on a month-to-month basis. No long-term contract is required.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Cancellation</h2>
+          <p>Either party may terminate recurring services with 30 days written notice sent to hello@thryvmarketingsolutions.com. Services will continue through the end of the notice period. One-time services (such as website builds) are not subject to this cancellation policy.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Payment</h2>
+          <p>Recurring services are billed monthly in advance on the billing date established at the start of the engagement. Payment is due within 7 days of invoice. Thryv reserves the right to pause services on accounts more than 14 days past due without prior notice. Ad spend for Google Ads and social campaigns is billed directly by the respective ad platform and is separate from Thryv's management fee.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Founding Client Rate</h2>
+          <p>Clients who enroll during the founding client period lock in the discounted founding rate for the duration of their engagement. The founding rate applies to the base plan at enrollment and does not transfer to upgraded plans. Thryv reserves the right to adjust pricing for new clients at any time; existing clients on founding rates are not affected by price changes.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Client Responsibilities</h2>
+          <p>Clients agree to provide timely access to required accounts (Google Business Profile, Google Ads, website CMS, etc.) and to respond to requests within a reasonable timeframe. Delays caused by client unresponsiveness do not suspend billing obligations.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Intellectual Property</h2>
+          <p>Content, ad copy, and website assets created for a client are owned by that client upon receipt of full payment. Thryv retains the right to use anonymized performance data and case study summaries for internal research and marketing purposes, subject to client approval for any named references.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Limitation of Liability</h2>
+          <p>Thryv does not guarantee specific ranking positions, review counts, lead volumes, or revenue outcomes. Marketing results depend on factors outside Thryv's control, including Google algorithm changes, market conditions, competitor actions, and client responsiveness. Thryv's total liability for any claim arising from services shall not exceed the fees paid in the three months preceding the claim.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Confidentiality</h2>
+          <p>Both parties agree to keep the other's proprietary business information, strategies, and pricing confidential and not to disclose it to third parties without written consent.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Governing Law</h2>
+          <p>These terms are governed by the laws of the State of Florida. Any disputes shall be resolved in Miami-Dade County, Florida.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Contact</h2>
+          <p>Questions about these terms: <a href="mailto:hello@thryvmarketingsolutions.com">hello@thryvmarketingsolutions.com</a></p>
+        </section>
+
       </div>
     </div>
-  </div>
-</nav>
-<main style="max-width:760px;margin:0 auto;padding:80px 24px;">
-  <h1 style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--dark);margin-bottom:8px;">Terms of Service</h1>
-  <p style="font-size:14px;color:var(--gray);margin-bottom:48px;">Last updated: May 1, 2026</p>
+  </section>
 
-  <div style="display:flex;flex-direction:column;gap:32px;font-size:16px;line-height:1.75;color:var(--gray);">
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Services</h2>
-      <p>Thryv Marketing Solutions provides digital marketing services including local SEO, Google Business Profile management, reputation management, paid advertising, website design, and AI automation on a month-to-month basis. All services are billed monthly with no long-term contracts. Either party may terminate services with 30 days written notice.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Payment</h2>
-      <p>Services are billed monthly in advance. Payment is due within 7 days of invoice. Thryv Marketing Solutions reserves the right to pause services on accounts more than 14 days past due.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Intellectual Property</h2>
-      <p>Content, strategies, and reports produced for a client are owned by that client upon full payment. Thryv Marketing Solutions retains the right to use anonymized performance data for internal research and marketing purposes.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Limitation of Liability</h2>
-      <p>Thryv Marketing Solutions does not guarantee specific ranking positions, review counts, or revenue outcomes. Marketing results depend on factors outside our control including algorithm changes, market conditions, and client responsiveness.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Contact</h2>
-      <p>Questions about these terms: <a href="mailto:hello@thryvmarketingsolutions.com" style="color:var(--blue);font-weight:600;">hello@thryvmarketingsolutions.com</a></p>
-    </section>
-  </div>
-</main>
-<footer>
-  <div class="container">
-    <div class="footer-bottom" style="padding:32px 0;">
-      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
-      <p class="hablamos">Hablamos Español</p>
-    </div>
-  </div>
-</footer>
 </BaseLayout>
+
+<style>
+  .legal-hero { padding: 64px 0 40px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .legal-hero h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--white); margin: 16px 0 8px; }
+  .last-updated { font-size: 14px; color: rgba(255,255,255,.6); }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .legal-body { padding: 64px 0 96px; background: var(--white); }
+  .legal-content { max-width: 760px; }
+  .legal-section { margin-bottom: 40px; }
+  .legal-section h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .legal-section p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-bottom: 12px; }
+  .legal-section a { color: var(--blue); font-weight: 600; }
+</style>

@@ -27,7 +27,7 @@ const schema = {
       </nav>
       <span class="label">Free Tools</span>
       <h1>Free Marketing Tools for Miami Businesses</h1>
-      <p class="lead">Two calculators. Click a card to open the tool.</p>
+      <p class="lead">Four free tools. Click a card to open. No email required.</p>
     </div>
   </section>
 
@@ -136,6 +136,111 @@ const schema = {
                 <p class="score-msg" id="score-msg"></p>
                 <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free GBP Audit</a>
                 <button class="btn-retake" id="retake-btn">Retake the quiz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- TOOL 3 -->
+        <div class="tool-accordion reveal" id="acc-3">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-3" data-acc="3">
+            <div class="tile-left">
+              <span class="tile-icon">🔍</span>
+              <div>
+                <div class="tile-name">Local SEO Score Checker</div>
+                <div class="tile-desc">10 questions — find out where your local SEO stands</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="tool-body" id="body-3" role="region" aria-labelledby="acc-3" hidden>
+            <div class="tool-body-inner">
+              <form id="seo-form">
+                <ol class="audit-questions">
+                  {[
+                    'Does your business appear on page 1 of Google for your main service + city?',
+                    'Is your Google Business Profile fully filled out (description, categories, hours, photos)?',
+                    'Is your business name, address, and phone number identical across all directories?',
+                    'Does your website have unique title tags and meta descriptions on every page?',
+                    'Does your website load in under 3 seconds on mobile?',
+                    'Is your website listed on Yelp, Apple Maps, and Bing Places with accurate info?',
+                    'Does your website have a dedicated page for each core service you offer?',
+                    'Do you have at least 20 Google reviews with a 4.0 or higher average rating?',
+                    'Have you published any blog posts or articles targeting local keywords in the past year?',
+                    'Does your website have schema markup (structured data) set up?',
+                  ].map((q, i) => (
+                    <li class="audit-q">
+                      <span class="q-text">{q}</span>
+                      <div class="q-opts">
+                        <label><input type="radio" name={`sq${i+1}`} value="1" required /> Yes</label>
+                        <label><input type="radio" name={`sq${i+1}`} value="0" /> No</label>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My SEO Score</button>
+              </form>
+              <div class="audit-result" id="seo-result" style="display:none;">
+                <div class="score-display">
+                  <span class="score-num" id="seo-score-num">0</span><span class="score-denom">/10</span>
+                </div>
+                <p class="score-msg" id="seo-score-msg"></p>
+                <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free SEO Audit</a>
+                <button class="btn-retake" id="seo-retake-btn">Retake the quiz</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 4 -->
+        <div class="tool-accordion reveal" id="acc-4">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-4" data-acc="4">
+            <div class="tile-left">
+              <span class="tile-icon">📈</span>
+              <div>
+                <div class="tile-name">Google Ads Budget Calculator</div>
+                <div class="tile-desc">See what ad spend it takes to hit your lead goal</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="tool-body" id="body-4" role="region" aria-labelledby="acc-4" hidden>
+            <div class="tool-body-inner">
+              <div class="calc-grid">
+                <div class="calc-form">
+                  <div class="calc-field">
+                    <label for="ads-industry">Your Industry</label>
+                    <select id="ads-industry">
+                      <option value="hvac">HVAC / Air Conditioning</option>
+                      <option value="plumbing">Plumbing</option>
+                      <option value="roofing">Roofing</option>
+                      <option value="dental">Dental</option>
+                      <option value="legal">Legal / Law Firm</option>
+                      <option value="pest">Pest Control</option>
+                      <option value="cleaning">Cleaning Services</option>
+                      <option value="other">Other Service Business</option>
+                    </select>
+                  </div>
+                  <div class="calc-field">
+                    <label for="ads-leads">Target Leads Per Month</label>
+                    <input type="number" id="ads-leads" placeholder="20" min="1" max="500" />
+                  </div>
+                  <button id="ads-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Budget</button>
+                </div>
+                <div class="calc-result" id="ads-result" style="display:none;">
+                  <div class="result-label">Estimated Monthly Ad Spend</div>
+                  <div class="result-amount" id="ads-result-amount">$0</div>
+                  <p class="result-note" id="ads-result-note"></p>
+                  <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--gray);">
+                    Plus our flat management fee of <strong style="color:var(--dark);">$597/mo</strong>
+                  </div>
+                  <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get a Free Ads Audit</a>
+                </div>
               </div>
             </div>
           </div>
@@ -310,5 +415,60 @@ const schema = {
     (auditForm as HTMLFormElement).reset();
     auditForm.style.display   = 'block';
     auditResult.style.display = 'none';
+  });
+
+  // Local SEO Score Checker
+  const seoForm   = document.getElementById('seo-form')   as HTMLFormElement;
+  const seoResult = document.getElementById('seo-result') as HTMLElement;
+
+  seoForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(seoForm);
+    let score = 0;
+    for (let i = 1; i <= 10; i++) { if (data.get('sq' + i) === '1') score++; }
+    (document.getElementById('seo-score-num') as HTMLElement).textContent = String(score);
+    const msg = score <= 3
+      ? 'Your SEO foundation needs serious work. You are missing leads every day.'
+      : score <= 6
+      ? 'Moderate SEO presence. Fixing the gaps could significantly increase your rankings.'
+      : score <= 8
+      ? 'Good foundation. A few targeted improvements could push you to the top.'
+      : 'Strong local SEO. Let us look at what is left to dominate your market.';
+    (document.getElementById('seo-score-msg') as HTMLElement).textContent = msg;
+    seoForm.style.display   = 'none';
+    seoResult.style.display = 'block';
+  });
+
+  document.getElementById('seo-retake-btn')?.addEventListener('click', () => {
+    seoForm.reset();
+    seoForm.style.display   = 'block';
+    seoResult.style.display = 'none';
+  });
+
+  // Google Ads Budget Calculator
+  const cpls: Record<string, [number, number]> = {
+    hvac:     [120, 200],
+    plumbing: [90,  160],
+    roofing:  [100, 220],
+    dental:   [80,  150],
+    legal:    [350, 800],
+    pest:     [60,  120],
+    cleaning: [40,  90],
+    other:    [80,  160],
+  };
+
+  document.getElementById('ads-calc-btn')?.addEventListener('click', () => {
+    const industry = (document.getElementById('ads-industry') as HTMLSelectElement).value;
+    const leads    = parseInt((document.getElementById('ads-leads') as HTMLInputElement).value) || 0;
+    if (!leads) return;
+    const [minCpl, maxCpl] = cpls[industry] ?? [80, 160];
+    const minSpend = Math.round((leads * minCpl) / 100) * 100;
+    const maxSpend = Math.round((leads * maxCpl) / 100) * 100;
+    const resultEl  = document.getElementById('ads-result')        as HTMLElement;
+    const amountEl  = document.getElementById('ads-result-amount') as HTMLElement;
+    const noteEl    = document.getElementById('ads-result-note')   as HTMLElement;
+    amountEl.textContent = '$' + minSpend.toLocaleString() + ' – $' + maxSpend.toLocaleString() + '/mo';
+    noteEl.textContent   = 'Estimated range based on typical cost-per-lead in your industry in the Miami market. Actual spend varies by targeting, competition, and ad quality.';
+    resultEl.style.display = 'block';
   });
 </script>

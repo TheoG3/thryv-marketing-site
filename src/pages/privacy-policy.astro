@@ -1,55 +1,93 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+
 <BaseLayout
   title="Privacy Policy | Thryv Marketing Solutions"
   description="Privacy policy for Thryv Marketing Solutions. How we collect, use, and protect your information."
   canonical="https://thryvmarketingsolutions.com/privacy-policy/"
 >
-<nav>
-  <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo"><img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" /></a>
-      <ul class="nav-links">
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/#pricing">Pricing</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="/#contact" class="btn btn-blue">Get Free Audit</a>
+
+  <section class="legal-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>Privacy Policy</span>
+      </nav>
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: May 1, 2026</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <div class="container">
+      <div class="legal-content">
+
+        <section class="legal-section">
+          <h2>Information We Collect</h2>
+          <p>We collect information you provide directly through our contact forms, including your name, email address, phone number, business name, and details about your marketing needs. We also collect usage data through PostHog analytics, including pages visited, time on page, and interactions with our free tools.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>How We Use Your Information</h2>
+          <p>We use the information you provide to:</p>
+          <ul>
+            <li>Respond to audit requests and service inquiries</li>
+            <li>Send service-related communications and reports</li>
+            <li>Improve our website, tools, and services</li>
+            <li>Send marketing communications if you opt in</li>
+          </ul>
+          <p>We do not sell, rent, or share your personal information with third parties for their marketing purposes.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Cookies and Analytics</h2>
+          <p>We use PostHog for usage analytics. PostHog may set cookies to track page visits and user interactions. This data is used solely to improve site performance and user experience. You can opt out of analytics tracking by using a browser extension that blocks analytics scripts or by visiting PostHog's opt-out page.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Email Communications</h2>
+          <p>If you submit a contact form or subscribe to our blog newsletter, you may receive emails from us. Every email includes an unsubscribe link. You can opt out at any time.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Data Retention</h2>
+          <p>We retain contact form submissions and client data for as long as is necessary to provide services and maintain business records. You may request deletion of your data at any time by contacting us.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Third-Party Services</h2>
+          <p>We use the following third-party services that may collect data as part of their normal operation: PostHog (analytics), Web3Forms (form submissions), and Cloudflare (hosting and CDN). Each has its own privacy policy governing data use.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Your Rights</h2>
+          <p>You have the right to access, correct, or delete personal information we hold about you. To exercise these rights, contact us at the address below.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Contact</h2>
+          <p>For privacy-related questions or data requests, contact us at <a href="mailto:hello@thryvmarketingsolutions.com">hello@thryvmarketingsolutions.com</a>.</p>
+        </section>
+
       </div>
     </div>
-  </div>
-</nav>
-<main style="max-width:760px;margin:0 auto;padding:80px 24px;">
-  <h1 style="font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--dark);margin-bottom:8px;">Privacy Policy</h1>
-  <p style="font-size:14px;color:var(--gray);margin-bottom:48px;">Last updated: May 1, 2026</p>
+  </section>
 
-  <div style="display:flex;flex-direction:column;gap:32px;font-size:16px;line-height:1.75;color:var(--gray);">
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Information We Collect</h2>
-      <p>We collect information you provide directly to us through our contact form, including your name, email address, phone number, and information about your business. We also collect usage data through PostHog analytics, including pages visited and interactions with our site tools.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">How We Use Your Information</h2>
-      <p>We use the information you provide to respond to audit requests and inquiries, send service-related communications, and improve our website and services. We do not sell, rent, or share your personal information with third parties for their marketing purposes.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Cookies and Analytics</h2>
-      <p>We use PostHog for anonymous usage analytics. PostHog may set cookies to track page visits and user interactions. You can opt out of analytics tracking by using a browser extension that blocks analytics scripts.</p>
-    </section>
-    <section>
-      <h2 style="font-size:20px;font-weight:700;color:var(--dark);margin-bottom:12px;">Contact</h2>
-      <p>For privacy-related questions, contact us at <a href="mailto:hello@thryvmarketingsolutions.com" style="color:var(--blue);font-weight:600;">hello@thryvmarketingsolutions.com</a>.</p>
-    </section>
-  </div>
-</main>
-<footer>
-  <div class="container">
-    <div class="footer-bottom" style="padding:32px 0;">
-      <p>© 2026 Thryv Marketing Solutions. All rights reserved.</p>
-      <p class="hablamos">Hablamos Español</p>
-    </div>
-  </div>
-</footer>
 </BaseLayout>
+
+<style>
+  .legal-hero { padding: 64px 0 40px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .legal-hero h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--white); margin: 16px 0 8px; }
+  .last-updated { font-size: 14px; color: rgba(255,255,255,.6); }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .legal-body { padding: 64px 0 96px; background: var(--white); }
+  .legal-content { max-width: 760px; }
+  .legal-section { margin-bottom: 40px; }
+  .legal-section h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .legal-section p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-bottom: 12px; }
+  .legal-section ul { margin: 12px 0 12px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .legal-section li { font-size: 16px; line-height: 1.7; color: var(--gray); }
+  .legal-section a { color: var(--blue); font-weight: 600; }
+</style>
