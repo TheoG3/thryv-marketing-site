@@ -205,6 +205,16 @@ const testimonials = [
   </div>
 </section>
 
+<!-- CONSULTING STRIP -->
+<div class="consulting-strip">
+  <div class="container">
+    <div class="cs-inner">
+      <p class="cs-text"><strong>Want strategy, not a retainer?</strong> Our consulting engagements give you a clear SEO or AI roadmap to execute yourself. One session, no monthly commitment.</p>
+      <a href="/consulting/" class="cs-link">Explore Consulting <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
 <!-- AI TOOLS PREVIEW -->
 <section class="section ai-section" id="ai-services">
   <div class="container" style="position:relative;z-index:1;">
@@ -560,6 +570,15 @@ const testimonials = [
   .service-link { font-size: 13px; font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 4px; opacity: 0; transition: opacity .2s; }
   .service-card:hover .service-link { opacity: 1; }
   .section-cta { text-align: center; margin-top: 48px; }
+
+  /* ── CONSULTING STRIP ───────────────────── */
+  .consulting-strip { background: var(--blue-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .cs-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cs-text { font-size: 15px; color: var(--dark); line-height: 1.5; }
+  .cs-text strong { color: var(--blue); font-weight: 700; }
+  .cs-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--blue); white-space: nowrap; flex-shrink: 0; transition: opacity .2s; }
+  .cs-link:hover { opacity: .7; }
+  @media (max-width: 640px) { .cs-inner { flex-direction: column; align-items: flex-start; gap: 12px; } }
 
   /* ── AI TEASER ───────────────────────────── */
   .ai-section { background: linear-gradient(180deg, #06101e 0%, var(--blue-deeper) 100%); position: relative; overflow: hidden; }
