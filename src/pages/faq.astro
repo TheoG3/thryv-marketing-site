@@ -1,0 +1,382 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    id: 'general',
+    label: 'Working With Thryv',
+    cta: { text: 'Start with a free audit', href: '/contact/' },
+    questions: [
+      {
+        q: 'What does Thryv Marketing Solutions do?',
+        a: 'Thryv Marketing Solutions is a Miami-based digital marketing agency that helps local businesses get found online, earn more reviews, and convert more searchers into customers. We offer <a href="/services/seo/">local SEO, AEO & GEO</a>, <a href="/services/google-business-profile/">Google Business Profile management</a>, <a href="/services/reputation-management/">reputation management</a>, <a href="/services/google-ads/">Google Ads</a>, <a href="/services/social-media-ads/">social media ads</a>, and <a href="/services/website-design/">website design</a> — all on month-to-month agreements.'
+      },
+      {
+        q: 'Do I have to sign a long-term contract?',
+        a: 'No. Every service at Thryv is month-to-month. You can cancel with 30 days written notice at any time. We do not offer or require annual contracts. If we stop delivering results, you should be able to leave — that accountability is what keeps us sharp.'
+      },
+      {
+        q: 'How quickly will I see results?',
+        a: 'Google Business Profile and reputation management typically show noticeable improvements within 30 to 60 days. Local SEO and AI citation results build over 90 to 120 days. Google Ads can generate leads within the first week after launch. Timelines vary based on competition, market, and starting point.'
+      },
+      {
+        q: 'What is the founding client rate?',
+        a: 'The founding client rate is 30% off regular monthly pricing, locked in for as long as you remain a client. It is available to the first 5 clients only. Once those spots are filled, all new clients pay standard rates. Founding clients are not affected by future price increases.'
+      },
+      {
+        q: 'Do you work with businesses outside Miami?',
+        a: 'Yes. We are based in Miami and specialize in South Florida markets, but we work with service businesses across the US. Our strategies are built for local-first growth, which applies to any business that serves customers in a defined geographic area.'
+      },
+      {
+        q: 'How do I get started?',
+        a: 'The first step is a <a href="/contact/">free audit</a>. We look at your Google Business Profile, review score, local keyword rankings, and website performance, then tell you exactly what is holding you back. There is no obligation and no sales pressure. Submit the form on our contact page to request yours.'
+      },
+    ]
+  },
+  {
+    id: 'seo',
+    label: 'SEO, AEO & GEO',
+    cta: { text: 'See what SEO, AEO & GEO includes', href: '/services/seo/' },
+    questions: [
+      {
+        q: 'What is local SEO?',
+        a: 'Local SEO is the process of optimizing your online presence so your business appears in Google search results and Google Maps when nearby customers search for your services. It includes on-page optimization, citation building, <a href="/services/google-business-profile/">Google Business Profile</a> alignment, and content targeting location-specific keywords.'
+      },
+      {
+        q: 'What is AEO (Answer Engine Optimization)?',
+        a: 'AEO stands for Answer Engine Optimization. It is the practice of structuring your content so Google selects it as the direct answer inside AI Overviews — the AI-generated summaries that appear at the top of many search results pages. AEO focuses on clear, question-and-answer formatted content with proper schema markup.'
+      },
+      {
+        q: 'What is GEO (Generative Engine Optimization)?',
+        a: 'GEO stands for Generative Engine Optimization. It is the practice of making your business visible when people ask AI tools like ChatGPT, Gemini, or Perplexity for local recommendations. When someone asks an AI assistant for the best HVAC company in Miami, GEO is what determines whether your business gets recommended.'
+      },
+      {
+        q: 'What is query fan-out and why does it matter for my business?',
+        a: 'Query fan-out is how Google AI Mode works. When a user types a single query, Google simultaneously runs up to 16 parallel sub-searches to build a comprehensive answer. For local businesses, this means a single search like "Miami HVAC company" triggers sub-queries about pricing, reviews, response time, and more. We optimize your content to satisfy those sub-queries so you appear in the synthesized result.'
+      },
+      {
+        q: 'How long does local SEO take to work?',
+        a: 'Most businesses see meaningful ranking improvements within 90 to 120 days. AI citation visibility from AEO and GEO work typically builds over 60 to 90 days as content indexes across AI platforms. SEO compounds over time — results at month six are typically stronger than results at month two.'
+      },
+      {
+        q: 'What is citation building and why does it matter?',
+        a: 'Citation building means getting your business listed consistently across major directories like Yelp, Apple Maps, Bing Places, and 50+ industry-specific sites. Consistent NAP (Name, Address, Phone) data across these directories is a trust signal for both Google and AI systems. Inconsistent listings hurt your local rankings and AI citation accuracy.'
+      },
+      {
+        q: 'Will SEO help me show up in Google Maps?',
+        a: 'Yes. Google Maps rankings are driven by a combination of your Google Business Profile optimization, local citation consistency, review count and quality, and on-page SEO signals from your website. Our SEO program addresses all of these together, which is why pairing SEO with GBP management produces stronger results than either alone.'
+      },
+    ]
+  },
+  {
+    id: 'gbp',
+    label: 'Google Business Profile',
+    cta: { text: 'See what GBP management includes', href: '/services/google-business-profile/' },
+    questions: [
+      {
+        q: 'What is Google Business Profile management?',
+        a: 'Google Business Profile (GBP) management is the ongoing process of optimizing and maintaining your free Google listing — the profile that appears in Maps and local search results. It includes updating your categories, photos, posts, Q&A, and service descriptions to maximize visibility and conversions from local searches.'
+      },
+      {
+        q: 'Why does my Google Business Profile matter so much?',
+        a: 'For most local service businesses, the GBP listing drives more inbound calls than the website. It is often the first thing a potential customer sees. A complete, optimized, and actively managed profile with recent reviews and posts ranks higher in Maps and converts more searchers into calls compared to neglected profiles.'
+      },
+      {
+        q: 'How often do you update the Google Business Profile?',
+        a: 'We update your GBP monthly at minimum, and more frequently when relevant. This includes publishing Google Posts, updating photos, responding to Q&A, adjusting seasonal hours, and refining categories and service descriptions based on what is driving the most clicks and calls each month.'
+      },
+      {
+        q: 'Can you help me if my GBP listing is suspended or has issues?',
+        a: 'Yes. GBP suspensions, duplicate listings, and ownership disputes are something we handle as part of GBP management. If your listing has verification issues or has been suspended for a policy violation, we work through the reinstatement process with you. Resolving these issues is often the single fastest way to recover lost local visibility.'
+      },
+    ]
+  },
+  {
+    id: 'reputation',
+    label: 'Reputation Management',
+    cta: { text: 'See what reputation management includes', href: '/services/reputation-management/' },
+    questions: [
+      {
+        q: 'How do you get more Google reviews for my business?',
+        a: 'We set up an automated review request sequence that sends a follow-up to every customer after a visit or transaction. The message is simple and direct, making it frictionless for happy customers to leave a review with one tap. Most businesses see their review velocity increase significantly within the first 30 days.'
+      },
+      {
+        q: 'Can you remove bad reviews?',
+        a: 'We can flag reviews that violate Google policies — spam, fake reviews, irrelevant content, or conflicts of interest — and submit removal requests on your behalf. For legitimate negative reviews, we write professional responses that show potential customers how you handle issues, which is often more valuable than removal.'
+      },
+      {
+        q: 'How many reviews do I need to beat my competition?',
+        a: 'Review count thresholds vary by industry and market, but as a general rule, businesses with more than 50 reviews at 4.5 stars or above significantly outperform competitors with fewer. The more important factor is recency — Google weighs recent reviews heavily, so a steady flow of new reviews matters as much as the total count.'
+      },
+      {
+        q: 'Do reviews affect my Google rankings?',
+        a: 'Yes. Review count, average rating, review velocity (how frequently you get new reviews), and response rate are all direct ranking signals for Google Maps. Higher ratings also improve click-through rates in search results, which feeds back into rankings. Reputation management and SEO reinforce each other significantly.'
+      },
+    ]
+  },
+  {
+    id: 'ads',
+    label: 'Google Ads & Social Ads',
+    cta: { text: 'See what Google Ads management includes', href: '/services/google-ads/' },
+    questions: [
+      {
+        q: 'How much do I need to spend on Google Ads?',
+        a: 'Ad spend depends on your industry, competition level, and lead goals. Most local service businesses in Miami start with $500 to $1,500 per month in ad spend. Our free Google Ads Budget Calculator on the Free Tools page gives you a starting estimate based on your industry and target lead volume.'
+      },
+      {
+        q: 'How do you charge for Google Ads management?',
+        a: 'Our management fee is $597 per month, separate from your ad spend. We charge a flat fee — not a percentage of spend — so our price does not go up as your budget grows. Ad spend goes directly to Google and is billed by Google to your card, not through us.'
+      },
+      {
+        q: 'Who owns my Google Ads account?',
+        a: 'You own the account. We manage it on your behalf through access you grant us. If you ever leave, you take the account and all of its data — keyword lists, audience data, conversion history — with you. We never build campaigns inside our own account on your behalf.'
+      },
+      {
+        q: 'What is the difference between Google Ads and SEO?',
+        a: 'Google Ads puts you at the top of search results immediately and stops the moment you stop paying. SEO builds organic rankings that do not require ongoing spend to maintain. Ads are best for capturing immediate demand. SEO is best for long-term, compounding visibility. Running both together reduces your cost per lead over time as SEO matures.'
+      },
+    ]
+  },
+  {
+    id: 'miami',
+    label: 'Miami Market',
+    cta: { text: 'Get a free Miami market audit', href: '/contact/' },
+    questions: [
+      {
+        q: 'Is digital marketing for Miami businesses different from other cities?',
+        a: 'Yes, in a few meaningful ways. Miami has high competition in service industries, a large Spanish-speaking population, distinct neighborhoods with different search behaviors (Brickell vs. Hialeah vs. Coral Gables), and strong seasonal demand patterns driven by tourism and weather. An agency that does not know the Miami market will miss these nuances.'
+      },
+      {
+        q: 'Do Miami businesses need to optimize for Spanish-language searches?',
+        a: 'It depends on your target customer. Miami-Dade County is roughly 70% Hispanic, and many local searches for home services, legal, dental, and food businesses are conducted in Spanish. Spanish-language keyword targeting and bilingual GBP content can reach a segment of the market that most competitors ignore entirely.'
+      },
+      {
+        q: 'What does local SEO cost for a Miami business?',
+        a: 'Our <a href="/services/seo/">local SEO, AEO, and GEO program</a> starts at $497 per month on a month-to-month basis. Founding clients lock in at $347 per month — 30% off regular rates. Miami market SEO typically requires the same foundational work as any competitive city, with additional attention to neighborhood-level targeting and bilingual content where applicable.'
+      },
+      {
+        q: 'What Miami neighborhoods and areas do you serve?',
+        a: 'We work with businesses across Miami-Dade and Broward County, including Brickell, Wynwood, Coral Gables, Coconut Grove, South Beach, Downtown Miami, Doral, Hialeah, Kendall, Pembroke Pines, Fort Lauderdale, and surrounding areas. For programmatic local SEO, we build neighborhood-specific landing pages to capture hyper-local search traffic.'
+      },
+      {
+        q: 'How competitive is local SEO in Miami?',
+        a: 'Miami is a competitive market, particularly for service industries like legal, dental, HVAC, and roofing. The businesses that dominate local search have consistent citation profiles, strong GBP optimization, recent reviews, and location-specific content. Most competitors have gaps in at least two of these areas, which is where we focus first.'
+      },
+    ]
+  },
+  {
+    id: 'pricing',
+    label: 'Pricing & Process',
+    cta: { text: 'See full pricing details', href: '/pricing/' },
+    questions: [
+      {
+        q: 'Are there setup fees?',
+        a: 'No. There are no setup fees on any recurring plan. You pay the monthly rate starting from day one of the engagement. Website builds are a one-time fixed project fee quoted in advance — no hourly billing and no surprises after work begins.'
+      },
+      {
+        q: 'Can I combine multiple services?',
+        a: 'Yes. Our <a href="/pricing/">Growth plan ($557/mo at founding rate)</a> combines GBP management, reputation management, and SEO. Our Pro plan ($1,047/mo at founding rate) adds Google Ads and social media ads management. You can also stack individual services as add-ons to any plan. We recommend starting with the services most likely to move your specific needle first.'
+      },
+      {
+        q: 'What happens during the first month?',
+        a: 'The first month focuses on audit and setup. We audit your current GBP, citations, rankings, and online presence, then build the foundational work: citation corrections, GBP optimization, on-page SEO adjustments, and content structuring. Month two is when ongoing optimization begins and results start to compound.'
+      },
+      {
+        q: 'How do I know if the marketing is working?',
+        a: 'Every plan includes a monthly report showing your keyword rankings, GBP impressions and call volume, review count and rating trend, and — for ad clients — cost per lead and total conversions. We also offer a 30-minute monthly strategy call to walk through the numbers and plan the next month. See <a href="/pricing/">full plan details here</a>.'
+      },
+    ]
+  },
+];
+
+const stripHtml = (html: string) => html.replace(/<[^>]+>/g, '');
+
+const schemaEntities = sections.flatMap(s =>
+  s.questions.map(q => ({
+    "@type": "Question",
+    "name": q.q,
+    "acceptedAnswer": { "@type": "Answer", "text": stripHtml(q.a) }
+  }))
+);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "FAQ",  "item": "https://thryvmarketingsolutions.com/faq/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": schemaEntities
+  }
+];
+---
+
+<BaseLayout
+  title="FAQ: Local SEO, Google Ads & Digital Marketing Miami | Thryv"
+  description="Answers to every question about local SEO, AEO, GEO, Google Ads, reputation management, GBP, and working with a Miami digital marketing agency."
+  canonical="https://thryvmarketingsolutions.com/faq/"
+  ogImage="https://thryvmarketingsolutions.com/og-faq.jpg"
+  schema={schema}
+>
+
+  <section class="faq-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>FAQ</span>
+      </nav>
+      <span class="label">FAQ</span>
+      <h1>Everything You Want to Know About Local Marketing</h1>
+      <p class="lead">Straight answers to the questions Miami business owners ask most — about SEO, GBP, reputation, ads, pricing, and how it all works.</p>
+      <div class="faq-jump-row">
+        {sections.map(s => (
+          <a href={`#${s.id}`} class="jump-pill">{s.label}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-body">
+    <div class="container">
+      <div class="faq-layout">
+
+        <aside class="faq-sidebar">
+          <div class="sidebar-inner">
+            <p class="sidebar-label">Jump to section</p>
+            <nav aria-label="FAQ sections">
+              {sections.map(s => (
+                <a href={`#${s.id}`} class="sidebar-link">{s.label}</a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        <div class="faq-sections">
+          {sections.map(s => (
+            <div class="faq-section" id={s.id}>
+              <h2 class="section-title">{s.label}</h2>
+              <div class="faq-list">
+                {s.questions.map(item => (
+                  <details class="faq-item">
+                    <summary>{item.q}</summary>
+                    <p set:html={item.a}></p>
+                  </details>
+                ))}
+              </div>
+              <div class="section-cta">
+                <a href={s.cta.href} class="btn btn-blue">
+                  {s.cta.text}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section still-have-q">
+    <div class="container">
+      <div class="shq-inner">
+        <div>
+          <h2>Still Have a Question?</h2>
+          <p>If you did not find what you were looking for, reach out directly. We answer every inquiry within one business day.</p>
+        </div>
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .faq-hero { padding: 80px 0 56px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .faq-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .faq-hero h1 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 640px; }
+  .faq-hero .lead { color: rgba(255,255,255,.75); max-width: 520px; margin-bottom: 32px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .faq-jump-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .jump-pill {
+    font-size: 12px; font-weight: 700; padding: 6px 14px; border-radius: 100px;
+    background: rgba(255,255,255,.12); color: rgba(255,255,255,.85);
+    text-decoration: none; border: 1px solid rgba(255,255,255,.2);
+    transition: background .15s, color .15s;
+  }
+  .jump-pill:hover { background: rgba(255,255,255,.25); color: var(--white); }
+
+  .faq-body { padding: 72px 0 96px; background: var(--white); }
+  .faq-layout { display: grid; grid-template-columns: 220px 1fr; gap: 64px; align-items: start; }
+
+  /* sidebar */
+  .faq-sidebar { position: sticky; top: 96px; }
+  .sidebar-inner { border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; background: var(--light); }
+  .sidebar-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--gray); margin-bottom: 16px; }
+  .sidebar-link { display: block; font-size: 14px; font-weight: 600; color: var(--gray); padding: 8px 0; border-bottom: 1px solid var(--border); text-decoration: none; transition: color .15s; }
+  .sidebar-link:last-child { border-bottom: none; }
+  .sidebar-link:hover { color: var(--blue); }
+
+  /* sections */
+  .faq-section { margin-bottom: 64px; scroll-margin-top: 96px; }
+  .section-title { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); transition: border-color .2s; }
+  .faq-item[open] { border-color: var(--blue); }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark); gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; flex-shrink: 0; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 20px; font-size: 15px; line-height: 1.75; color: var(--gray); margin: 0; }
+
+  .section-cta { display: flex; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s; }
+  .btn-blue { background: var(--blue); color: var(--white); }
+  .btn-blue:hover { opacity: .88; }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { opacity: .9; }
+
+  .still-have-q { background: var(--light); }
+  .shq-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .shq-inner h2 { font-size: 24px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .shq-inner p { font-size: 15px; color: var(--gray); max-width: 480px; }
+
+  @media (max-width: 900px) {
+    .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+    .faq-sidebar { display: none; }
+    .shq-inner { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<script>
+  // Highlight active sidebar link on scroll
+  const links = document.querySelectorAll<HTMLAnchorElement>('.sidebar-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('sidebar-active'));
+        const active = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+        active?.classList.add('sidebar-active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('.faq-section').forEach(s => observer.observe(s));
+</script>
+
+<style>
+  .sidebar-link.sidebar-active { color: var(--blue); }
+</style>

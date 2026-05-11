@@ -19,17 +19,27 @@ const schema = [
       {
         "@type": "Question",
         "name": "What does a website build include?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Every website build includes design, development, mobile-first responsive layout, on-page SEO setup, contact form, Google Analytics, and up to 30 days of revisions after launch." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Every website build includes design, development, mobile-first responsive layout, on-page SEO setup (title tags, meta descriptions, schema markup), contact form integration, Google Analytics, and up to 30 days of revisions after launch." }
       },
       {
         "@type": "Question",
         "name": "How long does it take to build a website?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch, depending on how quickly you provide content and feedback." }
+        "acceptedAnswer": { "@type": "Answer", "text": "A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch. Timeline depends on how quickly you provide content, photos, and feedback during the review rounds." }
       },
       {
         "@type": "Question",
         "name": "What platform do you build on?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We build on Astro (for maximum speed and SEO performance) or WordPress for clients who want easy content management. We recommend the platform that fits your specific needs." }
+        "acceptedAnswer": { "@type": "Answer", "text": "We build on Astro for maximum speed and SEO performance, or WordPress for clients who want easy self-service content management. We recommend the platform that fits your team's technical comfort and long-term goals." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will my new website help me rank on Google?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, if built correctly. Every site we build includes on-page SEO setup from day one: page titles, meta descriptions, schema markup, image alt text, and a clean URL structure. Site speed and mobile-friendliness, both of which we optimize for, are also direct Google ranking factors." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer website hosting and maintenance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We host on Cloudflare Pages, which is fast, secure, and globally distributed. Hosting is included during the first year. After the 30-day post-launch support period, ongoing maintenance plans are available for content updates, security patches, and performance monitoring." }
       }
     ]
   }
@@ -151,9 +161,11 @@ const schema = [
     <div class="container">
       <div class="section-head center"><h2>Common Questions</h2></div>
       <div class="faq-list">
-        <details class="faq-item reveal"><summary>What does a website build include?</summary><p>Every website build includes design, development, mobile-first responsive layout, on-page SEO setup, contact form, Google Analytics, and up to 30 days of revisions after launch.</p></details>
-        <details class="faq-item reveal"><summary>How long does it take to build a website?</summary><p>A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch, depending on how quickly you provide content and feedback.</p></details>
-        <details class="faq-item reveal"><summary>What platform do you build on?</summary><p>We build on Astro (for maximum speed and SEO performance) or WordPress for clients who want easy content management. We recommend the platform that fits your specific needs.</p></details>
+        <details class="faq-item reveal"><summary>What does a website build include?</summary><p>Every build includes design, development, mobile-first layout, on-page SEO setup (title tags, meta descriptions, schema markup), contact form integration, Google Analytics, and up to 30 days of revisions after launch.</p></details>
+        <details class="faq-item reveal"><summary>How long does it take to build a website?</summary><p>A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch. Timeline depends on how quickly you provide content, photos, and feedback during review rounds.</p></details>
+        <details class="faq-item reveal"><summary>What platform do you build on?</summary><p>We build on Astro for maximum speed and SEO performance, or WordPress for clients who want easy self-service content management. We recommend the platform that fits your team's technical comfort and long-term goals.</p></details>
+        <details class="faq-item reveal"><summary>Will my new website help me rank on Google?</summary><p>Yes, if built correctly. Every site we build includes on-page SEO setup from day one: page titles, meta descriptions, schema markup, image alt text, and a clean URL structure. Site speed and mobile-friendliness, both of which we optimize for, are also direct Google ranking factors.</p></details>
+        <details class="faq-item reveal"><summary>Do you offer website hosting and maintenance?</summary><p>We host on Cloudflare Pages, which is fast, secure, and globally distributed. Hosting is included during the first year. After the 30-day post-launch support period, ongoing maintenance plans are available for content updates, security patches, and performance monitoring.</p></details>
       </div>
     </div>
   </section>
