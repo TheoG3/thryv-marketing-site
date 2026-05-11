@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Consulting", "item": "https://thryvmarketingsolutions.com/consulting/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between consulting and your managed services?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Managed services means we do the work for you on an ongoing basis. Consulting means we give you the strategy, roadmap, and guidance so you or your team can execute. Consulting is scoped per engagement — no monthly retainer required." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is consulting right for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Business owners who want to understand and direct their own SEO or AI implementation. Marketing agencies that want expert strategy review or team training rather than white-label execution. Anyone who wants clarity on what to do — not just someone to do it for them." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens on the 15-minute fit call?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We talk about where you are, what you are trying to achieve, and what gaps you are dealing with. No pitch. If consulting makes sense for your situation, we propose a custom scope. If you would be better served by our managed services or another approach, we will tell you that too." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Marketing Consulting for Business Owners and Agencies | Thryv"
+  description="SEO, AEO & GEO consulting and AI consulting for Miami business owners and marketing agencies. Strategy and roadmaps without the retainer. Starts with a free 15-minute call."
+  canonical="https://thryvmarketingsolutions.com/consulting/"
+  ogImage="https://thryvmarketingsolutions.com/og-image.jpg"
+  schema={schema}
+>
+
+  <section class="con-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><span>Consulting</span>
+      </nav>
+      <span class="label">Consulting</span>
+      <h1>Strategy Without the Monthly Retainer</h1>
+      <p class="lead">You know your business needs better SEO or smarter use of AI. You don't need someone to handle it forever — you need someone who knows it deeply to point you in the right direction. Our consulting engagements start with a free 15-minute call and are scoped from there.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Book a Free 15-Minute Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section who-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Who This Is For</span>
+        <h2>Two Types of Clients. Different Needs. Same Approach.</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card reveal">
+          <div class="who-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <h3>Business Owners</h3>
+          <p>You want to understand your SEO gaps, implement AI in your operations, or build a content strategy you can actually execute. You don't want to outsource everything — you want the roadmap to do it yourself or with a smaller team.</p>
+          <ul class="who-list">
+            <li>SEO audit with an action plan you can execute</li>
+            <li>AI tools walkthrough specific to your workflow</li>
+            <li>AEO and GEO strategy for getting found by AI search</li>
+            <li>No retainer, no minimum commitment</li>
+          </ul>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <h3>Marketing Agencies</h3>
+          <p>You want an expert second opinion on a client strategy before you pitch it. Or you want to train your team on SEO, AEO, GEO, and AI workflows so you can offer more without hiring more. Strategy without execution.</p>
+          <ul class="who-list">
+            <li>Client strategy review and competitive analysis</li>
+            <li>Team training on AEO, GEO, and query fan-out</li>
+            <li>AI workflow implementation for your delivery process</li>
+            <li>Independent of our white-label program</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section offerings-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Consulting Areas</span>
+        <h2>Two Areas of Focus</h2>
+      </div>
+      <div class="offerings-grid">
+        <a href="/consulting/seo/" class="offering-card reveal">
+          <div class="offering-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>SEO, AEO & GEO Consulting</h3>
+          <p>Google Maps, AI Overviews, ChatGPT, Perplexity. We help you understand why you are not showing up and build a specific plan to fix it — for organic search, AI-generated answers, and AI search engines simultaneously.</p>
+          <ul class="offering-list">
+            <li>Technical and content audit</li>
+            <li>AEO content structuring for AI Overviews</li>
+            <li>GEO strategy for ChatGPT and Perplexity citations</li>
+            <li>Prioritized action roadmap</li>
+          </ul>
+          <span class="offering-cta">Learn more about SEO consulting →</span>
+        </a>
+        <a href="/consulting/ai/" class="offering-card reveal">
+          <div class="offering-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a2 2 0 012 2v2a2 2 0 01-2 2 2 2 0 01-2-2V4a2 2 0 012-2z"/><path d="M12 18a2 2 0 012 2v2a2 2 0 01-4 0v-2a2 2 0 012-2zM4.93 4.93a2 2 0 012.83 0l1.41 1.41a2 2 0 010 2.83 2 2 0 01-2.83 0L4.93 7.76a2 2 0 010-2.83zM14.83 14.83a2 2 0 012.83 0l1.41 1.41a2 2 0 01-2.83 2.83l-1.41-1.41a2 2 0 010-2.83zM2 12a2 2 0 012-2h2a2 2 0 010 4H4a2 2 0 01-2-2zM18 12a2 2 0 012-2h2a2 2 0 010 4h-2a2 2 0 01-2-2zM4.93 19.07a2 2 0 010-2.83l1.41-1.41a2 2 0 012.83 2.83l-1.41 1.41a2 2 0 01-2.83 0zM14.83 9.17a2 2 0 010-2.83l1.41-1.41a2 2 0 012.83 2.83l-1.41 1.41a2 2 0 01-2.83 0z"/></svg>
+          </div>
+          <h3>AI Consulting</h3>
+          <p>AI tools are available to every business. The difference is knowing which ones to use, how to connect them, and how to build workflows that save time without creating new problems. We help you implement, not just understand.</p>
+          <ul class="offering-list">
+            <li>Workflow audit — where AI saves the most time</li>
+            <li>Tool selection and setup</li>
+            <li>Prompt systems for your specific use cases</li>
+            <li>Automation mapping and team training</li>
+          </ul>
+          <span class="offering-cta">Learn more about AI consulting →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How It Works</span>
+        <h2>Custom-Scoped. No Retainer Required.</h2>
+      </div>
+      <div class="steps-row">
+        <div class="step reveal">
+          <div class="step-num">01</div>
+          <h3>Free 15-Minute Fit Call</h3>
+          <p>We talk about where you are and what you are trying to solve. No pitch. If consulting makes sense for your situation, we propose a custom scope. If you would be better served another way, we will tell you that too.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step reveal">
+          <div class="step-num">02</div>
+          <h3>Custom Scope</h3>
+          <p>Based on the call, we outline a specific engagement — a strategy session, a technical audit with roadmap, a team workshop, or something else. Sized for your situation, not a one-size package.</p>
+        </div>
+        <div class="step-arrow" aria-hidden="true">→</div>
+        <div class="step reveal">
+          <div class="step-num">03</div>
+          <h3>The Engagement</h3>
+          <p>We work through the strategy together. You leave with a specific action plan, not a generic report. Engagements are one-time by default — ongoing advisory available for clients who want it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section crosslinks-section">
+    <div class="container">
+      <div class="crosslinks-grid">
+        <div class="crosslink-card reveal">
+          <h3>Need Someone to Handle It For You?</h3>
+          <p>If you want done-for-you execution rather than strategy and guidance, our managed services cover SEO, Google Ads, GBP management, reputation management, social media ads, and website design.</p>
+          <a href="/services/" class="btn btn-secondary">See Managed Services →</a>
+        </div>
+        <div class="crosslink-card reveal">
+          <h3>Agency Looking for White-Label Execution?</h3>
+          <p>If you need a fulfillment partner to deliver services under your agency brand, our white-label program is built for that. We handle delivery, you own the client relationship.</p>
+          <a href="/marketing-agencies/" class="btn btn-secondary">See White-Label Program →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is the difference between consulting and your managed services?</summary><p>Managed services means we do the work for you on an ongoing monthly basis. Consulting means we give you the strategy and roadmap so you or your team can execute. Consulting is scoped per engagement — no monthly retainer required.</p></details>
+        <details class="faq-item reveal"><summary>Who is consulting right for?</summary><p>Business owners who want to understand and direct their own SEO or AI implementation. Marketing agencies that want expert strategy review or team training rather than white-label execution. Anyone who wants clarity on what to do, not just someone to do it for them.</p></details>
+        <details class="faq-item reveal"><summary>What happens on the 15-minute fit call?</summary><p>We talk about where you are, what you are trying to achieve, and what gaps you are dealing with. No pitch. If consulting makes sense, we propose a custom scope. If you would be better served by our managed services or another approach, we will say so.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Get Started</span>
+          <h2>Book Your Free 15-Minute Fit Call</h2>
+          <p class="lead" style="margin-bottom:24px;">Tell us a little about your situation and what you are trying to solve. We will reach out within 24 hours to schedule the call.</p>
+          <ul class="check-list">
+            <li>No commitment to continue after the call</li>
+            <li>Works for business owners and agencies</li>
+            <li>Custom scope proposed based on your situation</li>
+          </ul>
+        </div>
+        <ContactForm title="Book a Consulting Call" subject="Consulting Inquiry — Thryv" serviceDefault="consulting" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .con-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .con-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .con-hero h1 { font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .con-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; margin-bottom: 32px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+  .who-section { background: var(--white); }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .who-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 40px 36px; }
+  .who-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; color: var(--blue); margin-bottom: 20px; }
+  .who-card h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .who-card > p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-bottom: 20px; }
+  .who-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .who-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--dark); font-weight: 500; }
+  .who-list li::before { content: ''; display: inline-flex; min-width: 18px; height: 18px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .offerings-section { background: var(--light); }
+  .offerings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .offering-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 16px; transition: border-color .2s, transform .2s; }
+  .offering-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .offering-icon { width: 56px; height: 56px; border-radius: 16px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; color: var(--blue); }
+  .offering-card h3 { font-size: 20px; font-weight: 800; color: var(--dark); }
+  .offering-card > p { font-size: 15px; line-height: 1.75; color: var(--gray); }
+  .offering-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .offering-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--dark); font-weight: 500; }
+  .offering-list li::before { content: ''; display: inline-flex; min-width: 18px; height: 18px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+  .offering-cta { font-size: 14px; font-weight: 700; color: var(--blue); margin-top: auto; }
+
+  .how-section { background: var(--white); }
+  .steps-row { display: flex; align-items: flex-start; gap: 16px; }
+  .step { flex: 1; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+  .step-num { font-size: 36px; font-weight: 800; color: var(--blue); opacity: .25; line-height: 1; margin-bottom: 12px; }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .step p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .step-arrow { font-size: 24px; color: var(--blue); opacity: .4; padding-top: 48px; flex-shrink: 0; }
+
+  .crosslinks-section { background: var(--light); }
+  .crosslinks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .crosslink-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; }
+  .crosslink-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); }
+  .crosslink-card p { font-size: 15px; line-height: 1.75; color: var(--gray); flex: 1; }
+  .btn-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 10px; background: transparent; border: 1.5px solid var(--blue); color: var(--blue); font-weight: 700; font-size: 14px; text-decoration: none; transition: background .2s, color .2s; }
+  .btn-secondary:hover { background: var(--blue-light); }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .who-grid { grid-template-columns: 1fr; }
+    .offerings-grid { grid-template-columns: 1fr; }
+    .steps-row { flex-direction: column; }
+    .step-arrow { display: none; }
+    .crosslinks-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

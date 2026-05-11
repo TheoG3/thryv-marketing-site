@@ -33,7 +33,7 @@ const schema = [
       {
         "@type": "Question",
         "name": "What services can you white-label?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Google Business Profile management, local SEO, reputation management (review generation and responses), and Google Ads management. Website design is available on a project basis." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Business Profile management, SEO/AEO/GEO, reputation management (review generation and responses), and Google Ads management. Website design is available on a project basis." }
       }
     ]
   }
@@ -145,8 +145,8 @@ const schema = [
           <div class="svc-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </div>
-          <h3>Local SEO</h3>
-          <p>On-page SEO, citation building, keyword targeting, and local content strategy. Organic rankings that build month over month.</p>
+          <h3>SEO, AEO & GEO</h3>
+          <p>On-page SEO, citation building, keyword targeting, AEO content structuring for AI Overviews, and GEO optimization for AI search citations. Rankings that build month over month across all channels.</p>
           <div class="svc-wholesale">Wholesale from <strong>$350/mo</strong></div>
         </div>
         <div class="svc-card reveal">
@@ -205,6 +205,28 @@ const schema = [
             <div class="diff-num">MTM</div>
             <div class="diff-lbl">Month-to-month, cancel anytime</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section consulting-cta-section">
+    <div class="container">
+      <div class="consulting-cta-box reveal">
+        <div>
+          <span class="label">Also Available</span>
+          <h3>Want Strategy Instead of Execution?</h3>
+          <p>If your team wants to build internal SEO, AEO, or AI capability rather than outsource delivery, our consulting engagements are built for that. We work directly with agency teams on strategy, GEO planning, and AI workflow implementation — separately from the white-label program.</p>
+        </div>
+        <div class="consulting-cta-links">
+          <a href="/consulting/seo/" class="cta-link-card">
+            <strong>SEO Consulting</strong>
+            <span>Strategy review, team training, client account audits</span>
+          </a>
+          <a href="/consulting/ai/" class="cta-link-card">
+            <strong>AI Consulting</strong>
+            <span>AI workflow integration for your agency's delivery process</span>
+          </a>
         </div>
       </div>
     </div>
@@ -298,6 +320,15 @@ const schema = [
   .faq-item[open] summary::after { transform: rotate(45deg); }
   .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
 
+  .consulting-cta-section { background: var(--white); }
+  .consulting-cta-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 48px; }
+  .consulting-cta-box h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin: 12px 0 16px; }
+  .consulting-cta-box p { font-size: 15px; line-height: 1.75; color: var(--gray); }
+  .consulting-cta-links { display: flex; flex-direction: column; gap: 16px; }
+  .cta-link-card { display: flex; flex-direction: column; gap: 4px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+  .cta-link-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .cta-link-card strong { font-size: 15px; font-weight: 800; color: var(--blue); }
+  .cta-link-card span { font-size: 13px; color: var(--gray); }
   .contact-section { background: var(--light); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 

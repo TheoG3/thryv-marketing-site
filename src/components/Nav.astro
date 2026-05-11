@@ -10,6 +10,11 @@ const services = [
   { label: 'Social Media Ads',        slug: 'social-media-ads' },
 ];
 
+const consulting = [
+  { label: 'SEO, AEO & GEO Consulting', href: '/consulting/seo/' },
+  { label: 'AI Consulting',             href: '/consulting/ai/' },
+];
+
 const navLinks = [
   { label: 'AI & Automation', href: '/ai-tools/' },
   { label: 'Free Tools', href: '/free-tools/' },
@@ -64,6 +69,33 @@ function isActive(href: string) {
             </ul>
           </li>
 
+          <!-- Consulting dropdown -->
+          <li class="has-dropdown">
+            <a
+              href="/consulting/"
+              class:list={['nav-link', { 'nav-active': pathname.startsWith('/consulting') }]}
+              aria-haspopup="true"
+              aria-expanded="false"
+              id="consulting-menu-btn"
+            >
+              Consulting
+              <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <ul class="dropdown" role="menu" aria-labelledby="consulting-menu-btn">
+              <li role="none">
+                <a href="/consulting/" class="dropdown-all" role="menuitem">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                  All Consulting
+                </a>
+              </li>
+              {consulting.map(c => (
+                <li role="none">
+                  <a href={c.href} class="dropdown-item" role="menuitem">{c.label}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+
           {navLinks.map(link => (
             <li>
               <a
@@ -106,6 +138,18 @@ function isActive(href: string) {
       <a href="/services/" class="mobile-link mobile-link-sub">All Services</a>
       {services.map(s => (
         <a href={`/services/${s.slug}/`} class="mobile-link mobile-link-sub">{s.label}</a>
+      ))}
+    </div>
+  </div>
+  <div class="mobile-services-group">
+    <button class="mobile-services-toggle" id="mobileConsultingToggle" aria-expanded="false">
+      Consulting
+      <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="mobile-services-list" id="mobileConsultingList">
+      <a href="/consulting/" class="mobile-link mobile-link-sub">All Consulting</a>
+      {consulting.map(c => (
+        <a href={c.href} class="mobile-link mobile-link-sub">{c.label}</a>
       ))}
     </div>
   </div>
@@ -307,5 +351,13 @@ function isActive(href: string) {
   servicesToggle?.addEventListener('click', () => {
     const isOpen = servicesList?.classList.toggle('open');
     servicesToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Mobile consulting accordion
+  const consultingToggle = document.getElementById('mobileConsultingToggle');
+  const consultingList = document.getElementById('mobileConsultingList');
+  consultingToggle?.addEventListener('click', () => {
+    const isOpen = consultingList?.classList.toggle('open');
+    consultingToggle.setAttribute('aria-expanded', String(isOpen));
   });
 </script>

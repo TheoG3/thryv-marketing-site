@@ -1,0 +1,316 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",           "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Consulting",     "item": "https://thryvmarketingsolutions.com/consulting/" },
+      { "@type": "ListItem", "position": 3, "name": "SEO Consulting", "item": "https://thryvmarketingsolutions.com/consulting/seo/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is SEO consulting a done-for-you service?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Consulting is strategy and guidance — you or your team execute the plan. If you want us to handle ongoing SEO execution, that is our managed SEO service. Consulting works best for business owners who want to direct their own efforts and agencies who want expert review." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between SEO, AEO, and GEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SEO gets you ranked in traditional Google search results and Maps. AEO (Answer Engine Optimization) structures your content to appear in Google AI Overviews. GEO (Generative Engine Optimization) gets you cited by AI search tools like ChatGPT, Gemini, and Perplexity. All three channels now matter for local visibility." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you help me understand why my business is not ranking?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — that is one of the most common starting points. We walk through your technical setup, content gaps, competitor positioning, and local signals to give you a clear picture of what is holding your rankings back and a specific plan to fix it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do agencies get a different consulting format?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. For agencies, consulting typically means reviewing a specific client strategy, auditing their current SEO approach, or running a team training session on AEO, GEO, and query fan-out content architecture. The scope is defined in the 15-minute fit call." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to be technical to benefit from SEO consulting?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. We explain everything in plain language and provide a prioritized action plan that is specific to your situation. You do not need to understand how Google's algorithm works — you need to know what to do next. That is what we provide." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="SEO, AEO & GEO Consulting for Business Owners and Agencies | Thryv"
+  description="SEO consulting for Miami business owners and marketing agencies. Strategy, audit, and roadmaps for Google search, AI Overviews, and AI search citations. Free 15-minute fit call."
+  canonical="https://thryvmarketingsolutions.com/consulting/seo/"
+  ogImage="https://thryvmarketingsolutions.com/og-image.jpg"
+  schema={schema}
+>
+
+  <section class="con-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/consulting/">Consulting</a><span> › </span><span>SEO Consulting</span>
+      </nav>
+      <span class="label">SEO Consulting</span>
+      <h1>SEO, AEO & GEO Consulting</h1>
+      <p class="lead">Google is no longer a single channel. There is traditional search, Maps, AI Overviews, and now AI search engines like ChatGPT and Perplexity. We help you understand all three and build a strategy that performs across all of them — without a retainer.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Book a Free 15-Minute Call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section channels-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">The Landscape</span>
+        <h2>Three Channels. One Strategy.</h2>
+        <p class="section-sub">Visibility now requires showing up in places that did not exist two years ago. We help you optimize for all three simultaneously.</p>
+      </div>
+      <div class="channels-row">
+        <div class="channel-card reveal">
+          <div class="channel-label">SEO</div>
+          <h3>Google Search + Maps</h3>
+          <p>Traditional organic rankings and Google Maps results. Built on technical SEO, content depth, local signals, and citation authority.</p>
+        </div>
+        <div class="channel-arrow" aria-hidden="true">+</div>
+        <div class="channel-card reveal">
+          <div class="channel-label">AEO</div>
+          <h3>Google AI Overviews</h3>
+          <p>The AI-generated answers appearing at the top of Google search results. Built on answer-first content structure, FAQPage schema, and topical authority.</p>
+        </div>
+        <div class="channel-arrow" aria-hidden="true">+</div>
+        <div class="channel-card reveal">
+          <div class="channel-label">GEO</div>
+          <h3>ChatGPT, Gemini, Perplexity</h3>
+          <p>AI search tools that synthesize answers and cite sources. Built on content structure, entity clarity, freshness signals, and passage-level citability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section who-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Who This Is For</span>
+        <h2>Business Owners and Agencies. Same Expertise, Different Goals.</h2>
+      </div>
+      <div class="who-grid">
+        <div class="who-card reveal">
+          <div class="who-tag">Business Owners</div>
+          <p>You want a clear picture of why you are not ranking and a specific roadmap to fix it. You plan to execute the strategy yourself or with a small team — you do not need an agency managing everything for you.</p>
+          <ul class="who-list">
+            <li>Find out exactly what is holding your rankings back</li>
+            <li>Get a prioritized action plan you can implement yourself</li>
+            <li>Learn how to optimize for AI Overviews and AI search</li>
+            <li>Understand your competitors' strategy and how to beat it</li>
+          </ul>
+        </div>
+        <div class="who-card reveal">
+          <div class="who-tag">Marketing Agencies</div>
+          <p>You want expert review of a client strategy before you pitch it. Or you want to train your team on AEO, GEO, and query fan-out content architecture so you can offer these services confidently.</p>
+          <ul class="who-list">
+            <li>Strategy review before client presentations</li>
+            <li>Team training on AEO and GEO optimization</li>
+            <li>Second opinion on a struggling client account</li>
+            <li>Query fan-out content architecture workshops</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section covers-section">
+    <div class="container">
+      <div class="covers-inner">
+        <div class="reveal">
+          <span class="label">What We Cover</span>
+          <h2>What a Consulting Engagement Includes</h2>
+          <p>Every engagement is scoped based on the 15-minute fit call. Depending on what you need, a session typically covers some or all of the following.</p>
+        </div>
+        <div class="covers-grid">
+          <div class="cover-item reveal">
+            <div class="cover-icon">🔍</div>
+            <h3>Technical Audit Walkthrough</h3>
+            <p>We identify what is blocking Google from properly crawling, indexing, and ranking your pages — and prioritize what to fix first.</p>
+          </div>
+          <div class="cover-item reveal">
+            <div class="cover-icon">📝</div>
+            <h3>Content Gap Analysis</h3>
+            <p>We map your current content against the queries your customers are actually searching and identify the specific gaps driving traffic away from you.</p>
+          </div>
+          <div class="cover-item reveal">
+            <div class="cover-icon">🗺</div>
+            <h3>Local Ranking Factors</h3>
+            <p>Why your Google Maps ranking is where it is, and what your competitors are doing differently. Specific to your category and service area.</p>
+          </div>
+          <div class="cover-item reveal">
+            <div class="cover-icon">🤖</div>
+            <h3>AEO Content Structuring</h3>
+            <p>How to restructure your existing content so Google's AI Overviews pulls from your pages instead of your competitors'.</p>
+          </div>
+          <div class="cover-item reveal">
+            <div class="cover-icon">💬</div>
+            <h3>GEO for AI Search Citations</h3>
+            <p>What ChatGPT, Gemini, and Perplexity look for when selecting sources to cite, and how to position your content to be chosen.</p>
+          </div>
+          <div class="cover-item reveal">
+            <div class="cover-icon">📋</div>
+            <h3>Prioritized Action Roadmap</h3>
+            <p>A specific, ordered list of what to do and in what sequence — not a list of everything that could theoretically be done.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>Is SEO consulting a done-for-you service?</summary><p>No. Consulting is strategy and guidance — you or your team execute the plan. If you want us to handle ongoing SEO execution, that is our managed SEO service. Consulting works best for business owners who want to direct their own efforts and agencies who want expert review or team training.</p></details>
+        <details class="faq-item reveal"><summary>What is the difference between SEO, AEO, and GEO?</summary><p>SEO gets you ranked in traditional Google search and Maps. AEO (Answer Engine Optimization) structures your content to appear in Google AI Overviews. GEO (Generative Engine Optimization) gets you cited by AI search tools like ChatGPT, Gemini, and Perplexity. All three channels now matter for local visibility.</p></details>
+        <details class="faq-item reveal"><summary>Can you help me understand why my business is not ranking?</summary><p>Yes — that is one of the most common starting points. We walk through your technical setup, content gaps, competitor positioning, and local signals to give you a clear picture of what is holding your rankings back and a specific plan to fix it.</p></details>
+        <details class="faq-item reveal"><summary>Do agencies get a different consulting format?</summary><p>Yes. For agencies, consulting typically means reviewing a specific client strategy, auditing their current SEO approach, or running a team training session on AEO, GEO, and query fan-out content architecture. The scope is defined in the 15-minute fit call.</p></details>
+        <details class="faq-item reveal"><summary>Do I need to be technical to benefit from this?</summary><p>No. We explain everything in plain language and provide a prioritized action plan specific to your situation. You do not need to understand how Google's algorithm works — you need to know what to do next. That is what we provide.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Related</span>
+        <h2>Other Ways to Work With Us</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/seo/" class="related-card">
+          <h3>Managed SEO Service</h3>
+          <p>Want us to handle the execution, not just the strategy? Our managed SEO, AEO & GEO service covers everything on an ongoing monthly basis.</p>
+          <span class="related-link">See managed SEO →</span>
+        </a>
+        <a href="/consulting/ai/" class="related-card">
+          <h3>AI Consulting</h3>
+          <p>AI tools now feed into how search engines rank and cite content. Our AI consulting helps you implement the workflows that make both SEO and AI citations work better.</p>
+          <span class="related-link">See AI consulting →</span>
+        </a>
+        <a href="/marketing-agencies/" class="related-card">
+          <h3>Agency White-Label</h3>
+          <p>Agency looking for a fulfillment partner rather than strategy advice? Our white-label program delivers SEO under your agency brand.</p>
+          <span class="related-link">See white-label program →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Get Started</span>
+          <h2>Book Your Free 15-Minute Fit Call</h2>
+          <p class="lead" style="margin-bottom:24px;">Tell us a little about your situation — what you are working on and what you are trying to solve. We will reach out within 24 hours to schedule the call.</p>
+          <ul class="check-list">
+            <li>Works for business owners and agencies</li>
+            <li>No commitment required after the call</li>
+            <li>Custom scope proposed based on your specific situation</li>
+          </ul>
+        </div>
+        <ContactForm title="Book an SEO Consulting Call" subject="SEO Consulting Inquiry — Thryv" serviceDefault="consulting" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .con-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .con-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .con-hero h1 { font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .con-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; margin-bottom: 32px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+
+  .channels-section { background: var(--white); }
+  .section-sub { font-size: 16px; color: var(--gray); max-width: 560px; margin: 12px auto 0; text-align: center; line-height: 1.7; }
+  .channels-row { display: flex; align-items: stretch; gap: 16px; margin-top: 48px; }
+  .channel-card { flex: 1; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; }
+  .channel-label { display: inline-flex; padding: 4px 12px; background: var(--blue); color: var(--white); border-radius: 100px; font-size: 12px; font-weight: 800; letter-spacing: .05em; margin-bottom: 12px; }
+  .channel-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .channel-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .channel-arrow { font-size: 28px; color: var(--blue); opacity: .5; display: flex; align-items: center; flex-shrink: 0; }
+
+  .who-section { background: var(--light); }
+  .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .who-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 36px 32px; }
+  .who-tag { display: inline-flex; padding: 4px 14px; background: var(--blue-light); color: var(--blue); border-radius: 100px; font-size: 12px; font-weight: 800; margin-bottom: 16px; }
+  .who-card > p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-bottom: 20px; }
+  .who-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .who-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--dark); font-weight: 500; }
+  .who-list li::before { content: ''; display: inline-flex; min-width: 18px; height: 18px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .covers-section { background: var(--white); }
+  .covers-inner { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .covers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cover-item { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; }
+  .cover-icon { font-size: 28px; margin-bottom: 12px; }
+  .cover-item h3 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .cover-item p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .faq-section { background: var(--light); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .related-section { background: var(--white); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .check-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .channels-row { flex-direction: column; }
+    .channel-arrow { display: none; }
+    .who-grid { grid-template-columns: 1fr; }
+    .covers-grid { grid-template-columns: 1fr 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+  }
+  @media (max-width: 600px) {
+    .covers-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
