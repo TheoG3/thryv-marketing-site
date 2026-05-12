@@ -10,17 +10,22 @@ const schema = [
       {
         "@type": "Question",
         "name": "How quickly will you respond?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We respond to all audit requests within 24 hours, Monday through Friday." }
+        "acceptedAnswer": { "@type": "Answer", "text": "We respond to all audit requests within 24 hours, Monday through Friday. If you book a call, you will see available times and get a confirmation immediately." }
       },
       {
         "@type": "Question",
         "name": "Is the audit really free?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. No credit card, no obligation. We review your online presence and share exactly what we find." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. No credit card, no obligation. We review your Google Business Profile, review score, local rankings, and website, then share exactly what we find on the call." }
       },
       {
         "@type": "Question",
         "name": "What happens after the audit?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We walk you through the findings and recommend which services would have the biggest impact for your business. You decide if you want to move forward." }
+        "acceptedAnswer": { "@type": "Answer", "text": "We walk you through the findings and recommend which services would have the biggest impact for your business. You decide if you want to move forward. No pressure." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I book — the 15-minute or 30-minute call?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Book the 30-minute free consultation if you want a full audit walkthrough and service recommendations. Choose the 15-minute intro if you just want to ask a quick question or see if we are a good fit before going deeper." }
       }
     ]
   }
@@ -28,8 +33,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Contact Thryv Marketing Solutions | Free Marketing Audit"
-  description="Get a free marketing audit for your Miami business. We review your Google Business Profile, reviews, SEO, and website. Respond within 24 hours."
+  title="Book a Free Marketing Audit | Thryv Marketing Solutions"
+  description="Book a free 30-minute audit call for your Miami business. We review your Google Business Profile, reviews, SEO, and website. Pick a time that works for you."
   canonical="https://thryvmarketingsolutions.com/contact/"
   ogImage="https://thryvmarketingsolutions.com/og-contact.jpg"
   schema={schema}
@@ -37,74 +42,137 @@ const schema = [
 
   <section class="contact-hero">
     <div class="container">
-      <span class="label">Let's Talk</span>
-      <h1>Get Your Free Marketing Audit</h1>
-      <p class="lead">Tell us about your business. We will take a look at your online presence and tell you exactly what is and is not working, no charge, no obligation.</p>
+      <span class="label">Free Audit</span>
+      <h1>Book Your Free Marketing Audit</h1>
+      <p class="lead">Pick a time below. We will review your Google Business Profile, reviews, local rankings, and website before the call and walk you through exactly what we find.</p>
     </div>
   </section>
 
-  <section class="section contact-main">
+  <section class="section booking-section">
     <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <h2>What the Audit Covers</h2>
-          <ul class="audit-list">
-            <li>
-              <div class="audit-icon">📍</div>
-              <div>
-                <strong>Google Business Profile</strong>
-                <p>We check your profile for completeness, keyword targeting, and missed opportunities.</p>
-              </div>
-            </li>
-            <li>
-              <div class="audit-icon">⭐</div>
-              <div>
-                <strong>Review Score and Response Rate</strong>
-                <p>How your rating compares to local competitors, and whether you are responding to reviews.</p>
-              </div>
-            </li>
-            <li>
-              <div class="audit-icon">🔍</div>
-              <div>
-                <strong>Local Keyword Rankings</strong>
-                <p>A snapshot of where you rank for the searches your customers actually use.</p>
-              </div>
-            </li>
-            <li>
-              <div class="audit-icon">💻</div>
-              <div>
-                <strong>Website Speed and Mobile</strong>
-                <p>We run your site through Google's PageSpeed tools and flag what is slowing you down.</p>
-              </div>
-            </li>
-          </ul>
+      <div class="booking-grid">
 
-          <div class="contact-direct">
-            <h3>Prefer to reach out directly?</h3>
-            <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              hello@thryvmarketingsolutions.com
-            </a>
-            <p class="bilingual">Hablamos Espa&ntilde;ol</p>
+        <div class="booking-info reveal">
+          <div class="booking-tabs">
+            <button class="tab-btn active" data-tab="call">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Book a Call
+            </button>
+            <button class="tab-btn" data-tab="message">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+              Send a Message
+            </button>
+          </div>
+
+          <div class="tab-panel" id="tab-call">
+            <div class="call-options">
+              <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">30-Minute Free Audit Call</div>
+                  <div class="call-option-desc">Full audit walkthrough — GBP, reviews, rankings, website. We come prepared with your data.</div>
+                  <div class="call-option-badge free">Free</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://tidycal.com/m2jk763/15-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">15-Minute Intro Call</div>
+                  <div class="call-option-desc">Quick fit check. Ask a question or see if we are a good match before going deeper.</div>
+                  <div class="call-option-badge free">Free</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://tidycal.com/m2jk763/60-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 4"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">60-Minute Deep Dive</div>
+                  <div class="call-option-desc">Full strategy session. We build your marketing roadmap together, step by step.</div>
+                  <div class="call-option-badge paid">$60</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <div class="what-audit-covers">
+              <h3>What We Review Before the Call</h3>
+              <ul class="audit-list">
+                <li><span class="audit-dot"></span><strong>Google Business Profile</strong> — completeness, keyword targeting, missed opportunities</li>
+                <li><span class="audit-dot"></span><strong>Review score and velocity</strong> — how you compare to your top 3 competitors</li>
+                <li><span class="audit-dot"></span><strong>Local keyword rankings</strong> — where you show up for the searches your customers use</li>
+                <li><span class="audit-dot"></span><strong>Website speed and mobile</strong> — PageSpeed flags that are hurting your rankings</li>
+              </ul>
+            </div>
+
+            <div class="contact-direct">
+              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                hello@thryvmarketingsolutions.com
+              </a>
+              <span class="bilingual">Hablamos Espa&ntilde;ol</span>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" id="tab-message">
+            <ContactForm title="Send Us a Message" subject="New Contact Page Inquiry | Thryv" />
+            <div class="contact-direct" style="margin-top:24px;">
+              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                hello@thryvmarketingsolutions.com
+              </a>
+              <span class="bilingual">Hablamos Espa&ntilde;ol</span>
+            </div>
           </div>
         </div>
 
-        <div class="reveal">
-          <ContactForm title="Request Your Free Audit" subject="New Contact Page Inquiry | Thryv" />
+        <div class="trust-sidebar reveal">
+          <div class="trust-card">
+            <div class="trust-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>No Pressure, No Obligation</h3>
+            <p>We share what we find. You decide what to do next. Most clients walk away with a clear picture of what to fix, even if they don't hire us.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-badge orange">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>We Come Prepared</h3>
+            <p>Before your call, we run your GBP, review score, and rankings. You get real data on your business, not a sales pitch.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3>Miami-Based Team</h3>
+            <p>We know the market, the neighborhoods, and the competition. Hablamos Espa&ntilde;ol.</p>
+          </div>
+          <div class="trust-stat-row">
+            <div class="trust-stat"><div class="trust-stat-num">685+</div><div class="trust-stat-lbl">Local pages built</div></div>
+            <div class="trust-stat"><div class="trust-stat-num">24 hr</div><div class="trust-stat-lbl">Response guarantee</div></div>
+            <div class="trust-stat"><div class="trust-stat-num">0</div><div class="trust-stat-lbl">Lock-in contracts</div></div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <section class="section faq-section">
     <div class="container">
-      <div class="section-head center">
-        <h2>Common Questions</h2>
-      </div>
+      <div class="section-head center"><h2>Common Questions</h2></div>
       <div class="faq-list">
-        <details class="faq-item reveal"><summary>How quickly will you respond?</summary><p>We respond to all audit requests within 24 hours, Monday through Friday.</p></details>
-        <details class="faq-item reveal"><summary>Is the audit really free?</summary><p>Yes. No credit card, no obligation. We review your online presence and share exactly what we find.</p></details>
-        <details class="faq-item reveal"><summary>What happens after the audit?</summary><p>We walk you through the findings and recommend which services would have the biggest impact for your business. You decide if you want to move forward.</p></details>
+        <details class="faq-item reveal"><summary>How quickly will you respond?</summary><p>If you book a call, you get a confirmation immediately and can pick any available time slot. For written messages, we respond within 24 hours, Monday through Friday.</p></details>
+        <details class="faq-item reveal"><summary>Is the audit really free?</summary><p>Yes. No credit card, no obligation. We review your online presence and share exactly what we find on the call.</p></details>
+        <details class="faq-item reveal"><summary>What happens after the audit?</summary><p>We walk you through the findings and recommend which services would have the biggest impact. You decide if you want to move forward. No pressure.</p></details>
+        <details class="faq-item reveal"><summary>What should I book — the 15-minute or 30-minute call?</summary><p>Book the 30-minute free consultation if you want a full audit walkthrough and recommendations. Choose the 15-minute intro if you just want to ask a quick question or see if we are a good fit first.</p></details>
       </div>
     </div>
   </section>
@@ -112,31 +180,70 @@ const schema = [
 </BaseLayout>
 
 <style>
-  .contact-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .contact-hero { padding: 72px 0 56px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
   .contact-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
-  .contact-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); }
-  .contact-hero .lead { color: rgba(255,255,255,.8); max-width: 540px; }
+  .contact-hero h1 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .contact-hero .lead { color: rgba(255,255,255,.8); max-width: 540px; font-size: 17px; line-height: 1.7; }
 
-  .contact-main { background: var(--light); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .booking-section { background: var(--light); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
 
-  .contact-info h2 { font-size: 26px; font-weight: 800; margin-bottom: 32px; }
-  .audit-list { display: flex; flex-direction: column; gap: 24px; list-style: none; }
-  .audit-list li { display: flex; gap: 16px; align-items: flex-start; }
-  .audit-icon { font-size: 28px; min-width: 40px; }
-  .audit-list strong { display: block; font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-  .audit-list p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; }
+  /* Tabs */
+  .booking-tabs { display: flex; gap: 8px; margin-bottom: 28px; background: var(--border); border-radius: 12px; padding: 4px; }
+  .tab-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 9px; border: none; background: transparent; font-size: 14px; font-weight: 700; color: var(--gray); cursor: pointer; transition: background .2s, color .2s; }
+  .tab-btn.active { background: var(--white); color: var(--dark); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .tab-btn svg { stroke: currentColor; }
+  .tab-panel { }
+  .tab-panel.hidden { display: none; }
 
-  .contact-direct { margin-top: 40px; padding-top: 32px; border-top: 1.5px solid var(--border); }
-  .contact-direct h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; }
-  .contact-link { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--blue); transition: opacity .2s; }
+  /* Call options */
+  .call-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .call-option { display: flex; align-items: center; gap: 16px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 20px; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .15s; cursor: pointer; }
+  .call-option:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.12); transform: translateY(-1px); text-decoration: none; }
+  .call-option-icon { width: 48px; height: 48px; min-width: 48px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; }
+  .call-option-icon svg { stroke: var(--blue); }
+  .call-option-body { flex: 1; }
+  .call-option-title { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .call-option-desc { font-size: 13px; line-height: 1.55; color: var(--gray); margin-bottom: 8px; }
+  .call-option-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; border-radius: 100px; padding: 3px 10px; }
+  .call-option-badge.free { background: #dcfce7; color: #15803d; }
+  .call-option-badge.paid { background: var(--blue-light); color: var(--blue); }
+  .call-option-arrow { stroke: var(--gray); flex-shrink: 0; transition: stroke .2s, transform .2s; }
+  .call-option:hover .call-option-arrow { stroke: var(--blue); transform: translateX(3px); }
+
+  /* Audit list */
+  .what-audit-covers { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 24px; }
+  .what-audit-covers h3 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--blue); margin-bottom: 16px; }
+  .audit-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .audit-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.55; color: var(--gray); }
+  .audit-list strong { color: var(--dark); font-weight: 700; }
+  .audit-dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--orange); margin-top: 5px; }
+
+  /* Direct contact */
+  .contact-direct { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--blue); text-decoration: none; transition: opacity .2s; }
   .contact-link:hover { opacity: .7; }
-  .bilingual { margin-top: 12px; font-size: 13px; color: var(--gray); font-style: italic; }
+  .bilingual { font-size: 13px; color: var(--gray); font-style: italic; }
 
+  /* Trust sidebar */
+  .trust-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .trust-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+  .trust-badge { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .trust-badge svg { stroke: var(--blue); }
+  .trust-badge.orange { background: #FFF8EC; }
+  .trust-badge.orange svg { stroke: var(--orange); }
+  .trust-card h3 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .trust-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .trust-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .trust-stat { background: var(--white); padding: 20px 16px; text-align: center; }
+  .trust-stat-num { font-size: 24px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 6px; }
+  .trust-stat-lbl { font-size: 12px; color: var(--gray); line-height: 1.4; }
+
+  /* FAQ */
   .faq-section { background: var(--white); }
   .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
   .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
@@ -145,8 +252,14 @@ const schema = [
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
-  @media (max-width: 860px) {
-    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  @media (max-width: 960px) {
+    .booking-grid { grid-template-columns: 1fr; }
+    .trust-sidebar { order: -1; }
+    .trust-stat-row { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 500px) {
+    .booking-tabs { flex-direction: column; }
+    .trust-stat-row { grid-template-columns: 1fr 1fr; }
   }
 </style>
 
@@ -155,4 +268,16 @@ const schema = [
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.add('hidden'));
+      btn.classList.add('active');
+      const target = document.getElementById('tab-' + btn.dataset.tab);
+      if (target) target.classList.remove('hidden');
+    });
+  });
 </script>

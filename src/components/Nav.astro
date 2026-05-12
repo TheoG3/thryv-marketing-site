@@ -108,7 +108,7 @@ function isActive(href: string) {
         </ul>
 
         <div class="nav-cta">
-          <a href="/contact/" class="btn btn-blue">Contact</a>
+          <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-blue tidycal-embed">Book a Call</a>
           <button
             class="hamburger"
             id="hamburger"
@@ -155,7 +155,7 @@ function isActive(href: string) {
     <a href={link.href} class="mobile-link">{link.label}</a>
   ))}
   <a href="/contact/" class="mobile-link">Contact</a>
-  <a href="/contact/" class="btn btn-primary" style="justify-content:center;margin-top:8px;">Get Free Audit</a>
+  <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-primary tidycal-embed" style="justify-content:center;margin-top:8px;">Book Free Audit Call</a>
 </div>
 
 <style>
@@ -172,11 +172,11 @@ function isActive(href: string) {
 
   .site-nav {
     background: var(--white);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 16px rgba(0,0,0,.06);
-    transition: box-shadow .3s ease;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    transition: box-shadow .3s ease, border-color .3s ease;
   }
-  .site-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.12); }
+  .site-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.12); border-bottom-color: var(--border); }
 
   .nav-inner {
     display: flex; align-items: center; justify-content: space-between;
