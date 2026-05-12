@@ -16,11 +16,10 @@ const consulting = [
 ];
 
 const navLinks = [
-  { label: 'AI & Automation', href: '/ai-tools/' },
+  { label: 'AI', href: '/ai/' },
   { label: 'Free Tools', href: '/free-tools/' },
   { label: 'Pricing',    href: '/pricing/' },
   { label: 'About',      href: '/about/' },
-  { label: 'Contact',    href: '/contact/' },
 ];
 
 function isActive(href: string) {
@@ -36,7 +35,7 @@ function isActive(href: string) {
       <div class="nav-inner">
 
         <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions home">
-          <img src="/logo-trimmed.webp" alt="Thryv Marketing Solutions" width="160" height="52" />
+          <img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" width="160" height="52" />
         </a>
 
         <ul class="nav-links" role="list">
@@ -109,7 +108,7 @@ function isActive(href: string) {
         </ul>
 
         <div class="nav-cta">
-          <a href="/contact/" class="btn btn-blue">Get Free Audit</a>
+          <a href="/contact/" class="btn btn-blue">Contact</a>
           <button
             class="hamburger"
             id="hamburger"
@@ -155,6 +154,7 @@ function isActive(href: string) {
   {navLinks.map(link => (
     <a href={link.href} class="mobile-link">{link.label}</a>
   ))}
+  <a href="/contact/" class="mobile-link">Contact</a>
   <a href="/contact/" class="btn btn-primary" style="justify-content:center;margin-top:8px;">Get Free Audit</a>
 </div>
 
@@ -200,9 +200,18 @@ function isActive(href: string) {
   .nav-link.nav-active { color: var(--blue); }
   .nav-link .chevron { transition: transform .2s; }
 
-  .nav-cta { display: flex; align-items: center; gap: 16px; }
+  .nav-cta { display: flex; align-items: center; gap: 10px; }
 
-  /* ── DROPDOWN ──────────────────────────────────── */
+  .nav-cta .btn-blue {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 9px 22px;
+    border-radius: 8px;
+    line-height: 1;
+    box-shadow: none;
+  }
+
+/* ── DROPDOWN ──────────────────────────────────── */
   .has-dropdown { position: relative; }
 
   .dropdown {

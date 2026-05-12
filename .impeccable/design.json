@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-12T00:00:00Z",
+  "title": "Design System: Thryv Marketing Solutions",
+  "extensions": {
+    "colorMeta": {
+      "miami-night":     { "role": "neutral",   "displayName": "Miami Night",     "canonical": "#070F2B", "tonalRamp": ["#020407","#070F2B","#0D1F52","#122678","#172D9E","#2B45B8","#5671CC","#8FA3DF"] },
+      "harbor-blue":     { "role": "primary",   "displayName": "Harbor Blue",     "canonical": "#1B4FA8", "tonalRamp": ["#071629","#0F2B52","#16407C","#1B4FA8","#3768C0","#6B95D8","#9FBCE8","#D3E3F7"] },
+      "deep-navy":       { "role": "primary",   "displayName": "Deep Navy",       "canonical": "#0F3272", "tonalRamp": ["#040D1F","#0A1E43","#0F2B5C","#0F3272","#1A4898","#4B73BB","#8AA3D4","#C5D5ED"] },
+      "gulf-tint":       { "role": "neutral",   "displayName": "Gulf Tint",       "canonical": "#EEF4FF", "tonalRamp": ["#2B3F6A","#3D5591","#5573B5","#7B97CF","#A7BFDF","#C8D8EF","#DCE9F8","#EEF4FF"] },
+      "sunrise-orange":  { "role": "secondary", "displayName": "Sunrise Orange",  "canonical": "#F5A623", "tonalRamp": ["#4A2900","#7C4500","#AE6200","#D48200","#F5A623","#F7BF5E","#FAD599","#FCE8C4"] },
+      "amber-deep":      { "role": "secondary", "displayName": "Amber Deep",      "canonical": "#D4890A", "tonalRamp": ["#3C2200","#6B3E00","#9A5B00","#C87700","#D4890A","#E0A438","#ECBE72","#F6DEBA"] },
+      "ink":             { "role": "neutral",   "displayName": "Ink",             "canonical": "#0D1B2A", "tonalRamp": ["#060C10","#0D1B2A","#1A3347","#274B65","#426B8A","#6B90AE","#A0B9CC","#D2E1EC"] },
+      "slate":           { "role": "neutral",   "displayName": "Slate",           "canonical": "#4B5563", "tonalRamp": ["#0F1218","#242B34","#374250","#4B5563","#6B7280","#9CA3AF","#D1D5DB","#F3F4F6"] },
+      "pearl":           { "role": "neutral",   "displayName": "Pearl",           "canonical": "#9CA3AF", "tonalRamp": ["#1C1F22","#373D44","#525A65","#6B7280","#9CA3AF","#C0C5CC","#DADDE2","#F0F1F3"] },
+      "divider":         { "role": "neutral",   "displayName": "Divider",         "canonical": "#E5E7EB", "tonalRamp": ["#202325","#404549","#606469","#80858D","#A3A8AE","#C5C9CE","#DEE0E4","#E5E7EB"] },
+      "off-white":       { "role": "neutral",   "displayName": "Off-White",       "canonical": "#F8F9FB", "tonalRamp": ["#232528","#3E4147","#585C65","#737883","#989DA7","#BDC2CC","#DDE0E6","#F8F9FB"] },
+      "white":           { "role": "neutral",   "displayName": "White",           "canonical": "#FFFFFF", "tonalRamp": ["#242525","#404242","#5D5E5E","#7A7B7B","#989898","#B5B6B6","#D3D3D3","#FFFFFF"] }
+    },
+    "typographyMeta": {
+      "display":  { "displayName": "Display",  "purpose": "Hero H1 only. Single dominant statement per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2. Same weight family as display." },
+      "body":     { "displayName": "Body",     "purpose": "Paragraph copy, card descriptions. Max 65-75ch." },
+      "label":    { "displayName": "Label",    "purpose": "Section category labels. Always uppercase with tracking." }
+    },
+    "shadows": [
+      { "name": "ambient",   "value": "0 4px 24px rgba(0,0,0,0.08)",        "purpose": "Hover lift on tool cards. Lightweight." },
+      { "name": "structural","value": "0 12px 48px rgba(0,0,0,0.14)",        "purpose": "Service card hover, founder photo." },
+      { "name": "featured",  "value": "0 8px 40px rgba(27,79,168,0.18)",     "purpose": "Persistent elevation on featured pricing tier." },
+      { "name": "cta-orange","value": "0 4px 16px rgba(245,166,35,0.35)",    "purpose": "Orange CTA at rest. Glow matches button color." },
+      { "name": "cta-blue",  "value": "0 4px 16px rgba(27,79,168,0.30)",     "purpose": "Blue CTA at rest. Lower than orange hierarchy." }
+    ],
+    "motion": [
+      { "name": "entrance",    "value": "cubic-bezier(.22,1,.36,1)",         "purpose": "All entrance reveals and hero animations." },
+      { "name": "state",       "value": "cubic-bezier(.25,.1,.25,1)",        "purpose": "Hover state transitions (color, opacity, shadow)." },
+      { "name": "hero-scale",  "value": "cubic-bezier(.22,1,.36,1) 0.65s",  "purpose": "Hero card scale-in entrance sequence." }
+    ],
+    "breakpoints": [
+      { "name": "mobile",  "value": "768px",  "note": "Stack grids to 1 column; hide hero visual column." },
+      { "name": "tablet",  "value": "1024px", "note": "2-column service and AI grids." },
+      { "name": "desktop", "value": "1160px", "note": "Max-width container." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA Button (Orange)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Highest-hierarchy action. One per hero or key section.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg> Get Free Audit</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; background: #F5A623; padding: 14px 28px; border-radius: 100px; border: none; text-decoration: none; box-shadow: 0 4px 16px rgba(245,166,35,.35); transition: background .2s, transform .2s, box-shadow .2s; cursor: pointer; } .ds-btn-primary:hover { background: #D4890A; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,166,35,.45); } .ds-btn-primary:focus-visible { outline: 3px solid #F5A623; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary CTA Button (Blue)",
+      "kind": "button",
+      "refersTo": "button-blue",
+      "description": "Secondary action. Supporting CTAs, section-level \"see more\".",
+      "html": "<a class=\"ds-btn-blue\" href=\"#\">View All Services</a>",
+      "css": ".ds-btn-blue { display: inline-flex; align-items: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; color: #FFFFFF; background: #1B4FA8; padding: 14px 28px; border-radius: 100px; border: none; text-decoration: none; box-shadow: 0 4px 16px rgba(27,79,168,.30); transition: background .2s, transform .2s; cursor: pointer; } .ds-btn-blue:hover { background: #0F3272; transform: translateY(-1px); } .ds-btn-blue:focus-visible { outline: 3px solid #1B4FA8; outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav Contact Button",
+      "kind": "button",
+      "refersTo": "button-nav",
+      "description": "Navigation CTA. Smaller radius matches nav geometry.",
+      "html": "<a class=\"ds-btn-nav\" href=\"/contact/\">Contact</a>",
+      "css": ".ds-btn-nav { display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1B4FA8; padding: 9px 22px; border-radius: 8px; border: none; text-decoration: none; line-height: 1; transition: background .2s; cursor: pointer; } .ds-btn-nav:hover { background: #0F3272; } .ds-btn-nav:focus-visible { outline: 3px solid #1B4FA8; outline-offset: 2px; }"
+    },
+    {
+      "name": "Label Chip",
+      "kind": "chip",
+      "refersTo": "label-chip",
+      "description": "Section category label. Always uppercase with wide tracking.",
+      "html": "<span class=\"ds-label\">What We Do</span>",
+      "css": ".ds-label { display: inline-flex; align-items: center; gap: 8px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #1B4FA8; background: #EEF4FF; border-radius: 100px; padding: 6px 14px; margin-bottom: 20px; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "description": "Primary content card for service listings. Distinctive bottom-edge reveal on hover.",
+      "html": "<a class=\"ds-service-card\" href=\"#\"><div class=\"ds-service-icon\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" width=\"26\" height=\"26\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.35-4.35\"/></svg></div><h3>Local SEO</h3><p>Get found by customers searching your exact service in your exact neighborhood.</p><div class=\"ds-service-footer\"><span class=\"ds-service-price\">From $997/mo</span></div></a>",
+      "css": ".ds-service-card { display: flex; flex-direction: column; background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 20px; padding: 32px; text-decoration: none; color: inherit; position: relative; overflow: hidden; transition: box-shadow .25s, transform .25s, border-color .25s; } .ds-service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: #1B4FA8; transform: scaleX(0); transform-origin: left; transition: transform .3s; } .ds-service-card:hover { box-shadow: 0 12px 48px rgba(0,0,0,.14); transform: translateY(-4px); border-color: transparent; } .ds-service-card:hover::after { transform: scaleX(1); } .ds-service-icon { width: 52px; height: 52px; border-radius: 14px; background: #EEF4FF; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; color: #1B4FA8; transition: background .25s, transform .25s; } .ds-service-card:hover .ds-service-icon { background: #1B4FA8; color: #FFFFFF; transform: scale(1.1) rotate(-4deg); } .ds-service-card h3 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 18px; font-weight: 700; color: #0D1B2A; margin: 0 0 10px; } .ds-service-card p { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; line-height: 1.65; color: #4B5563; margin: 0 0 20px; flex: 1; } .ds-service-footer { margin-top: auto; } .ds-service-price { font-size: 13px; font-weight: 700; color: #1B4FA8; background: #EEF4FF; border-radius: 100px; padding: 4px 12px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Sticky top nav. 72px height. White bg, divider border-bottom.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-inner\"><a href=\"/\" class=\"ds-nav-logo\">THRYV</a><ul class=\"ds-nav-links\"><li><a href=\"/services/\" class=\"ds-nav-link\">Services</a></li><li><a href=\"/pricing/\" class=\"ds-nav-link\">Pricing</a></li></ul><a href=\"/contact/\" class=\"ds-btn-nav\">Contact</a></div></nav>",
+      "css": ".ds-nav { position: sticky; top: 0; z-index: 100; background: #FFFFFF; border-bottom: 1px solid #E5E7EB; box-shadow: 0 2px 16px rgba(0,0,0,.06); } .ds-nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; max-width: 1160px; margin: 0 auto; padding: 0 24px; } .ds-nav-logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #1B4FA8; font-size: 18px; text-decoration: none; } .ds-nav-links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; } .ds-nav-link { font-size: 14px; font-weight: 600; color: #4B5563; padding: 8px 12px; border-radius: 8px; text-decoration: none; transition: color .2s, background .2s; } .ds-nav-link:hover { color: #1B4FA8; background: #EEF4FF; } .ds-btn-nav { display: inline-flex; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; font-weight: 700; color: #FFFFFF; background: #1B4FA8; padding: 9px 22px; border-radius: 8px; text-decoration: none; transition: background .2s; } .ds-btn-nav:hover { background: #0F3272; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Local Authority",
+    "overview": "Thryv's design system is built for credibility earned through specificity, not performed through flash. The visual language strips away everything that doesn't pull its weight. Every surface decision is an act of confidence: a deep navy that commands attention, an orange that earns its intensity by appearing exactly when trust needs a signal.\n\nThis is a brand register site — the agency's portfolio IS the website. Every design choice proves or disproves the craft being sold. Sections move through three moods: daylight (white, off-white, tinted) for familiar business context, authority (deep navy) for commanding expertise, signal (orange accents) for moments of action.",
+    "keyCharacteristics": [
+      "Two-color palette strictly applied: Harbor Blue (#1B4FA8) and Sunrise Orange (#F5A623)",
+      "Single typeface (Plus Jakarta Sans) at extreme weight contrast: 800 display / 400 body",
+      "Pill-shaped buttons (100px radius) everywhere except navigation (8px radius exception)",
+      "Tonal surface system: white, off-white, gulf-tint, deep navy — hierarchy without complexity",
+      "Orange appears as accent, signal, or CTA only — never as section fill or decoration"
+    ],
+    "rules": [
+      { "name": "The Signal Rule",          "body": "Sunrise Orange appears on ≤12% of any screen. Every orange element is a signal: CTA, stat, badge, eyebrow. Using orange as background fill destroys the signal.", "section": "colors" },
+      { "name": "The Three-Surface Rule",   "body": "Light sections: White or Off-White. Transitional: Gulf Tint accents. Authority sections: Miami Night. No section breaks this progression without a structural reason.", "section": "colors" },
+      { "name": "The Contrast Rule",        "body": "Heading weight is always 800. Body weight is always 400-500. The 300-unit gap between them is what makes hierarchy legible.", "section": "typography" },
+      { "name": "The No-Second-Typeface Rule", "body": "Plus Jakarta Sans only. The weight range of this family covers all cases without a second typeface.", "section": "typography" },
+      { "name": "The Flat-by-Default Rule", "body": "Cards do not cast shadows at rest unless they're the featured/selected item. Hover shadows must be noticeably larger to signal interactivity.", "section": "elevation" }
+    ],
+    "dos": [
+      "Keep Sunrise Orange on ≤12% of any screen — rarity is the signal",
+      "Use Ink (#0D1B2A) for primary text on light surfaces, never pure #000",
+      "Follow the three-surface rhythm: white → off-white → deep navy as sections alternate",
+      "Use weight 800 for all display and headline text — the contrast IS the hierarchy",
+      "Honor prefers-reduced-motion: reduce — all animations must disable on this preference",
+      "Include Spanish trust signals on key conversion sections (Miami market is ~30% Spanish-dominant)",
+      "Animate entrances with cubic-bezier(.22,1,.36,1) — exponential ease-out"
+    ],
+    "donts": [
+      "Don't use glassmorphism on light backgrounds — hero glass cards are structural, not stylistic",
+      "Don't use gradient text (background-clip: text + gradient fill)",
+      "Don't use border-left/right > 1px as a decorative accent stripe on cards or callouts",
+      "Don't replicate the generic SaaS template: gradient hero orb, identical card grids, 'platform for growth' copy",
+      "Don't add a second typeface — Plus Jakarta Sans handles all cases",
+      "Don't use color as the only state differentiator — hover/focus must also shift transform or background",
+      "Don't fabricate social proof — authority comes from specificity, not volume claims",
+      "Don't add decorative animations — motion is for state transitions and entrance reveals only"
+    ]
+  }
+}

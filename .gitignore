@@ -22,6 +22,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Graphify cache (graph files committed, cache is local only)
+graphify-out/cache/
+
 # Brainstorm/preview scratch files
 .superpowers
 brainstorm
