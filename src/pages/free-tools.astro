@@ -27,7 +27,7 @@ const schema = {
       </nav>
       <span class="label">Free Tools</span>
       <h1>Free Marketing Tools for Miami Businesses</h1>
-      <p class="lead">Four free tools. Click a card to open. No email required.</p>
+      <p class="lead">Six free tools. Click a card to open. No email required.</p>
     </div>
   </section>
 
@@ -246,6 +246,97 @@ const schema = {
           </div>
         </div>
 
+        <!-- TOOL 5 -->
+        <div class="tool-accordion reveal" id="acc-5">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-5" data-acc="5">
+            <div class="tile-left">
+              <span class="tile-icon">⭐</span>
+              <div>
+                <div class="tile-name">Review Gap Calculator</div>
+                <div class="tile-desc">See how far behind your top competitor you are on reviews</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="tool-body" id="body-5" role="region" aria-labelledby="acc-5" hidden>
+            <div class="tool-body-inner">
+              <div class="calc-grid">
+                <div class="calc-form">
+                  <div class="calc-field">
+                    <label for="rg-my-count">Your Google Review Count</label>
+                    <input type="number" id="rg-my-count" placeholder="25" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
+                  </div>
+                  <div class="calc-field">
+                    <label for="rg-comp-count">Top Competitor's Review Count</label>
+                    <input type="number" id="rg-comp-count" placeholder="80" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
+                  </div>
+                  <div class="calc-field">
+                    <label for="rg-monthly">Reviews You Get Per Month (avg)</label>
+                    <input type="number" id="rg-monthly" placeholder="2" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
+                  </div>
+                  <button id="rg-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Gap</button>
+                </div>
+                <div class="calc-result" id="rg-result" style="display:none;">
+                  <div class="result-label">Reviews Behind Competitor</div>
+                  <div class="result-amount" id="rg-gap">—</div>
+                  <p class="result-note" id="rg-note"></p>
+                  <a href="/services/reputation-management/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See Reputation Management</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 6 -->
+        <div class="tool-accordion reveal" id="acc-6">
+          <button class="tile-btn" aria-expanded="false" aria-controls="body-6" data-acc="6">
+            <div class="tile-left">
+              <span class="tile-icon">📞</span>
+              <div>
+                <div class="tile-name">Missed Call Revenue Calculator</div>
+                <div class="tile-desc">See how much unanswered calls are costing you each month</div>
+              </div>
+            </div>
+            <span class="tile-chevron" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="tool-body" id="body-6" role="region" aria-labelledby="acc-6" hidden>
+            <div class="tool-body-inner">
+              <div class="calc-grid">
+                <div class="calc-form">
+                  <div class="calc-field">
+                    <label for="mc-job-value">Average Job or Sale Value</label>
+                    <div class="input-prefix"><span>$</span><input type="number" id="mc-job-value" placeholder="350" min="1" /></div>
+                  </div>
+                  <div class="calc-field">
+                    <label for="mc-calls">Calls Received Per Month</label>
+                    <input type="number" id="mc-calls" placeholder="60" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
+                  </div>
+                  <div class="calc-field">
+                    <label for="mc-answer-rate">Current Answer Rate</label>
+                    <select id="mc-answer-rate" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;color:var(--dark);background:var(--white);font-family:var(--font);outline:none;">
+                      <option value="0.15">Under 20% — most calls missed</option>
+                      <option value="0.30" selected>About 30% — industry average</option>
+                      <option value="0.50">About 50% — half answered</option>
+                      <option value="0.70">About 70% — mostly answered</option>
+                    </select>
+                  </div>
+                  <button id="mc-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Lost Revenue</button>
+                </div>
+                <div class="calc-result" id="mc-result" style="display:none;">
+                  <div class="result-label">Monthly Revenue Lost to Missed Calls</div>
+                  <div class="result-amount" id="mc-monthly-lost">—</div>
+                  <p class="result-note" id="mc-note"></p>
+                  <a href="/ai/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See AI Receptionist Setup</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -443,6 +534,48 @@ const schema = {
     seoForm.reset();
     seoForm.style.display   = 'block';
     seoResult.style.display = 'none';
+  });
+
+  // Review Gap Calculator
+  document.getElementById('rg-calc-btn')?.addEventListener('click', () => {
+    const mine  = parseInt((document.getElementById('rg-my-count') as HTMLInputElement).value) || 0;
+    const comp  = parseInt((document.getElementById('rg-comp-count') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('rg-monthly') as HTMLInputElement).value) || 0;
+    const gap = Math.max(0, comp - mine);
+    const target = Math.max(comp + 10, mine + 10);
+    const needed = Math.max(0, target - mine);
+    let months = monthly > 0 ? Math.ceil(needed / monthly) : null;
+    const gapEl   = document.getElementById('rg-gap') as HTMLElement;
+    const noteEl  = document.getElementById('rg-note') as HTMLElement;
+    const resultEl = document.getElementById('rg-result') as HTMLElement;
+    gapEl.textContent = gap === 0 ? 'Even' : String(gap);
+    gapEl.style.color = gap === 0 ? 'var(--blue)' : gap > 50 ? '#b91c1c' : gap > 20 ? '#92400e' : 'var(--blue)';
+    let msg = gap === 0
+      ? 'You are neck and neck. Focus on review velocity to pull ahead.'
+      : gap <= 20
+      ? `You need ${needed} more reviews to take the lead. At your current rate, that is ${months ? months + ' months' : 'achievable with a system in place'}.`
+      : gap <= 75
+      ? `A ${gap}-review gap is closeable in ${months ? months + ' months' : 'a few months'} with a consistent ask system. Without one, this gap widens every week.`
+      : `A ${gap}-review gap is significant. At your current rate that is ${months ? months + ' months' : 'a long runway without a system'}. This needs a structured review generation strategy now.`;
+    noteEl.textContent = msg;
+    resultEl.style.display = 'block';
+  });
+
+  // Missed Call Revenue Calculator
+  document.getElementById('mc-calc-btn')?.addEventListener('click', () => {
+    const jobValue   = parseFloat((document.getElementById('mc-job-value') as HTMLInputElement).value) || 0;
+    const calls      = parseInt((document.getElementById('mc-calls') as HTMLInputElement).value) || 0;
+    const answerRate = parseFloat((document.getElementById('mc-answer-rate') as HTMLSelectElement).value);
+    const closeRate  = 0.30;
+    const missedCalls = Math.round(calls * (1 - answerRate));
+    const lostRevenue = Math.round(missedCalls * closeRate * jobValue);
+    const annualLost  = lostRevenue * 12;
+    const monthlyEl  = document.getElementById('mc-monthly-lost') as HTMLElement;
+    const noteEl     = document.getElementById('mc-note') as HTMLElement;
+    const resultEl   = document.getElementById('mc-result') as HTMLElement;
+    monthlyEl.textContent = '$' + lostRevenue.toLocaleString();
+    noteEl.textContent = `${missedCalls} calls go unanswered each month. At a 30% close rate and $${jobValue} per job, that is $${annualLost.toLocaleString()} lost per year — before accounting for referrals those customers would have sent. An AI receptionist runs $600–$4,800/year.`;
+    resultEl.style.display = 'block';
   });
 
   // Google Ads Budget Calculator
