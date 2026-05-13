@@ -40,3 +40,8 @@ videos
 /sitemap.xml
 /preview-nonprofit-overtown.html
 /THRYV-PROJECT.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
