@@ -365,7 +365,7 @@ const schema = {
   .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
 
   .tools-section { background: var(--white); }
-  .tiles-row { display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto; }
+  .tiles-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; align-items: start; }
 
   /* ── ACCORDION ─────────────────────────── */
   .tool-accordion { border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow .2s; }
@@ -431,7 +431,11 @@ const schema = {
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
+  @media (max-width: 1024px) {
+    .tiles-row { grid-template-columns: repeat(2, 1fr); }
+  }
   @media (max-width: 860px) {
+    .tiles-row { grid-template-columns: 1fr; max-width: 800px; }
     .calc-grid { grid-template-columns: 1fr; }
     .tile-btn { padding: 20px; }
     .tool-body-inner { padding: 0 20px; }

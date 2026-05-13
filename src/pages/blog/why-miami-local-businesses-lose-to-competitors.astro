@@ -264,8 +264,8 @@ const schema = [
   .blog-body ul { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
   .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
   .blog-body strong { font-weight: 700; color: var(--dark); }
-  .blog-body a { color: var(--blue); text-decoration: underline; }
-  .blog-body a:hover { opacity: .8; }
+  .blog-body a:not(.btn) { color: var(--blue); text-decoration: underline; }
+  .blog-body a:not(.btn):hover { opacity: .8; }
 
   .key-takeaways {
     background: #EEF4FF; border-left: 4px solid var(--blue);
