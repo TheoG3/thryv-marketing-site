@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "¿Cuántas Reseñas Necesito para Ganarle a la Competencia en Google?";
+const description = "No se trata del número total. La frecuencia, la recencia y el rating son lo que mueve el ranking. Esta guía te dice exactamente cuántas reseñas necesitas en Miami para superar a tu competidor.";
+const canonical = "https://thryvmarketingsolutions.com/es/blog/how-many-reviews-to-beat-competition/";
+---
+
+<BaseLayout {title} {description} {canonical} lang="es">
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #0a0f1e 0%, #1a2540 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .blog-hero .label {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      max-width: 800px;
+      margin: 0 auto 18px;
+      line-height: 1.25;
+    }
+    .blog-hero .meta { color: rgba(255,255,255,.55); font-size: 14px; }
+    .blog-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      font-size: 1.07rem;
+      line-height: 1.78;
+      color: var(--text);
+    }
+    .blog-body h2 { font-size: 1.45rem; font-weight: 800; color: var(--navy); margin: 2.4rem 0 .9rem; }
+    .blog-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 1.8rem 0 .6rem; }
+    .blog-body p { margin: 0 0 1.2rem; }
+    .blog-body a:not(.btn) { color: var(--blue); text-decoration: underline; }
+    .blog-body a:not(.btn):hover { opacity: .8; }
+    .blog-body ul, .blog-body ol { padding-left: 1.5rem; margin: 0 0 1.2rem; }
+    .blog-body li { margin-bottom: .5rem; }
+    .callout {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 2rem 0;
+      font-size: .98rem;
+    }
+    .callout strong { color: var(--blue); }
+    /* CTR chart */
+    .ctr-chart { margin: 2rem 0; }
+    .ctr-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .ctr-label { min-width: 60px; font-size: .92rem; font-weight: 700; color: var(--navy); text-align: right; }
+    .ctr-bar-wrap { flex: 1; background: #e8edf5; border-radius: 20px; height: 22px; position: relative; }
+    .ctr-bar { height: 100%; border-radius: 20px; transition: width .3s; }
+    .ctr-val { font-size: .88rem; font-weight: 700; color: var(--navy); min-width: 44px; }
+    .ctr-peak { border: 2px solid #f59e0b; border-radius: 20px; }
+    .peak-label {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+    .chart-source { font-size: .78rem; color: #888; margin-top: 8px; }
+    /* Gap scorecard */
+    .gap-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: .93rem; }
+    .gap-table th { background: var(--navy); color: #fff; padding: 12px 16px; text-align: left; font-weight: 700; }
+    .gap-table td { padding: 11px 16px; border-bottom: 1px solid #e2e8f0; }
+    .gap-table tr:nth-child(even) td { background: #f8fafc; }
+    .gap-easy { color: #16a34a; font-weight: 700; }
+    .gap-medium { color: #d97706; font-weight: 700; }
+    .gap-hard { color: #dc2626; font-weight: 700; }
+    /* CTA box */
+    .cta-box {
+      background: linear-gradient(135deg, #0a0f1e, #1a2540);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+    .cta-box h2 { color: #fff; margin: 0 0 12px; font-size: 1.5rem; }
+    .cta-box p { color: rgba(255,255,255,.75); margin: 0 0 22px; }
+  </style>
+
+  <section class="blog-hero">
+    <span class="label">Reseñas y Reputación</span>
+    <h1>¿Cuántas Reseñas Necesito para<br>Ganarle a la Competencia en Google?</h1>
+    <p class="meta">Thryv Marketing Solutions &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; 8 min de lectura</p>
+  </section>
+
+  <div class="blog-body">
+    <p>Es la pregunta que más nos hacen: <em>"Mi competidor tiene 200 reseñas y yo tengo 40. ¿Cuánto tiempo me va a tomar alcanzarlo?"</em></p>
+
+    <p>La respuesta te va a sorprender: no necesitas igualarlo en número. Necesitas superarlo en <strong>recencia</strong> y <strong>velocidad</strong>. Y si tienes el rating correcto, puedes ganarle con menos reseñas.</p>
+
+    <h2>El Mito del 5.0</h2>
+    <p>Muchos dueños de negocios persiguen la calificación perfecta. Es un error. Según datos de <a href="https://searchlab.com" target="_blank" rel="noopener noreferrer">SearchLab 2026</a>, el rating que genera más clics no es 5.0 — es <strong>4.7</strong>.</p>
+
+    <div class="ctr-chart">
+      <div class="ctr-row">
+        <span class="ctr-label">5.0 ★</span>
+        <div class="ctr-bar-wrap"><div class="ctr-bar" style="width:58%; background:#93c5fd;"></div></div>
+        <span class="ctr-val">CTR bajo</span>
+        <span class="peak-label">parece falso</span>
+      </div>
+      <div class="ctr-row">
+        <span class="ctr-label">4.9 ★</span>
+        <div class="ctr-bar-wrap"><div class="ctr-bar" style="width:72%; background:#60a5fa;"></div></div>
+        <span class="ctr-val">CTR medio-alto</span>
+      </div>
+      <div class="ctr-row">
+        <span class="ctr-label">4.7 ★</span>
+        <div class="ctr-bar-wrap ctr-peak"><div class="ctr-bar" style="width:100%; background:#1d4ed8;"></div></div>
+        <span class="ctr-val">CTR máximo</span>
+        <span class="peak-label">pico de confianza</span>
+      </div>
+      <div class="ctr-row">
+        <span class="ctr-label">4.5 ★</span>
+        <div class="ctr-bar-wrap"><div class="ctr-bar" style="width:88%; background:#3b82f6;"></div></div>
+        <span class="ctr-val">CTR alto</span>
+      </div>
+      <div class="ctr-row">
+        <span class="ctr-label">4.2 ★</span>
+        <div class="ctr-bar-wrap"><div class="ctr-bar" style="width:52%; background:#93c5fd;"></div></div>
+        <span class="ctr-val">CTR bajo</span>
+      </div>
+      <p class="chart-source">Fuente: SearchLab 2026 — CTR por rating en Google Maps, servicios locales</p>
+    </div>
+
+    <p>Un 5.0 exacto genera desconfianza. Los consumidores asumen que las reseñas negativas fueron eliminadas o que el perfil es nuevo. El rango <strong>4.5 a 4.8 es el punto dulce</strong> que maximiza tanto el ranking como la tasa de clics.</p>
+
+    <div class="callout">
+      <strong>Lo que esto significa:</strong> No entres en pánico si recibes una reseña de 3 estrellas ocasional. Si tienes 80+ reseñas positivas, una mala no te hunde — en realidad hace que las demás parezcan más reales.
+    </div>
+
+    <h2>La Ventana de 90 Días</h2>
+    <p>Google pondera más las reseñas recientes. El algoritmo tiene una "ventana de relevancia" de aproximadamente 90 días. Una reseña de hace dos años vale mucho menos que una de la semana pasada.</p>
+
+    <p>Esto significa que si tu competidor tiene 200 reseñas pero la última fue hace 6 meses, y tú tienes 50 reseñas con 4 nuevas este mes — <strong>estás ganando en el factor de recencia</strong>.</p>
+
+    <p>Meta práctica: <strong>al menos 1 reseña nueva por semana</strong>. Eso son 4 por mes, 48 por año — más que suficiente para mantenerte activo en el algoritmo.</p>
+
+    <h2>¿Cuánto Tiempo Me Va a Tomar Superar a Mi Competidor?</h2>
+    <p>Depende de cuántas reseñas de desventaja llevas. Esta tabla te da una estimación realista:</p>
+
+    <table class="gap-table">
+      <thead>
+        <tr>
+          <th>Tu brecha actual</th>
+          <th>Estrategia</th>
+          <th>Tiempo estimado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0–20 reseñas detrás</td>
+          <td>Pide 2–3 reseñas por semana activamente</td>
+          <td class="gap-easy">60–90 días</td>
+        </tr>
+        <tr>
+          <td>21–75 reseñas detrás</td>
+          <td>Campaña de reseñas + recordatorios por SMS</td>
+          <td class="gap-medium">4–8 meses</td>
+        </tr>
+        <tr>
+          <td>76+ reseñas detrás</td>
+          <td>Sistema automatizado + foco en recencia para compensar</td>
+          <td class="gap-hard">9–18 meses</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>La buena noticia: no tienes que igualar el número para ganar en ranking. Si tu competidor tiene 300 reseñas pero las últimas son de hace 4 meses, y tú tienes 80 con 3 nuevas por semana — en 60 días puedes estar por encima.</p>
+
+    <h2>Cómo Pedir Reseñas Sin Que Sea Incómodo</h2>
+    <p>El error que cometen la mayoría de los negocios: esperar a que los clientes satisfechos actúen solos. La tasa de conversión espontánea es menos del 5%. Con un proceso activo, sube a 20–35%.</p>
+
+    <p>El proceso más simple que funciona:</p>
+    <ol>
+      <li><strong>Inmediatamente después del servicio</strong> — mientras el cliente sigue contigo, di: "Si estuvo satisfecho con el trabajo, me ayudaría mucho una reseña en Google. Le puedo enviar el link directo ahora."</li>
+      <li><strong>SMS 2 horas después</strong> — "Hola [nombre], gracias por confiar en nosotros hoy. Si tiene 2 minutos, aquí está el link directo para dejarnos su opinión: [link de reseña]"</li>
+      <li><strong>Email de seguimiento (opcional)</strong> — 24 horas después si no dejó reseña por SMS.</li>
+    </ol>
+
+    <p>Nada de esto viola las reglas de Google, siempre y cuando no ofrezcas incentivos a cambio de reseñas positivas.</p>
+
+    <h2>Qué Hacer Cuando Recibes una Reseña Negativa</h2>
+    <p>Primero: respira. Una reseña negativa manejada correctamente en público puede ganar más confianza que 10 reseñas positivas sin respuesta.</p>
+    <ul>
+      <li>Responde en menos de 24 horas</li>
+      <li>No te defiendas ni des excusas en la respuesta pública</li>
+      <li>Reconoce la experiencia, ofrece resolver el problema fuera de línea</li>
+      <li>Termina con tu contacto directo: "Llámenos al [número] para resolver esto juntos"</li>
+    </ul>
+
+    <p>Si quieres entender el sistema completo de reputación, ve a: <a href="/es/services/reputation-management/">Gestión de Reputación en Miami</a>.</p>
+
+    <p>¿Todavía no tienes tu Google Business Profile optimizado? Lee primero: <a href="/es/blog/why-miami-local-businesses-lose-to-competitors/">Por Qué Tu Negocio No Aparece en Google Maps</a>.</p>
+
+    <div class="cta-box">
+      <h2>¿Cuántas Reseñas Necesitas Tú Específicamente?</h2>
+      <p>Analizamos tu perfil y el de tus 3 principales competidores — y te decimos exactamente la brecha y el tiempo para cerrarla.</p>
+      <a href="/es/contact/" class="btn btn-blue">Pedir Análisis Gratuito</a>
+    </div>
+
+    <h2>Preguntas Frecuentes</h2>
+
+    <h3>¿Puedo pedirle a amigos o familiares que dejen reseñas?</h3>
+    <p>No es recomendable. Google detecta patrones inusuales — perfiles sin historial, múltiples reseñas desde la misma red Wi-Fi, reseñas en masa en un período corto. El riesgo es que eliminen todas tus reseñas o suspendan el perfil.</p>
+
+    <h3>¿Google elimina reseñas negativas si las reporto?</h3>
+    <p>Solo si violan las políticas de Google (spam, lenguaje ofensivo, reseña de alguien que nunca fue cliente). Una reseña negativa real, aunque injusta, generalmente no puede ser eliminada. Lo mejor es responder bien.</p>
+
+    <h3>¿Cuántas reseñas necesito para aparecer en el Pack de 3?</h3>
+    <p>No hay un número mínimo. El Pack de 3 depende de múltiples factores — señales del perfil, proximidad y reseñas combinadas. Hemos visto perfiles con 15 reseñas en el Pack y perfiles con 400 fuera de él. La calidad y recencia importan más que el volumen.</p>
+
+    <h3>¿Debo responder a todas las reseñas positivas?</h3>
+    <p>Sí — idealmente. Responder a reseñas positivas le señala a Google que el perfil está activo y que el dueño está comprometido. Basta con una respuesta breve y personalizada.</p>
+  </div>
+</BaseLayout>

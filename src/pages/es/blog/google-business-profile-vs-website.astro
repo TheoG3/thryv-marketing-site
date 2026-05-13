@@ -1,0 +1,232 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Google Business Profile vs Sitio Web: ¿Cuál Trae Más Clientes para Tu Negocio Local?";
+const description = "Para negocios locales en Miami, Google Business Profile genera más llamadas que un sitio web. Pero no tienes que elegir — aquí te explicamos cómo usar los dos juntos.";
+const canonical = "https://thryvmarketingsolutions.com/es/blog/google-business-profile-vs-website/";
+---
+
+<BaseLayout {title} {description} {canonical} lang="es">
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #0a0f1e 0%, #1a2540 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .blog-hero .label {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      max-width: 780px;
+      margin: 0 auto 18px;
+      line-height: 1.25;
+    }
+    .blog-hero .meta { color: rgba(255,255,255,.55); font-size: 14px; }
+    .blog-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      font-size: 1.07rem;
+      line-height: 1.78;
+      color: var(--text);
+    }
+    .blog-body h2 { font-size: 1.45rem; font-weight: 800; color: var(--navy); margin: 2.4rem 0 .9rem; }
+    .blog-body h3 { font-size: 1.15rem; font-weight: 700; color: var(--navy); margin: 1.8rem 0 .6rem; }
+    .blog-body p { margin: 0 0 1.2rem; }
+    .blog-body a:not(.btn) { color: var(--blue); text-decoration: underline; }
+    .blog-body a:not(.btn):hover { opacity: .8; }
+    .blog-body ul, .blog-body ol { padding-left: 1.5rem; margin: 0 0 1.2rem; }
+    .blog-body li { margin-bottom: .5rem; }
+    .callout {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 2rem 0;
+      font-size: .98rem;
+    }
+    .callout strong { color: var(--blue); }
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: .95rem; }
+    .compare-table th { background: var(--navy); color: #fff; padding: 12px 16px; text-align: left; font-weight: 700; }
+    .compare-table td { padding: 11px 16px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    .compare-table tr:nth-child(even) td { background: #f8fafc; }
+    .compare-table .col-gbp { color: var(--blue); font-weight: 700; }
+    /* Donut chart placeholder — pure CSS */
+    .donut-wrap { display: flex; align-items: center; gap: 32px; margin: 2rem 0; flex-wrap: wrap; }
+    .donut-legend { flex: 1; min-width: 180px; }
+    .legend-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: .92rem; }
+    .legend-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
+    .legend-row strong { margin-left: auto; font-size: .98rem; }
+    .chart-source { font-size: .78rem; color: #888; margin-top: 6px; }
+    /* CTA box */
+    .cta-box {
+      background: linear-gradient(135deg, #0a0f1e, #1a2540);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+    .cta-box h2 { color: #fff; margin: 0 0 12px; font-size: 1.5rem; }
+    .cta-box p { color: rgba(255,255,255,.75); margin: 0 0 22px; }
+    /* Visual donut using conic-gradient */
+    .donut-svg-wrap { position: relative; width: 160px; height: 160px; flex-shrink: 0; }
+    .donut-ring {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: conic-gradient(
+        #1d4ed8 0% 50%,
+        #60a5fa 50% 74%,
+        #93c5fd 74% 94%,
+        #bfdbfe 94% 100%
+      );
+      position: relative;
+    }
+    .donut-hole {
+      position: absolute;
+      top: 30px; left: 30px;
+      width: 100px; height: 100px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
+    }
+    .donut-hole span { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .donut-hole small { font-size: 10px; color: #666; }
+  </style>
+
+  <section class="blog-hero">
+    <span class="label">Google Business Profile</span>
+    <h1>Google Business Profile vs Sitio Web:<br>¿Cuál Trae Más Clientes?</h1>
+    <p class="meta">Thryv Marketing Solutions &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; 7 min de lectura</p>
+  </section>
+
+  <div class="blog-body">
+    <p>Si tienes un negocio local en Miami — una plomería, un salón, un restaurante, un taller — probablemente te has preguntado: <em>¿Debo invertir en un sitio web profesional o en optimizar mi perfil de Google?</em></p>
+
+    <p>La respuesta corta: <strong>Google Business Profile genera más llamadas directas</strong> para la mayoría de los negocios locales. Pero eso no significa que el sitio web no importa.</p>
+
+    <h2>De Dónde Vienen Realmente las Llamadas</h2>
+    <p>Analizamos datos de clientes locales de servicios y esto es lo que encontramos, consistente con lo que reporta <a href="https://searchlab.com" target="_blank" rel="noopener noreferrer">SearchLab 2026</a>:</p>
+
+    <div class="donut-wrap">
+      <div class="donut-svg-wrap">
+        <div class="donut-ring"></div>
+        <div class="donut-hole">
+          <span>100%</span>
+          <small>de llamadas</small>
+        </div>
+      </div>
+      <div class="donut-legend">
+        <div class="legend-row"><span class="legend-dot" style="background:#1d4ed8"></span> Google Business Profile <strong>50%</strong></div>
+        <div class="legend-row"><span class="legend-dot" style="background:#60a5fa"></span> Google Ads <strong>24%</strong></div>
+        <div class="legend-row"><span class="legend-dot" style="background:#93c5fd"></span> Sitio web orgánico <strong>20%</strong></div>
+        <div class="legend-row"><span class="legend-dot" style="background:#bfdbfe"></span> Otros (redes, referidos) <strong>6%</strong></div>
+        <p class="chart-source">Fuente: SearchLab 2026, negocios de servicios locales</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Estadística clave:</strong> El 76% de las personas que buscan un negocio local en su teléfono <strong>llaman dentro de las 24 horas</strong>. Y la mayoría llama directamente desde el perfil de Google, sin visitar ningún sitio web. (Think with Google)
+    </div>
+
+    <h2>¿Qué Hace Cada Uno Mejor?</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Google Business Profile</th>
+          <th>Sitio Web</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Trabajo principal</strong></td>
+          <td class="col-gbp">Aparecer cuando te buscan</td>
+          <td>Convencer cuando te encuentran</td>
+        </tr>
+        <tr>
+          <td><strong>Cuándo gana</strong></td>
+          <td class="col-gbp">Búsquedas "cerca de mí", emergencias, decisión rápida</td>
+          <td>Servicios de mayor valor, decisiones más lentas</td>
+        </tr>
+        <tr>
+          <td><strong>Acción principal</strong></td>
+          <td class="col-gbp">Llamada directa, cómo llegar, mensaje</td>
+          <td>Llenar formulario, leer, comparar</td>
+        </tr>
+        <tr>
+          <td><strong>Costo</strong></td>
+          <td class="col-gbp">Gratis (requiere tiempo de optimización)</td>
+          <td>$1,500–$8,000+ inicial + mantenimiento</td>
+        </tr>
+        <tr>
+          <td><strong>Velocidad de resultado</strong></td>
+          <td class="col-gbp">60–90 días con optimización activa</td>
+          <td>6–12 meses para SEO orgánico sólido</td>
+        </tr>
+        <tr>
+          <td><strong>Refuerza al otro</strong></td>
+          <td class="col-gbp">Sí — el sitio web refuerza la autoridad del perfil</td>
+          <td>Sí — el perfil manda tráfico al sitio</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>El Error Más Común: Solo Tener Sitio Web</h2>
+    <p>Muchos dueños de negocios en Miami invierten $3,000–$6,000 en un sitio web profesional y luego esperan que lleguen clientes. Pero si su perfil de Google está desactualizado, sin fotos, sin reseñas recientes — la mayoría de los clientes potenciales nunca llegan al sitio.</p>
+
+    <p>El sitio web es el destino. El perfil de Google es el camino.</p>
+
+    <h2>¿Y Si Solo Puedo Hacer Una Cosa?</h2>
+    <p>Si tienes recursos limitados de tiempo o dinero, prioriza esto en este orden:</p>
+    <ol>
+      <li><strong>Optimiza tu Google Business Profile</strong> — fotos, descripción, horas, categorías, y un sistema para pedir reseñas. Esto es lo que más impacto inmediato tiene.</li>
+      <li><strong>Sitio web básico pero rápido</strong> — no necesita ser elaborado. Una página que cargue rápido, explique qué haces, para quién, y dónde, con un botón de llamada.</li>
+      <li><strong>Reseñas consistentes</strong> — una reseña nueva por semana supera a la mayoría de la competencia local en 6 meses.</li>
+    </ol>
+
+    <h2>Cómo Funciona el Sistema Juntos</h2>
+    <p>El perfil de Google atrae la atención → el cliente hace clic → si quiere más información, visita el sitio → el sitio lo convence → llama o llena el formulario.</p>
+
+    <p>Para negocios donde la decisión es rápida (plomero de emergencia, restaurante cerca, peluquería con disponibilidad), el cliente salta directo al teléfono desde el perfil. Para servicios de mayor valor (remodelación, asesoría legal, diseño), el sitio web cierra la venta.</p>
+
+    <p>Lee más sobre cómo optimizar tu perfil: <a href="/es/services/google-business-profile/">Servicio de Optimización de Google Business Profile</a>.</p>
+
+    <p>¿Quieres saber exactamente cómo te comparas con tu competencia en Google Maps? Lee: <a href="/es/blog/why-miami-local-businesses-lose-to-competitors/">Por Qué Tu Negocio No Aparece en Google Maps</a>.</p>
+
+    <div class="cta-box">
+      <h2>¿Quieres Saber Cómo Está Tu Perfil de Google Ahora?</h2>
+      <p>Auditoría gratuita: analizamos tu GBP, tus reseñas, tu sitio web, y te decimos exactamente qué está fallando.</p>
+      <a href="/es/contact/" class="btn btn-blue">Pedir Auditoría Gratis</a>
+    </div>
+
+    <h2>Preguntas Frecuentes</h2>
+
+    <h3>¿Necesito un sitio web si ya tengo Google Business Profile?</h3>
+    <p>Para muchos negocios locales, el perfil de Google solo alcanza para generar llamadas. Pero un sitio web refuerza tu credibilidad, te da más control sobre tu imagen, y captura clientes que quieren investigar antes de llamar.</p>
+
+    <h3>¿Puedo tener Google Business Profile sin dirección física?</h3>
+    <p>Sí. Negocios que atienden a clientes a domicilio pueden crear un perfil de área de servicio sin mostrar una dirección pública.</p>
+
+    <h3>¿Cuánto tarda en verse el resultado de optimizar el GBP?</h3>
+    <p>La mayoría de los negocios ven mejora visible en 60–90 días. Las reseñas nuevas tienen efecto más rápido — a veces en 2–3 semanas.</p>
+
+    <h3>¿Google Business Profile funciona en español?</h3>
+    <p>Sí, y en Miami es una ventaja competitiva real. Puedes tener tu descripción, servicios y posts en español, lo que te posiciona para búsquedas en español que tus competidores ignoran. Aprende más sobre <a href="/es/blog/bilingual-seo-miami/">SEO bilingüe para Miami</a>.</p>
+  </div>
+</BaseLayout>

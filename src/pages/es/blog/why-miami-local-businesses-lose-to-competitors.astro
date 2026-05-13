@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const title = "Por Qué Tu Negocio No Aparece en Google Maps (Aunque Sea Mejor Que la Competencia)";
+const description = "Google no clasifica al mejor negocio — clasifica al más optimizado. Descubre los 5 errores que hacen que negocios de Miami pierdan clientes frente a competidores inferiores.";
+const canonical = "https://thryvmarketingsolutions.com/es/blog/why-miami-local-businesses-lose-to-competitors/";
+---
+
+<BaseLayout {title} {description} {canonical} lang="es">
+  <style>
+    .blog-hero {
+      background: linear-gradient(135deg, #0a0f1e 0%, #1a2540 100%);
+      padding: 80px 24px 60px;
+      text-align: center;
+    }
+    .blog-hero .label {
+      display: inline-block;
+      background: var(--blue-light);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+    .blog-hero h1 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      max-width: 780px;
+      margin: 0 auto 18px;
+      line-height: 1.25;
+    }
+    .blog-hero .meta {
+      color: rgba(255,255,255,.55);
+      font-size: 14px;
+    }
+    .blog-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+      font-size: 1.07rem;
+      line-height: 1.78;
+      color: var(--text);
+    }
+    .blog-body h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 2.4rem 0 .9rem;
+    }
+    .blog-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 1.8rem 0 .6rem;
+    }
+    .blog-body p { margin: 0 0 1.2rem; }
+    .blog-body a:not(.btn) { color: var(--blue); text-decoration: underline; }
+    .blog-body a:not(.btn):hover { opacity: .8; }
+    .blog-body ul, .blog-body ol { padding-left: 1.5rem; margin: 0 0 1.2rem; }
+    .blog-body li { margin-bottom: .5rem; }
+    .callout {
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 2rem 0;
+      font-size: .98rem;
+    }
+    .callout strong { color: var(--blue); }
+    /* Signals chart */
+    .signals-chart { margin: 2rem 0; }
+    .signal-row { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .signal-label { min-width: 200px; font-size: .9rem; font-weight: 600; color: var(--navy); }
+    .signal-bar-wrap { flex: 1; background: #e8edf5; border-radius: 20px; height: 20px; position: relative; }
+    .signal-bar { height: 100%; border-radius: 20px; background: var(--blue); }
+    .signal-bar.mid { background: #4a9eff; }
+    .signal-bar.low { background: #a0c4ff; }
+    .signal-pct { font-size: .88rem; font-weight: 700; color: var(--navy); min-width: 38px; text-align: right; }
+    .chart-source { font-size: .78rem; color: #888; margin-top: 6px; }
+    /* Mistakes */
+    .mistake-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin: 1.5rem 0;
+    }
+    .mistake-card .num {
+      display: inline-block;
+      width: 32px; height: 32px;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 32px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .mistake-card h3 { margin: 0 0 8px; }
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, #0a0f1e, #1a2540);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+    .cta-box h2 { color: #fff; margin: 0 0 12px; font-size: 1.5rem; }
+    .cta-box p { color: rgba(255,255,255,.75); margin: 0 0 22px; }
+  </style>
+
+  <section class="blog-hero">
+    <span class="label">SEO Local Miami</span>
+    <h1>Por Qué Tu Negocio No Aparece en Google Maps<br>(Aunque Sea Mejor Que la Competencia)</h1>
+    <p class="meta">Thryv Marketing Solutions &nbsp;·&nbsp; Mayo 2026 &nbsp;·&nbsp; 8 min de lectura</p>
+  </section>
+
+  <div class="blog-body">
+    <p>Esta es la pregunta que escuchamos todas las semanas de dueños de negocios en Miami: <em>"¿Por qué mi competidor aparece primero si yo llevo más años, tengo mejores precios y mis clientes están más satisfechos?"</em></p>
+
+    <p>La respuesta incómoda: Google no clasifica al mejor negocio. Clasifica al <strong>negocio más optimizado</strong>.</p>
+
+    <p>No es justo. Pero cuando entiendes exactamente cómo funciona el algoritmo, puedes usarlo a tu favor.</p>
+
+    <h2>Cómo Decide Google Quién Aparece Primero</h2>
+    <p>El algoritmo del Mapa de Google usa cuatro señales principales. Esto es lo que pesan según <a href="https://whitespark.ca/local-search-ranking-factors/" target="_blank" rel="noopener noreferrer">Whitespark Local Search Ranking Factors 2025</a>:</p>
+
+    <div class="signals-chart">
+      <div class="signal-row">
+        <span class="signal-label">Señales de Google Business</span>
+        <div class="signal-bar-wrap"><div class="signal-bar" style="width:72%"></div></div>
+        <span class="signal-pct">36%</span>
+      </div>
+      <div class="signal-row">
+        <span class="signal-label">Reseñas</span>
+        <div class="signal-bar-wrap"><div class="signal-bar mid" style="width:44%"></div></div>
+        <span class="signal-pct">22%</span>
+      </div>
+      <div class="signal-row">
+        <span class="signal-label">Señales On-Page (sitio web)</span>
+        <div class="signal-bar-wrap"><div class="signal-bar mid" style="width:34%"></div></div>
+        <span class="signal-pct">17%</span>
+      </div>
+      <div class="signal-row">
+        <span class="signal-label">Citas y directorios</span>
+        <div class="signal-bar-wrap"><div class="signal-bar low" style="width:26%"></div></div>
+        <span class="signal-pct">13%</span>
+      </div>
+      <p class="chart-source">Fuente: Whitespark Local Search Ranking Factors 2025</p>
+    </div>
+
+    <p>Las señales de Google Business Profile y las reseñas juntas representan el <strong>58% del ranking</strong>. Si tienes esas dos áreas abandonadas, no importa qué tan bueno sea tu servicio.</p>
+
+    <h2>Los 5 Errores Que Hacen Perder Clientes (Sin Que Lo Sepas)</h2>
+
+    <div class="mistake-card">
+      <span class="num">1</span>
+      <h3>Perfil de Google Business inactivo</h3>
+      <p>Un perfil sin fotos recientes, sin horas actualizadas y sin posts en meses le dice a Google que el negocio no está activo. El algoritmo penaliza la inactividad. Los competidores que publican una vez por semana — aunque sea algo simple — suben posiciones.</p>
+    </div>
+
+    <div class="mistake-card">
+      <span class="num">2</span>
+      <h3>Reseñas viejas o sin respuesta</h3>
+      <p>Google valora la <strong>recencia</strong>. Una reseña de 2022 pesa menos que una de la semana pasada. Si tu último review tiene 8 meses, un competidor con reviews de este mes te está pasando por encima — aunque tenga menos en total.</p>
+      <p>Además, no responder a reseñas (ni positivas ni negativas) es una oportunidad perdida de señalarle a Google que eres un negocio activo y comprometido.</p>
+    </div>
+
+    <div class="mistake-card">
+      <span class="num">3</span>
+      <h3>NAP inconsistente entre directorios</h3>
+      <p>NAP = Nombre, Dirección, Teléfono. Si en Google eres "Plomería Rodríguez LLC" pero en Yelp eres "Plomeria Rodriguez" (sin tilde, sin LLC), Google no puede confirmar con certeza que son el mismo negocio. Esa inconsistencia baja tu confianza de dominio local.</p>
+    </div>
+
+    <div class="mistake-card">
+      <span class="num">4</span>
+      <h3>Sitio web sin señales locales</h3>
+      <p>¿Tu sitio menciona "Miami" en el título de la página? ¿En el H1? ¿En el texto? ¿Tienes una página separada para cada servicio con la ciudad incluida? Si no, le estás dejando el 17% de señales on-page a cero.</p>
+    </div>
+
+    <div class="mistake-card">
+      <span class="num">5</span>
+      <h3>No pides reseñas de forma sistemática</h3>
+      <p>La mayoría de negocios confían en que los clientes satisfechos dejen reseñas solos. Pero la tasa de conversión espontánea es de menos del 5%. Con un sistema simple de seguimiento post-servicio — un mensaje de texto, un email, un código QR — esa tasa sube a 20-35%.</p>
+    </div>
+
+    <div class="callout">
+      <strong>Dato clave:</strong> El 80% de los clics del Mapa de Google van a los primeros 3 resultados (el "Pack de 3"). Si no estás ahí, prácticamente eres invisible para los clientes que buscan en el mapa.
+    </div>
+
+    <h2>Por Qué Miami Es Diferente</h2>
+    <p>Miami tiene una particularidad: una gran parte de la población busca en español. Términos como "plomero cerca de mí", "dentista en Hialeah" o "abogado de accidentes Miami" tienen volumen de búsqueda real — y la mayoría de los negocios locales no tienen su perfil optimizado en español.</p>
+
+    <p>Eso es una ventaja competitiva disponible ahora mismo para cualquier negocio que quiera tomarla. Aprende más sobre <a href="/es/blog/bilingual-seo-miami/">SEO bilingüe para negocios de Miami</a>.</p>
+
+    <h2>Qué Puedes Hacer Esta Semana</h2>
+    <ol>
+      <li>Abre tu Google Business Profile y actualiza las fotos (mínimo 5 fotos recientes)</li>
+      <li>Responde todas las reseñas sin responder — positivas y negativas</li>
+      <li>Verifica que tu NAP sea idéntico en Google, Yelp y Facebook</li>
+      <li>Agrega la ciudad y el servicio al título de tu página principal</li>
+      <li>Esta semana, después de cada trabajo terminado: envía un mensaje de texto con el link directo a tus reseñas</li>
+    </ol>
+
+    <p>Si quieres entender cuántas reseñas necesitas para superar a tu competencia, lee: <a href="/es/blog/how-many-reviews-to-beat-competition/">¿Cuántas Reseñas Necesito para Ganarle a la Competencia?</a></p>
+
+    <p>Y si quieres que lo hagamos por ti: <a href="/es/services/google-business-profile/">optimización completa de Google Business Profile</a> y <a href="/es/services/seo/">SEO local en Miami</a>.</p>
+
+    <div class="cta-box">
+      <h2>¿Quieres Saber Dónde Está Tu Negocio Ahora Mismo?</h2>
+      <p>Hacemos una auditoría gratuita de tu presencia local en Google — sin compromiso, sin contrato.</p>
+      <a href="/es/contact/" class="btn btn-blue">Solicitar Auditoría Gratis</a>
+    </div>
+
+    <h2>Preguntas Frecuentes</h2>
+
+    <h3>¿Cuánto tiempo tarda en mejorar mi posición en Google Maps?</h3>
+    <p>La mayoría de los negocios ven movimiento visible en 60-90 días con optimización activa. Las reseñas recientes tienen efecto más rápido — a veces en 2-3 semanas.</p>
+
+    <h3>¿Necesito pagar por Google Ads para aparecer en el mapa?</h3>
+    <p>No. Las posiciones orgánicas del Mapa de Google no se compran con publicidad. Son 100% el resultado de optimización y señales de confianza.</p>
+
+    <h3>¿Por qué mi competidor tiene menos reseñas pero aparece más arriba?</h3>
+    <p>Puede ser por recencia (sus reseñas son más nuevas), por actividad en el perfil, o por señales en su sitio web. El número total de reseñas importa, pero no es el único factor.</p>
+
+    <h3>¿Funciona el SEO local si tengo un negocio a domicilio?</h3>
+    <p>Sí. Google Business Profile tiene una categoría específica para negocios que atienden a clientes en sus ubicaciones. Puedes ocultar tu dirección y definir el área de servicio.</p>
+  </div>
+</BaseLayout>
