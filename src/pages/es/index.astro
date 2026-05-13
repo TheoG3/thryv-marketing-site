@@ -1,0 +1,537 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const services = [
+  { icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'Google Business Profile', desc: 'Aparece en Google Maps antes que tu competencia. Gestión completa del perfil, publicaciones, fotos y preguntas y respuestas.', price: 'Desde $199/mes', slug: 'google-business-profile' },
+  { icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Gestión de Reputación', desc: 'Más reseñas de 5 estrellas en piloto automático. Solicitudes automáticas, monitoreo y gestión de respuestas.', price: 'Desde $99/mes', slug: 'reputation-management' },
+  { icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'SEO Local', desc: 'Que te encuentren los clientes que buscan exactamente tu servicio en tu vecindario.', price: 'Desde $999/mes', slug: 'seo' },
+  { icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Diseño Web', desc: 'Sitios web limpios, rápidos y optimizados para móvil, construidos para convertir visitantes en clientes.', price: 'Desde $2,500', slug: 'website-design' },
+  { icon: `<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>`, title: 'Google Ads', desc: 'Campañas de búsqueda para intención local. Publicidad que te pone frente a compradores listos para actuar.', price: 'Consulta disponibilidad', slug: 'google-ads' },
+  { icon: `<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>`, title: 'Anuncios en Redes Sociales', desc: 'Anuncios en Instagram y Facebook dirigidos a personas en tu código postal antes de que busquen en Google.', price: 'Consulta disponibilidad', slug: 'social-media-ads' },
+];
+---
+
+<BaseLayout
+  title="Thryv Marketing Solutions | Agencia de Marketing para Negocios en Miami"
+  description="Agencia de marketing local basada en Miami. SEO local, Google Ads, gestión de reputación y diseño web con IA. Mes a mes, sin contratos. Auditoría gratis."
+  canonical="https://thryvmarketingsolutions.com/es/"
+  ogImage="https://thryvmarketingsolutions.com/og-home.jpg"
+  lang="es"
+>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span></span> Agencia de Marketing Local en Miami
+        </div>
+        <h1>
+          La Agencia que Se Gana<br />
+          tu Negocio<br />
+          <em>Cada Mes.</em>
+        </h1>
+        <p class="hero-sub">
+          Sin contratos de 12 meses. Sin tarifas ocultas. Sin ejecutivos júnior.
+          Marketing local con IA, resultados visibles y facturación que puedes cancelar cuando quieras.
+        </p>
+        <div class="hero-actions">
+          <a href="/es/contact/" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Auditoría Gratis
+          </a>
+          <a href="/pricing/" class="btn btn-outline">Ver Precios</a>
+        </div>
+        <div class="hero-pills">
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Mes a mes, siempre
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            Reportes mensuales de resultados
+          </div>
+          <div class="hero-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Automatización con IA incluida
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-label">Lo que Medimos</div>
+          <div class="hero-card-metric" style="font-size:22px;line-height:1.3;">Posiciones. Reseñas. Ingresos.</div>
+          <div class="hero-card-sub" style="margin-top:6px;">Cada reporte conecta el trabajo realizado con resultados reales, no métricas de vanidad.</div>
+        </div>
+        <div class="hero-cards-row">
+          <div class="hero-card">
+            <div class="hero-card-label">Facturación</div>
+            <div class="hero-card-metric">Mes<br />a Mes</div>
+            <div class="hero-card-sub">Sin contratos largos. Nunca.</div>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-label">Tecnología</div>
+            <div class="hero-card-metric">IA Primero</div>
+            <div class="hero-card-sub">Automatización que trabaja mientras duermes.</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label">Nuestra Promesa</div>
+          <div class="hero-card-metric" style="font-size:22px;line-height:1.3;">Sin compromisos. Sin sorpresas. Cancela cuando quieras.</div>
+          <div class="hero-card-sub" style="margin-top:8px;">A diferencia de Scorpion, Hibu y Podium: nos ganamos tu negocio cada mes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-desc">Servicios que generan ingresos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Contratos de permanencia. Nunca.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-desc">Tarifas ocultas. Nunca.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24/7</div>
+        <div class="stat-desc">Automatización IA. Nunca descansa.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES PREVIEW -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="label">Lo que Hacemos</div>
+      <h2>Seis Servicios. Un Objetivo:<br />Más Ingresos para tu Negocio.</h2>
+      <p class="lead">Nos enfocamos solo en los canales que generan retornos reales y medibles. Sin relleno. Sin ventas adicionales que no necesitas.</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <a href={`/services/${s.slug}/`} class={`service-card reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" set:html={s.icon} />
+          </div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <div class="service-footer">
+            <div class="service-price">{s.price}</div>
+            <span class="service-link">Ver más <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="section-cta reveal">
+      <a href="/services/" class="btn btn-blue">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Ver Todos los Servicios
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING STRIP -->
+<div class="consulting-strip">
+  <div class="container">
+    <div class="cs-inner">
+      <p class="cs-text"><strong>¿Quieres estrategia sin un contrato mensual?</strong> Nuestras consultorías te dan un plan claro de SEO o IA para ejecutar tú mismo. Una sesión, sin compromiso mensual.</p>
+      <a href="/consulting/" class="cs-link">Explorar Consultoría <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- AI TOOLS PREVIEW -->
+<section class="section ai-section" id="ai-services">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="section-head center ai-head reveal">
+      <div class="label" style="background:rgba(27,79,168,.15);color:#7EB3FF;">Complementos con IA</div>
+      <h2>Automatización de Marketing<br />que Nunca Descansa</h2>
+      <p class="lead center" style="color:rgba(255,255,255,.6);">Herramientas de IA que manejan tus llamadas, chats, seguimientos y reseñas las 24 horas, para que captures clientes potenciales estés abierto o no.</p>
+    </div>
+    <div class="ai-teaser-grid">
+      <div class="ai-teaser-card reveal reveal-delay-1">
+        <div class="ai-badge">Cobertura 24/7</div>
+        <h3>Recepcionista Telefónico con IA</h3>
+        <p>Responde cada llamada entrante, califica prospectos, agenda citas y te envía un resumen. En inglés y en español.</p>
+      </div>
+      <div class="ai-teaser-card reveal reveal-delay-2">
+        <div class="ai-badge">Captura de Prospectos</div>
+        <h3>Agente de Chat Web con IA</h3>
+        <p>Un widget de chat inteligente que califica visitantes y te envía los mejores prospectos al instante por mensaje o correo, 24/7.</p>
+      </div>
+      <div class="ai-teaser-card reveal reveal-delay-3">
+        <div class="ai-badge">Velocidad de Respuesta</div>
+        <h3>Seguimiento de Prospectos con IA</h3>
+        <p>Responde a nuevos prospectos en menos de 60 segundos con SMS y correo personalizados. La mayoría de competidores tarda horas.</p>
+      </div>
+      <div class="ai-teaser-card reveal reveal-delay-4">
+        <div class="ai-badge">Reputación</div>
+        <h3>Automatización de Reseñas con IA</h3>
+        <p>Envía solicitudes de reseñas automáticamente después de cada trabajo. Monitorea Google, Yelp y Facebook. Redacta respuestas con un clic.</p>
+      </div>
+    </div>
+    <div class="ai-cta reveal">
+      <a href="/ai/" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Explorar Herramientas de IA
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THRYV -->
+<section class="section why-section" id="why">
+  <div class="container">
+    <div class="section-head center why-head reveal">
+      <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Por qué Thryv</div>
+      <h2>Hacemos lo que las Grandes Agencias No Hacen</h2>
+      <p class="lead center" style="color:rgba(255,255,255,.6);">Scorpion, Hibu y Podium esconden sus precios y te encierran por un año. Nosotros no.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Sin Tarifas Ocultas</h3>
+        <p>Lo que ves es lo que pagas. Sin cargos de configuración enterrados en el contrato, sin tarifas de plataforma agregadas después.</p>
+        <div class="vs">vs. Hibu, Scorpion, Podium: todos tienen tarifas ocultas</div>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
+        <h3>Solo Mes a Mes</h3>
+        <p>Sin contratos de 12 meses. Sin penalizaciones por cancelación anticipada. Nos ganamos tu negocio cada mes.</p>
+        <div class="vs">vs. el contrato de SEO de 12 meses de Scorpion</div>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3>Reportes que Puedes Leer</h3>
+        <p>Actualizaciones en lenguaje claro que conectan el trabajo realizado con los resultados de negocio que te importan.</p>
+        <div class="vs">vs. reportes PDF trimestrales que nadie lee</div>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h3>Servicio Bilingüe</h3>
+        <p>Gestionamos campañas, listados y comunicamos con fluidez en inglés y en espa&ntilde;ol.</p>
+        <div class="vs">vs. agencias nacionales sin capacidad bilingüe</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="trust-bar">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-label">Certificados y de Confianza</div>
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          <span>Certificado Google Ads</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          <span>Certificado Meta Blueprint</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Solo Mes a Mes. Sin Contratos.</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Equipo Basado en Miami</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING PREVIEW -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Nuestros Paquetes</div>
+      <h2>Precios que Puedes Ver<br />Sin una Llamada de Ventas</h2>
+      <p class="lead center">Tres niveles. Mes a mes en todos.</p>
+    </div>
+    <div class="pricing-preview-grid">
+      <div class="price-preview-card reveal reveal-delay-1">
+        <div class="price-tier">Starter</div>
+        <div class="price-num">$297<span>/mes</span></div>
+        <div class="price-period">Mes a mes &middot; Sin contratos</div>
+        <ul class="ppf-list">
+          <li>Configuración y optimización de GBP</li>
+          <li>Automatización de solicitudes de reseñas</li>
+          <li>Gestión de respuestas a reseñas</li>
+        </ul>
+        <a href="/pricing/" class="btn btn-blue">Ver Paquete Completo</a>
+      </div>
+      <div class="price-preview-card featured reveal reveal-delay-2">
+        <div class="popular-badge">Más Popular</div>
+        <div class="price-tier">Growth</div>
+        <div class="price-num">$797<span>/mes</span></div>
+        <div class="price-period">Mes a mes &middot; Sin contratos</div>
+        <ul class="ppf-list">
+          <li>Todo lo del Starter</li>
+          <li>SEO local: on-page y citaciones</li>
+          <li>Llamada de estrategia mensual</li>
+        </ul>
+        <a href="/pricing/" class="btn btn-primary">Ver Paquete Completo</a>
+      </div>
+      <div class="price-preview-card reveal reveal-delay-3">
+        <div class="price-tier">Pro</div>
+        <div class="price-num">$1,497<span>/mes</span></div>
+        <div class="price-period">Mes a mes &middot; Sin contratos</div>
+        <ul class="ppf-list">
+          <li>Todo lo del Growth</li>
+          <li>Gestión de Google Ads</li>
+          <li>Anuncios en Instagram y Facebook</li>
+        </ul>
+        <a href="/pricing/" class="btn btn-blue">Ver Paquete Completo</a>
+      </div>
+    </div>
+    <div class="section-cta reveal">
+      <a href="/pricing/" class="btn btn-outline-dark">
+        Comparar Todos los Paquetes en Detalle
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="section" id="about" style="background:var(--light);">
+  <div class="container">
+    <div class="about-preview-grid">
+      <div class="about-preview-image reveal">
+        <div class="founder-photo-wrap">
+          <img src="/founder-theodore-grimes.jpg" alt="Theodore Grimes, Fundador de Thryv Marketing Solutions" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="founder-creds">
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            Certificado Google Ads
+          </span>
+          <span class="founder-cred">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            Certificado Meta Blueprint
+          </span>
+        </div>
+      </div>
+      <div class="about-preview-content reveal reveal-delay-2">
+        <div class="label">Conoce al Fundador</div>
+        <h2>Construido porque los Negocios Locales Merecen Algo Mejor</h2>
+        <p>Fundé Thryv porque veía constantemente cómo grandes negocios locales eran eclipsados por competidores que no eran mejores. Solo tenían mejor marketing. Una agencia grande cobra una tarifa enorme, asigna un ejecutivo junior y entrega un reporte trimestral que dice "las impresiones subieron."</p>
+        <p>Cada cliente trabaja directamente conmigo. Cada estrategia se construye desde cero para tu mercado, tu competencia y tus objetivos.</p>
+        <div class="founder-quote">"La mayoría de agencias venden entregables. Yo vendo resultados. Esa distinción cambia cada decisión que tomamos."</div>
+        <a href="/about/" class="btn btn-blue" style="margin-top:28px;">
+          Conocer al Equipo
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Auditoría Gratis</div>
+        <h2>Veamos lo que te Estás Perdiendo.</h2>
+        <p class="lead">Cuéntanos sobre tu negocio. Revisamos tu presencia local y te enviamos un análisis claro y directo. Sin costo. Sin presión.</p>
+        <p style="margin-top:14px;font-size:15px;font-weight:600;color:var(--orange);">Hablamos espa&ntilde;ol con gusto. Escríbenos.</p>
+        <div class="contact-details" style="margin-top:40px;">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Escríbenos</strong>
+              <span>hello@thryvmarketingsolutions.com</span>
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Área de Servicio</strong>
+              <span>Negocios locales en todo el país</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <ContactForm />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue-dark) 60%, #1a3a7a 100%);
+    position: relative; overflow: hidden; padding: 100px 0 80px;
+  }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 800px 600px at 70% 50%, rgba(245,166,35,.07) 0%, transparent 70%); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative; z-index: 1; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+  .hero-eyebrow span { display: inline-block; width: 24px; height: 2px; background: var(--orange); border-radius: 2px; }
+  .hero h1 { font-size: clamp(36px, 5vw, 58px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin-bottom: 24px; }
+  .hero h1 em { font-style: normal; color: var(--orange); }
+  .hero-sub { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.72); margin-bottom: 36px; max-width: 480px; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+  .hero-pill { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.8); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 100px; padding: 7px 14px; }
+  .hero-pill svg { color: var(--orange); }
+  .hero-visual { display: flex; flex-direction: column; gap: 16px; }
+  .hero-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); padding: 24px; backdrop-filter: blur(12px); }
+  .hero-card-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .hero-card-metric { font-size: 36px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 4px; }
+  .hero-card-sub { font-size: 13px; color: rgba(255,255,255,.55); }
+  .hero-cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .stats-bar { background: var(--blue); padding: 28px 0; }
+  .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; text-align: center; }
+  .stat-item { padding: 0 24px; border-right: 1px solid rgba(255,255,255,.15); }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-size: 28px; font-weight: 800; color: var(--orange); line-height: 1; margin-bottom: 6px; display: inline-block; }
+  .stat-desc { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.75); line-height: 1.4; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; transition: all .25s; position: relative; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+  .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: background .25s, transform .25s; }
+  .service-icon svg { width: 26px; height: 26px; color: var(--blue); transition: color .25s; }
+  .service-card:hover .service-icon { background: var(--blue); transform: scale(1.1) rotate(-4deg); }
+  .service-card:hover .service-icon svg { color: var(--white); }
+  .service-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .service-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 20px; flex: 1; }
+  .service-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+  .service-price { font-size: 13px; font-weight: 700; color: var(--blue); background: var(--blue-light); display: inline-block; border-radius: 100px; padding: 4px 12px; }
+  .service-link { font-size: 13px; font-weight: 700; color: var(--blue); display: flex; align-items: center; gap: 4px; opacity: 0; transition: opacity .2s; }
+  .service-card:hover .service-link { opacity: 1; }
+  .section-cta { text-align: center; margin-top: 48px; }
+
+  .consulting-strip { background: var(--blue-light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .cs-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .cs-text { font-size: 15px; color: var(--dark); line-height: 1.5; }
+  .cs-text strong { color: var(--blue); font-weight: 700; }
+  .cs-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--blue); white-space: nowrap; flex-shrink: 0; transition: opacity .2s; }
+  .cs-link:hover { opacity: .7; }
+
+  .ai-section { background: linear-gradient(180deg, #06101e 0%, var(--blue-deeper) 100%); position: relative; overflow: hidden; }
+  .ai-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(27,79,168,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(27,79,168,.07) 1px, transparent 1px); background-size: 48px 48px; }
+  .ai-head h2 { color: var(--white); }
+  .ai-teaser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .ai-teaser-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 28px; transition: border-color .3s, background .3s; }
+  .ai-teaser-card:hover { border-color: rgba(27,79,168,.5); background: rgba(27,79,168,.07); }
+  .ai-badge { display: inline-flex; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--orange); background: rgba(245,166,35,.1); border: 1px solid rgba(245,166,35,.2); border-radius: 100px; padding: 3px 10px; margin-bottom: 14px; }
+  .ai-teaser-card h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .ai-teaser-card p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,.5); }
+  .ai-cta { text-align: center; margin-top: 48px; }
+
+  .why-section { background: var(--blue-deeper); }
+  .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 56px; }
+  .why-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 28px; text-align: center; transition: background .25s, transform .25s, box-shadow .25s; }
+  .why-card:hover { background: rgba(255,255,255,.09); transform: translateY(-3px); box-shadow: 0 0 0 1px rgba(245,166,35,.2), 0 8px 32px rgba(0,0,0,.2); }
+  .why-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(245,166,35,.15); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+  .why-icon svg { width: 26px; height: 26px; color: var(--orange); }
+  .why-card h3 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .why-card p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.75); }
+  .why-card .vs { font-size: 12px; font-weight: 700; color: var(--orange); margin-top: 12px; letter-spacing: .06em; }
+  .why-head h2, .why-head .lead { color: var(--white); }
+
+  .trust-bar { background: var(--light); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .trust-inner { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .trust-label { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); white-space: nowrap; }
+  .trust-badges { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; flex: 1; }
+  .trust-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--dark); }
+  .trust-badge svg { width: 16px; height: 16px; color: var(--blue); flex-shrink: 0; }
+  .trust-divider { width: 1px; height: 20px; background: var(--border); }
+
+  .pricing-preview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+  .price-preview-card { background: var(--white); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; transition: transform .25s, box-shadow .25s, border-color .25s; position: relative; }
+  .price-preview-card.featured { border-color: var(--blue); box-shadow: 0 8px 40px rgba(27,79,168,.18); transform: scale(1.03); }
+  .price-preview-card:not(.featured):hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+  .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--blue); color: var(--white); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; border-radius: 100px; padding: 5px 16px; white-space: nowrap; }
+  .price-tier { font-size: 13px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+  .price-num { font-size: 42px; font-weight: 800; color: var(--dark); line-height: 1; margin-bottom: 4px; }
+  .price-num span { font-size: 18px; font-weight: 600; color: var(--gray); }
+  .price-period { font-size: 13px; color: var(--gray); margin-bottom: 20px; }
+  .ppf-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; border-top: 1px solid var(--border); padding-top: 18px; }
+  .ppf-list li { font-size: 13px; color: var(--dark); padding-left: 18px; position: relative; line-height: 1.5; }
+  .ppf-list li::before { content: ''; position: absolute; left: 0; top: 6px; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+  .price-preview-card.featured .ppf-list li::before { background: var(--orange); }
+  .price-preview-card .btn { width: 100%; justify-content: center; }
+  .btn-outline-dark { background: transparent; color: var(--dark); border: 2px solid var(--border); padding: 13px 28px; border-radius: 100px; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: border-color .2s, background .2s; }
+  .btn-outline-dark:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-light); }
+
+  .about-preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-preview-image { position: relative; }
+  .founder-photo-wrap { width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-lg); overflow: hidden; background: linear-gradient(145deg, #1B4FA8 0%, #0F3272 60%, #07193a 100%); box-shadow: var(--shadow-lg); }
+  .founder-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .founder-cred { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; background: var(--white); color: var(--dark); border: 1.5px solid var(--border); border-radius: 100px; padding: 6px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
+  .founder-cred svg { width: 13px; height: 13px; color: var(--blue); flex-shrink: 0; }
+  .about-preview-content h2 { margin-bottom: 20px; }
+  .about-preview-content p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-bottom: 16px; }
+  .founder-quote { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; font-size: 15px; font-style: italic; color: var(--blue-dark); line-height: 1.65; margin-top: 8px; }
+
+  .contact-section { background: var(--blue-deeper); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+  .contact-info h2 { color: var(--white); margin-bottom: 16px; }
+  .contact-info .lead { color: rgba(255,255,255,.65); margin-bottom: 40px; }
+  .contact-details { display: flex; flex-direction: column; gap: 20px; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 14px; }
+  .contact-detail-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(245,166,35,.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-detail-icon svg { width: 20px; height: 20px; color: var(--orange); }
+  .contact-detail-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+  .contact-detail-text span { font-size: 14px; color: rgba(255,255,255,.6); }
+
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .ai-teaser-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .section { padding: 64px 0; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { display: none; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); padding: 12px; }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.1); }
+    .services-grid, .ai-teaser-grid, .why-grid, .pricing-preview-grid { grid-template-columns: 1fr; }
+    .price-preview-card.featured { transform: none; }
+    .about-preview-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-preview-image { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .trust-divider { display: none; }
+  }
+</style>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</BaseLayout>

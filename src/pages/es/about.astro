@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const industries = [
+  { icon: '🍽', label: 'Restaurantes' },
+  { icon: '⚖', label: 'Despachos de Abogados' },
+  { icon: '🔧', label: 'HVAC y Servicios del Hogar' },
+  { icon: '🦷', label: 'Dental y Médico' },
+  { icon: '🏠', label: 'Bienes Raíces' },
+  { icon: '❤', label: 'Organizaciones Sin Fines de Lucro' },
+];
+
+const convictions = [
+  { title: 'Precios Transparentes', body: 'Cada servicio tiene un precio publicado. Sin llamadas de descubrimiento para desbloquear un número. Sin sorpresas en tu primera factura.' },
+  { title: 'Sin Compromisos a Largo Plazo', body: 'Cada servicio gestionado es mes a mes. Sin contratos anuales. Si dejamos de entregar resultados, deberías poder irte. Las consultorías tienen alcance por proyecto; tampoco requieren una tarifa de retención.' },
+  { title: 'Honestidad por Encima del Marketing', body: 'No ofrecemos servicios que no necesitas, no reclamamos crédito por resultados que no generamos, ni nos escondemos detrás de reportes confusos. Comunicación directa, números reales y acceso completo a todo lo que hacemos en tu nombre.' },
+];
+---
+
+<BaseLayout
+  title="Sobre Thryv Marketing Solutions | Agencia de Marketing en Miami"
+  description="Thryv Marketing Solutions es una agencia de marketing digital basada en Miami. Mes a mes, sin contratos, trabajo honesto. Construida para negocios locales que quieren crecimiento real."
+  canonical="https://thryvmarketingsolutions.com/es/about/"
+  ogImage="https://thryvmarketingsolutions.com/og-about.jpg"
+  lang="es"
+>
+
+  <section class="about-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/es/">Inicio</a><span aria-hidden="true"> › </span><span>Nosotros</span>
+      </nav>
+      <span class="label">Nuestra Historia</span>
+      <h1>Hecha en Miami. Enfocada en el Crecimiento.</h1>
+      <p class="lead">Fundamos Thryv porque los negocios locales de Miami merecían algo mejor que contratos de 12 meses, gestores de cuenta offshore y reportes llenos de métricas de vanidad.</p>
+    </div>
+  </section>
+
+  <section class="section story-section">
+    <div class="container">
+      <div class="story-grid reveal">
+        <div class="story-copy">
+          <span class="label">Por qué Existimos</span>
+          <h2>Los Negocios Locales Merecen Algo Mejor</h2>
+          <p>La mayoría de agencias de marketing están construidas para grandes marcas con grandes presupuestos. Los negocios locales de Miami y el sur de Florida han quedado con dos opciones: agencias costosas que los tratan como un pensamiento secundario, o plataformas baratas que automatizan todo y entregan nada.</p>
+          <p style="margin-top:16px;">Thryv Marketing Solutions fue construida para cerrar esa brecha. Usamos las mismas estrategias que generan resultados para marcas empresariales, empaquetadas en servicios enfocados y transparentes que un restaurante local, un despacho de abogados o una clínica dental puede realmente costear y entender.</p>
+          <p style="margin-top:16px;">Cada servicio es mes a mes. Cada precio está publicado. Cada cliente tiene una persona real con quien hablar.</p>
+        </div>
+        <div class="story-card reveal">
+          <video
+            class="founder-video"
+            src="/founder-morph.mp4"
+            muted
+            playsinline
+            preload="auto"
+            aria-label="Theodore Grimes, Fundador de Thryv Marketing Solutions"
+          ></video>
+          <div class="founder-block">
+            <div>
+              <div class="founder-name">Theodore G.</div>
+              <div class="founder-title">Fundador, Thryv Marketing Solutions</div>
+            </div>
+          </div>
+          <blockquote>
+            "Construí Thryv para el dueño de negocio que ha sido quemado por una gran agencia y no sabe en quién confiar. Deberías saber exactamente por qué estás pagando, qué se está haciendo y qué está produciendo."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section convictions-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Lo que Creemos</span>
+        <h2>Tres Convicciones que Impulsan Todo lo que Hacemos</h2>
+      </div>
+      <div class="convictions-grid">
+        {convictions.map((c, i) => (
+          <div class="conviction-card reveal">
+            <div class="conviction-num">{String(i+1).padStart(2,'0')}</div>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section industries-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">A Quiénes Ayudamos</span>
+        <h2>Construido para Negocios Locales, en Cada Industria</h2>
+        <p class="lead center">Si atiendes clientes en el sur de Florida, conocemos tu mercado.</p>
+      </div>
+      <div class="industries-grid">
+        {industries.map(ind => (
+          <div class="industry-card reveal">
+            <span class="ind-icon">{ind.icon}</span>
+            <span class="ind-label">{ind.label}</span>
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:48px;">
+        <a href="/services/" class="btn btn-blue">Ver Todos los Servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2>¿Listo para Hacer Crecer tu Negocio?</h2>
+        <p class="lead">Empieza con una auditoría gratis. Te mostramos exactamente qué está faltando en tu presencia digital y qué hacer al respecto.</p>
+        <a href="/es/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Agendar Auditoría Gratis
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .about-hero { padding: 72px 0 56px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .about-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .about-hero h1 { font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .about-hero .lead { color: rgba(255,255,255,.8); max-width: 600px; font-size: 17px; line-height: 1.7; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; }
+  .breadcrumb a { color: rgba(255,255,255,.55); } .breadcrumb a:hover { color: var(--white); }
+
+  .story-section { background: var(--white); }
+  .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+  .story-copy .label { margin-bottom: 12px; }
+  .story-copy h2 { margin-bottom: 20px; }
+  .story-copy p { font-size: 16px; line-height: 1.78; color: var(--gray); }
+  .story-card { background: var(--blue-deeper); border-radius: var(--radius-lg); overflow: hidden; }
+  .founder-video { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; }
+  .founder-block { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .founder-name { font-size: 15px; font-weight: 800; color: var(--white); }
+  .founder-title { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 2px; }
+  .story-card blockquote { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.7); font-style: italic; padding: 20px 24px; margin: 0; }
+
+  .convictions-section { background: var(--light); }
+  .convictions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .conviction-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .conviction-num { font-size: 40px; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 16px; }
+  .conviction-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .conviction-card p { font-size: 15px; line-height: 1.7; color: var(--gray); }
+
+  .industries-section { background: var(--white); }
+  .industries-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .industry-card { display: flex; align-items: center; gap: 14px; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 24px; }
+  .ind-icon { font-size: 28px; }
+  .ind-label { font-size: 15px; font-weight: 700; color: var(--dark); }
+
+  .cta-section { background: var(--blue-deeper); }
+  .cta-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+  .cta-inner h2 { font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: var(--white); margin-bottom: 16px; }
+  .cta-inner .lead { color: rgba(255,255,255,.7); margin-bottom: 32px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .story-grid { grid-template-columns: 1fr; gap: 40px; }
+    .convictions-grid { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .industries-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

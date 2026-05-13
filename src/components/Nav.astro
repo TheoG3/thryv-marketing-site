@@ -1,5 +1,9 @@
 ---
 const pathname = Astro.url.pathname;
+const isSpanish = pathname.startsWith('/es');
+const altPath = isSpanish
+  ? (pathname.replace(/^\/es/, '') || '/')
+  : ('/es' + pathname);
 
 const services = [
   { label: 'Google Business Profile', slug: 'google-business-profile' },
@@ -108,6 +112,7 @@ function isActive(href: string) {
         </ul>
 
         <div class="nav-cta">
+          <a href={altPath} class="lang-toggle" aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}>{isSpanish ? 'EN' : 'ES'}</a>
           <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-blue tidycal-embed">Book a Call</a>
           <button
             class="hamburger"
@@ -155,6 +160,7 @@ function isActive(href: string) {
     <a href={link.href} class="mobile-link">{link.label}</a>
   ))}
   <a href="/contact/" class="mobile-link">Contact</a>
+  <a href={altPath} class="mobile-link" style="font-weight:700;color:var(--blue);">{isSpanish ? '🇺🇸 English' : '🇪🇸 Español'}</a>
   <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-primary tidycal-embed" style="justify-content:center;margin-top:8px;">Book Free Audit Call</a>
 </div>
 
@@ -201,6 +207,16 @@ function isActive(href: string) {
   .nav-link .chevron { transition: transform .2s; }
 
   .nav-cta { display: flex; align-items: center; gap: 10px; }
+
+  .lang-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; letter-spacing: .06em;
+    color: var(--blue); background: var(--blue-light);
+    border: 1.5px solid var(--blue); border-radius: 6px;
+    padding: 5px 10px; text-decoration: none;
+    transition: background .15s, color .15s;
+  }
+  .lang-toggle:hover { background: var(--blue); color: var(--white); }
 
   .nav-cta .btn-blue {
     font-size: 14px;

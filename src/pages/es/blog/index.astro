@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    title: "SEO Bilingüe en Miami: La Oportunidad que la Mayoría de Agencias Ignora",
+    slug: "/es/blog/bilingual-seo-miami/",
+    date: "20 de marzo, 2026",
+    category: "SEO Local",
+    excerpt: "El 35% de las búsquedas locales en Miami-Dade ocurren en español. El 90% de las agencias de Miami no optimizan para ello. Los negocios que lo hacen ven hasta un 89% más de tráfico.",
+    readTime: "6 min de lectura",
+    isSpanish: true
+  },
+  {
+    title: "Cómo Optimizar tu Google Business Profile en 2026 (Paso a Paso)",
+    slug: "/blog/optimize-google-business-profile-2026/",
+    date: "7 de mayo, 2026",
+    category: "Google Business Profile",
+    excerpt: "Una guía completa y práctica para reclamar tu perfil, llenarlo correctamente, agregar fotos, gestionar reseñas y usar las nuevas funciones de IA que Google lanzó este año.",
+    readTime: "8 min de lectura"
+  },
+  {
+    title: "Por qué los Negocios Locales de Miami Pierden ante Competidores con Peores Servicios",
+    slug: "/blog/why-miami-local-businesses-lose-to-competitors/",
+    date: "28 de abril, 2026",
+    category: "SEO Local",
+    excerpt: "El negocio que aparece primero en Google Maps no siempre es el mejor. Es el que ha estado haciendo las cosas correctas de forma consistente. Aquí te mostramos cómo se ve eso en la práctica.",
+    readTime: "6 min de lectura"
+  },
+  {
+    title: "Google Business Profile vs. Tu Sitio Web: ¿Cuál Genera Más Llamadas?",
+    slug: "/blog/google-business-profile-vs-website/",
+    date: "20 de abril, 2026",
+    category: "Google Business Profile",
+    excerpt: "Para la mayoría de negocios de servicios locales, el perfil de GBP genera más llamadas entrantes que el sitio web. Entender por qué cambia cómo priorizas tu presupuesto de marketing.",
+    readTime: "5 min de lectura"
+  },
+  {
+    title: "¿Cuántas Reseñas de 5 Estrellas Necesitas para Superar a tu Competencia?",
+    slug: "/blog/how-many-reviews-to-beat-competition/",
+    date: "12 de abril, 2026",
+    category: "Reputación",
+    excerpt: "No se trata de tener la mayor cantidad de reseñas. Se trata de tener suficientes en el umbral de calificación correcto, con la velocidad adecuada. La matemática es más simple de lo que piensas.",
+    readTime: "4 min de lectura"
+  },
+  {
+    title: "La Verdadera Razón por la que las Agencias te Encierran en Contratos de 12 Meses",
+    slug: "/blog/why-agencies-lock-you-into-contracts/",
+    date: "5 de abril, 2026",
+    category: "Transparencia",
+    excerpt: "Los contratos a largo plazo no se tratan de alinear incentivos. Se tratan de proteger a las agencias de las consecuencias de un bajo rendimiento. Aquí te mostramos cómo detectar las señales de alerta.",
+    readTime: "6 min de lectura"
+  },
+  {
+    title: "Recepcionistas Telefónicos con IA: Lo que Realmente Funciona para Negocios de Servicios Locales",
+    slug: "/blog/ai-phone-receptionist-local-business/",
+    date: "28 de marzo, 2026",
+    category: "Automatización con IA",
+    excerpt: "Los pequeños negocios pierden en promedio el 62% de las llamadas entrantes. Los recepcionistas de IA cuestan entre 87-97% menos que un humano y manejan llamadas bilingües 24/7.",
+    readTime: "7 min de lectura"
+  }
+];
+
+const categories = [...new Set(posts.map(p => p.category))];
+---
+
+<BaseLayout
+  title="Blog | Thryv Marketing Solutions"
+  description="Estrategias de marketing local, consejos de SEO y tácticas de crecimiento para negocios locales en Miami — del equipo de Thryv Marketing Solutions."
+  canonical="https://thryvmarketingsolutions.com/es/blog/"
+  lang="es"
+>
+
+  <section class="blog-index-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/es/">Inicio</a><span> › </span><span>Blog</span>
+      </nav>
+      <span class="label">Recursos</span>
+      <h1>Marketing Local en Español</h1>
+      <p class="lead">Estrategias, guías y perspectivas para negocios en Miami y el sur de Florida. Sin relleno, solo lo que funciona.</p>
+    </div>
+  </section>
+
+  <section class="section blog-section">
+    <div class="container">
+      <div class="posts-grid">
+        {posts.map((post, i) => (
+          <a href={post.slug} class={`post-card reveal ${i === 0 ? 'post-card-featured' : ''}`}>
+            {post.isSpanish && <span class="es-badge">En Español</span>}
+            <span class="post-category">{post.category}</span>
+            <h2 class="post-title">{post.title}</h2>
+            <p class="post-excerpt">{post.excerpt}</p>
+            <div class="post-foot">
+              <span class="post-date">{post.date}</span>
+              <span class="post-time">{post.readTime}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-strip">
+    <div class="container">
+      <div class="cta-inner">
+        <div>
+          <h2>¿Listo para Aplicar lo que Aprendiste?</h2>
+          <p>Obtén una auditoría gratis de tu presencia digital en Miami. Hablamos español.</p>
+        </div>
+        <a href="/es/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Agenda tu Auditoría Gratis
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .blog-index-hero { background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); padding: 64px 0 52px; color: var(--white); }
+  .blog-index-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .blog-index-hero h1 { font-size: clamp(30px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); }
+  .blog-index-hero .lead { color: rgba(255,255,255,.8); font-size: 17px; line-height: 1.7; max-width: 500px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; }
+  .breadcrumb a { color: rgba(255,255,255,.55); } .breadcrumb a:hover { color: var(--white); }
+
+  .blog-section { background: var(--light); }
+  .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .post-card { display: flex; flex-direction: column; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; transition: box-shadow .2s, transform .2s, border-color .2s; position: relative; }
+  .post-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--blue); }
+  .post-card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto 1fr auto; gap: 0 28px; }
+  .post-card-featured .post-title { font-size: 24px; }
+  .post-card-featured .post-excerpt { font-size: 16px; }
+  .post-card-featured .es-badge { grid-column: 1 / -1; }
+  .post-card-featured .post-category { grid-column: 1 / -1; }
+  .post-category { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); background: var(--blue-light); border-radius: 100px; padding: 4px 10px; margin-bottom: 12px; align-self: start; }
+  .es-badge { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: #dcfce7; color: #15803d; border-radius: 100px; padding: 4px 10px; margin-bottom: 8px; }
+  .post-title { font-size: 18px; font-weight: 800; color: var(--dark); line-height: 1.3; margin-bottom: 12px; }
+  .post-excerpt { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; margin-bottom: 20px; }
+  .post-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; border-top: 1px solid var(--border); padding-top: 16px; }
+  .post-date { font-size: 13px; color: var(--gray); }
+  .post-time { font-size: 12px; font-weight: 700; color: var(--blue); background: var(--blue-light); border-radius: 100px; padding: 3px 10px; }
+
+  .cta-strip { background: var(--blue-deeper); }
+  .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+  .cta-inner h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; color: var(--white); margin-bottom: 8px; }
+  .cta-inner p { font-size: 15px; color: rgba(255,255,255,.7); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 1024px) { .posts-grid { grid-template-columns: 1fr 1fr; } .post-card-featured { grid-column: 1 / -1; display: flex; flex-direction: column; } }
+  @media (max-width: 640px) { .posts-grid { grid-template-columns: 1fr; } .cta-inner { flex-direction: column; align-items: flex-start; } }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

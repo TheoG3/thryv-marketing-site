@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Con qué rapidez responden?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Si reservas una llamada, recibes confirmación inmediata y puedes elegir cualquier horario disponible. Para mensajes escritos, respondemos en 24 horas, de lunes a viernes." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿La auditoría es realmente gratis?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Sin tarjeta de crédito, sin compromiso. Revisamos tu presencia en línea y compartimos exactamente lo que encontramos en la llamada." }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa después de la auditoría?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Te explicamos los hallazgos y recomendamos qué servicios tendrían el mayor impacto para tu negocio. Tú decides si quieres continuar. Sin presión." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Agenda tu Auditoría de Marketing Gratis | Thryv Marketing Solutions"
+  description="Agenda una llamada de auditoría gratuita de 30 minutos para tu negocio en Miami. Revisamos tu Google Business Profile, reseñas, SEO y sitio web."
+  canonical="https://thryvmarketingsolutions.com/es/contact/"
+  ogImage="https://thryvmarketingsolutions.com/og-contact.jpg"
+  lang="es"
+  schema={schema}
+>
+
+  <section class="contact-hero">
+    <div class="container">
+      <span class="label">Auditoría Gratis</span>
+      <h1>Agenda tu Auditoría de Marketing Gratis</h1>
+      <p class="lead">Elige un horario abajo. Revisaremos tu Google Business Profile, reseñas, posicionamiento local y sitio web antes de la llamada y te explicamos exactamente lo que encontramos.</p>
+    </div>
+  </section>
+
+  <section class="section booking-section">
+    <div class="container">
+      <div class="booking-grid">
+
+        <div class="booking-info reveal">
+          <div class="booking-tabs">
+            <button class="tab-btn active" data-tab="call">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Reservar Llamada
+            </button>
+            <button class="tab-btn" data-tab="message">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+              Enviar Mensaje
+            </button>
+          </div>
+
+          <div class="tab-panel" id="tab-call">
+            <div class="call-options">
+              <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">Llamada de Auditoría Gratis — 30 Minutos</div>
+                  <div class="call-option-desc">Revisión completa de GBP, reseñas, posicionamiento y sitio web. Llegamos preparados con tus datos.</div>
+                  <div class="call-option-badge free">Gratis</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://tidycal.com/m2jk763/15-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">Llamada Introductoria — 15 Minutos</div>
+                  <div class="call-option-desc">Verificación rápida de compatibilidad. Haz una pregunta o evalúa si somos la agencia correcta para ti.</div>
+                  <div class="call-option-badge free">Gratis</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://tidycal.com/m2jk763/60-minute-meeting" class="call-option tidycal-embed">
+                <div class="call-option-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 4"/></svg>
+                </div>
+                <div class="call-option-body">
+                  <div class="call-option-title">Sesión Estratégica — 60 Minutos</div>
+                  <div class="call-option-desc">Sesión completa de estrategia. Construimos tu hoja de ruta de marketing juntos, paso a paso.</div>
+                  <div class="call-option-badge paid">$60</div>
+                </div>
+                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+
+            <div class="what-audit-covers">
+              <h3>Lo que Revisamos Antes de la Llamada</h3>
+              <ul class="audit-list">
+                <li><span class="audit-dot"></span><strong>Google Business Profile</strong> — completitud, palabras clave objetivo, oportunidades perdidas</li>
+                <li><span class="audit-dot"></span><strong>Puntuación y velocidad de reseñas</strong> — cómo te comparas con tus 3 principales competidores</li>
+                <li><span class="audit-dot"></span><strong>Posicionamiento en palabras clave locales</strong> — dónde apareces para las búsquedas que usan tus clientes</li>
+                <li><span class="audit-dot"></span><strong>Velocidad y versión móvil de tu sitio</strong> — problemas de PageSpeed que están afectando tu posicionamiento</li>
+              </ul>
+            </div>
+
+            <div class="contact-direct">
+              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                hello@thryvmarketingsolutions.com
+              </a>
+              <span class="bilingual">Hablamos Espa&ntilde;ol con gusto</span>
+            </div>
+          </div>
+
+          <div class="tab-panel hidden" id="tab-message">
+            <ContactForm title="Envíanos un Mensaje" subject="New Spanish Contact Page Inquiry | Thryv" />
+            <div class="contact-direct" style="margin-top:24px;">
+              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+                hello@thryvmarketingsolutions.com
+              </a>
+              <span class="bilingual">Hablamos Espa&ntilde;ol con gusto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-sidebar reveal">
+          <div class="trust-card">
+            <div class="trust-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Sin Presión, Sin Compromiso</h3>
+            <p>Compartimos lo que encontramos. Tú decides qué hacer después. La mayoría de clientes se van con una imagen clara de qué mejorar, incluso si no nos contratan.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-badge orange">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3>Llegamos Preparados</h3>
+            <p>Antes de tu llamada, analizamos tu GBP, puntuación de reseñas y posicionamiento. Recibes datos reales sobre tu negocio, no un discurso de ventas.</p>
+          </div>
+          <div class="trust-card">
+            <div class="trust-badge">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3>Equipo Basado en Miami</h3>
+            <p>Conocemos el mercado, los vecindarios y la competencia. Hablamos espa&ntilde;ol con gusto.</p>
+          </div>
+          <div class="trust-stat-row">
+            <div class="trust-stat"><div class="trust-stat-num">685+</div><div class="trust-stat-lbl">Páginas locales creadas</div></div>
+            <div class="trust-stat"><div class="trust-stat-num">24 hr</div><div class="trust-stat-lbl">Garantía de respuesta</div></div>
+            <div class="trust-stat"><div class="trust-stat-num">0</div><div class="trust-stat-lbl">Contratos de permanencia</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Preguntas Frecuentes</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>¿Con qué rapidez responden?</summary><p>Si reservas una llamada, recibes confirmación inmediata y puedes elegir cualquier horario disponible. Para mensajes escritos, respondemos en 24 horas, de lunes a viernes.</p></details>
+        <details class="faq-item reveal"><summary>¿La auditoría es realmente gratis?</summary><p>Sí. Sin tarjeta de crédito, sin compromiso. Revisamos tu presencia en línea y compartimos exactamente lo que encontramos en la llamada.</p></details>
+        <details class="faq-item reveal"><summary>¿Qué pasa después de la auditoría?</summary><p>Te explicamos los hallazgos y recomendamos qué servicios tendrían el mayor impacto. Tú decides si quieres continuar. Sin presión.</p></details>
+        <details class="faq-item reveal"><summary>¿Qué llamada debo reservar, la de 15 o la de 30 minutos?</summary><p>Reserva la consulta gratuita de 30 minutos si quieres una revisión completa de la auditoría y recomendaciones. Elige la introductoria de 15 minutos si solo quieres hacer una pregunta rápida o ver si somos la agencia adecuada para ti.</p></details>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .contact-hero { padding: 72px 0 56px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .contact-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .contact-hero h1 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .contact-hero .lead { color: rgba(255,255,255,.8); max-width: 540px; font-size: 17px; line-height: 1.7; }
+
+  .booking-section { background: var(--light); }
+  .booking-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
+
+  .booking-tabs { display: flex; gap: 8px; margin-bottom: 28px; background: var(--border); border-radius: 12px; padding: 4px; }
+  .tab-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 9px; border: none; background: transparent; font-size: 14px; font-weight: 700; color: var(--gray); cursor: pointer; transition: background .2s, color .2s; }
+  .tab-btn.active { background: var(--white); color: var(--dark); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  .tab-panel.hidden { display: none; }
+
+  .call-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .call-option { display: flex; align-items: center; gap: 16px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .15s; }
+  .call-option:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.12); transform: translateY(-1px); }
+  .call-option-icon { width: 48px; height: 48px; min-width: 48px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; }
+  .call-option-icon svg { stroke: var(--blue); }
+  .call-option-body { flex: 1; }
+  .call-option-title { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .call-option-desc { font-size: 13px; line-height: 1.55; color: var(--gray); margin-bottom: 8px; }
+  .call-option-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; border-radius: 100px; padding: 3px 10px; }
+  .call-option-badge.free { background: #dcfce7; color: #15803d; }
+  .call-option-badge.paid { background: var(--blue-light); color: var(--blue); }
+  .call-option-arrow { stroke: var(--gray); flex-shrink: 0; transition: stroke .2s, transform .2s; }
+  .call-option:hover .call-option-arrow { stroke: var(--blue); transform: translateX(3px); }
+
+  .what-audit-covers { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 24px; }
+  .what-audit-covers h3 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--blue); margin-bottom: 16px; }
+  .audit-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .audit-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; line-height: 1.55; color: var(--gray); }
+  .audit-list strong { color: var(--dark); font-weight: 700; }
+  .audit-dot { width: 8px; height: 8px; min-width: 8px; border-radius: 50%; background: var(--orange); margin-top: 5px; }
+
+  .contact-direct { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .contact-link { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: var(--blue); text-decoration: none; transition: opacity .2s; }
+  .contact-link:hover { opacity: .7; }
+  .bilingual { font-size: 13px; color: var(--gray); font-style: italic; }
+
+  .trust-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .trust-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+  .trust-badge { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .trust-badge svg { stroke: var(--blue); }
+  .trust-badge.orange { background: #FFF8EC; }
+  .trust-badge.orange svg { stroke: var(--orange); }
+  .trust-card h3 { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .trust-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .trust-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+  .trust-stat { background: var(--white); padding: 20px 16px; text-align: center; }
+  .trust-stat-num { font-size: 24px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 6px; }
+  .trust-stat-lbl { font-size: 12px; color: var(--gray); line-height: 1.4; }
+
+  .faq-section { background: var(--white); }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--dark); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 960px) {
+    .booking-grid { grid-template-columns: 1fr; }
+    .trust-sidebar { order: -1; }
+  }
+  @media (max-width: 500px) {
+    .booking-tabs { flex-direction: column; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.add('hidden'));
+      btn.classList.add('active');
+      const target = document.getElementById('tab-' + (btn as HTMLButtonElement).dataset.tab);
+      if (target) target.classList.remove('hidden');
+    });
+  });
+</script>
