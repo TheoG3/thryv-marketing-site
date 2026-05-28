@@ -1,0 +1,27 @@
+name = "thryv-ada-scanner"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Browser Rendering binding (enable Browser Rendering on the account first)
+browser = { binding = "BROWSER" }
+
+# KV: rate limiting, daily engine counter, and report storage.
+# Create with: npx wrangler kv namespace create SCAN_KV  → paste the id below.
+[[kv_namespaces]]
+binding = "SCAN_KV"
+id = "f53bb5a2223c4f23b4aeb6a23c5fa4e6"
+
+[vars]
+ALLOWED_ORIGIN = "https://thryvmarketingsolutions.com"
+DAILY_BROWSER_CAP = "30"    # scans/day on Browser Rendering before auto-falling back to Google PSI
+PER_IP_HOURLY_LIMIT = "3"   # anti-abuse: scans/hour per visitor IP
+PER_IP_DAILY_LIMIT = "8"    # anti-abuse: scans/day per visitor IP
+GLOBAL_DAILY_CAP = "500"    # hard backstop: total scans/day across everyone
+POSTHOG_HOST = "https://app.posthog.com"
+POSTHOG_KEY = "POSTHOG_KEY_PLACEHOLDER"  # inject at deploy: $POSTHOG_PROJECT_KEY_THRYV
+
+# Secrets (NOT stored here — set via `wrangler secret put`):
+#   TURNSTILE_SECRET   (Cloudflare Turnstile)
+#   PSI_API_KEY        (Google PageSpeed Insights)
+#   RESEND_API_KEY     (Resend, for v1.1 report emails)

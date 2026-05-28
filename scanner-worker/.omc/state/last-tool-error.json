@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd ~/Desktop/Thryv/thryv-marketing-site/scanner-worker && node test-local.js 2>&1\",\"description\":\"Run local test harness\"}",
+  "error": "Exit code 1\n\n=== SSRF guard tests ===\n  ✅ http://localhost\n  ✅ http://localhost:8080/foo\n  ✅ http://127.0.0.1\n  ✅ http://0.0.0.0\n  ✅ http://10.0.0.1\n  ✅ http://10.255.255.255\n  ✅ http://192.168.1.1\n  ✅ http://172.16.0.1\n  ✅ http://172.31.255.255\n  ✅ http://169.254.169.254\n  ✅ http://metadata.google.internal\n  ✅ http://host.local\n  ❌ http://internal.service\n     expected: null\n     got:      \"http://internal.service/\"\n  ✅ http://[::1]\n  ✅ http://[fc00::1]\n  ❌ ftp://example.com\n     expected: null...",
+  "timestamp": "2026-05-28T16:17:17.514Z",
+  "retry_count": 1
+}

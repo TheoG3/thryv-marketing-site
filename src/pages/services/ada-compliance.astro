@@ -1,0 +1,670 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const WORKER_URL = 'https://thryv-ada-scanner.theodoreg3.workers.dev';
+const TURNSTILE_SITE_KEY = '0x4AAAAAADX9NuDDs59nhLJU';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "ADA Website Compliance", "item": "https://thryvmarketingsolutions.com/services/ada-compliance/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is there an official ADA certified badge for websites?", "acceptedAnswer": { "@type": "Answer", "text": "No. The government does not certify websites, and anyone selling you a certified badge is overselling. A fake badge can actually be used against you. What is real is conforming to WCAG 2.2 AA and documenting it." } },
+      { "@type": "Question", "name": "Does the free scan mean my site is compliant?", "acceptedAnswer": { "@type": "Answer", "text": "No. The free scan is an automated snapshot of your homepage. It catches common issues, but real compliance requires every page checked plus human testing of keyboard and screen-reader use." } },
+      { "@type": "Question", "name": "Am I really at risk as a small local business?", "acceptedAnswer": { "@type": "Answer", "text": "Small businesses are common targets precisely because they are the least prepared and most likely to settle quickly. Fixing your site is the same move whether you are motivated by the legal risk or the customers you are currently losing." } },
+      { "@type": "Question", "name": "Do accessibility overlay widgets work?", "acceptedAnswer": { "@type": "Answer", "text": "No. Overlays do not equal compliance per the DOJ, the FTC fined a major overlay maker 1 million dollars in 2025, and overlay-equipped sites get sued more, not less. We fix the actual code instead." } },
+      { "@type": "Question", "name": "Can you guarantee I will not get sued?", "acceptedAnswer": { "@type": "Answer", "text": "No one honest can promise that. We meaningfully lower your risk by fixing real barriers and documenting your good-faith effort, which is what matters in practice. This is technical work, not legal advice." } },
+      { "@type": "Question", "name": "How much does it cost to fix my site for ADA compliance?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your site's size and how it is built. Run the free scan, then book a call and we will scope it honestly with no pressure. Our audit starts at $297 and the full audit-plus-fix package is $997." } }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ADA Website Compliance",
+    "provider": { "@type": "LocalBusiness", "name": "Thryv Marketing Solutions", "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL" } },
+    "areaServed": "Miami, FL",
+    "description": "Free WCAG 2.2 AA accessibility scan plus full audit, remediation, and monthly monitoring for Miami small businesses.",
+    "offers": [
+      { "@type": "Offer", "name": "Full Audit", "price": "297", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Audit + Fix", "price": "997", "priceCurrency": "USD" },
+      { "@type": "Offer", "name": "Monthly Monitoring", "price": "97", "priceCurrency": "USD" }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="ADA Website Compliance Miami. Free WCAG Scan. Thryv Marketing Solutions"
+  description="Is your Miami business website ADA compliant? Scan free in 30 seconds. Thryv fixes WCAG 2.2 AA violations with real code changes, no overlay widgets."
+  schema={schema}
+>
+
+<style>
+  :root{
+    --blue:#1B4FA8;--blue-dark:#0F3272;--blue-deeper:#070F2B;--blue-light:#EEF4FF;
+    --orange:#F5A623;--orange-dark:#D4890A;--dark:#0D1B2A;--gray:#4B5563;--gray-light:#9CA3AF;
+    --border:#E5E7EB;--light:#F8F9FB;--white:#FFFFFF;--radius:12px;--radius-lg:20px;
+    --shadow:0 4px 24px rgba(0,0,0,.08);--shadow-lg:0 12px 48px rgba(0,0,0,.14);
+    --red:#C0392B;--amber:#B7791F;--green:#15803D;
+    --font:'Plus Jakarta Sans',sans-serif;
+  }
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px}
+  .narrow{max-width:780px}
+  .section{padding:86px 0}
+  :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font);font-size:15px;font-weight:700;border-radius:100px;cursor:pointer;border:none;padding:14px 28px;transition:transform .15s,box-shadow .2s,background .2s;text-decoration:none}
+  .btn-primary{background:var(--orange);color:var(--dark);box-shadow:0 4px 16px rgba(245,166,35,.35)}
+  .btn-primary:hover{background:var(--orange-dark);transform:translateY(-1px)}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:var(--blue-dark)}
+  .btn-ghost{background:transparent;border:1.5px solid var(--border);color:var(--dark)}
+
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--orange-dark)}
+  .label{display:inline-flex;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);border-radius:100px;padding:6px 14px;margin-bottom:18px}
+  h2{font-size:clamp(26px,3.6vw,38px);font-weight:800;line-height:1.15;letter-spacing:-.015em;margin-bottom:14px}
+  .lead{font-size:16.5px;line-height:1.7;color:var(--gray);text-align:center}
+  .section-head{max-width:680px;margin:0 auto 42px;text-align:center}
+  .section-head.left{margin:0 0 42px;text-align:left}
+  /* center all section-level headings, chips, and body text by default */
+  .section h2{text-align:center}
+  .section p{text-align:center}
+  .section .eyebrow{display:block;text-align:center}
+  .section .label{display:flex;justify-content:center}
+  /* prose blocks stay left for readability */
+  .section .prose p{text-align:left}
+  /* override: left-align inside cards and two-column layouts */
+  .why-card h3,.why-card p,.check h4,.check p,.ov-task,.ov-row,.price-tier,.price-sub,.price-feat,.acc-q,.acc-a-inner,.case-grid h2,.case-grid p,.case-grid .lead,.case-grid .eyebrow{text-align:left}
+  .case-grid .eyebrow{justify-content:flex-start}
+  .prose p{font-size:16px;line-height:1.8;color:var(--gray);margin-bottom:16px}
+  .prose p b{color:var(--dark)}
+
+  .hero{background:linear-gradient(135deg,var(--blue-deeper) 0%,var(--blue-dark) 60%,#1a3a7a 100%);position:relative;overflow:hidden;padding:70px 0 78px}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 600px at 75% 40%,rgba(245,166,35,.08) 0%,transparent 70%)}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;position:relative;z-index:1}
+  .hero-eyebrow{color:var(--orange);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;display:inline-block}
+  .hero h1{font-size:clamp(31px,4.3vw,49px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:18px}
+  .hero h1 em{font-style:normal;color:var(--orange)}
+  .hero-sub{font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.74);margin-bottom:22px;max-width:500px}
+  .hero-sub b{color:#fff;font-weight:700}
+  .hero-pills{display:flex;flex-wrap:wrap;gap:8px}
+  .hero-pill{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.82);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:100px;padding:6px 13px}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:34px}}
+
+  .scanner{background:#fff;border-radius:var(--radius-lg);box-shadow:0 24px 70px rgba(0,0,0,.3);padding:28px}
+  .scanner-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .scanner-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(21,128,61,.15)}
+  .scanner-head h3{font-size:16px;font-weight:800}
+  .scanner-tag{font-size:12.5px;color:var(--gray);margin-bottom:18px}
+  .scan-form{display:flex;gap:8px}
+  .scan-form input{flex:1;font-family:var(--font);font-size:15px;border:1.5px solid var(--border);border-radius:10px;padding:13px 15px;outline:none;transition:border-color .2s,box-shadow .2s;min-width:0}
+  .scan-form input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,168,.12)}
+  .scan-form .btn{flex-shrink:0;padding:13px 20px}
+  .scan-note{font-size:11.5px;color:var(--gray-light);margin-top:10px;text-align:center}
+  .scan-loading{display:none;padding:22px 4px 6px}
+  .scan-loading.on{display:block}
+  .scan-step{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--gray);padding:6px 0;opacity:.4;transition:opacity .3s}
+  .scan-step.active{opacity:1;color:var(--dark);font-weight:600}
+  .scan-step.done{opacity:1;color:var(--green)}
+  .spin{width:15px;height:15px;border:2px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;display:inline-block}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .scan-results{display:none;animation:fade .4s ease}
+  .scan-results.on{display:block}
+  .scan-error{display:none;padding:16px;background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;font-size:13.5px;color:#991B1B;margin-top:12px}
+  .scan-error.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .score-row{display:flex;align-items:center;gap:18px;padding:6px 2px 18px;border-bottom:1px solid var(--border);margin-bottom:16px}
+  .score-ring{width:84px;height:84px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;background:conic-gradient(#B7791F 68%,#E5E7EB 0)}
+  .score-ring span{width:64px;height:64px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:23px;font-weight:800}
+  .score-meta h4{font-size:16px;font-weight:800;margin-bottom:3px}
+  .score-meta p{font-size:13px;color:var(--gray)}
+  .sev-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+  .sev{font-size:12px;font-weight:700;border-radius:8px;padding:5px 11px}
+  .sev-critical{background:#FEE2E2;color:#991B1B}
+  .sev-serious{background:#FDEAD7;color:#9A3412}
+  .sev-mod{background:#FEF3C7;color:var(--amber)}
+  .sev-minor{background:var(--blue-light);color:var(--blue)}
+  .issue{display:flex;gap:11px;padding:12px;border:1px solid var(--border);border-radius:12px;margin-bottom:9px}
+  .issue-ic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex-shrink:0;font-size:15px;background:#FDEAD7}
+  .issue h5{font-size:14px;font-weight:700;margin-bottom:2px}
+  .issue p{font-size:12.5px;color:var(--gray);line-height:1.5}
+  .issue .wcag{font-size:10.5px;font-weight:700;color:var(--blue);background:var(--blue-light);border-radius:5px;padding:2px 7px;display:inline-block;margin-top:5px}
+  .gate{margin-top:16px;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:16px}
+  .gate p{font-size:13px;color:var(--dark);margin-bottom:10px}
+  .gate-form{display:flex;gap:8px}
+  .gate-form input{flex:1;font-family:var(--font);font-size:14px;border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;outline:none}
+  .gate-form input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,168,.12)}
+  .gate-success{display:none;text-align:center;padding:8px 0}
+  .gate-success.on{display:block}
+  .gate-success .chk{width:46px;height:46px;border-radius:50%;background:#DCFCE7;display:grid;place-items:center;margin:0 auto 10px;font-size:22px;color:var(--green)}
+  .gate-success h4{font-size:16px;font-weight:800;margin-bottom:4px}
+  .gate-success p{font-size:13px;color:var(--gray);margin-bottom:14px}
+  .disclaimer{font-size:11px;color:var(--gray-light);margin-top:14px;line-height:1.5;text-align:center}
+  .scan-joke{display:none;text-align:center;padding:20px 6px 8px;animation:fade .4s ease}
+  .scan-joke.on{display:block}
+  .joke-emoji{font-size:42px;margin-bottom:8px}
+  .scan-joke h4{font-size:20px;font-weight:800;margin-bottom:8px}
+  .scan-joke p{font-size:14px;color:var(--gray);line-height:1.6;margin-bottom:16px;max-width:350px;margin-left:auto;margin-right:auto}
+  .scan-joke p b{color:var(--green)}
+
+  .stats{background:var(--blue);padding:26px 0}
+  .stats-inner{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+  .stats-src{text-align:center;font-size:11.5px;color:rgba(255,255,255,.55);margin-top:18px}
+  .stats-src a{color:rgba(255,255,255,.82);text-decoration:underline}
+  .stat{padding:0 20px;border-right:1px solid rgba(255,255,255,.16)}
+  .stat:last-child{border-right:none}
+  .stat-n{font-size:27px;font-weight:800;color:var(--orange);line-height:1}
+  .stat-d{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:6px}
+  @media(max-width:680px){.stats-inner{grid-template-columns:1fr;gap:18px}.stat{border-right:none}}
+
+  .straight{background:var(--light)}
+  .straight .lead{font-size:18px;color:var(--dark);line-height:1.75;text-align:center}
+  .straight .lead b{color:var(--blue-dark)}
+
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .why-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;background:#fff;transition:box-shadow .25s,transform .25s}
+  .why-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .why-ic{width:46px;height:46px;border-radius:12px;background:var(--blue-light);display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+  .why-card h3{font-size:17px;font-weight:700;margin-bottom:8px}
+  .why-card p{font-size:14px;color:var(--gray);line-height:1.6}
+  @media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:38px}
+  .tl-node{position:relative;padding-top:26px}
+  .tl-node::before{content:'';position:absolute;top:6px;left:0;width:14px;height:14px;border-radius:50%;background:var(--orange)}
+  .tl-node::after{content:'';position:absolute;top:12px;left:14px;right:-18px;height:2px;background:var(--border)}
+  .tl-node:last-child::after{display:none}
+  .tl-year{font-size:15px;font-weight:800;color:var(--blue)}
+  .tl-node p{font-size:13.5px;color:var(--gray);margin-top:6px;line-height:1.55}
+  @media(max-width:760px){.timeline{grid-template-columns:1fr;gap:8px}.tl-node{padding-top:0;padding-left:26px}.tl-node::before{top:4px;left:0}.tl-node::after{top:18px;left:6px;right:auto;bottom:-8px;width:2px;height:auto}}
+
+  .machine{background:var(--blue-deeper);color:#fff}
+  .machine h2{color:#fff}
+  .machine .prose p{color:rgba(255,255,255,.74)}
+  .machine .prose p b{color:#fff}
+  .callout{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.28);border-radius:14px;padding:18px 22px;margin-top:8px}
+  .callout p{font-size:14.5px;color:rgba(255,255,255,.88);margin:0;line-height:1.7}
+  .callout b{color:var(--orange)}
+
+  .checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+  .check{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px}
+  .check .ck{flex-shrink:0;color:var(--green);font-weight:800;font-size:16px}
+  .check h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+  .check p{font-size:13px;color:var(--gray);line-height:1.5}
+  @media(max-width:860px){.checks-grid{grid-template-columns:1fr}}
+
+  .overlap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .ov-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;transition:box-shadow .25s,transform .25s}
+  .ov-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+  .ov-task{font-size:16.5px;font-weight:800;margin-bottom:14px}
+  .ov-row{display:flex;gap:10px;font-size:13.5px;color:var(--gray);line-height:1.55;margin-bottom:11px;align-items:flex-start}
+  .ov-row:last-child{margin-bottom:0}
+  .ov-tag{flex-shrink:0;font-size:10px;font-weight:800;border-radius:6px;padding:4px 8px;white-space:nowrap;min-width:106px;text-align:center;letter-spacing:.02em}
+  .ov-tag.a11y{background:var(--blue-light);color:var(--blue)}
+  .ov-tag.seo{background:#FEF3C7;color:var(--orange-dark)}
+  @media(max-width:760px){.overlap-grid{grid-template-columns:1fr}}
+
+  .case{background:var(--blue-deeper);color:#fff}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .case h2{color:#fff}.case .lead{color:rgba(255,255,255,.7)}
+  .case-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);padding:28px}
+  .case-ba{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+  .ba-box{flex:1;text-align:center;padding:16px;border-radius:12px}
+  .ba-box.before{background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3)}
+  .ba-box.after{background:rgba(21,128,61,.15);border:1px solid rgba(21,128,61,.3)}
+  .ba-n{font-size:30px;font-weight:800;line-height:1}
+  .ba-box.before .ba-n{color:#fca5a5}.ba-box.after .ba-n{color:#86efac}
+  .ba-l{font-size:11.5px;color:rgba(255,255,255,.6);margin-top:5px}
+  .ba-arrow{color:var(--orange);font-size:20px}
+  @media(max-width:860px){.case-grid{grid-template-columns:1fr;gap:30px}}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px}
+  .step{text-align:center;padding:0 12px}
+  .step-n{width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;font-size:20px;font-weight:800;display:grid;place-items:center;margin:0 auto 16px}
+  .step:nth-child(2) .step-n{background:var(--orange);color:var(--dark)}
+  .step:nth-child(3) .step-n{background:var(--blue-dark)}
+  .step h4{font-size:16px;font-weight:700;margin-bottom:7px}
+  .step p{font-size:14px;color:var(--gray);line-height:1.6}
+  @media(max-width:760px){.steps{grid-template-columns:1fr;gap:20px}}
+
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+  .price-card{border:2px solid var(--border);border-radius:var(--radius-lg);padding:30px 26px;background:#fff;position:relative}
+  .price-card.feat{border-color:var(--blue);box-shadow:0 8px 40px rgba(27,79,168,.16)}
+  .price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:100px;padding:5px 15px;white-space:nowrap}
+  .price-tier{font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+  .price-n{font-size:34px;font-weight:800;line-height:1;margin-bottom:4px}
+  .price-sub{font-size:13px;color:var(--gray);margin-bottom:18px}
+  .price-feats{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+  .price-feat{display:flex;gap:9px;font-size:13.5px;align-items:flex-start}
+  .price-feat .ck{color:var(--green);flex-shrink:0;font-weight:800}
+  .price-card .btn{width:100%;display:flex}
+  @media(max-width:860px){.pricing-grid{grid-template-columns:1fr}}
+
+  .faq{max-width:780px;margin:0 auto}
+  .acc{border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .acc-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;text-align:left;background:none;border:none;cursor:pointer;font-family:inherit;font-size:16px;font-weight:700;color:var(--dark);padding:18px 20px}
+  .acc-q:hover{background:var(--light)}
+  .acc-icon{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--blue-light);color:var(--blue);display:grid;place-items:center;font-size:16px;font-weight:800;transition:transform .25s}
+  .acc[aria-expanded="true"] .acc-icon{transform:rotate(45deg)}
+  .acc-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .acc-a-inner{padding:0 20px 18px;font-size:14.5px;color:var(--gray);line-height:1.7}
+  .acc-a-inner b{color:var(--dark)}
+
+  .final{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.8);font-size:16px;max-width:520px;margin:0 auto 26px}
+  .cf-turnstile{margin-top:10px}
+</style>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<section class="hero" id="scan">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-eyebrow">ADA · WCAG 2.2 AA · Miami</span>
+      <h1>Is your website <em>ADA compliant?</em> Find out in 30 seconds.</h1>
+      <p class="hero-sub">Most small-business sites quietly fail the visitors who need them most, and a growing number of owners are getting legal letters because of it. Scan your homepage free and see exactly where you stand. <b>No email needed for your score.</b></p>
+      <div class="hero-pills">
+        <span class="hero-pill">✓ Instant result</span>
+        <span class="hero-pill">✓ No signup to see your score</span>
+        <span class="hero-pill">✓ Plain-English fixes</span>
+      </div>
+    </div>
+
+    <div class="scanner">
+      <div class="scanner-head"><span class="scanner-dot"></span><h3>Free ADA Snapshot</h3></div>
+      <p class="scanner-tag">Enter your website. We check it against the WCAG 2.2 AA standard courts actually use.</p>
+
+      <div id="scanFormWrap">
+        <form class="scan-form" id="scanForm">
+          <input type="text" id="scanUrl" placeholder="yourbusiness.com" autocomplete="off" aria-label="Your website address" />
+          <button type="submit" class="btn btn-primary">Scan my site</button>
+        </form>
+        <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-callback="onTurnstileSuccess" data-size="invisible"></div>
+        <p class="scan-note">Checks your homepage. Takes about 20 seconds.</p>
+      </div>
+
+      <div class="scan-loading" id="scanLoading">
+        <div class="scan-step" data-step="0"><span class="spin"></span> Loading your page...</div>
+        <div class="scan-step" data-step="1"><span class="spin"></span> Checking color contrast and text...</div>
+        <div class="scan-step" data-step="2"><span class="spin"></span> Testing images, forms and buttons...</div>
+        <div class="scan-step" data-step="3"><span class="spin"></span> Scoring against WCAG 2.2 AA...</div>
+      </div>
+
+      <div class="scan-joke" id="scanJoke">
+        <div class="joke-emoji">😏</div>
+        <h4>Nice try.</h4>
+        <p>We are not going to scan our own site, that would be cheating. We already did: <b>0 violations</b>, receipts right below. Now let's see how your site holds up.</p>
+        <button class="btn btn-primary" id="jokeReset">Scan a real site</button>
+      </div>
+
+      <div class="scan-error" id="scanError">
+        <strong>We could not reach that site.</strong> Check the address and try again, or <a href="https://tidycal.com/theogrimes/30-minute-meeting" style="color:var(--red);font-weight:700">book a manual audit</a>.
+      </div>
+
+      <div class="scan-results" id="scanResults">
+        <div class="score-row">
+          <div class="score-ring" id="scoreRing"><span id="scoreNum">0</span></div>
+          <div class="score-meta">
+            <h4 id="scoreLabel">Scanning...</h4>
+            <p>Automated snapshot of <b id="scannedDomain">your homepage</b></p>
+          </div>
+        </div>
+        <div class="sev-row" id="sevRow"></div>
+        <div id="issueList"></div>
+        <div class="gate" id="gate">
+          <p>Want the <b>full issue list</b> with plain-English fixes sent to your inbox?</p>
+          <form class="gate-form" id="gateForm">
+            <input type="email" placeholder="you@yourbusiness.com" aria-label="Your email" required />
+            <button type="submit" class="btn btn-primary">Email my report</button>
+          </form>
+        </div>
+        <div class="gate-success" id="gateSuccess">
+          <div class="chk">✓</div>
+          <h4>Check your inbox.</h4>
+          <p>Your snapshot is on its way. Want every page checked by a human?</p>
+          <a href="https://tidycal.com/theogrimes/30-minute-meeting" target="_blank" class="btn btn-blue" style="color:#fff">Book your full audit</a>
+        </div>
+        <p class="disclaimer">This is an automated snapshot, not a full audit or legal advice. Automated scans catch common machine-detectable issues. A full audit reviews every page plus what only a person can test.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat"><div class="stat-n">5,114</div><div class="stat-d">U.S. web accessibility lawsuits filed in 2025</div></div>
+      <div class="stat"><div class="stat-n">1 in 4</div><div class="stat-d">U.S. adults live with a disability</div></div>
+      <div class="stat"><div class="stat-n">$1M</div><div class="stat-d">FTC fine to an accessibility widget maker for false compliance claims</div></div>
+    </div>
+    <p class="stats-src">Sources: <a href="https://info.usablenet.com/2025-year-end-report-on-web-accessibility-lawsuits" target="_blank" rel="noopener">UsableNet 2025</a> &middot; <a href="https://www.cdc.gov/disability-and-health/articles-documents/disability-impacts-all-of-us-infographic.html" target="_blank" rel="noopener">CDC</a> &middot; <a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million" target="_blank" rel="noopener">U.S. FTC, 2025</a></p>
+  </div>
+</section>
+
+<section class="section straight">
+  <div class="container narrow" style="text-align:center">
+    <span class="label">Straight talk</span>
+    <h2>Let's be honest for a second.</h2>
+    <p class="lead" style="max-width:580px;margin:0 auto;text-align:center">We are not here to scare you into buying anything. Two things are true at once. First, roughly <b>1 in 4 U.S. adults</b> lives with a disability, and a site they cannot use is a customer you simply never hear from. Second, there is a legal industry built around suing businesses whose sites fall short. The good part: fixing the first one takes care of the second. Make your site work for everyone, and you stop being an easy target in the same move.</p>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Why this matters</span>
+      <h2>It's not just risk. It's revenue you're leaving on the table.</h2>
+      <p class="lead" style="max-width:580px;margin:0 auto;text-align:center">An accessible site does three things at once. Most owners only ever hear about the scary one.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-ic">⚖️</div><h3>Lower your legal risk</h3><p>There is no government ADA certificate, but courts measure your site against WCAG 2.2 AA. We fix the barriers and document it, so you have a real, defensible position instead of a guess.</p></div>
+      <div class="why-card"><div class="why-ic">🧑‍🤝‍🧑</div><h3>Win customers you're losing</h3><p>If your site trips up a screen reader, that is a buyer who quietly leaves and spends their money elsewhere. Accessible sites work for <b>1 in 4</b> more people.</p></div>
+      <div class="why-card"><div class="why-ic">📈</div><h3>Rank better on Google</h3><p>The same clean code a screen reader needs is the code Google rewards. Accessibility and SEO pull in the exact same direction, so you fix one and help both.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="history" style="background:var(--light)">
+  <div class="container narrow">
+    <span class="label">A little history</span>
+    <h2>How a law from 1990 ended up being about your website</h2>
+    <div class="prose">
+      <p>The Americans with Disabilities Act was signed in <b>1990</b>, back when almost nobody had heard of the internet. It was written for the physical world: wheelchair ramps, wide doorways, accessible restrooms. The idea was simple. If you open your doors to the public, everyone gets to come in.</p>
+      <p>Then life moved online. Courts started asking an obvious question. If your website is how customers find you, book you, and pay you, is that not a door too? Most courts have landed on yes. Your website gets treated like a place of business, and it has to be usable by people with disabilities.</p>
+      <p>The government never published an exact rulebook for private business websites. So courts borrowed one, the <b>Web Content Accessibility Guidelines (WCAG)</b>, written by the web's own standards body. In 2024 the <a href="https://www.ada.gov/resources/2024-03-08-web-rule/" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:underline">Justice Department made WCAG the official standard for government sites</a>, which told everyone where this is heading. Today, <b>WCAG 2.2 AA</b> is the bar smart businesses aim for.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-node"><div class="tl-year">1990</div><p>ADA signed. Written for physical spaces, long before the web.</p></div>
+      <div class="tl-node"><div class="tl-year">2000s</div><p>Business moves online. Courts begin treating sites as public accommodations.</p></div>
+      <div class="tl-node"><div class="tl-year">2024</div><p>DOJ makes WCAG the official standard for government sites.</p></div>
+      <div class="tl-node"><div class="tl-year">Today</div><p>WCAG 2.2 AA is the practical bar courts and lawyers point to.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section machine">
+  <div class="container narrow">
+    <span class="eyebrow">The part nobody explains</span>
+    <h2 style="margin-top:14px">The lawsuit machine, and how to not be its next target</h2>
+    <div class="prose">
+      <p>A small group of law firms has turned website accessibility into an assembly line. They run automated scanners across thousands of sites at once, flag the ones with obvious problems, and mail out near-identical demand letters. Most ask for a quick settlement, often a few thousand dollars, betting it is cheaper for you to pay than to fight.</p>
+      <p>In 2025, a reported <b>5,114</b> of these lawsuits were filed, and a large share targeted businesses that had already been sued once. South Florida is one of the busiest spots in the country for it.</p>
+      <p>The scanners these firms use look for the <b>exact same problems</b> a real disabled visitor would hit. So the fix is identical either way. Clean up your site, document it, and you do right by your customers while quietly dropping off the easy-target list.</p>
+    </div>
+    <div class="callout">
+      <p>⚠️ One thing to skip: the <b>accessibility widget overlays</b> that promise instant compliance. They do not work, the government has said so, the <a href="https://www.ftc.gov/news-events/news/press-releases/2025/04/ftc-approves-final-order-requiring-accessibe-pay-1-million" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:underline">FTC fined one maker <b>$1 million</b> in 2025</a>, and sites that use them get sued more, not less. There is no shortcut here. There is just doing it properly, which is the whole point of what we do.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Plain English</span>
+      <h2>What accessible actually means</h2>
+      <p class="lead" style="max-width:580px;margin:0 auto;text-align:center">WCAG sounds technical. In practice it comes down to a handful of common-sense questions about your site.</p>
+    </div>
+    <div class="checks-grid">
+      <div class="check"><span class="ck">✓</span><div><h4>Can people read your text?</h4><p>Enough contrast between text and background, even on a phone in the sun.</p></div></div>
+      <div class="check"><span class="ck">✓</span><div><h4>Can a screen reader describe your images?</h4><p>Every meaningful image needs a short text description behind it.</p></div></div>
+      <div class="check"><span class="ck">✓</span><div><h4>Can someone use it without a mouse?</h4><p>Keyboard-only visitors should be able to reach everything and see where they are.</p></div></div>
+      <div class="check"><span class="ck">✓</span><div><h4>Are your forms labeled?</h4><p>Every field should clearly say what it is for, out loud and on screen.</p></div></div>
+      <div class="check"><span class="ck">✓</span><div><h4>Do buttons say what they do?</h4><p>"View our pricing" beats a mystery icon with no name.</p></div></div>
+      <div class="check"><span class="ck">✓</span><div><h4>Does it respect reduce motion?</h4><p>Animations should calm down for visitors who get dizzy or distracted.</p></div></div>
+    </div>
+    <p class="lead" style="text-align:center;margin-top:30px">None of it is exotic. Most of it is just careful web building that a lot of sites skip.</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--blue-light)">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Two birds, one stone</span>
+      <h2>Here's what your competitors miss: most of this is also SEO.</h2>
+      <p class="lead" style="max-width:580px;margin:0 auto;text-align:center">We are an SEO agency first. So when we make your site accessible, we are flexing the same muscle that ranks you on Google. You fix one thing and win twice.</p>
+    </div>
+    <div class="overlap-grid">
+      <div class="ov-card"><div class="ov-task">🖼️ Alt text on images</div><div class="ov-row"><span class="ov-tag a11y">♿ Access</span> A blind visitor's screen reader can finally describe the picture instead of skipping it.</div><div class="ov-row"><span class="ov-tag seo">🔍 SEO bonus</span> Google reads that same text to rank you in image search and understand the page.</div></div>
+      <div class="ov-card"><div class="ov-task">🔠 Clear heading structure</div><div class="ov-row"><span class="ov-tag a11y">♿ Access</span> Screen-reader users jump around your page by headings, like a table of contents.</div><div class="ov-row"><span class="ov-tag seo">🔍 SEO bonus</span> Google uses those same headings to figure out what your page is about.</div></div>
+      <div class="ov-card"><div class="ov-task">🔗 Descriptive link and button text</div><div class="ov-row"><span class="ov-tag a11y">♿ Access</span> "View our pricing" tells a screen-reader user where they are headed. "Click here" tells them nothing.</div><div class="ov-row"><span class="ov-tag seo">🔍 SEO bonus</span> Descriptive links hand Google keyword context too.</div></div>
+      <div class="ov-card"><div class="ov-task">⚡ Clean, fast, semantic code</div><div class="ov-row"><span class="ov-tag a11y">♿ Access</span> Assistive tech can actually make sense of a page that is built properly underneath.</div><div class="ov-row"><span class="ov-tag seo">🔍 SEO bonus</span> Clean code and speed are direct Google ranking signals.</div></div>
+    </div>
+    <p class="lead" style="text-align:center;margin-top:30px"><b style="color:var(--dark)">Accessibility is not money spent away from your marketing.</b> It is the same investment, doing double duty.</p>
+  </div>
+</section>
+
+<section class="section case">
+  <div class="container case-grid">
+    <div>
+      <span class="eyebrow">We practice what we preach</span>
+      <h2 style="margin-top:14px">We fixed our own site to WCAG 2.2 AA. Here's the receipt.</h2>
+      <p class="lead" style="max-width:580px;margin:0 auto;text-align:center">We ran this exact process on thryvmarketingsolutions.com: scanned it, found the gaps, and fixed every one. No overlay widgets, just real code changes. The same playbook we run for you.</p>
+    </div>
+    <div class="case-card">
+      <div class="case-ba">
+        <div class="ba-box before"><div class="ba-n">9</div><div class="ba-l">issues before</div></div>
+        <div class="ba-arrow">to</div>
+        <div class="ba-box after"><div class="ba-n">0</div><div class="ba-l">violations after</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px">
+        <div style="display:flex;gap:10px;font-size:13px;color:rgba(255,255,255,.8);align-items:flex-start">
+          <span style="color:#86efac;font-weight:800;flex-shrink:0">✓</span>
+          <span><b style="color:#fff">Button contrast fixed.</b> Our call-to-action buttons originally failed contrast at 2.3:1. We switched to dark text on brand orange and hit 8.58:1, well above the WCAG AA threshold of 4.5:1.</span>
+        </div>
+        <div style="display:flex;gap:10px;font-size:13px;color:rgba(255,255,255,.8);align-items:flex-start">
+          <span style="color:#86efac;font-weight:800;flex-shrink:0">✓</span>
+          <span><b style="color:#fff">Form labels and keyboard nav.</b> Our contact form fields had no programmatic labels, and modal dialogs trapped keyboard focus. Both fixed: every field is labeled, every modal traps and releases focus correctly.</span>
+        </div>
+      </div>
+      <p style="font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.6">Verified across the homepage, contact page, service pages, and blog. Done, and documented.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--light)">
+  <div class="container">
+    <div class="section-head"><span class="label">How it works</span><h2>Three steps, no jargon</h2></div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><h4>Free snapshot</h4><p>Scan your site above and see where you stand in 30 seconds. No commitment.</p></div>
+      <div class="step"><div class="step-n">2</div><h4>Full human audit</h4><p>We check every page and test the things scanners cannot, then hand you a prioritized, plain-English report.</p></div>
+      <div class="step"><div class="step-n">3</div><h4>We fix and document</h4><p>We remediate the code, re-scan to confirm, and publish your accessibility statement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="label">Pricing</span>
+      <h2>Start free. Fix it for less than one demand letter costs.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">Full Audit</div>
+        <div class="price-n">$297</div>
+        <div class="price-sub">One-time. Every page, by a human.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="ck">✓</span> Every page scanned and manually reviewed</div>
+          <div class="price-feat"><span class="ck">✓</span> Full WCAG 2.2 AA report, prioritized</div>
+          <div class="price-feat"><span class="ck">✓</span> Plain-English fix list</div>
+          <div class="price-feat"><span class="ck">✓</span> Accessibility statement drafted</div>
+        </div>
+        <a href="https://tidycal.com/theogrimes/30-minute-meeting" target="_blank" class="btn btn-ghost">Book a call</a>
+      </div>
+      <div class="price-card feat">
+        <div class="price-badge">Most popular</div>
+        <div class="price-tier">Audit + Fix</div>
+        <div class="price-n">$997</div>
+        <div class="price-sub">We find it and we fix it.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="ck">✓</span> Everything in Full Audit</div>
+          <div class="price-feat"><span class="ck">✓</span> We remediate the code, no overlays</div>
+          <div class="price-feat"><span class="ck">✓</span> Re-scan to verify 0 violations</div>
+          <div class="price-feat"><span class="ck">✓</span> Published accessibility statement</div>
+        </div>
+        <a href="https://tidycal.com/theogrimes/30-minute-meeting" target="_blank" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">Monitoring</div>
+        <div class="price-n">$97<span style="font-size:15px;font-weight:600;color:var(--gray)">/mo</span></div>
+        <div class="price-sub">Stay compliant as your site changes.</div>
+        <div class="price-feats">
+          <div class="price-feat"><span class="ck">✓</span> Monthly automated scans</div>
+          <div class="price-feat"><span class="ck">✓</span> New-issue alerts</div>
+          <div class="price-feat"><span class="ck">✓</span> Statement kept current</div>
+          <div class="price-feat"><span class="ck">✓</span> Month-to-month, no lock-in</div>
+        </div>
+        <a href="https://tidycal.com/theogrimes/30-minute-meeting" target="_blank" class="btn btn-ghost">Book a call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--light)">
+  <div class="container">
+    <div class="section-head"><span class="label">Questions</span><h2>The honest answers</h2></div>
+    <div class="faq">
+      <div class="acc" aria-expanded="false"><button class="acc-q">Is there an official ADA certified badge?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">No. The government does not certify websites, and anyone selling you a certified badge is overselling. A fake badge can actually be used against you. What is real is conforming to <b>WCAG 2.2 AA</b> and documenting it, which is exactly what we do.</div></div></div>
+      <div class="acc" aria-expanded="false"><button class="acc-q">Does the free scan mean my site is compliant?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">No, and we would never claim that. The free scan is an automated snapshot of your homepage. It catches common issues, but real compliance needs every page checked plus human testing of keyboard and screen-reader use.</div></div></div>
+      <div class="acc" aria-expanded="false"><button class="acc-q">I'm a small local business. Am I really at risk?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">Small businesses are common targets, precisely because they are the least prepared and most likely to settle quickly. We would rather you fix it because it wins you customers, not just because of the legal angle. Both reasons point to the same fix.</div></div></div>
+      <div class="acc" aria-expanded="false"><button class="acc-q">Are not accessibility overlay widgets easier?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">They do not work and they are a liability. The DOJ says overlays do not equal compliance, the FTC fined a major overlay maker <b>$1 million</b> in 2025, and overlay-equipped sites get sued more, not less. We fix the actual code instead.</div></div></div>
+      <div class="acc" aria-expanded="false"><button class="acc-q">Will you guarantee I will not get sued?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">No one honest can promise that, and we will not pretend to. We meaningfully lower your risk by fixing real barriers and documenting your good-faith effort, which is what matters in practice. This is technical work, not legal advice.</div></div></div>
+      <div class="acc" aria-expanded="false"><button class="acc-q">How much does it cost to fix my site?<span class="acc-icon">+</span></button><div class="acc-a"><div class="acc-a-inner">It depends on your site's size and how it is built. Run the free scan, then book a call and we will scope it honestly, no pressure.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section final">
+  <div class="container">
+    <h2>See where your site stands, free.</h2>
+    <p>Get your ADA snapshot in 30 seconds, then decide if you want the full picture. No signup to see your score.</p>
+    <a href="#scan" class="btn btn-primary">Scan my site</a>
+  </div>
+</section>
+
+<script define:vars={{ WORKER_URL, TURNSTILE_SITE_KEY }}>
+  const nav = document.querySelector('nav');
+  if (nav) addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
+
+  const form    = document.getElementById('scanForm');
+  const wrap    = document.getElementById('scanFormWrap');
+  const loading = document.getElementById('scanLoading');
+  const results = document.getElementById('scanResults');
+  const joke    = document.getElementById('scanJoke');
+  const errBox  = document.getElementById('scanError');
+  const steps   = [...document.querySelectorAll('.scan-step')];
+  let pendingUrl = null;
+  let tsToken    = null;
+
+  window.onTurnstileSuccess = (token) => { tsToken = token; if (pendingUrl) runScan(pendingUrl); };
+
+  function showLoading() {
+    wrap.style.display = 'none';
+    loading.classList.add('on');
+    steps.forEach(s => s.classList.remove('active', 'done'));
+    steps[0].classList.add('active');
+    let i = 0;
+    const iv = setInterval(() => {
+      steps[i].classList.remove('active'); steps[i].classList.add('done');
+      i++;
+      if (i < steps.length) steps[i].classList.add('active');
+      else clearInterval(iv);
+    }, 900);
+  }
+
+  async function runScan(url) {
+    pendingUrl = null;
+    showLoading();
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, turnstileToken: tsToken }),
+      });
+      tsToken = null;
+      const data = await res.json();
+      loading.classList.remove('on');
+      if (!res.ok || data.error) { errBox.classList.add('on'); wrap.style.display = ''; return; }
+      renderResults(data, url);
+    } catch {
+      loading.classList.remove('on');
+      errBox.classList.add('on');
+      wrap.style.display = '';
+    }
+  }
+
+  function renderResults(data, url) {
+    const domain = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '') || 'your site';
+    document.getElementById('scannedDomain').textContent = domain;
+    document.getElementById('scoreNum').textContent = data.score ?? 0;
+    document.getElementById('scoreLabel').textContent = data.label || 'Result';
+    const ring = document.getElementById('scoreRing');
+    const s = data.score || 0;
+    const color = s >= 90 ? '#15803D' : s >= 70 ? '#B7791F' : '#C0392B';
+    ring.style.background = `conic-gradient(${color} ${s}%, #E5E7EB 0)`;
+    const sev = data.severities || {};
+    const sevRow = document.getElementById('sevRow');
+    sevRow.innerHTML = '';
+    [['critical','sev-critical'],['serious','sev-serious'],['moderate','sev-mod'],['minor','sev-minor']].forEach(([key, cls]) => {
+      const n = sev[key]; if (n) sevRow.insertAdjacentHTML('beforeend', `<span class="sev ${cls}">${n} ${key}</span>`);
+    });
+    const list = document.getElementById('issueList');
+    list.innerHTML = '';
+    const icons = { critical: '🚨', serious: '⚠️', moderate: '📋', minor: 'ℹ️' };
+    (data.topIssues || []).forEach(issue => {
+      const ic = icons[issue.impact] || '🔍';
+      const wcag = (issue.wcag || []).map(w => `<span class="wcag">${w}</span>`).join(' ');
+      list.insertAdjacentHTML('beforeend', `<div class="issue"><div class="issue-ic">${ic}</div><div><h5>${issue.help}</h5>${wcag}</div></div>`);
+    });
+    results.classList.add('on');
+    document.getElementById('scan').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const raw = document.getElementById('scanUrl').value.trim();
+    errBox.classList.remove('on'); results.classList.remove('on'); joke.classList.remove('on');
+    if (/thryv/i.test(raw)) { wrap.style.display = 'none'; joke.classList.add('on'); return; }
+    const url = /^https?:\/\//i.test(raw) ? raw : 'https://' + raw;
+    pendingUrl = url;
+    if (tsToken) { runScan(url); return; }
+    if (window.turnstile) { window.turnstile.reset(); window.turnstile.execute(); }
+    else { tsToken = ''; runScan(url); }
+  });
+
+  document.getElementById('jokeReset').addEventListener('click', () => {
+    joke.classList.remove('on'); wrap.style.display = '';
+    const inp = document.getElementById('scanUrl'); inp.value = ''; inp.focus();
+  });
+
+  document.getElementById('gateForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('gateSuccess').classList.add('on');
+  });
+
+  document.querySelectorAll('.acc-q').forEach(btn => {
+    const acc = btn.parentElement;
+    const panel = acc.querySelector('.acc-a');
+    btn.addEventListener('click', () => {
+      const open = acc.getAttribute('aria-expanded') === 'true';
+      acc.setAttribute('aria-expanded', String(!open));
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.style.maxHeight = open ? null : panel.scrollHeight + 'px';
+    });
+  });
+</script>
+
+</BaseLayout>

@@ -1,0 +1,17 @@
+{
+  "name": "thryv-ada-scanner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone Cloudflare Worker: free ADA/WCAG scanner for thryvmarketingsolutions.com",
+  "scripts": {
+    "dev": "wrangler dev --remote",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "@cloudflare/puppeteer": "^0.0.14"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
