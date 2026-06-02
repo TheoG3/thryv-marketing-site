@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
 
 const schema = [
   {
@@ -18,13 +19,28 @@ const schema = [
     "mainEntity": [
       {
         "@type": "Question",
+        "name": "How much does Google Ads management cost in Miami?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Our Google Ads management fee is a flat $597/mo, separate from your ad spend, with no percentage-of-spend markup and no contracts. Most Miami businesses pair that with $500 to $1,500/mo in ad spend to start. Founding-client pricing is available to a limited number of new clients, so ask us for your rate." }
+      },
+      {
+        "@type": "Question",
         "name": "How much do I need to spend on Google Ads?",
         "acceptedAnswer": { "@type": "Answer", "text": "Ad spend is separate from our management fee. Most local businesses in Miami start with $500 to $1,500/mo in ad spend. We recommend a budget based on your market, competition, and cost per lead targets after the initial audit." }
       },
       {
         "@type": "Question",
+        "name": "Is Google Ads worth it for a small business?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If customers search for what you sell, usually yes. Google Ads reaches people at the exact moment they're looking to buy, and you only pay when someone clicks. By Google's own estimate, businesses make about $8 for every $1 spent on Search and Ads. The catch is that it only works when it's managed well, otherwise the budget burns on the wrong clicks." }
+      },
+      {
+        "@type": "Question",
         "name": "How do you charge for Google Ads management?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Our management fee is $597/mo, separate from your ad spend. There are no percentage-of-spend fees; the price does not go up as your budget grows. Founding clients lock in at 30% off." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Our management fee is $597/mo, separate from your ad spend. There are no percentage-of-spend fees, so the price does not go up as your budget grows. Founding-client pricing is available to a limited number of new clients, so ask us for your rate." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I do SEO or Google Ads first?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ads buy you the top of the page today but stop the moment you stop paying. SEO takes a few months but keeps earning after. Most businesses do best running ads for immediate leads while SEO builds underneath. We'll tell you honestly which your budget should favor first." }
       },
       {
         "@type": "Question",
@@ -34,7 +50,7 @@ const schema = [
       {
         "@type": "Question",
         "name": "How quickly can Google Ads generate leads?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Ads go live within days of launch and can generate calls and form submissions immediately. However, cost per lead typically improves over the first 30 to 60 days as we gather conversion data and optimize bids, keywords, and ad copy." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Ads go live within days of launch and can generate calls and form submissions immediately. Cost per lead typically improves over the first 30 to 60 days as we gather conversion data and optimize bids, keywords, and ad copy." }
       },
       {
         "@type": "Question",
@@ -47,7 +63,7 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Google Ads Management Miami | Thryv Marketing Solutions"
+  title="Google Ads Management Services in Miami | Thryv"
   description="Managed Google Ads for Miami businesses. Keyword research, campaign setup, ad copy, bid management, and monthly reporting. $597/mo + ad spend, no contracts."
   canonical="https://thryvmarketingsolutions.com/services/google-ads/"
   ogImage="https://thryvmarketingsolutions.com/og-google-ads.jpg"
@@ -61,14 +77,36 @@ const schema = [
       </nav>
       <span class="label">Service</span>
       <h1>Google Ads Management for Miami Businesses</h1>
-      <p class="lead">Managed search campaigns that put your business in front of customers who are actively searching for what you offer, ready to buy.</p>
+      <p class="lead">Google Ads management in Miami, done right: your business at the top of search the moment a local customer is ready to buy. Managed campaigns, a transparent flat fee, and no contracts.</p>
       <div class="hero-ctas">
         <a href="/contact/" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get Free Audit
+          Get Free Proposal
         </a>
         <div class="hero-price"><strong>$597/mo</strong> management + your ad spend</div>
       </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Flat fee, you own the account</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">$8</div><div class="stake-d">in value for every $1 spent on Google Search and Ads, by Google's own estimate</div></div>
+        <div class="stake"><div class="stake-n">Top of page</div><div class="stake-d">ads sit above the organic results, right at the moment of intent</div></div>
+        <div class="stake"><div class="stake-n">Pay per result</div><div class="stake-d">you pay when someone clicks through, not when they scroll past</div></div>
+      </div>
+      <p class="stakes-src">Value estimate from <a href="https://economicimpact.google/methodology/" target="_blank" rel="noopener">Google's Economic Impact methodology</a>.</p>
     </div>
   </section>
 
@@ -76,62 +114,117 @@ const schema = [
     <div class="container">
       <div class="two-col">
         <div class="reveal">
-          <span class="label">The Problem</span>
-          <h2>Google Ads Without Expert Management Drains Your Budget Fast</h2>
-          <p>Poorly managed Google Ads campaigns waste money on irrelevant clicks, wrong keywords, and low-converting landing pages. Most businesses overpay for leads because their campaigns are set up incorrectly and never optimized.</p>
+          <span class="label">The problem</span>
+          <h2>Google Ads without expert management drains your budget fast</h2>
+          <p>Poorly managed campaigns waste money on irrelevant clicks, the wrong keywords, and low-converting landing pages. Most businesses overpay for leads because their campaigns were set up incorrectly and never optimized after.</p>
           <ul class="check-list" style="margin-top:24px;">
-            <li>Broad keywords attract searchers who will never buy</li>
+            <li>Broad keywords attract searchers who'll never buy</li>
             <li>No negative keyword lists waste budget on bad clicks</li>
-            <li>Poor ad copy means low quality scores and higher costs per click</li>
-            <li>No conversion tracking means you cannot measure what is working</li>
+            <li>Weak ad copy means low quality scores and higher costs per click</li>
+            <li>No conversion tracking means you can't measure what's working</li>
           </ul>
         </div>
         <div class="reveal">
-          <span class="label">Our Solution</span>
-          <h2>Campaigns Built for Leads, Not Just Clicks</h2>
+          <span class="label">Our solution</span>
+          <h2>Campaigns built for leads, not just clicks</h2>
           <p>We build and manage Google Ads campaigns focused on one thing: generating qualified leads for your business at the lowest possible cost per acquisition.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">Google Ads, explained</span>
+        <h2>What Google Ads actually is</h2>
+        <p>Google Ads is how you buy the very top of the search results for the exact phrases your customers type. You set a budget, you bid on keywords, and <strong>you only pay when someone actually clicks</strong>. It's the fastest way to show up the moment somebody is searching to buy what you sell.</p>
+        <p>It launched back in 2000 as AdWords and was renamed Google Ads in 2018, but the core idea never changed: <strong>intent</strong>. Unlike an ad that interrupts someone scrolling, a search ad reaches a person who is right then, actively, looking for you. That's why it converts so well, and by Google's own estimate businesses see roughly $8 in value for every $1 spent.</p>
+        <p>Our honest take: Google Ads is powerful and dangerous in equal measure. Run well, it's the quickest lead tap you can turn on. Run badly, it's the fastest way to set money on fire. The whole game is management, and that's the part we own.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Why managed wins</span>
+        <h2>How we keep your cost-per-lead down</h2>
+        <p class="lead" style="margin:0 auto;">The difference between a profitable campaign and a money pit comes down to three habits most DIY accounts skip.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">🎯</div>
+          <h3>Target buyers, not browsers</h3>
+          <p>We bid on the high-intent phrases that mean someone's ready to call, and skip the cheap, curious clicks that never convert. <strong>Fewer wasted impressions, more actual leads.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🚫</div>
+          <h3>Cut the wasted spend</h3>
+          <p>Ongoing negative-keyword work blocks the searches that drain your budget (the "free," "jobs," and "DIY" clicks). It's unglamorous and it's where most of the savings live.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">📊</div>
+          <h3>Track real leads, not clicks</h3>
+          <p>We set up call and form tracking so we optimize toward actual phone calls and submissions, not vanity clicks. <strong>You see cost per lead, the only number that matters.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Google Ads is an auction: the better your targeting and quality, the less you pay per click. We work that auction in your favor every week.</p>
+    </div>
+  </section>
+
   <section class="section includes-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">What's Included</span>
-        <h2>Everything in the $597/mo Management Plan</h2>
+        <span class="label">What's included</span>
+        <h2>Everything in the $597/mo management plan</h2>
       </div>
       <div class="includes-grid">
         <div class="inc-card reveal">
           <div class="inc-icon">🔑</div>
-          <h3>Keyword Research</h3>
-          <p>We research the exact search terms your customers use and build a keyword strategy that targets buyers, not browsers.</p>
+          <h3>Keyword research</h3>
+          <p>We research the exact search terms your customers use and build a strategy that targets buyers, not browsers.</p>
         </div>
         <div class="inc-card reveal">
-          <div class="inc-icon">✍</div>
-          <h3>Ad Copy and Creative</h3>
+          <div class="inc-icon">✍️</div>
+          <h3>Ad copy and creative</h3>
           <p>We write and test multiple ad variations to find the messaging that generates the most qualified clicks.</p>
         </div>
         <div class="inc-card reveal">
-          <div class="inc-icon">⚙</div>
-          <h3>Campaign Setup and Structure</h3>
+          <div class="inc-icon">⚙️</div>
+          <h3>Campaign setup and structure</h3>
           <p>Properly structured campaigns with tightly themed ad groups, match types, and bidding strategies.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">🚫</div>
-          <h3>Negative Keyword Management</h3>
-          <p>Ongoing negative keyword list maintenance to prevent your budget from being wasted on irrelevant searches.</p>
+          <h3>Negative keyword management</h3>
+          <p>Ongoing negative keyword maintenance to keep your budget off irrelevant searches.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📊</div>
-          <h3>Conversion Tracking</h3>
-          <p>We set up call tracking and form submission tracking so you can see exactly how many leads your ads are generating.</p>
+          <h3>Conversion tracking</h3>
+          <p>Call tracking and form tracking so you see exactly how many leads your ads generate.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📈</div>
-          <h3>Monthly Optimization and Report</h3>
+          <h3>Monthly optimization and report</h3>
           <p>Regular bid adjustments, ad testing, and a clear monthly report on clicks, cost per lead, and conversions.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Free audit</h3><p>Already running ads? We review the account and show you exactly where budget is leaking. Starting fresh? We scope the opportunity.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Build campaigns</h3><p>We research keywords, write the ads, structure tight ad groups, and set up conversion tracking before a dollar is spent.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Launch &amp; track</h3><p>Ads go live in days. From the first click we're tracking real leads, calls and forms, not vanity clicks.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Optimize &amp; report</h3><p>We tune bids, keywords, and copy every week, and send a clear monthly report on cost per lead and conversions.</p></div>
       </div>
     </div>
   </section>
@@ -141,8 +234,8 @@ const schema = [
       <div class="pricing-box reveal">
         <div>
           <span class="label">Pricing</span>
-          <h2>$597/mo: Flat Management Fee</h2>
-          <p class="lead">Our fee is flat; it does not go up as your ad budget grows. Ad spend goes directly to Google. No contracts.</p>
+          <h2>$597/mo flat management fee</h2>
+          <p class="lead">Our fee is flat, so it doesn't climb as your ad budget grows. Ad spend goes directly to Google. No contracts.</p>
           <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">Get Started</a>
         </div>
         <div class="pricing-note-list">
@@ -159,22 +252,32 @@ const schema = [
 
   <section class="section faq-section">
     <div class="container">
-      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="section-head center"><h2>Common questions</h2></div>
       <div class="faq-list">
+        <details class="faq-item reveal"><summary>How much does Google Ads management cost in Miami?</summary><p>Our Google Ads management fee is a flat $597/mo, separate from your ad spend, with no percentage-of-spend markup and no contracts. Most Miami businesses pair that with $500 to $1,500/mo in ad spend to start. Founding-client pricing is available to a limited number of new clients, so ask us for your rate.</p></details>
         <details class="faq-item reveal"><summary>How much do I need to spend on Google Ads?</summary><p>Ad spend is separate from our management fee. Most local businesses in Miami start with $500 to $1,500/mo in ad spend. We recommend a budget based on your market, competition, and cost per lead targets after the initial audit.</p></details>
-        <details class="faq-item reveal"><summary>How do you charge for Google Ads management?</summary><p>Our management fee is $597/mo, separate from your ad spend. There are no percentage-of-spend fees; the price does not go up as your budget grows. Founding clients lock in at 30% off.</p></details>
-        <details class="faq-item reveal"><summary>Who owns the Google Ads account?</summary><p>You own the account. We manage it on your behalf under your Google account. If you ever leave, you take the account and all its historical data with you.</p></details>
-        <details class="faq-item reveal"><summary>How quickly can Google Ads generate leads?</summary><p>Ads go live within days of launch and can generate calls and form submissions immediately. Cost per lead typically improves over the first 30 to 60 days as we gather conversion data and optimize bids, keywords, and ad copy.</p></details>
-        <details class="faq-item reveal"><summary>What is the difference between Google Ads and Local Services Ads?</summary><p>Google Ads are keyword-based: you pay per click regardless of outcome. Local Services Ads (LSAs) are Google-verified listings where you pay per lead. We manage both. LSAs work best for service categories Google supports; standard Google Ads offer more control and reach.</p></details>
+        <details class="faq-item reveal"><summary>Is Google Ads worth it for a small business?</summary><p>If customers search for what you sell, usually yes. You reach people at the exact moment they're looking to buy, and only pay when someone clicks. By Google's own estimate, businesses make about $8 for every $1 spent on Search and Ads. The catch: it only works when it's managed well.</p></details>
+        <details class="faq-item reveal"><summary>How do you charge for management?</summary><p>Our fee is $597/mo, separate from your ad spend. No percentage-of-spend fees, so the price doesn't climb as your budget grows. Founding-client pricing is available to a limited number of new clients, so ask us for your rate.</p></details>
+        <details class="faq-item reveal"><summary>Should I do SEO or Google Ads first?</summary><p>Ads buy you the top of the page today but stop the moment you stop paying. <a href="/services/seo/">SEO</a> takes a few months but keeps earning after. Most businesses do best running ads for immediate leads while SEO builds underneath. We'll tell you honestly which your budget should favor first.</p></details>
+        <details class="faq-item reveal"><summary>Who owns the Google Ads account?</summary><p>You do. We manage it under your Google account, and if you ever leave, you take the account and all its historical data with you.</p></details>
+        <details class="faq-item reveal"><summary>How quickly can Google Ads generate leads?</summary><p>Ads go live within days of launch and can generate calls and forms immediately. Cost per lead typically improves over the first 30 to 60 days as we gather conversion data and optimize.</p></details>
+        <details class="faq-item reveal"><summary>Google Ads vs Local Services Ads?</summary><p>Google Ads are keyword-based: you pay per click. Local Services Ads (LSAs) are Google-verified listings where you pay per lead. We manage both; LSAs suit the service categories Google supports, standard Ads offer more control and reach.</p></details>
       </div>
     </div>
   </section>
 
+  <ToolCallout
+    href="/free-tools/google-ads-budget-calculator/"
+    icon="📈"
+    title="See what ad spend it takes to hit your lead goal"
+    desc="Pick your industry and lead target. Get a realistic monthly ad-spend range based on Miami market cost-per-lead benchmarks."
+  />
+
   <section class="section related-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">Related Services</span>
-        <h2>Google Ads Works Best Alongside These</h2>
+        <span class="label">Related services</span>
+        <h2>Google Ads works best alongside these</h2>
       </div>
       <div class="related-grid">
         <a href="/services/social-media-ads/" class="related-card">
@@ -200,9 +303,9 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
-          <h2>We Will Audit Your Current Ads at No Charge</h2>
-          <p class="lead" style="margin-bottom:24px;">Already running Google Ads? We will review your account and tell you exactly where your budget is being wasted.</p>
+          <span class="label">Free proposal</span>
+          <h2>We'll audit your current ads, free</h2>
+          <p class="lead" style="margin-bottom:24px;">Already running Google Ads? We'll review your account and tell you exactly where your budget is being wasted.</p>
         </div>
         <ContactForm title="Get My Free Ads Audit" subject="Google Ads Inquiry | Thryv" serviceDefault="gads" />
       </div>
@@ -220,29 +323,72 @@ const schema = [
   .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
   .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
   .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+
+  .stakes { background: var(--light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+
   .problem-section { background: var(--white); }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
   .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
   .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
   .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+
   .includes-section { background: var(--light); }
   .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
   .inc-icon { font-size: 36px; margin-bottom: 12px; } .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; } .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+
   .pricing-section { background: var(--white); }
   .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
   .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
   .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
   .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
   .faq-section { background: var(--light); }
-  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
   .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
-  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p a { color: var(--blue); font-weight: 700; }
+
   .related-section { background: var(--light); }
   .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
@@ -250,18 +396,22 @@ const schema = [
   .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
   .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
   .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
-  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+
   .contact-section { background: var(--white); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
+
   @media (max-width: 900px) {
     .two-col { grid-template-columns: 1fr; gap: 40px; }
     .includes-grid { grid-template-columns: 1fr 1fr; }
     .pricing-box { grid-template-columns: 1fr; }
     .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .faq-list { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } .faq-list { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr; } }
 </style>
 <script>
   const io = new IntersectionObserver(entries => {
