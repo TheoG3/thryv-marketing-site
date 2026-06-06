@@ -1,4 +1,4 @@
-# Google Business Profile Posts — Thryv Marketing Solutions
+ # Google Business Profile Posts — Thryv Marketing Solutions
 6 weeks of ready-to-post GBP content. Copy, paste, post. Under 1,500 characters each.
 
 ---

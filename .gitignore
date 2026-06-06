@@ -27,8 +27,13 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Graphify cache (graph files committed, cache is local only)
-graphify-out/cache/
+# Graphify output (regenerated locally by tooling, not part of the site)
+graphify-out/
+
+# Generated script output + working/research docs (not site code, kept internal)
+docs/audits/
+*.docx
+~$*
 
 # Brainstorm/preview scratch files
 .superpowers
