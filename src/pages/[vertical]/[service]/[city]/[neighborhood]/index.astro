@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../../../../layouts/BaseLayout.astro';
 import ContactForm from '../../../../../components/ContactForm.astro';
-import { verticals, getServiceDef, neighborhoods, getNeighborhood } from '../../../../../data/ecosystem.ts';
+import { verticals, getServiceDef, neighborhoods, getNeighborhood, getNeighborhoodOverride } from '../../../../../data/ecosystem.ts';
 import type { ServiceSlug } from '../../../../../data/ecosystem.ts';
+import { getProfessionVocabulary } from '../../../../../data/profession-vocabulary.ts';
 
 export async function getStaticPaths() {
   const paths: any[] = [];
@@ -29,15 +30,28 @@ export async function getStaticPaths() {
 const { vertical: v, service: svc, city, neighborhood: nbhd } = Astro.props;
 const config = v.serviceConfigs[svc.slug as ServiceSlug];
 const includes = config?.includes ?? svc.defaultIncludes;
+const override = getNeighborhoodOverride(v.slug, svc.slug, city.slug, nbhd.slug);
 
 const BASE = 'https://thryvmarketingsolutions.com';
 const canonical = `${BASE}/${v.slug}/${svc.slug}/${city.slug}/${nbhd.slug}/`;
 
-const h1 = `${svc.shortName} for ${v.name} in ${nbhd.name}`;
-const pageTitle = `${svc.shortName} for ${v.name} in ${nbhd.name} | Thryv`.slice(0, 60);
-const pageDesc = `${svc.shortName} for ${v.name.toLowerCase()} in ${nbhd.name}, Miami. Rank higher in local Google search and Maps. Miami-based team. Free audit.`.slice(0, 160);
+const h1 = override?.h1 ?? `${svc.shortName} for ${v.name} in ${nbhd.name}`;
+const pageTitle = override?.pageTitle ?? `${svc.shortName} for ${v.name} in ${nbhd.name} | Thryv`.slice(0, 60);
+const pageDesc = override?.pageDesc ?? `${svc.shortName} for ${v.name.toLowerCase()} in ${nbhd.name}, Miami. Rank higher in local Google search and Maps. Miami-based team. Free audit.`.slice(0, 160);
+const lead = override?.lead ?? `We help ${v.name.toLowerCase()} in ${nbhd.name} rank higher on Google and Google Maps — so clients in this neighborhood find you first, not your competitor.`;
+const marketHeadline = override?.marketHeadline ?? `The ${nbhd.name} Market for ${v.name}`;
+const marketBody = override?.marketBody;
+const overrideFaqs = override?.faqs;
+const overrideSignals = override?.signals;
 
-const schema = [
+const pv = getProfessionVocabulary(v.slug);
+// Rotate slang terms by neighborhood slug so each neighborhood × service
+// spotlights different terms, compounding uniqueness across the lattice.
+const nbhdSlangStart = pv ? Math.abs(nbhd.slug.charCodeAt(0) + svc.slug.length) % Math.max(pv.slang.length - 2, 1) : 0;
+const nbhdSlangPick = pv ? pv.slang.slice(nbhdSlangStart, nbhdSlangStart + 2) : [];
+const nbhdMktPick = pv ? pv.marketingTech[Math.abs(nbhd.slug.length * 3 + svc.slug.length) % pv.marketingTech.length] : '';
+
+const schema: any[] = [
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -63,6 +77,42 @@ const schema = [
     },
   },
 ];
+
+if (overrideFaqs && overrideFaqs.length > 0) {
+  schema.push({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": overrideFaqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  });
+}
+
+// Per-neighborhood Service schema with @geo — emits ONLY when neighborhood has coordinates.
+// Tells Google: "Thryv's <service> for <vertical> is offered in this specific neighborhood at these lat/lng."
+// Complements the sitewide LocalBusiness in BaseLayout (refs the same #business @id).
+if (nbhd.lat !== undefined && nbhd.lng !== undefined) {
+  schema.push({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": `${svc.shortName} for ${v.name} in ${nbhd.name}`,
+    "description": pageDesc,
+    "url": canonical,
+    "serviceType": svc.name,
+    "provider": { "@id": "https://thryvmarketingsolutions.com/#business" },
+    "areaServed": {
+      "@type": "Place",
+      "name": `${nbhd.name}, ${city.name}, FL`,
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": nbhd.lat,
+        "longitude": nbhd.lng,
+      },
+    },
+  });
+}
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} canonical={canonical} schema={schema}>
@@ -78,11 +128,11 @@ const schema = [
       </nav>
       <span class="label">{nbhd.name}, {city.name}</span>
       <h1>{h1}</h1>
-      <p class="lead">We help {v.name.toLowerCase()} in {nbhd.name} rank higher on Google and Google Maps — so clients in this neighborhood find you first, not your competitor.</p>
+      <p class="lead">{lead}</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get a Free Audit
+          Get a Free Proposal
         </a>
         <a href={`/${v.slug}/${svc.slug}/${city.slug}/`} class="btn btn-outline-white">
           All {city.name} Neighborhoods
@@ -91,31 +141,74 @@ const schema = [
     </div>
   </section>
 
+  {pv && nbhdSlangPick.length > 0 && (
+    <section class="section pv-nbhd-section">
+      <div class="container">
+        <div class="pv-nbhd-card reveal">
+          <div class="pv-nbhd-head">
+            <span class="pv-nbhd-label">Insider {v.singular} Vocabulary</span>
+            <span class="pv-nbhd-meta">{nbhd.name} edition</span>
+          </div>
+          <dl class="pv-nbhd-slang">
+            {nbhdSlangPick.map(s => (
+              <div class="pv-nbhd-slang-item">
+                <dt>{s.term}</dt>
+                <dd>{s.meaning}</dd>
+              </div>
+            ))}
+          </dl>
+          {nbhdMktPick && (
+            <p class="pv-nbhd-mkt"><span>Marketing play for {nbhd.name}:</span> {nbhdMktPick}</p>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section local-section">
     <div class="container">
       <div class="two-col">
         <div class="reveal">
           <span class="label">{nbhd.name}</span>
-          <h2>The {nbhd.name} Market for {v.name}</h2>
-          <p>{nbhd.desc}</p>
-          <p style="margin-top:16px;">{v.name} serving {nbhd.name} compete in a specific local market. The clients here search differently, have different expectations, and compare you against different competitors than they would in Kendall or Aventura. A {svc.shortName.toLowerCase()} strategy built for {nbhd.name} targets the exact searches and signals that matter here.</p>
+          <h2>{marketHeadline}</h2>
+          {marketBody ? (
+            marketBody.map((para, i) => (
+              <p set:html={para} style={i === 0 ? '' : 'margin-top:16px;'}></p>
+            ))
+          ) : (
+            <>
+              <p>{nbhd.desc}</p>
+              <p style="margin-top:16px;">{v.name} serving {nbhd.name} compete in a specific local market. The clients here search differently, have different expectations, and compare you against different competitors than they would in Kendall or Aventura. A {svc.shortName.toLowerCase()} strategy built for {nbhd.name} targets the exact searches and signals that matter here.</p>
+            </>
+          )}
           <div class="local-pills">
-            <div class="local-pill">
-              <span class="pill-label">Neighborhood</span>
-              <span class="pill-val">{nbhd.name}</span>
-            </div>
-            <div class="local-pill">
-              <span class="pill-label">City</span>
-              <span class="pill-val">{city.name}, {city.state}</span>
-            </div>
-            <div class="local-pill">
-              <span class="pill-label">Service</span>
-              <span class="pill-val">{svc.shortName}</span>
-            </div>
-            <div class="local-pill">
-              <span class="pill-label">Industry</span>
-              <span class="pill-val">{v.name}</span>
-            </div>
+            {overrideSignals ? (
+              overrideSignals.map(s => (
+                <div class="local-pill">
+                  <span class="pill-label">{s.label}</span>
+                  <span class="pill-val" set:html={s.val}></span>
+                </div>
+              ))
+            ) : (
+              <>
+                <div class="local-pill">
+                  <span class="pill-label">Neighborhood</span>
+                  <span class="pill-val">{nbhd.name}</span>
+                </div>
+                <div class="local-pill">
+                  <span class="pill-label">City</span>
+                  <span class="pill-val">{city.name}, {city.state}</span>
+                </div>
+                <div class="local-pill">
+                  <span class="pill-label">Service</span>
+                  <span class="pill-val">{svc.shortName}</span>
+                </div>
+                <div class="local-pill">
+                  <span class="pill-label">Industry</span>
+                  <span class="pill-val">{v.name}</span>
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div class="includes-box reveal">
@@ -130,7 +223,7 @@ const schema = [
             ))}
           </ul>
           <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">
-            Get a Free Audit
+            Get a Free Proposal
           </a>
         </div>
       </div>
@@ -154,11 +247,52 @@ const schema = [
     </div>
   </section>
 
+  {overrideFaqs && overrideFaqs.length > 0 && (
+    <section class="section faq-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="label">FAQs</span>
+          <h2>{nbhd.name} {svc.shortName} Questions, Answered</h2>
+        </div>
+        <div class="faq-list">
+          {overrideFaqs.map(f => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <div class="faq-answer"><p set:html={f.a}></p></div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {nbhd.lat !== undefined && nbhd.lng !== undefined && (
+    <section class="section map-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="label">Service Area</span>
+          <h2>Serving {nbhd.name} {city.name === 'Miami' ? '' : `, ${city.name}`}</h2>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src={`https://www.google.com/maps?q=${nbhd.lat},${nbhd.lng}(${encodeURIComponent(nbhd.name + ', Miami, FL')})&z=13&output=embed`}
+            width="100%"
+            height="360"
+            style="border:0;display:block;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`Map of ${nbhd.name}, ${city.name}, ${city.state} — service area for Thryv Marketing Solutions`}
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="section contact-section" id="contact">
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
+          <span class="label">Free Proposal</span>
           <h2>{svc.shortName} Audit for {v.name} in {nbhd.name}</h2>
           <p class="lead" style="margin-bottom:24px;">We run a {svc.shortName.toLowerCase()} audit specific to {nbhd.name} and show you exactly where you stand versus every competitor in this neighborhood.</p>
           <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; Miami-based &middot; No contracts &middot; Free</p>
@@ -185,6 +319,19 @@ const schema = [
   .btn-outline-white { display: inline-flex; align-items: center; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s; }
   .btn-outline-white:hover { border-color: var(--white); }
 
+  .pv-nbhd-section { background: var(--light); padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .pv-nbhd-card { max-width: 820px; margin: 0 auto; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 26px 30px; }
+  .pv-nbhd-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+  .pv-nbhd-label { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); }
+  .pv-nbhd-meta { font-size: 11px; font-weight: 700; color: var(--gray); }
+  .pv-nbhd-slang { margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .pv-nbhd-slang-item { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 10px 14px; background: var(--light); border-radius: var(--radius); border-left: 3px solid var(--blue); }
+  .pv-nbhd-slang-item dt { font-size: 13px; font-weight: 800; color: var(--blue-deeper); margin: 0; }
+  .pv-nbhd-slang-item dd { font-size: 13px; line-height: 1.65; color: var(--dark); margin: 0; }
+  .pv-nbhd-mkt { margin: 0; padding: 12px 14px; background: rgba(245,166,35,.08); border-radius: var(--radius); border-left: 3px solid var(--orange); font-size: 13px; line-height: 1.6; color: var(--dark); }
+  .pv-nbhd-mkt span { font-weight: 800; color: var(--orange); display: block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+  @media (max-width: 700px) { .pv-nbhd-slang-item { grid-template-columns: 1fr; gap: 4px; } }
+
   .local-section { background: var(--white); }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .two-col h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
@@ -206,6 +353,23 @@ const schema = [
   .nearby-card { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); text-decoration: none; font-weight: 700; font-size: 14px; color: var(--dark); transition: border-color .2s, color .2s; }
   .nearby-card:hover { border-color: var(--blue); color: var(--blue); }
   .nearby-card svg { stroke: currentColor; opacity: .5; }
+
+  .map-section { background: var(--light, #f8fafc); padding: 48px 0; border-top: 1.5px solid var(--border, #e2e8f0); }
+  .map-section .section-head { margin-bottom: 24px; }
+  .map-section .section-head h2 { font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0 0; }
+  .map-wrap { max-width: 1080px; margin: 0 auto; border-radius: var(--radius-lg, 14px); overflow: hidden; border: 1.5px solid var(--border, #e2e8f0); box-shadow: 0 10px 30px -12px rgba(10, 46, 110, 0.18); background: var(--white); }
+  .faq-section { background: var(--white); }
+  .faq-section .section-head { margin-bottom: 32px; }
+  .faq-section .section-head h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
+  .faq-list { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+  .faq-item { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .faq-item summary { padding: 18px 22px; font-weight: 700; font-size: 15px; color: var(--dark); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 22px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+  .faq-answer { padding: 16px 22px 22px; }
+  .faq-answer p { font-size: 14.5px; line-height: 1.75; color: var(--gray); margin: 0; }
 
   .contact-section { background: var(--white); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }

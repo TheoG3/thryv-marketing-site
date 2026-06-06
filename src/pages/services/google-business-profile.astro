@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
 
 const schema = [
   {
@@ -24,7 +25,7 @@ const schema = [
       {
         "@type": "Question",
         "name": "How long until I see results from GBP management?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most businesses see increased profile views and inbound calls within 30 to 60 days of starting GBP management. The speed depends on how optimized your profile was before we started and how competitive your market is." }
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on your starting point and how competitive your local market is. Profiles that were incomplete or neglected tend to improve faster than those already doing most things right. We track views, calls, and direction requests every month and share the numbers with you." }
       },
       {
         "@type": "Question",
@@ -39,7 +40,27 @@ const schema = [
       {
         "@type": "Question",
         "name": "How is GBP management priced?",
-        "acceptedAnswer": { "@type": "Answer", "text": "GBP management starts at $297 per month as a standalone service, or is included in our Growth ($797/mo) and Pro ($1,497/mo) plans. Founding clients lock in at 30% off. All plans are month-to-month with no contracts." }
+        "acceptedAnswer": { "@type": "Answer", "text": "GBP management starts at $297 per month as a standalone service, or is included in our Growth ($797/mo) and Pro ($1,497/mo) plans. Founding-client pricing is available to a limited number of new clients, so ask us for your rate. All plans are month-to-month with no contracts." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a Google Business Profile free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The listing itself is 100% free from Google. What costs money is the time and know-how to keep it fully optimized, posting weekly, answering questions, and ranking against competitors, which is the part we manage for you." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I rank higher in the Google Maps 3-pack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google weighs three things: relevance, distance, and prominence. You can't move your address, but you can win on relevance (a complete, keyword-aligned profile) and prominence (steady reviews, weekly posts, fresh photos, and consistent listings across the web). That's the monthly work that moves you up." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I post to my Google Business Profile?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Weekly is the sweet spot. Regular posts signal to Google that your business is active and give searchers a fresh reason to choose you. We create and publish your posts every week so the profile never goes quiet." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do reviews affect my Google ranking?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, strongly. Your review count, average rating, how recent the reviews are, and whether you respond all feed Google's prominence signal. Pairing profile management with reputation management compounds both your ranking and your conversion rate." }
       }
     ]
   }
@@ -47,8 +68,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Google Business Profile Management Miami | Thryv"
-  description="Professional Google Business Profile management for Miami businesses. Optimize your listing, get more calls, and rank higher in Google Maps. $297/mo, no contracts."
+  title="Google Business Profile Management Services in Miami | Thryv"
+  description="Google Business Profile management for Miami businesses. Optimize your listing, get more calls, rank higher in Google Maps. $297/mo, no contracts."
   canonical="https://thryvmarketingsolutions.com/services/google-business-profile/"
   ogImage="https://thryvmarketingsolutions.com/og-google-business-profile.jpg"
   schema={schema}
@@ -65,10 +86,32 @@ const schema = [
       <div class="hero-ctas">
         <a href="/contact/" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get Free Audit
+          Get Free Proposal
         </a>
         <div class="hero-price">Starting at <strong>$297/mo</strong></div>
       </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Month-to-month, no contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">70%</div><div class="stake-d">more likely to visit a business with a complete Google profile</div></div>
+        <div class="stake"><div class="stake-n">2.7&times;</div><div class="stake-d">more likely to see that business as reputable</div></div>
+        <div class="stake"><div class="stake-n">42%</div><div class="stake-d">more direction requests when the profile has photos</div></div>
+      </div>
+      <p class="stakes-src">All figures published by <a href="https://www.google.com/business/" target="_blank" rel="noopener">Google</a>.</p>
     </div>
   </section>
 
@@ -76,9 +119,9 @@ const schema = [
     <div class="container">
       <div class="two-col">
         <div class="reveal">
-          <span class="label">The Problem</span>
-          <h2>An Incomplete GBP Costs You Customers Every Day</h2>
-          <p>Google ranks well-managed profiles higher in local search results. If your profile has missing info, old photos, no posts, or unanswered reviews — Google and potential customers notice.</p>
+          <span class="label">The problem</span>
+          <h2>An incomplete profile costs you customers every day</h2>
+          <p>Google ranks well-managed profiles higher in local results. If yours has missing info, old photos, no posts, or unanswered reviews, both Google and potential customers notice.</p>
           <ul class="check-list" style="margin-top:24px;">
             <li>Wrong or missing business hours confuse customers</li>
             <li>No posts means Google sees you as inactive</li>
@@ -87,19 +130,59 @@ const schema = [
           </ul>
         </div>
         <div class="reveal">
-          <span class="label">Our Solution</span>
-          <h2>Monthly GBP Management That Keeps You Competitive</h2>
+          <span class="label">Our solution</span>
+          <h2>Monthly management that keeps you ahead of competitors</h2>
           <p>We handle everything required to keep your Google Business Profile optimized, active, and converting searchers into customers.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">GBP, explained</span>
+        <h2>What is a Google Business Profile, really?</h2>
+        <p>Your Google Business Profile is the free listing that shows up in Google Maps and the local "3-pack" when someone nearby searches for what you do. For most local businesses it's the real first impression, the thing people see and judge before they ever reach your website.</p>
+        <p>It has grown up over the years. It started as Google Local, became Google My Business in 2014, and was folded straight into Search and Maps as the Google Business Profile in 2021. As phones turned "near me" into an everyday search, that little panel quietly became the single most valuable free asset a local business owns.</p>
+        <p>Here's the part most owners miss: a complete, active profile doesn't just look better, it ranks better and converts better. People are <strong>70% more likely to visit</strong> a business with a complete profile, and one that posts, answers, and adds photos every week tells Google you're the active, trustworthy choice. That ongoing upkeep is exactly what we run for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>How Google decides who shows up in the Map pack</h2>
+        <p class="lead" style="margin:0 auto;">Google has said local ranking comes down to three things. The good news: two of them are squarely in your control, and that's exactly where we put the work.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">🎯</div>
+          <h3>Relevance</h3>
+          <p>How well your profile matches what someone searched. The right primary category, services, and a complete description tell Google exactly when to show you. <strong>Fully in your control, and where most profiles leave easy wins on the table.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">📍</div>
+          <h3>Distance</h3>
+          <p>How close you are to the person searching. You can't move your address, but a complete, properly categorized profile helps Google confidently show you across your whole service area, not just your block.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">⭐</div>
+          <h3>Prominence</h3>
+          <p>How known and trusted you are: review count and rating, how recent they are, posting activity, photos, and consistent listings across the web. <strong>This is the biggest lever, and the one we pull every month.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Based on Google's own local ranking guidance. We can't change your location, so we win on relevance and prominence, the two factors that are earned, not given.</p>
+    </div>
+  </section>
+
   <section class="section includes-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">What's Included</span>
-        <h2>Everything in the $297/mo Plan</h2>
+        <span class="label">What's included</span>
+        <h2>Everything in the $297/mo plan</h2>
       </div>
       <div class="includes-grid">
         <div class="inc-card reveal">
@@ -136,6 +219,21 @@ const schema = [
     </div>
   </section>
 
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Free audit</h3><p>We review your profile against everything Google looks at and show you exactly what's holding it back. No charge, no obligation.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Optimize</h3><p>We fix your categories, services, description, and photos, and align the whole profile to the searches your customers actually use.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Post &amp; protect</h3><p>Weekly posts, Q&amp;A, and review responses keep you active, while we watch for spam edits and suspension risks that quietly knock businesses offline.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Report</h3><p>A clear monthly report on profile views, calls, and direction requests, so you always see what your money is doing.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section pricing-section">
     <div class="container">
       <div class="pricing-box reveal">
@@ -162,22 +260,33 @@ const schema = [
 
   <section class="section faq-section">
     <div class="container">
-      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="section-head center"><h2>Common questions</h2></div>
       <div class="faq-list">
         <details class="faq-item reveal"><summary>What is Google Business Profile management?</summary><p>Google Business Profile management is the ongoing optimization and maintenance of your free Google listing — the profile that appears in Maps and local search. It includes updating categories, photos, posts, Q&amp;A, and service descriptions to maximize visibility and calls from local searches.</p></details>
         <details class="faq-item reveal"><summary>How long until I see results from GBP management?</summary><p>GBP progress depends on your starting point and how competitive your local market is. Profiles that were incomplete or neglected tend to improve faster than those already doing most things right. We track views, calls, and direction requests monthly and share the numbers with you.</p></details>
         <details class="faq-item reveal"><summary>Why does my Google Business Profile rank lower than competitors?</summary><p>GBP rankings come down to relevance (how well your profile matches the search), distance (proximity to the searcher), and prominence (reviews, links, and activity signals). Competitors who outrank you typically have more recent reviews, fully completed profiles, and consistent posting activity.</p></details>
         <details class="faq-item reveal"><summary>Do I need a website to benefit from GBP management?</summary><p>No. Many businesses generate solid leads through their GBP listing before having a strong website. A professional website does amplify GBP results, especially for converting visitors who click through to learn more before calling.</p></details>
-        <details class="faq-item reveal"><summary>How is GBP management priced?</summary><p>GBP management starts at $297/mo as a standalone service, or is included in our Growth ($797/mo) and Pro ($1,497/mo) plans. Founding clients lock in at 30% off those rates. All plans are month-to-month with no contracts.</p></details>
+        <details class="faq-item reveal"><summary>How is GBP management priced?</summary><p>GBP management starts at $297/mo as a standalone service, or is included in our Growth ($797/mo) and Pro ($1,497/mo) plans. Founding-client pricing is available to a limited number of new clients, so ask us for your rate. All plans are month-to-month with no contracts.</p></details>
+        <details class="faq-item reveal"><summary>Is a Google Business Profile free?</summary><p>Yes. The listing itself is 100% free from Google. What costs money is the time and know-how to keep it fully optimized, posting weekly, answering questions, and ranking against competitors, which is the part we manage for you.</p></details>
+        <details class="faq-item reveal"><summary>How do I rank higher in the Google Maps 3-pack?</summary><p>Google weighs three things: <strong>relevance, distance, and prominence</strong>. You can't move your address, but you can win on relevance (a complete, keyword-aligned profile) and prominence (steady reviews, weekly posts, fresh photos, consistent listings). That's the monthly work that moves you up.</p></details>
+        <details class="faq-item reveal"><summary>How often should I post to my Google Business Profile?</summary><p>Weekly is the sweet spot. Regular posts signal to Google that your business is active and give searchers a fresh reason to choose you. We create and publish your posts every week so the profile never goes quiet.</p></details>
+        <details class="faq-item reveal"><summary>Do reviews affect my Google ranking?</summary><p>Yes, strongly. Review count, average rating, recency, and whether you respond all feed Google's prominence signal. Pairing this with <a href="/services/reputation-management/">reputation management</a> compounds both your ranking and your conversion rate.</p></details>
       </div>
     </div>
   </section>
 
+  <ToolCallout
+    href="/free-tools/gbp-audit-scorer/"
+    icon="📋"
+    title="Score your Google Business Profile in 60 seconds"
+    desc="10 yes-or-no questions on verification, photos, categories, reviews, and posts. Instant score with a clear next step."
+  />
+
   <section class="section related-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">Related Services</span>
-        <h2>GBP Works Best Alongside These</h2>
+        <span class="label">Related services</span>
+        <h2>GBP works best alongside these</h2>
       </div>
       <div class="related-grid">
         <a href="/services/reputation-management/" class="related-card">
@@ -203,14 +312,20 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
-          <h2>We'll Audit Your GBP at No Charge</h2>
+          <span class="label">Free proposal</span>
+          <h2>We'll audit your profile, free</h2>
           <p class="lead" style="margin-bottom:24px;">Fill out the form and we will review your Google Business Profile and tell you exactly what is holding it back.</p>
         </div>
-        <ContactForm title="Get My Free GBP Audit" subject="GBP Management Inquiry | Thryv" serviceDefault="gbp" />
+        <ContactForm title="Get My Free GBP Proposal" subject="GBP Management Inquiry | Thryv" serviceDefault="gbp" />
       </div>
     </div>
   </section>
+
+  {/* LIMITED-TIME founding-client side tab. Page-specific, NOT in the shared template. Delete this block to remove. */}
+  <a href="/contact/" class="founding-tab" aria-label="Ask about Founding-Client pricing">
+    <span class="founding-tab-star" aria-hidden="true">★</span>
+    <span class="founding-tab-text"><strong>Founding-Client pricing</strong><span>Limited spots. Ask us.</span></span>
+  </a>
 
 </BaseLayout>
 
@@ -227,6 +342,49 @@ const schema = [
   .hero-price strong { color: var(--white); }
 
   .problem-section { background: var(--white); }
+  .stakes { background: var(--light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } }
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+  /* limited-time founding-client side tab (page-specific) */
+  .founding-tab { position: fixed; right: 0; top: 62%; transform: translateY(-50%); z-index: 90; display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; box-shadow: -6px 8px 30px rgba(0,0,0,.14); padding: 12px 16px; max-width: 230px; text-decoration: none; transition: transform .2s; }
+  .founding-tab:hover { transform: translateY(-50%) translateX(-4px); }
+  .founding-tab-star { color: var(--orange); font-size: 18px; }
+  .founding-tab-text strong { display: block; font-size: 13px; font-weight: 800; color: var(--dark); }
+  .founding-tab-text span { display: block; font-size: 11.5px; color: var(--gray); margin-top: 2px; }
+  @media (max-width: 600px) { .founding-tab { top: auto; bottom: 14px; right: 10px; transform: none; max-width: 210px; } .founding-tab:hover { transform: none; } }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
   .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
@@ -247,13 +405,15 @@ const schema = [
   .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
 
   .faq-section { background: var(--light); }
-  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
   .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
-  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  @media (max-width: 900px) { .faq-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .faq-list { grid-template-columns: 1fr; } }
 
   .related-section { background: var(--light); }
   .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }

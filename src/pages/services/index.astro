@@ -4,11 +4,15 @@ import ContactForm from '../../components/ContactForm.astro';
 
 const services = [
   { slug: 'google-business-profile', icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'Google Business Profile Management', desc: 'Show up when local customers search. We optimize and manage your GBP every month.', price: '$297/mo' },
-  { slug: 'reputation-management',   icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Reputation Management', desc: 'More 5-star reviews, professional responses, and a rating that builds trust.', price: '$197/mo' },
-  { slug: 'seo',                      icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'SEO, AEO & GEO', desc: 'Rank in Google search, Maps, AI Overviews, and get cited by ChatGPT and Perplexity.', price: '$497/mo' },
-  { slug: 'website-design',          icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Website Design', desc: 'Fast, mobile-first websites built to convert visitors into calls and leads.', price: 'From $1,497' },
+  { slug: 'reputation-management',   icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Reputation Management', desc: 'More 5-star reviews, professional responses, and a rating that builds trust.', price: '$297/mo' },
+  { slug: 'ai-seo',                  icon: `<path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>`, title: 'AI SEO Bundle (SEO + AEO + GEO)', desc: 'All three search channels under one program. Local SEO, Google AI Overviews, and ChatGPT/Gemini citations.', price: '$797/mo', featured: true },
+  { slug: 'seo',                     icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'Local SEO', desc: 'Rank on Google organic and Maps for the high-intent local keywords your buyers search.', price: '$697/mo' },
+  { slug: 'aeo',                     icon: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`, title: 'AEO (AI Overview Citations)', desc: 'Get cited in Google AI Overviews, the answer block above the blue links.', price: '$397/mo' },
+  { slug: 'geo',                     icon: `<circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>`, title: 'GEO (ChatGPT, Gemini, Perplexity)', desc: 'Get recommended when AI assistants answer local-service questions.', price: '$397/mo' },
+  { slug: 'website-design',          icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Website Design (WordPress + Custom)', desc: 'Fast, mobile-first websites built to convert visitors into calls and leads.', price: 'From $1,497' },
   { slug: 'google-ads',              icon: `<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>`, title: 'Google Ads', desc: 'Managed search campaigns that put you in front of ready-to-buy customers.', price: '$597/mo + spend' },
   { slug: 'social-media-ads',        icon: `<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>`, title: 'Instagram & Facebook Ads', desc: 'Targeted social campaigns that build brand awareness and drive local traffic.', price: '$497/mo + spend' },
+  { slug: 'press-pr',                icon: `<path d="M4 22h16a2 2 0 002-2V8l-4-4H6a2 2 0 00-2 2v16z"/><path d="M14 4v4h4M9 13h6M9 17h4"/>`, title: 'Press & PR Services', desc: 'Founder-led press placements + HARO + backlinks. Tiered base + transparent placement fees.', price: 'From $397/mo' },
 ];
 
 const schema = [
@@ -45,8 +49,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Marketing Services for Miami Businesses | Thryv"
-  description="Local SEO, Google Ads, reputation management, and website design. All month-to-month, no contracts. Miami-based team ready to grow your business."
+  title="Miami Marketing Services | SEO, AEO, GEO, Ads, GBP, PR | Thryv"
+  description="Miami marketing services: Local SEO, AEO (Google AI Overviews), GEO (ChatGPT, Gemini), Google Ads, GBP management, reputation, website builds, PR. Month-to-month."
   canonical="https://thryvmarketingsolutions.com/services/"
   ogImage="https://thryvmarketingsolutions.com/og-services.jpg"
   schema={schema}
@@ -59,7 +63,7 @@ const schema = [
       </nav>
       <span class="label">What We Do</span>
       <h1>Marketing Services for Miami Businesses</h1>
-      <p class="lead">Six focused services. Month-to-month. No lock-ins. Every engagement starts with a free audit so we know exactly what will move the needle for you.</p>
+      <p class="lead">Focused services across every channel buyers use to find local businesses today. Month-to-month. No lock-ins. Every engagement starts with a free proposal so we know exactly what will move the needle for you.</p>
     </div>
   </section>
 
@@ -105,7 +109,7 @@ const schema = [
           </ul>
           <a href="/contact/" class="btn btn-primary" style="margin-top:32px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Get My Free Audit
+            Get My Free Proposal
           </a>
         </div>
         <div class="badges reveal">
@@ -122,7 +126,7 @@ const schema = [
             <div class="badge-lbl">Response time on all requests</div>
           </div>
           <div class="badge-card">
-            <div class="badge-num">6</div>
+            <div class="badge-num">7</div>
             <div class="badge-lbl">Core services, one focused team</div>
           </div>
         </div>
@@ -137,7 +141,7 @@ const schema = [
       </div>
       <div class="faq-list">
         <details class="faq-item reveal"><summary>Do I need to sign a long-term contract?</summary><p>No. Every service at Thryv Marketing Solutions is month-to-month. You can cancel with 30 days notice at any time.</p></details>
-        <details class="faq-item reveal"><summary>How soon will I see results?</summary><p>It depends on your market, competition level, and starting point. GBP and reputation work tends to move first. SEO compounds over months. Ads can drive traffic once live, though cost-per-lead improves as campaigns optimize. After the free audit, we give you an honest read on what to expect for your specific situation.</p></details>
+        <details class="faq-item reveal"><summary>How soon will I see results?</summary><p>It depends on your market, competition level, and starting point. GBP and reputation work tends to move first. SEO compounds over months. Ads can drive traffic once live, though cost-per-lead improves as campaigns optimize. After the free proposal, we give you an honest read on what to expect for your specific situation.</p></details>
         <details class="faq-item reveal"><summary>Do you work with businesses outside Miami?</summary><p>We are based in Miami and specialize in South Florida markets, but we work with businesses across the US that want a local-first growth approach.</p></details>
       </div>
     </div>
@@ -147,7 +151,7 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="contact-copy reveal">
-          <span class="label">Free Audit</span>
+          <span class="label">Free Proposal</span>
           <h2>Not Sure Where to Start?</h2>
           <p class="lead" style="margin-bottom:24px;">Tell us about your business. We will look at your current online presence and tell you exactly what is holding you back.</p>
           <ul class="check-list">
@@ -157,7 +161,7 @@ const schema = [
             <li>Website speed and mobile test</li>
           </ul>
         </div>
-        <ContactForm title="Get Your Free Audit" subject="New Services Inquiry | Thryv" serviceDefault="seo" />
+        <ContactForm title="Get Your Free Proposal" subject="New Services Inquiry | Thryv" serviceDefault="seo" />
       </div>
     </div>
   </section>

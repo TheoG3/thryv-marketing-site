@@ -6,16 +6,20 @@ const altPath = isSpanish
   : ('/es' + pathname);
 
 const services = [
-  { label: 'Google Business Profile', slug: 'google-business-profile' },
-  { label: 'Reputation Management',   slug: 'reputation-management' },
-  { label: 'SEO, AEO & GEO',           slug: 'seo' },
+  { label: 'Google Business Profile & Reviews', slug: 'google-business-profile' },
+  { label: '— Reputation Management', slug: 'reputation-management' },
+  { label: 'AI SEO (all 3 channels)', slug: 'ai-seo' },
+  { label: '— Local SEO',             slug: 'seo' },
+  { label: '— AEO (AI Overviews)',    slug: 'aeo' },
+  { label: '— GEO (ChatGPT, Gemini)', slug: 'geo' },
   { label: 'Website Builds',          slug: 'website-design' },
   { label: 'Google Ads',              slug: 'google-ads' },
   { label: 'Social Media Ads',        slug: 'social-media-ads' },
+  { label: 'Press & PR',              slug: 'press-pr' },
 ];
 
 const consulting = [
-  { label: 'SEO, AEO & GEO Consulting', href: '/consulting/seo/' },
+  { label: 'AI SEO Consulting',         href: '/consulting/seo/' },
   { label: 'AI Consulting',             href: '/consulting/ai/' },
 ];
 
@@ -39,7 +43,7 @@ function isActive(href: string) {
       <div class="nav-inner">
 
         <a href="/" class="nav-logo" aria-label="Thryv Marketing Solutions home">
-          <img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" width="160" height="52" />
+          <img src="/logos/logo-trimmed.webp" alt="Thryv Marketing Solutions" title="Thryv Marketing Solutions" width="160" height="52" />
         </a>
 
         <ul class="nav-links" role="list">
@@ -49,23 +53,21 @@ function isActive(href: string) {
             <a
               href="/services/"
               class:list={['nav-link', { 'nav-active': pathname.startsWith('/services') }]}
-              aria-haspopup="true"
-              aria-expanded="false"
               id="services-menu-btn"
             >
               Services
               <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </a>
-            <ul class="dropdown" role="menu" aria-labelledby="services-menu-btn">
-              <li role="none">
-                <a href="/services/" class="dropdown-all" role="menuitem">
+            <ul class="dropdown">
+              <li>
+                <a href="/services/" class="dropdown-all">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                   All Services
                 </a>
               </li>
               {services.map(s => (
-                <li role="none">
-                  <a href={`/services/${s.slug}/`} class="dropdown-item" role="menuitem">{s.label}</a>
+                <li>
+                  <a href={`/services/${s.slug}/`} class="dropdown-item">{s.label}</a>
                 </li>
               ))}
             </ul>
@@ -76,23 +78,21 @@ function isActive(href: string) {
             <a
               href="/consulting/"
               class:list={['nav-link', { 'nav-active': pathname.startsWith('/consulting') }]}
-              aria-haspopup="true"
-              aria-expanded="false"
               id="consulting-menu-btn"
             >
               Consulting
               <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </a>
-            <ul class="dropdown" role="menu" aria-labelledby="consulting-menu-btn">
-              <li role="none">
-                <a href="/consulting/" class="dropdown-all" role="menuitem">
+            <ul class="dropdown">
+              <li>
+                <a href="/consulting/" class="dropdown-all">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                   All Consulting
                 </a>
               </li>
               {consulting.map(c => (
-                <li role="none">
-                  <a href={c.href} class="dropdown-item" role="menuitem">{c.label}</a>
+                <li>
+                  <a href={c.href} class="dropdown-item">{c.label}</a>
                 </li>
               ))}
             </ul>
@@ -112,8 +112,9 @@ function isActive(href: string) {
         </ul>
 
         <div class="nav-cta">
-          <a href={altPath} class="lang-toggle" aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}>{isSpanish ? 'EN' : 'ES'}</a>
-          <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-blue tidycal-embed">Book a Call</a>
+          {/* Spanish toggle hidden until ES pages are reviewed & approved */}
+          {/* <a href={altPath} class="lang-toggle" aria-label={isSpanish ? 'Switch to English' : 'Cambiar a Español'}>{isSpanish ? 'EN' : 'ES'}</a> */}
+          <a href="https://tidycal.com/theogrimes/30-minute-meeting" class="btn btn-blue tidycal-embed">Book a Call</a>
           <button
             class="hamburger"
             id="hamburger"
@@ -160,8 +161,9 @@ function isActive(href: string) {
     <a href={link.href} class="mobile-link">{link.label}</a>
   ))}
   <a href="/contact/" class="mobile-link">Contact</a>
-  <a href={altPath} class="mobile-link" style="font-weight:700;color:var(--blue);">{isSpanish ? '🇺🇸 English' : '🇪🇸 Español'}</a>
-  <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="btn btn-primary tidycal-embed" style="justify-content:center;margin-top:8px;">Book Free Audit Call</a>
+  {/* Spanish toggle hidden until ES pages are reviewed & approved */}
+  {/* <a href={altPath} class="mobile-link" style="font-weight:700;color:var(--blue);">{isSpanish ? '🇺🇸 English' : '🇪🇸 Español'}</a> */}
+  <a href="https://tidycal.com/theogrimes/30-minute-meeting" class="btn btn-primary tidycal-embed" style="justify-content:center;margin-top:8px;">Book Free Proposal Call</a>
 </div>
 
 <style>
@@ -346,10 +348,24 @@ function isActive(href: string) {
       (spans[0] as HTMLElement).style.transform = 'rotate(45deg) translate(5px, 5px)';
       (spans[1] as HTMLElement).style.opacity = '0';
       (spans[2] as HTMLElement).style.transform = 'rotate(-45deg) translate(5px, -5px)';
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => (mobileMenu?.querySelector('a, button') as HTMLElement)?.focus(), 80); // a11y: focus into menu
     } else {
       spans.forEach((s: Element) => { (s as HTMLElement).style.transform = ''; (s as HTMLElement).style.opacity = ''; });
+      document.body.style.overflow = '';
+      hamburger.focus(); // a11y: restore focus to trigger
     }
   });
+
+  // a11y: trap Tab within the open mobile menu (WCAG 2.4.3 / 2.1.2)
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !mobileMenu?.classList.contains('open')) return;
+    const nodes = [...mobileMenu.querySelectorAll<HTMLElement>('a, button')].filter((el) => el.offsetParent !== null);
+    if (!nodes.length) return;
+    const first = nodes[0], last = nodes[nodes.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }, true);
 
   // Close mobile menu on link click
   mobileMenu?.querySelectorAll('a').forEach(a => {
@@ -366,6 +382,8 @@ function isActive(href: string) {
       mobileMenu.classList.remove('open');
       hamburger?.setAttribute('aria-expanded', 'false');
       hamburger?.querySelectorAll('span').forEach((s: Element) => { (s as HTMLElement).style.transform = ''; (s as HTMLElement).style.opacity = ''; });
+      document.body.style.overflow = '';
+      (hamburger as HTMLElement)?.focus(); // a11y: restore focus on Escape
     }
   });
 

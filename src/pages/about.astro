@@ -28,8 +28,8 @@ const convictions = [
 ---
 
 <BaseLayout
-  title="About Thryv Marketing Solutions | Miami Growth Marketing Agency"
-  description="Thryv Marketing Solutions is a Miami-based digital marketing agency. Month-to-month, no contracts, honest work. Built for local businesses that want real growth."
+  title="About Our Miami Marketing Agency | Thryv Marketing Solutions"
+  description="Thryv is a Miami-based digital marketing agency. Month-to-month, no contracts, honest work. Built for local businesses that want real growth."
   canonical="https://thryvmarketingsolutions.com/about/"
   ogImage="https://thryvmarketingsolutions.com/og-about.jpg"
   schema={schema}
@@ -60,6 +60,9 @@ const convictions = [
           <video
             class="founder-video"
             src="/founder-morph.mp4"
+            poster="/founder-poster.webp"
+            autoplay
+            loop
             muted
             playsinline
             preload="auto"
@@ -67,7 +70,19 @@ const convictions = [
           ></video>
           <div class="founder-block">
             <div>
-              <div class="founder-name">Theodore G.</div>
+              <div class="founder-name-row">
+                <span class="founder-name">Theodore Grimes</span>
+                <a
+                  href="https://www.linkedin.com/in/theodoregrimes"
+                  class="founder-linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Theodore Grimes on LinkedIn"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
               <div class="founder-title">Founder, Thryv Marketing Solutions</div>
             </div>
           </div>
@@ -124,10 +139,10 @@ const convictions = [
         <div class="reveal">
           <span class="label">Work With Us</span>
           <h2>Ready to Grow Your Business?</h2>
-          <p class="lead" style="margin-bottom:24px;">Start with a free audit. We will take a look at your current online presence and tell you what would have the biggest impact for your business.</p>
+          <p class="lead" style="margin-bottom:24px;">Start with a free proposal. We will take a look at your current online presence and tell you what would have the biggest impact for your business.</p>
           <p style="font-size:14px; color:var(--gray);">Hablamos Espa&ntilde;ol</p>
         </div>
-        <ContactForm title="Get Your Free Audit" subject="New About Page Inquiry | Thryv" />
+        <ContactForm title="Get Your Free Proposal" subject="New About Page Inquiry | Thryv" />
       </div>
     </div>
   </section>
@@ -147,10 +162,14 @@ const convictions = [
   .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .story-copy p { font-size: 16px; line-height: 1.75; color: var(--gray); }
   .story-card { background: var(--light); border-radius: var(--radius-lg); padding: 36px; border: 1.5px solid var(--border); }
-  .founder-video { width: 100%; border-radius: var(--radius); margin-bottom: 20px; display: block; }
+  .founder-video { width: 100%; aspect-ratio: 1492 / 1388; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; display: block; background: var(--light); }
   .founder-block { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  .founder-name-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .founder-name { font-weight: 800; font-size: 16px; color: var(--dark); }
-  .founder-title { font-size: 13px; color: var(--gray); }
+  .founder-title { font-size: 13px; color: var(--gray); margin-top: 4px; }
+  .founder-linkedin { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: #0A66C2; padding: 3px 9px 3px 7px; border: 1.5px solid rgba(10,102,194,.25); border-radius: 100px; background: rgba(10,102,194,.06); transition: background .2s, border-color .2s, transform .15s; text-decoration: none; }
+  .founder-linkedin:hover { background: rgba(10,102,194,.12); border-color: rgba(10,102,194,.45); transform: translateY(-1px); }
+  .founder-linkedin svg { width: 13px; height: 13px; flex-shrink: 0; }
   blockquote { font-size: 15px; line-height: 1.75; color: var(--dark); font-style: italic; border-left: 3px solid var(--orange); padding-left: 20px; margin: 0; }
 
   .convictions-section { background: var(--light); }
@@ -193,7 +212,7 @@ const convictions = [
   if (video) {
     const vio = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if (e.isIntersecting) { video.play(); vio.unobserve(video); }
+        if (e.isIntersecting) { const p = video.play(); if (p) p.catch(() => {}); vio.unobserve(video); }
       });
     }, { threshold: 0.3 });
     vio.observe(video);

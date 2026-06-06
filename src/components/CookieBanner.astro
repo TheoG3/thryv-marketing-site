@@ -1,0 +1,98 @@
+---
+// Minimal cookie / analytics consent banner.
+// Shows on first visit if no choice recorded.
+// Accept = keep PostHog active. Decline = sets ph_optout flag (BaseLayout reads it and skips PostHog init).
+// Honors the existing opt-out mechanism in BaseLayout.astro.
+---
+
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
+  <div class="cookie-banner-inner">
+    <div class="cookie-text">
+      <strong>We use cookies.</strong> This site uses PostHog for usage analytics. No advertising, retargeting, or session-replay trackers. See our <a href="/privacy-policy/">Privacy Policy</a>.
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-btn cookie-decline" id="cookie-decline">Decline</button>
+      <button type="button" class="cookie-btn cookie-accept" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .cookie-banner {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 9999;
+    background: #0b1623;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(0,0,0,.28);
+    padding: 14px 18px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  .cookie-banner[hidden] { display: none; }
+  .cookie-banner-inner {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .cookie-text { font-size: 13.5px; line-height: 1.55; color: rgba(255,255,255,.82); flex: 1 1 360px; }
+  .cookie-text strong { color: #fff; font-weight: 700; }
+  .cookie-text a { color: #F5A623; text-decoration: underline; font-weight: 600; }
+  .cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+  .cookie-btn {
+    font: 600 13px/1 -apple-system, system-ui, sans-serif;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,.2);
+    background: transparent;
+    color: #fff;
+    transition: background .15s, border-color .15s;
+  }
+  .cookie-decline:hover { background: rgba(255,255,255,.08); }
+  .cookie-accept { background: #F5A623; color: #0b1623; border-color: #F5A623; }
+  .cookie-accept:hover { background: #f7b54a; }
+  @media (max-width: 640px) {
+    .cookie-banner { bottom: 12px; left: 12px; right: 12px; padding: 12px 14px; }
+    .cookie-banner-inner { gap: 10px; }
+    .cookie-actions { width: 100%; justify-content: flex-end; }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    try {
+      var key = 'thryv_cookie_choice';
+      var existing = null;
+      try { existing = localStorage.getItem(key); } catch (e) {}
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      if (!existing) {
+        banner.hidden = false;
+      }
+      document.getElementById('cookie-accept').addEventListener('click', function () {
+        try {
+          localStorage.setItem(key, 'accept');
+          localStorage.removeItem('ph_optout');
+        } catch (e) {}
+        banner.hidden = true;
+      });
+      document.getElementById('cookie-decline').addEventListener('click', function () {
+        try {
+          localStorage.setItem(key, 'decline');
+          localStorage.setItem('ph_optout', '1');
+          if (window.posthog && typeof window.posthog.opt_out_capturing === 'function') {
+            window.posthog.opt_out_capturing();
+          }
+        } catch (e) {}
+        banner.hidden = true;
+      });
+    } catch (e) {}
+  })();
+</script>

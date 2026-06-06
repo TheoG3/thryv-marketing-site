@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
 
 const schema = [
   {
@@ -20,6 +21,11 @@ const schema = [
         "@type": "Question",
         "name": "Do I need a large following to run Facebook or Instagram ads?",
         "acceptedAnswer": { "@type": "Answer", "text": "No. Paid social ads reach people who do not follow you yet, based on their interests, demographics, and location. Your organic following size has no effect on paid ad reach or performance." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between social ads and Google Ads?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Ads capture intent: they reach people actively searching for what you sell. Social ads interrupt: they put you in front of the right people based on who they are and where they live, often before they're searching. Search ads close demand; social ads create it. Most businesses do best running both." }
       },
       {
         "@type": "Question",
@@ -47,8 +53,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Instagram and Facebook Ads Miami | Thryv Marketing Solutions"
-  description="Paid social ads on Meta for Miami local businesses. Audience targeting, ad creative, campaign management, and monthly reporting. $497/mo + ad spend, no contracts."
+  title="Instagram & Facebook Ads Management in Miami | Thryv"
+  description="Paid social ads on Meta for Miami local businesses. Audience targeting, ad creative, campaign management, monthly reporting. $497/mo + ad spend, no contracts."
   canonical="https://thryvmarketingsolutions.com/services/social-media-ads/"
   ogImage="https://thryvmarketingsolutions.com/og-social-media-ads.jpg"
   schema={schema}
@@ -65,10 +71,32 @@ const schema = [
       <div class="hero-ctas">
         <a href="/contact/" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get Free Audit
+          Get Free Proposal
         </a>
         <div class="hero-price"><strong>$497/mo</strong> management + your ad spend</div>
       </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Flat fee, no % of spend</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">3.3B+</div><div class="stake-d">people use Meta's apps (Facebook, Instagram) every day</div></div>
+        <div class="stake"><div class="stake-n">By the mile</div><div class="stake-d">target a radius around your business, not just your followers</div></div>
+        <div class="stake"><div class="stake-n">Pixel-tracked</div><div class="stake-d">we measure real leads, not just likes and reach</div></div>
+      </div>
+      <p class="stakes-src">Daily-user figure published by <a href="https://about.meta.com/" target="_blank" rel="noopener">Meta</a>.</p>
     </div>
   </section>
 
@@ -76,62 +104,117 @@ const schema = [
     <div class="container">
       <div class="two-col">
         <div class="reveal">
-          <span class="label">The Problem</span>
-          <h2>Boosting Posts Is Not the Same as Running Ads</h2>
-          <p>Most local businesses either avoid paid social entirely or waste money by boosting posts with no targeting strategy. Without proper audience targeting, ad creative testing, and conversion tracking, social ad spend disappears with nothing to show for it.</p>
+          <span class="label">The problem</span>
+          <h2>Boosting posts is not the same as running ads</h2>
+          <p>Most local businesses either avoid paid social entirely or waste money boosting posts with no targeting strategy. Without real audience targeting, creative testing, and conversion tracking, social ad spend disappears with nothing to show for it.</p>
           <ul class="check-list" style="margin-top:24px;">
-            <li>Boosted posts reach followers who already know you — not new customers</li>
+            <li>Boosted posts reach followers who already know you, not new customers</li>
             <li>No audience targeting means ads reach the wrong people</li>
-            <li>No creative testing means you never know what messaging works</li>
-            <li>No conversion tracking means you cannot measure ROI</li>
+            <li>No creative testing means you never learn what messaging works</li>
+            <li>No conversion tracking means you can't measure ROI</li>
           </ul>
         </div>
         <div class="reveal">
-          <span class="label">Our Solution</span>
-          <h2>Social Campaigns Built Around Your Target Customer</h2>
-          <p>We build Meta ad campaigns using precise audience targeting based on location, demographics, and interests — paired with compelling ad creative and ongoing optimization.</p>
+          <span class="label">Our solution</span>
+          <h2>Social campaigns built around your target customer</h2>
+          <p>We build Meta ad campaigns using precise audience targeting based on location, demographics, and interests, paired with compelling creative and ongoing optimization.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">Social ads, explained</span>
+        <h2>What social ads actually do</h2>
+        <p>Search ads catch people who are already looking. Social ads do the opposite: they put you in front of the right people based on <strong>who they are and where they live</strong>, often before they even think to search. That's why social is how you create demand, while search captures it.</p>
+        <p>Facebook has run ads since 2007, and today Facebook and Instagram are managed together through Meta's Ads Manager. The superpower is the targeting: you can reach people within a few miles of your shop, filter by age, interests, and behavior, and quietly <strong>retarget the visitor who checked out your website yesterday and didn't call</strong>.</p>
+        <p>Our honest take: social rewards the scroll-stopper. Great targeting with a boring ad still fails, because people are there to see friends, not businesses. So we put as much work into the creative and the offer as into the audience. That's the combination that earns the click instead of the scroll-past.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">What makes it work</span>
+        <h2>Three levers that decide a social campaign</h2>
+        <p class="lead" style="margin:0 auto;">Boosting a post pulls none of these. Running real ads pulls all three.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">🎯</div>
+          <h3>The right people</h3>
+          <p>We target by location radius, age, interests, and behavior, and build lookalike audiences from your best customers. <strong>The wrong audience is where most ad budgets quietly die.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🎬</div>
+          <h3>The scroll-stopper</h3>
+          <p>Short video, real before-and-afters, and a clear offer beat polished "brand" creative for local services every time. We test 3 to 4 variations and scale the winner.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🔁</div>
+          <h3>The second chance</h3>
+          <p>Most people don't buy on the first touch. We retarget your website visitors and ad engagers so you stay in front of warm prospects. <strong>This is usually the cheapest lead you'll get.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Run through Meta's Ads Manager, which powers both Facebook and Instagram from one place.</p>
     </div>
   </section>
 
   <section class="section includes-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">What's Included</span>
-        <h2>Everything in the $497/mo Management Plan</h2>
+        <span class="label">What's included</span>
+        <h2>Everything in the $497/mo management plan</h2>
       </div>
       <div class="includes-grid">
         <div class="inc-card reveal">
           <div class="inc-icon">🎯</div>
-          <h3>Audience Research and Targeting</h3>
-          <p>We build custom audiences based on your ideal customer's location, demographics, and interests — plus retargeting lists from your website visitors.</p>
+          <h3>Audience research and targeting</h3>
+          <p>Custom audiences built from your ideal customer's location, demographics, and interests, plus retargeting lists from your website visitors.</p>
         </div>
         <div class="inc-card reveal">
-          <div class="inc-icon">🖼</div>
-          <h3>Ad Creative and Copy</h3>
-          <p>We write ad copy and provide creative direction for ad images or video. Multiple variations tested against each other.</p>
+          <div class="inc-icon">🖼️</div>
+          <h3>Ad creative and copy</h3>
+          <p>We write ad copy and provide creative direction for images or video. Multiple variations tested against each other.</p>
         </div>
         <div class="inc-card reveal">
-          <div class="inc-icon">⚙</div>
-          <h3>Campaign Setup and Structure</h3>
-          <p>Properly structured campaigns in Meta Ads Manager with appropriate objectives for your goals — awareness, traffic, or leads.</p>
+          <div class="inc-icon">⚙️</div>
+          <h3>Campaign setup and structure</h3>
+          <p>Properly structured campaigns in Meta Ads Manager with the right objective for your goal: awareness, traffic, or leads.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📊</div>
-          <h3>Conversion Tracking</h3>
-          <p>Meta Pixel and conversion event setup so you can see which ads are generating leads, not just clicks.</p>
+          <h3>Conversion tracking</h3>
+          <p>Meta Pixel and conversion event setup so you can see which ads generate leads, not just clicks.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">🔄</div>
-          <h3>Ongoing Optimization</h3>
-          <p>Regular budget adjustments, audience refinements, and creative refreshes to maintain performance over time.</p>
+          <h3>Ongoing optimization</h3>
+          <p>Regular budget adjustments, audience refinements, and creative refreshes to hold performance over time.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📈</div>
-          <h3>Monthly Report</h3>
-          <p>A clear breakdown of reach, clicks, leads generated, and cost per result — in plain English, not marketing jargon.</p>
+          <h3>Monthly report</h3>
+          <p>A clear breakdown of reach, clicks, leads, and cost per result, in plain English, not jargon.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Strategy</h3><p>We learn your customer and your offer, review any existing Meta account, and map the audiences worth targeting.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Build</h3><p>We set up the campaign, write copy, direct the creative, and wire up the Meta Pixel so every lead is tracked.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Launch &amp; test</h3><p>Ads go live across Facebook and Instagram. We test 3 to 4 creative variations and let the data pick winners.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Optimize &amp; report</h3><p>We shift budget to what's working, refresh tired creative, and send a clear monthly report on cost per lead.</p></div>
       </div>
     </div>
   </section>
@@ -141,8 +224,8 @@ const schema = [
       <div class="pricing-box reveal">
         <div>
           <span class="label">Pricing</span>
-          <h2>$497/mo — Flat Management Fee</h2>
-          <p class="lead">Our fee is flat and does not scale with your ad spend. Ad spend goes directly to Meta. No contracts.</p>
+          <h2>$497/mo flat management fee</h2>
+          <p class="lead">Our fee is flat and doesn't scale with your ad spend. Ad spend goes directly to Meta. No contracts.</p>
           <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">Get Started</a>
         </div>
         <div class="pricing-note-list">
@@ -159,22 +242,30 @@ const schema = [
 
   <section class="section faq-section">
     <div class="container">
-      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="section-head center"><h2>Common questions</h2></div>
       <div class="faq-list">
-        <details class="faq-item reveal"><summary>Do I need a large following to run Facebook or Instagram ads?</summary><p>No. Paid social ads reach people who do not follow you yet, based on their interests, demographics, and location. Your organic following size has no effect on paid ad reach or performance.</p></details>
-        <details class="faq-item reveal"><summary>How much should I budget for social media ad spend?</summary><p>Most local businesses start with $500 to $1,000/mo in ad spend. We recommend a budget based on your service area, competition, and conversion goals after an initial review of your business.</p></details>
-        <details class="faq-item reveal"><summary>Which performs better: Facebook ads or Instagram ads?</summary><p>It depends on your audience. Both platforms share the same Meta Ads Manager. We typically run ads on both simultaneously and let the data decide, shifting budget toward whichever placement generates better results for your campaign.</p></details>
-        <details class="faq-item reveal"><summary>How do Facebook and Instagram ads work for local service businesses?</summary><p>Unlike search ads that capture active intent, social ads interrupt. That makes targeting and creative the deciding factors. For local services, we focus on tight geographic targeting, service-specific offers, and retargeting website visitors who did not convert on their first visit.</p></details>
-        <details class="faq-item reveal"><summary>What creative works best for local service ads?</summary><p>Short video, before-and-after images, and direct headlines with a specific offer consistently outperform generic brand-awareness creative for local services. We test 3 to 4 variations per campaign and scale what converts.</p></details>
+        <details class="faq-item reveal"><summary>Do I need a large following to run ads?</summary><p>No. Paid social ads reach people who don't follow you yet, based on their interests, demographics, and location. Your organic following size has no effect on paid ad reach or performance.</p></details>
+        <details class="faq-item reveal"><summary>Social ads vs Google Ads, what's the difference?</summary><p><a href="/services/google-ads/">Google Ads</a> capture intent (people already searching). Social ads interrupt, putting you in front of the right people based on who they are and where they live, often before they search. Search closes demand; social creates it. Most businesses do best running both.</p></details>
+        <details class="faq-item reveal"><summary>How much should I budget for ad spend?</summary><p>Most local businesses start with $500 to $1,000/mo in ad spend. We recommend a budget based on your service area, competition, and conversion goals after an initial review.</p></details>
+        <details class="faq-item reveal"><summary>Facebook or Instagram, which performs better?</summary><p>It depends on your audience. Both share the same Meta Ads Manager, so we typically run both at once and let the data decide, shifting budget toward whichever placement performs for your campaign.</p></details>
+        <details class="faq-item reveal"><summary>How do social ads work for local service businesses?</summary><p>Because social interrupts rather than captures intent, targeting and creative are the deciding factors. For local services we focus on tight geographic targeting, a specific offer, and retargeting website visitors who didn't convert the first time.</p></details>
+        <details class="faq-item reveal"><summary>What creative works best?</summary><p>Short video, real before-and-after images, and direct headlines with a specific offer consistently beat generic brand creative for local services. We test 3 to 4 variations per campaign and scale what converts.</p></details>
       </div>
     </div>
   </section>
 
+  <ToolCallout
+    href="/free-tools/google-ads-budget-calculator/"
+    icon="📈"
+    title="Sanity-check your paid budget"
+    desc="Originally built for Google Ads, but the cost-per-lead math holds for Meta in most service industries. Pick your industry and lead goal."
+  />
+
   <section class="section related-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">Related Services</span>
-        <h2>Social Ads Work Best Alongside These</h2>
+        <span class="label">Related services</span>
+        <h2>Social ads work best alongside these</h2>
       </div>
       <div class="related-grid">
         <a href="/services/google-ads/" class="related-card">
@@ -200,9 +291,9 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
-          <h2>Let's Look at Your Current Social Presence</h2>
-          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will review your current Meta ad account (if you have one) and tell you what is and is not working.</p>
+          <span class="label">Free proposal</span>
+          <h2>Let's look at your current social presence</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we'll review your current Meta ad account (if you have one) and tell you what is and isn't working.</p>
         </div>
         <ContactForm title="Get My Free Social Audit" subject="Social Media Ads Inquiry | Thryv" serviceDefault="social" />
       </div>
@@ -220,29 +311,72 @@ const schema = [
   .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
   .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
   .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+
+  .stakes { background: var(--light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+
   .problem-section { background: var(--white); }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
   .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
   .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
   .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+
   .includes-section { background: var(--light); }
   .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
   .inc-icon { font-size: 36px; margin-bottom: 12px; } .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; } .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+
   .pricing-section { background: var(--white); }
   .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
   .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
   .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
   .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
   .faq-section { background: var(--light); }
-  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
   .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
-  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p a { color: var(--blue); font-weight: 700; }
+
   .related-section { background: var(--light); }
   .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
@@ -250,18 +384,22 @@ const schema = [
   .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
   .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
   .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
-  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+
   .contact-section { background: var(--white); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
+
   @media (max-width: 900px) {
     .two-col { grid-template-columns: 1fr; gap: 40px; }
     .includes-grid { grid-template-columns: 1fr 1fr; }
     .pricing-box { grid-template-columns: 1fr; }
     .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .faq-list { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } .related-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } .faq-list { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr; } }
 </style>
 <script>
   const io = new IntersectionObserver(entries => {

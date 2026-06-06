@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Thryv Logo Variations — QA Gallery (2026-05-15)</title>
+<style>
+  :root { --navy:#1054A2; --orange:#F09020; --brown:#AB8057; --ink:#0b1623; --gray:#5a6b7d; --line:#dfe7ef; --bg:#f4f7fb; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:14px/1.5 -apple-system, system-ui, sans-serif; color:var(--ink); background:var(--bg); }
+  header { padding:32px 40px; background:#fff; border-bottom:1px solid var(--line); }
+  h1 { margin:0 0 6px; font-size:22px; letter-spacing:-0.01em; }
+  .sub { color:var(--gray); font-size:13px; }
+  .legend { display:flex; gap:18px; margin-top:14px; font-size:12px; color:var(--gray); }
+  .legend b { color:var(--ink); font-weight:700; }
+  main { padding:32px 40px; display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:20px; }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .card .frame { display:flex; align-items:center; justify-content:center; padding:32px; min-height:180px; }
+  .frame-light { background:#fff; }
+  .frame-grid { background:repeating-conic-gradient(#f0f3f7 0% 25%, #fff 0% 50%) 50% / 24px 24px; }
+  .frame-navy { background:#1054A2; }
+  .frame-black { background:#0a0e14; }
+  .card img { max-width:100%; max-height:160px; height:auto; display:block; }
+  .meta { padding:14px 18px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:8px; }
+  .meta .name { font-weight:700; font-size:13px; }
+  .meta .path { font-family:ui-monospace, Menlo, monospace; font-size:11px; color:var(--gray); }
+  .verdict { padding:6px 18px; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+  .v-pass { background:#e8f7ee; color:#137a3b; }
+  .v-check { background:#fff7e0; color:#8a6500; }
+  .section-head { grid-column:1 / -1; margin:24px 0 -4px; font-size:11px; font-weight:800; letter-spacing:0.14em; text-transform:uppercase; color:var(--gray); }
+  .footer-note { padding:24px 40px 48px; color:var(--gray); font-size:13px; }
+  .check { font-family:ui-monospace, Menlo, monospace; font-size:11px; padding:8px 18px 14px; color:var(--gray); }
+  .check b { color:var(--ink); }
+  .anatomy { background:#fff; border:1px solid var(--line); border-radius:14px; padding:24px 32px; margin:0 0 24px; }
+  .anatomy h2 { font-size:13px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray); margin:0 0 12px; }
+  .swatch-row { display:flex; gap:14px; flex-wrap:wrap; }
+  .swatch { display:flex; align-items:center; gap:8px; font-size:12px; }
+  .chip { width:22px; height:22px; border-radius:6px; border:1px solid rgba(0,0,0,.1); }
+  code { background:#eef3f9; padding:2px 6px; border-radius:4px; font-size:11px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Thryv Marketing Solutions — Logo Variations QA Gallery</h1>
+  <div class="sub">Built 2026-05-15. Source: promoted from <code>chatgpt-flat/</code> (clean) — splotchy SVG-traced versions quarantined to <code>_splotchy-rejected-2026-05-15/</code>.</div>
+  <div class="legend">
+    <span><b>S of SOLUTIONS</b> = navy</span>
+    <span><b>O of SOLUTIONS</b> = brown <code>#AB8057</code></span>
+    <span><b>LUTIONS</b> = orange <code>#F09020</code></span>
+    <span><b>V-arrow</b> = orange</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="anatomy" style="grid-column:1 / -1;">
+    <h2>Brand Anatomy</h2>
+    <div class="swatch-row">
+      <div class="swatch"><span class="chip" style="background:#1054A2"></span> Navy <code>#1054A2</code></div>
+      <div class="swatch"><span class="chip" style="background:#F09020"></span> Orange <code>#F09020</code></div>
+      <div class="swatch"><span class="chip" style="background:#AB8057"></span> Bridge Brown <code>#AB8057</code></div>
+      <div class="swatch"><span class="chip" style="background:#FFFFFF; border:1px solid #ccc"></span> White</div>
+      <div class="swatch"><span class="chip" style="background:#000"></span> Black</div>
+    </div>
+  </div>
+
+  <div class="section-head">Color Lockups</div>
+
+  <div class="card">
+    <div class="frame frame-light"><img src="logo-primary.png" alt="Primary"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Primary — Full Color</span><span class="path">logo-primary.png</span></div>
+    <div class="check">S=<b>navy</b>, O=<b>brown</b>, LUTIONS=<b>orange</b>, V-arrow=<b>orange</b></div>
+  </div>
+
+  <div class="card">
+    <div class="frame frame-navy"><img src="logo-reversed.png" alt="Reversed"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Reversed — Dark BG</span><span class="path">logo-reversed.png</span></div>
+    <div class="check">THRY + MARKETING + S = <b>white</b>, O = <b>light brown</b>, LUTIONS = <b>orange</b></div>
+  </div>
+
+  <div class="section-head">Monochrome</div>
+
+  <div class="card">
+    <div class="frame frame-light"><img src="logo-mono-black.png" alt="Mono Black"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Mono Black</span><span class="path">logo-mono-black.png</span></div>
+    <div class="check">All strokes <b>#000</b>. For single-color print, fax, embroidery.</div>
+  </div>
+
+  <div class="card">
+    <div class="frame frame-black"><img src="logo-mono-white.png" alt="Mono White"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Mono White</span><span class="path">logo-mono-white.png</span></div>
+    <div class="check">All strokes <b>#fff</b>. For dark photo overlays, video bumpers.</div>
+  </div>
+
+  <div class="section-head">Wordmark + Mark</div>
+
+  <div class="card">
+    <div class="frame frame-light"><img src="logo-wordmark.png" alt="Wordmark"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Wordmark — No Tagline</span><span class="path">logo-wordmark.png</span></div>
+    <div class="check">THRYV with integrated orange V-arrow. For tight horizontal lockups.</div>
+  </div>
+
+  <div class="card">
+    <div class="frame frame-light"><img src="logo-mark.png" alt="Mark"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Mark — Arrow Only</span><span class="path">logo-mark.png</span></div>
+    <div class="check">Standalone V-arrow. Source for favicons + social avatars.</div>
+  </div>
+
+  <div class="section-head">Social Avatars</div>
+
+  <div class="card">
+    <div class="frame frame-grid"><img src="logo-social-avatar.png" alt="Avatar"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Social Avatar — Transparent 1080</span><span class="path">logo-social-avatar.png</span></div>
+    <div class="check">Full lockup, transparent square, ~12% padding.</div>
+  </div>
+
+  <div class="card">
+    <div class="frame frame-light" style="padding:0;"><img src="logo-social-avatar-navy.png" alt="Avatar Navy"></div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Social Avatar — Navy BG 1080</span><span class="path">logo-social-avatar-navy.png</span></div>
+    <div class="check">Reversed lockup on solid navy. For X/IG/LI profile photos.</div>
+  </div>
+
+  <div class="section-head">Favicons (regenerated 2026-05-15 from mark)</div>
+
+  <div class="card">
+    <div class="frame frame-light" style="gap:20px; flex-wrap:wrap;">
+      <img src="favicon/favicon-16.png" style="width:16px; height:16px; image-rendering:pixelated;" alt="16">
+      <img src="favicon/favicon-32.png" style="width:32px; height:32px;" alt="32">
+      <img src="favicon/favicon-48.png" style="width:48px; height:48px;" alt="48">
+      <img src="favicon/favicon-64.png" style="width:64px; height:64px;" alt="64">
+      <img src="favicon/favicon-128.png" style="width:128px; height:128px;" alt="128">
+    </div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">Favicons 16 / 32 / 48 / 64 / 128</span><span class="path">favicon/favicon-*.png</span></div>
+    <div class="check">Resized via LANCZOS from the clean mark. Multi-res <code>favicon.ico</code> also generated.</div>
+  </div>
+
+  <div class="card">
+    <div class="frame frame-black" style="gap:20px; flex-wrap:wrap;">
+      <img src="favicon/favicon-192.png" style="width:96px; height:96px;" alt="192">
+      <img src="favicon/favicon-512.png" style="width:160px; height:160px;" alt="512">
+    </div>
+    <div class="verdict v-pass">Pass</div>
+    <div class="meta"><span class="name">App Icons 192 / 512 (on dark)</span><span class="path">favicon/favicon-{192,512}.png</span></div>
+    <div class="check">For PWA / iOS / Android home-screen icons.</div>
+  </div>
+
+</main>
+
+<div class="footer-note">
+  <b>What changed today:</b> The SVG-traced PNGs in <code>variations/</code> had jagged "watercolor" letter edges (especially MARKETING SOLUTIONS). Quarantined to <code>_splotchy-rejected-2026-05-15/</code>. The cleaner ChatGPT-generated set in <code>chatgpt-flat/</code> was promoted to canonical filenames. Favicons regenerated from the clean mark via PIL LANCZOS resize — no AI re-rendering.
+  <br><br>
+  <b>Rule going forward:</b> Logo variation = pixel transform OR direct ChatGPT generation. <u>Never</u> trace-to-SVG-then-rasterize-back. The trace step is the source of the splotchy edges.
+</div>
+
+</body>
+</html>

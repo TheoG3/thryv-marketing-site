@@ -1,8 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
-import { verticals, services, getServiceDef } from '../../data/ecosystem.ts';
+import ToolCallout from '../../components/ToolCallout.astro';
+import { verticals, services, getServiceDef, getVerticalOverride } from '../../data/ecosystem.ts';
 import type { Vertical, ServiceSlug } from '../../data/ecosystem.ts';
+import { categoryMeta, getPostsByCategory, getRealCategories } from '../../data/blog-posts.ts';
+import { getProfessionVocabulary } from '../../data/profession-vocabulary.ts';
+
+// Vertical slug -> blog category label. Closes the topic-cluster loop:
+// vertical page <-> blog category page. Only verticals whose mapped category
+// has a real page (>=3 posts) will render the Insights section below; others
+// silently skip until content fills in.
+const verticalToBlogCategory: Record<string, string> = {
+  medspas: 'Med Spa Marketing',
+  // Add other verticals as their blog categories cross the 3-post threshold:
+  // dentists: 'Dental Marketing',
+  // contractors: 'Contractor Marketing',
+};
+
+const realCategoryLabels = new Set(getRealCategories(3).map((c) => c.label));
 
 export async function getStaticPaths() {
   return verticals.map(v => ({
@@ -14,6 +30,9 @@ export async function getStaticPaths() {
 interface Props { vertical: Vertical; }
 const { vertical: v } = Astro.props;
 
+const override = getVerticalOverride(v.slug);
+const pv = getProfessionVocabulary(v.slug);
+
 const BASE = 'https://thryvmarketingsolutions.com';
 const canonical = `${BASE}/${v.slug}/`;
 
@@ -23,7 +42,7 @@ const titleMap: Record<string, string> = {
   landscaping: 'Landscaping Marketing Miami | Thryv Marketing Solutions',
   'moving-companies': 'Moving Company Marketing Miami | Thryv',
   dentists: 'Dental Office Marketing Miami | Thryv Marketing Solutions',
-  medspas: 'Med Spa Marketing Miami | Thryv Marketing Solutions',
+  medspas: 'Med Spa Marketing Agency Miami | Medical Spa SEO',
   'yacht-services': 'Yacht Service Marketing Miami | Thryv',
   'real-estate-agents': 'Real Estate Agent Marketing Miami | Thryv',
   'immigration-lawyers': 'Immigration Lawyer Marketing Miami | Thryv',
@@ -36,15 +55,104 @@ const descMap: Record<string, string> = {
   landscaping: 'Marketing for Miami landscapers. Google Business Profile, SEO, and Google Ads to keep your calendar full year-round. Miami-based. Free audit.',
   'moving-companies': 'Marketing for Miami moving companies. Capture high-intent moving searches with GBP, SEO, and Google Ads. Build your review profile. Free audit.',
   dentists: 'Marketing for Miami dental offices. Attract more cosmetic and private-pay patients with targeted SEO, Google Ads, and reputation management. Free audit.',
-  medspas: 'Marketing for Miami med spas. Social ads, GBP, and reputation management to keep your treatment rooms booked. Miami-based. Free audit.',
+  medspas: 'Med spa marketing agency in Miami. Medical spa SEO, social ads, GBP, and reputation management to keep treatment rooms booked. Founder-led. Free audit.',
   'yacht-services': 'Marketing for Miami yacht services. SEO, GBP, and Google Ads to reach yacht owners before they call anyone else. Miami marine market. Free audit.',
-  'real-estate-agents': 'Marketing for Miami real estate agents. Own your farm area in search with SEO, GBP, and social ads. Stop paying portal fees. Free audit.',
+  'real-estate-agents': 'Marketing for Miami real estate agents. Own your target neighborhood in search with SEO, GBP, and social ads. Stop paying portal fees. Free audit.',
   'immigration-lawyers': 'Marketing for Miami immigration lawyers. Bilingual SEO, GBP, and Google Ads to turn urgent searches into consultations. Miami-based. Free audit.',
   'beauty-salons': 'Marketing for Miami beauty salons. GBP, SEO, and Instagram ads to keep your chairs booked. Build your review profile in your neighborhood. Free audit.',
 };
 
-const pageTitle = titleMap[v.slug] ?? `${v.name} Marketing Miami | Thryv Marketing Solutions`;
-const pageDesc = descMap[v.slug] ?? `Marketing for ${v.name.toLowerCase()} in Miami. Google Business Profile, SEO, Google Ads, and reputation management. Free audit.`;
+const pageTitle = override?.pageTitle ?? titleMap[v.slug] ?? `${v.name} Marketing Miami | Thryv Marketing Solutions`;
+const pageDesc = override?.pageDesc ?? descMap[v.slug] ?? `Marketing for ${v.name.toLowerCase()} in Miami. Google Business Profile, SEO, Google Ads, and reputation management. Free audit.`;
+
+const h1 = override?.h1 ?? v.pillarHeadline;
+const lead = override?.lead ?? v.pillarLead;
+const marketHeadline = override?.marketHeadline;
+const marketBody = override?.marketBody;
+const overrideSignals = override?.signals;
+const faqs = override?.faqs ?? v.faqs;
+
+// Determine whether this vertical has a matching blog category with a real page.
+// If yes, fetch the 3 most recent posts to render in the Marketing Insights section.
+const mappedCategory = verticalToBlogCategory[v.slug];
+const showInsights = !!(mappedCategory && realCategoryLabels.has(mappedCategory));
+const insightsCategory = showInsights ? categoryMeta[mappedCategory] : null;
+const insightsPosts = showInsights ? getPostsByCategory(mappedCategory).slice(0, 3) : [];
+
+const verticalToolMap: Record<string, { href: string; icon: string; title: string; desc: string }> = {
+  medspas: {
+    href: '/free-tools/med-spa-marketing-roi-calculator/',
+    icon: '💉',
+    title: 'See ROI on your Miami med spa marketing budget',
+    desc: 'Plug in your treatment price, marketing spend, and patient LTV. Get new-patient projections, CAC, year-one revenue, and 5-year value.',
+  },
+  dentists: {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What unanswered calls cost your practice',
+    desc: 'Most dental offices answer under 40% of new-patient calls. See exactly what each missed call is costing your monthly revenue.',
+  },
+  contractors: {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What missed calls cost a contractor',
+    desc: 'Homeowners call the next contractor when nobody answers. See exactly what each unanswered call is costing you each month.',
+  },
+  'junk-removal': {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What unanswered junk-removal calls cost you',
+    desc: 'Same-day jobs are won by whoever picks up first. See exactly what each missed call is costing your monthly revenue.',
+  },
+  'cleaning-services': {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What unanswered cleaning inquiries cost',
+    desc: 'High-LTV recurring clients go to whoever answers first. See exactly what each missed call is costing you each month.',
+  },
+  landscaping: {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What missed calls cost a landscaper',
+    desc: 'Seasonal demand spikes mean missed calls compound fast. See exactly what each unanswered call is costing your monthly revenue.',
+  },
+  'moving-companies': {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What missed calls cost a mover',
+    desc: 'Moves get booked the same day or lost forever. See exactly what each unanswered call is costing you each month.',
+  },
+  'yacht-services': {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    title: 'What unanswered yacht-service calls cost',
+    desc: 'High-ticket marine jobs are won on the first ring. See exactly what each missed call is costing your monthly revenue.',
+  },
+  'beauty-salons': {
+    href: '/free-tools/review-revenue-calculator/',
+    icon: '💰',
+    title: 'What a higher Google rating could earn your salon',
+    desc: 'Plug in your monthly revenue and current star rating. See the revenue gap between where you are and a 4.8 rating.',
+  },
+  'real-estate-agents': {
+    href: '/free-tools/review-revenue-calculator/',
+    icon: '💰',
+    title: 'What a higher Google rating could earn your business',
+    desc: 'Plug in your monthly revenue and current star rating. See the revenue gap between where you are and a 4.8 rating.',
+  },
+  'immigration-lawyers': {
+    href: '/free-tools/local-seo-score-checker/',
+    icon: '🔍',
+    title: 'Score your local SEO foundation in 60 seconds',
+    desc: 'Urgent searches like "immigration lawyer near me" go to the top 3 results. See whether your site is positioned to rank.',
+  },
+};
+const tool = verticalToolMap[v.slug] ?? {
+  href: '/free-tools/',
+  icon: '🧰',
+  title: 'See all seven free marketing tools',
+  desc: 'Review revenue, missed call revenue, GBP audit, local SEO score, Google Ads budget, review gap, med spa ROI. Pick the one that matches your question.',
+};
 
 const svcIcons: Record<ServiceSlug, string> = {
   'google-business-profile': '<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>',
@@ -55,6 +163,61 @@ const svcIcons: Record<ServiceSlug, string> = {
   'social-media-ads': '<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>',
 };
 
+// Industry-specific schema mapping. Augments the sitewide LocalBusiness signal
+// with the vertical-specific Schema.org type Google uses for E-E-A-T / YMYL.
+type IndustrySchemaSpec = {
+  type: string | string[];
+  category: string;       // human-readable category for the audience field
+  ymyl?: boolean;         // your-money-your-life industries get added trust treatment
+  medicalSpecialty?: string;
+};
+const industrySchemaBySlug: Record<string, IndustrySchemaSpec> = {
+  'contractors':         { type: 'HomeAndConstructionBusiness', category: 'general contractors and home builders' },
+  'cleaning-services':   { type: 'LocalBusiness',               category: 'residential and commercial cleaning services' },
+  'landscaping':         { type: 'LocalBusiness',               category: 'landscaping, lawn care, and outdoor design services' },
+  'moving-companies':    { type: 'MovingCompany',               category: 'residential and commercial moving and relocation' },
+  'dentists':            { type: ['Dentist', 'MedicalBusiness'], category: 'dental practices', ymyl: true, medicalSpecialty: 'Dentistry' },
+  'medspas':             { type: ['MedicalBusiness', 'HealthAndBeautyBusiness'], category: 'medical spas and aesthetic clinics', ymyl: true, medicalSpecialty: 'CosmeticDermatology' },
+  'yacht-services':      { type: 'LocalBusiness',               category: 'yacht maintenance, charter, and detailing services' },
+  'real-estate-agents':  { type: 'RealEstateAgent',             category: 'residential and luxury real estate agents', ymyl: true },
+  'immigration-lawyers': { type: ['Attorney', 'LegalService'],  category: 'immigration law firms and attorneys', ymyl: true },
+  'beauty-salons':       { type: ['BeautySalon', 'HealthAndBeautyBusiness'], category: 'hair salons, nail salons, and beauty studios' },
+  'junk-removal':        { type: 'LocalBusiness',               category: 'junk removal, hauling, and debris cleanup services' },
+  'hvac':                { type: ['HVACBusiness', 'HomeAndConstructionBusiness'], category: 'HVAC contractors and air-conditioning service companies' },
+  'roofing':             { type: ['RoofingContractor', 'HomeAndConstructionBusiness'], category: 'roofing contractors and roof repair and replacement specialists' },
+  'restoration':         { type: 'LocalBusiness',               category: 'water damage restoration, mold remediation, fire damage, and biohazard cleanup specialists', ymyl: true },
+  'plumber':             { type: ['Plumber', 'HomeAndConstructionBusiness'], category: 'plumbing contractors and emergency plumbing service companies' },
+  'electrician':         { type: ['Electrician', 'HomeAndConstructionBusiness'], category: 'electrical contractors and licensed electricians' },
+  'pressure-washing':    { type: 'LocalBusiness', category: 'pressure washing, power washing, paver sealing, soft wash roof cleaning, and exterior cleaning services' },
+};
+const industrySpec = industrySchemaBySlug[v.slug] ?? { type: 'LocalBusiness', category: v.name.toLowerCase() };
+
+const industrySchema: Record<string, unknown> = {
+  "@context": "https://schema.org",
+  "@type": industrySpec.type,
+  "@id": `${canonical}#industry-service`,
+  "name": `Thryv Marketing Solutions for ${v.name}`,
+  "url": canonical,
+  "description": `${v.pillarLead} Specialist marketing services for ${industrySpec.category} across Miami and South Florida.`,
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "Miami-Dade County, Broward County, and Palm Beach County, Florida",
+  },
+  "provider": { "@id": `${BASE}/#business` },
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": industrySpec.category,
+  },
+};
+if (industrySpec.medicalSpecialty) {
+  industrySchema.medicalSpecialty = industrySpec.medicalSpecialty;
+}
+if (industrySpec.ymyl) {
+  // YMYL trust signal: explicit publishing principles + knowsAbout for E-E-A-T.
+  industrySchema.publishingPrinciples = `${BASE}/about/`;
+  industrySchema.knowsAbout = industrySpec.category;
+}
+
 const schema = [
   {
     "@context": "https://schema.org",
@@ -64,10 +227,11 @@ const schema = [
       { "@type": "ListItem", "position": 2, "name": v.name, "item": canonical },
     ],
   },
+  industrySchema,
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": v.faqs.map(f => ({
+    "mainEntity": faqs.map(f => ({
       "@type": "Question",
       "name": f.q,
       "acceptedAnswer": { "@type": "Answer", "text": f.a },
@@ -84,17 +248,67 @@ const schema = [
         <a href="/">Home</a><span> › </span><span>{v.name}</span>
       </nav>
       <span class="label">Who We Serve</span>
-      <h1>{v.pillarHeadline}</h1>
-      <p class="lead">{v.pillarLead}</p>
+      <h1>{h1}</h1>
+      <p class="lead">{lead}</p>
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get a Free Audit
+          Get a Free Proposal
         </a>
         <a href="/contact/" class="btn btn-outline-white">Contact Us</a>
       </div>
     </div>
   </section>
+
+  {pv && (
+    <section class="section pv-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="label">Researched, Not Templated</span>
+          <h2>We Speak Your Industry's Language</h2>
+          <p class="lead" style="max-width:760px;">{pv.intro}</p>
+        </div>
+
+        <div class="pv-grid">
+          <div class="pv-block pv-slang reveal">
+            <div class="pv-block-label">Insider Vocabulary</div>
+            <p class="pv-block-sub">Terms you use every day. The ones a generic agency would have to Google.</p>
+            <dl class="pv-slang-list">
+              {pv.slang.map(s => (
+                <div class="pv-slang-item">
+                  <dt>{s.term}</dt>
+                  <dd>{s.meaning}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div class="pv-side">
+            <div class="pv-block pv-tech reveal">
+              <div class="pv-block-label">The Tech You Already Run</div>
+              <p class="pv-block-sub">Your operational stack shapes what marketing can do. We start by knowing it.</p>
+              <ul class="pv-tech-list">
+                {pv.opsTech.map(t => <li>{t}</li>)}
+              </ul>
+            </div>
+
+            <div class="pv-block pv-mkt reveal">
+              <div class="pv-block-label">Marketing Tech + Practices Specific to Your Industry</div>
+              <p class="pv-block-sub">The plays that work because your category rewards them. Not the generic ones.</p>
+              <ul class="pv-mkt-list">
+                {pv.marketingTech.map(t => <li>{t}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="pv-edge reveal">
+          <div class="pv-edge-label">Our Insider Edge</div>
+          <p>{pv.insiderEdge}</p>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section services-section">
     <div class="container">
@@ -123,6 +337,32 @@ const schema = [
       </div>
     </div>
   </section>
+
+  {marketBody && marketBody.length > 0 && (
+    <section class="section market-section">
+      <div class="container">
+        <div class="two-col">
+          <div class="reveal">
+            <span class="label">{v.name}</span>
+            {marketHeadline && <h2>{marketHeadline}</h2>}
+            {marketBody.map((para, i) => (
+              <p set:html={para} style={i === 0 ? '' : 'margin-top:16px;'}></p>
+            ))}
+          </div>
+          {overrideSignals && (
+            <div class="local-pills reveal">
+              {overrideSignals.map(s => (
+                <div class="local-pill">
+                  <span class="pill-label">{s.label}</span>
+                  <span class="pill-val" set:html={s.val}></span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="section problem-section">
     <div class="container">
@@ -177,27 +417,67 @@ const schema = [
         <h2>Questions from {v.name} in Miami</h2>
       </div>
       <div class="faq-list">
-        {v.faqs.map(f => (
+        {faqs.map(f => (
           <details class="faq-item reveal">
             <summary>{f.q}</summary>
-            <p>{f.a}</p>
+            <p set:html={f.a}></p>
           </details>
         ))}
       </div>
     </div>
   </section>
 
+  {showInsights && insightsCategory && (
+    <section class="section insights-section" aria-labelledby="insights-heading">
+      <div class="container">
+        <div class="section-head center">
+          <span class="label">Marketing Insights</span>
+          <h2 id="insights-heading">{insightsCategory.label} articles for {v.name.toLowerCase()}</h2>
+          <p class="insights-lead">{insightsCategory.description}</p>
+        </div>
+        <div class="insights-grid">
+          {insightsPosts.map((post) => (
+            <a href={post.slug} class="insight-card reveal" aria-label={post.title}>
+              <div class="insight-category">{post.category}</div>
+              <h3 class="insight-title">{post.title}</h3>
+              <p class="insight-excerpt">{post.excerpt}</p>
+              <div class="insight-meta">
+                <span>{post.date}</span>
+                <span>{post.readTime}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div class="insights-cta-row">
+          <a href={`/blog/category/${insightsCategory.slug}/`} class="insights-cta">
+            Browse all {insightsCategory.label} articles
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <ToolCallout
+    href={tool.href}
+    icon={tool.icon}
+    title={tool.title}
+    desc={tool.desc}
+  />
+
   <section class="section contact-section" id="contact">
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
+          <span class="label">Free Proposal</span>
           <h2>See What Your Competition Sees When They Search for {v.singular === 'Dental Office' || v.singular === 'Med Spa' ? 'a ' + v.singular : 'a ' + v.singular} in Miami</h2>
           <p class="lead" style="margin-bottom:24px;">We audit your Google Business Profile, search rankings, and reviews, then tell you exactly where you stand versus your top competitors in Miami.</p>
           <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol</p>
         </div>
         <ContactForm
-          title="Get My Free Audit"
+          title="Get My Free Proposal"
           subject={`${v.name} Marketing Inquiry | Thryv`}
           showOrgField={true}
         />
@@ -217,6 +497,19 @@ const schema = [
   .hero-ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
   .btn-outline-white { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 2px solid rgba(255,255,255,.5); color: var(--white); text-decoration: none; transition: border-color .2s, background .2s; }
   .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,.1); }
+
+  .market-section { background: var(--white); padding: 56px 0; }
+  .market-section .label { background: var(--blue-deeper); color: var(--white); display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .market-section h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 0 0 16px; letter-spacing: -0.01em; }
+  .market-section p { font-size: 15px; line-height: 1.75; color: var(--gray); }
+  .market-section p a { color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .market-section p a:hover { color: var(--blue-deeper); }
+  .market-section .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .local-pills { display: flex; flex-direction: column; gap: 10px; }
+  .local-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
+  .pill-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+  .pill-val { font-size: 14px; font-weight: 700; color: var(--dark); }
+  @media (max-width: 900px) { .market-section .two-col { grid-template-columns: 1fr; gap: 40px; } }
 
   .services-section { background: var(--light); }
   .svc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
@@ -242,6 +535,34 @@ const schema = [
   .stat-pill.accent .stat-lbl { opacity: .8; }
   .stat-num { font-size: 30px; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 8px; }
   .stat-lbl { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  /* ── PROFESSION VOCABULARY ─────────────────── */
+  .pv-section { background: var(--white); border-top: 1px solid var(--border); padding: 72px 0; }
+  .pv-section .label { background: var(--orange); color: var(--white); display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+  .pv-section .section-head { margin-bottom: 40px; }
+  .pv-section h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--dark); margin: 0 0 14px; letter-spacing: -.01em; }
+  .pv-section .lead { font-size: 16px; line-height: 1.75; color: var(--gray); margin: 0; }
+  .pv-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; align-items: start; }
+  .pv-block { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px 30px; }
+  .pv-block-label { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 6px; }
+  .pv-block-sub { font-size: 13.5px; color: var(--gray); margin: 0 0 18px; line-height: 1.6; }
+  .pv-side { display: flex; flex-direction: column; gap: 20px; }
+  .pv-slang-list { margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .pv-slang-item { display: grid; grid-template-columns: minmax(140px, 180px) 1fr; gap: 16px; padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .pv-slang-item:last-child { border-bottom: none; }
+  .pv-slang-item dt { font-size: 14px; font-weight: 800; color: var(--blue-deeper); margin: 0; }
+  .pv-slang-item dd { font-size: 13.5px; line-height: 1.65; color: var(--dark); margin: 0; }
+  .pv-tech-list, .pv-mkt-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .pv-tech-list li, .pv-mkt-list li { font-size: 13.5px; color: var(--dark); padding-left: 20px; position: relative; line-height: 1.6; }
+  .pv-tech-list li::before, .pv-mkt-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 8px; border-radius: 2px; background: var(--blue); }
+  .pv-mkt-list li::before { background: var(--orange); }
+  .pv-edge { margin-top: 32px; padding: 20px 26px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); border-radius: var(--radius-lg); color: var(--white); }
+  .pv-edge-label { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 6px; }
+  .pv-edge p { font-size: 16px; line-height: 1.65; margin: 0; color: var(--white); font-weight: 500; }
+  @media (max-width: 900px) {
+    .pv-grid { grid-template-columns: 1fr; }
+    .pv-slang-item { grid-template-columns: 1fr; gap: 4px; }
+  }
 
   .why-section { background: var(--light); }
   .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
@@ -275,6 +596,61 @@ const schema = [
     .svc-grid { grid-template-columns: 1fr; }
     .stat-pills { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Marketing Insights (vertical -> blog category cross-link) */
+  .insights-section { background: var(--light); padding: 64px 0; }
+  .insights-lead {
+    max-width: 640px; margin: 12px auto 0;
+    font-size: 16px; line-height: 1.65; color: var(--gray);
+  }
+  .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px; margin-top: 36px;
+  }
+  .insight-card {
+    display: flex; flex-direction: column;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 28px;
+    text-decoration: none; color: inherit;
+    transition: box-shadow .25s, transform .25s, border-color .15s;
+  }
+  .insight-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,.08);
+    transform: translateY(-2px);
+    border-color: var(--blue);
+  }
+  .insight-category {
+    align-self: flex-start;
+    font-size: 11px; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--blue); background: #EEF4FF;
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 14px;
+  }
+  .insight-title {
+    font-size: 17px; font-weight: 700; color: var(--dark);
+    line-height: 1.35; margin-bottom: 10px;
+  }
+  .insight-card:hover .insight-title { color: var(--blue); }
+  .insight-excerpt {
+    font-size: 14px; line-height: 1.65; color: var(--gray);
+    margin-bottom: 16px; flex: 1;
+  }
+  .insight-meta {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--gray-light);
+    border-top: 1px solid var(--border); padding-top: 12px;
+  }
+  .insights-cta-row { text-align: center; margin-top: 36px; }
+  .insights-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 700; color: var(--white);
+    background: var(--blue); border-radius: 100px; padding: 12px 22px;
+    text-decoration: none; transition: opacity .2s;
+  }
+  .insights-cta:hover { opacity: .9; }
+  @media (max-width: 600px) {
+    .insights-grid { grid-template-columns: 1fr; }
   }
 </style>
 

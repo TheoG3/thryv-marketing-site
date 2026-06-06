@@ -1,0 +1,76 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+---
+
+<ToolPageLayout
+  slug="missed-call-revenue-calculator"
+  title="Missed Call Revenue Calculator"
+  metaTitle="Free Missed Call Revenue Calculator: What Unanswered Calls Cost You | Thryv"
+  description="Free Missed Call Revenue Calculator. See how much revenue your business loses each month and year to unanswered phone calls, and what an AI receptionist could recover."
+  icon="📞"
+  pageLead="Service businesses leak revenue every time the phone rings and nobody answers. Plug in your numbers and see exactly what unanswered calls cost you each month."
+  contactSubject="Missed Call Revenue Calculator Inquiry | Thryv"
+  applicationCategory="FinanceApplication"
+>
+  <div class="calc-grid">
+    <div class="calc-form">
+      <div class="calc-field">
+        <label for="mc-job-value">Average Job or Sale Value</label>
+        <div class="input-prefix"><span>$</span><input type="number" id="mc-job-value" placeholder="350" min="1" /></div>
+      </div>
+      <div class="calc-field">
+        <label for="mc-calls">Calls Received Per Month</label>
+        <input type="number" id="mc-calls" placeholder="60" min="0" />
+      </div>
+      <div class="calc-field">
+        <label for="mc-answer-rate">Current Answer Rate</label>
+        <select id="mc-answer-rate">
+          <option value="0.15">Under 20%, most calls missed</option>
+          <option value="0.30" selected>About 30%, industry average</option>
+          <option value="0.50">About 50%, half answered</option>
+          <option value="0.70">About 70%, mostly answered</option>
+        </select>
+      </div>
+      <button id="mc-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Lost Revenue</button>
+    </div>
+    <div class="calc-result" id="mc-result" style="display:none;">
+      <div class="result-label">Monthly Revenue Lost to Missed Calls</div>
+      <div class="result-amount" id="mc-monthly-lost">$0</div>
+      <p class="result-note" id="mc-note"></p>
+      <a href="/ai/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See AI Receptionist Setup</a>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <h2>How this calculator works</h2>
+    <p>Most service businesses (HVAC, plumbing, dental, roofing, junk removal) hit answer rates around 30% during peak demand hours. The other 70% of inbound calls either ring out, hit voicemail, or get a "we are closed" greeting. Customers in pain pick the next result on Google before you call back.</p>
+    <p>The math: monthly calls × (1 minus answer rate) × 30% close rate × average job value. The 30% close rate is conservative for inbound calls (these are people already searching for your service). Your annual lost revenue is that figure times 12.</p>
+    <p>An AI receptionist that answers 24/7 typically runs $50 to $400/month. For most service businesses, it pays for itself in the first week. See our <a href="/ai/">AI Receptionist setup</a> to learn how it works.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 12px; }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  document.getElementById('mc-calc-btn')?.addEventListener('click', () => {
+    const jobValue   = parseFloat((document.getElementById('mc-job-value') as HTMLInputElement).value) || 0;
+    const calls      = parseInt((document.getElementById('mc-calls') as HTMLInputElement).value) || 0;
+    const answerRate = parseFloat((document.getElementById('mc-answer-rate') as HTMLSelectElement).value);
+    const closeRate  = 0.30;
+    const missedCalls = Math.round(calls * (1 - answerRate));
+    const lostRevenue = Math.round(missedCalls * closeRate * jobValue);
+    const annualLost  = lostRevenue * 12;
+    const monthlyEl  = document.getElementById('mc-monthly-lost') as HTMLElement;
+    const noteEl     = document.getElementById('mc-note') as HTMLElement;
+    const resultEl   = document.getElementById('mc-result') as HTMLElement;
+    monthlyEl.textContent = '$' + lostRevenue.toLocaleString();
+    noteEl.textContent = `${missedCalls} calls go unanswered each month. At a 30% close rate and $${jobValue} per job, that is $${annualLost.toLocaleString()} lost per year, before accounting for referrals those customers would have sent. An AI receptionist runs $600 to $4,800 per year.`;
+    resultEl.style.display = 'block';
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

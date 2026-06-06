@@ -33,7 +33,7 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Book a Free Marketing Audit | Thryv Marketing Solutions"
+  title="Free Miami Marketing Audit | Thryv Marketing Solutions"
   description="Book a free 30-minute audit call for your Miami business. We review your Google Business Profile, reviews, SEO, and website. Pick a time that works for you."
   canonical="https://thryvmarketingsolutions.com/contact/"
   ogImage="https://thryvmarketingsolutions.com/og-contact.jpg"
@@ -42,7 +42,7 @@ const schema = [
 
   <section class="contact-hero">
     <div class="container">
-      <span class="label">Free Audit</span>
+      <span class="label">Free Proposal</span>
       <h1>Book Your Free Marketing Audit</h1>
       <p class="lead">Pick a time below. We will review your Google Business Profile, reviews, local rankings, and website before the call and walk you through exactly what we find.</p>
     </div>
@@ -50,89 +50,59 @@ const schema = [
 
   <section class="section booking-section">
     <div class="container">
-      <div class="booking-grid">
+      <div class="booking-row">
 
-        <div class="booking-info reveal">
-          <div class="booking-tabs">
-            <button class="tab-btn active" data-tab="call">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.29 6.29l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Book a Call
-            </button>
-            <button class="tab-btn" data-tab="message">
+        <div class="book-call reveal">
+          <div class="col-header">
+            <span class="col-eyebrow">Option 1</span>
+            <h2>Book a free 15-min call</h2>
+            <p>Pick a time. We come prepared with your data.</p>
+          </div>
+          <div class="tidycal-frame">
+            <iframe
+              src="https://tidycal.com/theogrimes/15-minute-meeting"
+              title="Book a 15-minute call with Thryv Marketing Solutions"
+              loading="lazy"
+              allow="payment"
+            ></iframe>
+          </div>
+          <p class="alt-call">
+            Want a longer call?
+            <a href="https://tidycal.com/theogrimes/30-minute-meeting" class="tidycal-embed">Book a 30-min audit</a>
+            <span class="dot">·</span>
+            <a href="https://tidycal.com/theogrimes/60-minute-meeting" class="tidycal-embed">60-min deep dive</a>
+          </p>
+        </div>
+
+        <div class="send-message reveal">
+          <div class="col-header">
+            <span class="col-eyebrow">Option 2</span>
+            <h2>Or send a message</h2>
+            <p>Quick question? Drop it below. We reply within 24 hours.</p>
+          </div>
+          <ContactForm title="Send Us a Message" subject="New Contact Page Inquiry | Thryv" />
+          <div class="contact-direct" style="margin-top:20px;">
+            <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-              Send a Message
-            </button>
-          </div>
-
-          <div class="tab-panel" id="tab-call">
-            <div class="call-options">
-              <a href="https://tidycal.com/m2jk763/30-minute-meeting" class="call-option tidycal-embed">
-                <div class="call-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <div class="call-option-body">
-                  <div class="call-option-title">30-Minute Free Audit Call</div>
-                  <div class="call-option-desc">Full audit walkthrough — GBP, reviews, rankings, website. We come prepared with your data.</div>
-                  <div class="call-option-badge free">Free</div>
-                </div>
-                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="https://tidycal.com/m2jk763/15-minute-meeting" class="call-option tidycal-embed">
-                <div class="call-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
-                </div>
-                <div class="call-option-body">
-                  <div class="call-option-title">15-Minute Intro Call</div>
-                  <div class="call-option-desc">Quick fit check. Ask a question or see if we are a good match before going deeper.</div>
-                  <div class="call-option-badge free">Free</div>
-                </div>
-                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="https://tidycal.com/m2jk763/60-minute-meeting" class="call-option tidycal-embed">
-                <div class="call-option-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 4"/></svg>
-                </div>
-                <div class="call-option-body">
-                  <div class="call-option-title">60-Minute Deep Dive</div>
-                  <div class="call-option-desc">Full strategy session. We build your marketing roadmap together, step by step.</div>
-                  <div class="call-option-badge paid">$60</div>
-                </div>
-                <svg class="call-option-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-
-            <div class="what-audit-covers">
-              <h3>What We Review Before the Call</h3>
-              <ul class="audit-list">
-                <li><span class="audit-dot"></span><strong>Google Business Profile</strong> — completeness, keyword targeting, missed opportunities</li>
-                <li><span class="audit-dot"></span><strong>Review score and velocity</strong> — how you compare to your top 3 competitors</li>
-                <li><span class="audit-dot"></span><strong>Local keyword rankings</strong> — where you show up for the searches your customers use</li>
-                <li><span class="audit-dot"></span><strong>Website speed and mobile</strong> — PageSpeed flags that are hurting your rankings</li>
-              </ul>
-            </div>
-
-            <div class="contact-direct">
-              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-                hello@thryvmarketingsolutions.com
-              </a>
-              <span class="bilingual">Hablamos Espa&ntilde;ol</span>
-            </div>
-          </div>
-
-          <div class="tab-panel hidden" id="tab-message">
-            <ContactForm title="Send Us a Message" subject="New Contact Page Inquiry | Thryv" />
-            <div class="contact-direct" style="margin-top:24px;">
-              <a href="mailto:hello@thryvmarketingsolutions.com" class="contact-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-                hello@thryvmarketingsolutions.com
-              </a>
-              <span class="bilingual">Hablamos Espa&ntilde;ol</span>
-            </div>
+              hello@thryvmarketingsolutions.com
+            </a>
+            <span class="bilingual">Hablamos Espa&ntilde;ol</span>
           </div>
         </div>
 
-        <div class="trust-sidebar reveal">
+      </div>
+
+      <div class="what-audit-covers reveal" style="margin-top:48px;">
+        <h3>What We Review Before Any Call</h3>
+        <ul class="audit-list">
+          <li><span class="audit-dot"></span><strong>Google Business Profile</strong> — completeness, keyword targeting, missed opportunities</li>
+          <li><span class="audit-dot"></span><strong>Review score and velocity</strong> — how you compare to your top 3 competitors</li>
+          <li><span class="audit-dot"></span><strong>Local keyword rankings</strong> — where you show up for the searches your customers use</li>
+          <li><span class="audit-dot"></span><strong>Website speed and mobile</strong> — PageSpeed flags that are hurting your rankings</li>
+        </ul>
+      </div>
+
+      <div class="trust-cards-row reveal">
           <div class="trust-card">
             <div class="trust-badge">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -151,12 +121,12 @@ const schema = [
             <div class="trust-badge">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
             </div>
-            <h3>Miami-Based Team</h3>
-            <p>We know the market, the neighborhoods, and the competition. Hablamos Espa&ntilde;ol.</p>
+            <h3>Miami-Based, Founder-Led</h3>
+            <p>You work with the founder, not a junior account manager. We know the market, the neighborhoods, and the competition. Hablamos Espa&ntilde;ol.</p>
           </div>
           <div class="trust-stat-row">
             <div class="trust-stat"><div class="trust-stat-num">685+</div><div class="trust-stat-lbl">Local pages built</div></div>
-            <div class="trust-stat"><div class="trust-stat-num">24 hr</div><div class="trust-stat-lbl">Response guarantee</div></div>
+            <div class="trust-stat"><div class="trust-stat-num">24 hr</div><div class="trust-stat-lbl">Typical response time</div></div>
             <div class="trust-stat"><div class="trust-stat-num">0</div><div class="trust-stat-lbl">Lock-in contracts</div></div>
           </div>
         </div>
@@ -186,30 +156,40 @@ const schema = [
   .contact-hero .lead { color: rgba(255,255,255,.8); max-width: 540px; font-size: 17px; line-height: 1.7; }
 
   .booking-section { background: var(--light); }
-  .booking-grid { display: grid; grid-template-columns: 1fr 380px; gap: 48px; align-items: start; }
 
-  /* Tabs */
-  .booking-tabs { display: flex; gap: 8px; margin-bottom: 28px; background: var(--border); border-radius: 12px; padding: 4px; }
-  .tab-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; border-radius: 9px; border: none; background: transparent; font-size: 14px; font-weight: 700; color: var(--gray); cursor: pointer; transition: background .2s, color .2s; }
-  .tab-btn.active { background: var(--white); color: var(--dark); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-  .tab-btn svg { stroke: currentColor; }
-  .tab-panel { }
-  .tab-panel.hidden { display: none; }
+  /* Side-by-side booking row */
+  .booking-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
 
-  /* Call options */
-  .call-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-  .call-option { display: flex; align-items: center; gap: 16px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 20px; text-decoration: none; transition: border-color .2s, box-shadow .2s, transform .15s; cursor: pointer; }
-  .call-option:hover { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.12); transform: translateY(-1px); text-decoration: none; }
-  .call-option-icon { width: 48px; height: 48px; min-width: 48px; border-radius: 12px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; }
-  .call-option-icon svg { stroke: var(--blue); }
-  .call-option-body { flex: 1; }
-  .call-option-title { font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-  .call-option-desc { font-size: 13px; line-height: 1.55; color: var(--gray); margin-bottom: 8px; }
-  .call-option-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; border-radius: 100px; padding: 3px 10px; }
-  .call-option-badge.free { background: #dcfce7; color: #15803d; }
-  .call-option-badge.paid { background: var(--blue-light); color: var(--blue); }
-  .call-option-arrow { stroke: var(--gray); flex-shrink: 0; transition: stroke .2s, transform .2s; }
-  .call-option:hover .call-option-arrow { stroke: var(--blue); transform: translateX(3px); }
+  .col-header { margin-bottom: 20px; }
+  .col-eyebrow { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: #8A5A00; margin-bottom: 8px; }
+  .col-header h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin: 0 0 6px; letter-spacing: -.01em; }
+  .col-header p { font-size: 14px; color: var(--gray); margin: 0; line-height: 1.5; }
+
+  /* TidyCal iframe */
+  .tidycal-frame {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .tidycal-frame iframe {
+    width: 100%;
+    min-height: 720px;
+    border: 0;
+    display: block;
+    background: var(--white);
+  }
+  .alt-call {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--gray);
+    text-align: center;
+    line-height: 1.6;
+  }
+  .alt-call a { color: var(--blue); font-weight: 700; text-decoration: none; }
+  .alt-call a:hover { text-decoration: underline; }
+  .alt-call .dot { margin: 0 6px; color: var(--border); }
 
   /* Audit list */
   .what-audit-covers { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px 28px; margin-bottom: 24px; }
@@ -225,8 +205,9 @@ const schema = [
   .contact-link:hover { opacity: .7; }
   .bilingual { font-size: 13px; color: var(--gray); font-style: italic; }
 
-  /* Trust sidebar */
-  .trust-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  /* Trust cards row (3-col on desktop, stacked on mobile) */
+  .trust-cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .trust-cards-row .trust-stat-row { grid-column: 1 / -1; margin-top: 8px; }
   .trust-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
   .trust-badge { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-light); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
   .trust-badge svg { stroke: var(--blue); }
@@ -253,13 +234,14 @@ const schema = [
   .reveal.visible { opacity: 1; transform: none; }
 
   @media (max-width: 960px) {
-    .booking-grid { grid-template-columns: 1fr; }
-    .trust-sidebar { order: -1; }
+    .booking-row { grid-template-columns: 1fr; gap: 40px; }
+    .trust-cards-row { grid-template-columns: 1fr; }
     .trust-stat-row { grid-template-columns: repeat(3, 1fr); }
+    .tidycal-frame iframe { min-height: 820px; }
   }
   @media (max-width: 500px) {
-    .booking-tabs { flex-direction: column; }
     .trust-stat-row { grid-template-columns: 1fr 1fr; }
+    .alt-call .dot { display: block; height: 4px; }
   }
 </style>
 
@@ -269,15 +251,4 @@ const schema = [
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  const tabs = document.querySelectorAll('.tab-btn');
-  const panels = document.querySelectorAll('.tab-panel');
-  tabs.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.add('hidden'));
-      btn.classList.add('active');
-      const target = document.getElementById('tab-' + btn.dataset.tab);
-      if (target) target.classList.remove('hidden');
-    });
-  });
 </script>

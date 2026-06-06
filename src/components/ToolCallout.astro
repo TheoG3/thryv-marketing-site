@@ -1,0 +1,83 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+  title: string;
+  desc: string;
+  label?: string;
+}
+const { href, icon, title, desc, label = 'Free Tool' } = Astro.props;
+---
+
+<section class="section tool-callout-section">
+  <div class="container">
+    <a href={href} class="tool-callout">
+      <div class="tool-callout-left">
+        <span class="tool-callout-icon" aria-hidden="true">{icon}</span>
+        <div class="tool-callout-text">
+          <span class="tool-callout-label">{label}</span>
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </div>
+      </div>
+      <span class="tool-callout-arrow" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .tool-callout-section { background: var(--white); padding: 32px 0; }
+  .tool-callout {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    max-width: 920px; margin: 0 auto; padding: 24px 28px;
+    background: linear-gradient(135deg, #EEF4FF 0%, #FFF7ED 100%);
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+  }
+  .tool-callout:hover {
+    box-shadow: 0 14px 36px rgba(10, 46, 110, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--orange);
+  }
+  .tool-callout:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  .tool-callout-left { display: flex; align-items: center; gap: 20px; min-width: 0; }
+  .tool-callout-icon { font-size: 44px; line-height: 1; flex-shrink: 0; }
+  .tool-callout-text { min-width: 0; }
+  .tool-callout-label {
+    display: inline-block;
+    font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--orange);
+    background: rgba(242, 109, 43, 0.1);
+    border-radius: 100px;
+    padding: 3px 10px;
+    margin-bottom: 6px;
+  }
+  .tool-callout h3 {
+    font-size: 19px; font-weight: 800; color: var(--dark);
+    margin: 0 0 4px; line-height: 1.25;
+  }
+  .tool-callout p {
+    font-size: 14px; color: var(--gray); margin: 0; line-height: 1.5;
+  }
+  .tool-callout-arrow {
+    color: var(--blue);
+    flex-shrink: 0;
+    transition: transform .18s ease;
+  }
+  .tool-callout:hover .tool-callout-arrow { transform: translateX(4px); color: var(--orange); }
+
+  @media (max-width: 640px) {
+    .tool-callout { flex-direction: row; padding: 18px 20px; gap: 14px; }
+    .tool-callout-icon { font-size: 36px; }
+    .tool-callout-left { gap: 14px; }
+    .tool-callout h3 { font-size: 17px; }
+    .tool-callout p { font-size: 13px; }
+  }
+</style>

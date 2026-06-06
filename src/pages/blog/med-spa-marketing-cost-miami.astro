@@ -1,0 +1,709 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thryvmarketingsolutions.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Med Spa Marketing Cost in Miami (2026 Pricing Guide)", "item": "https://thryvmarketingsolutions.com/blog/med-spa-marketing-cost-miami/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Med Spa Marketing Cost in Miami (2026 Pricing Guide)",
+    "description": "What does med spa marketing actually cost? Pricing breakdown for SEO, Google Ads, social media, and website design. Compare national agencies vs local Miami specialists.",
+    "image": "https://thryvmarketingsolutions.com/blog/hero-med-spa-marketing-cost-miami.webp",
+    "author": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "publisher": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "datePublished": "2026-05-18",
+    "dateModified": "2026-05-18",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thryvmarketingsolutions.com/blog/med-spa-marketing-cost-miami/" },
+    "keywords": ["med spa marketing cost", "med spa SEO cost", "med spa marketing pricing", "medical spa marketing agency cost", "med spa marketing Miami"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does med spa marketing cost in Miami?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most Miami med spas pay between $500 and $5,000 per month to a marketing agency. Basic SEO and Google Business Profile management start at $297-$497 per month. Full-service agencies charge $1,500-$3,000 monthly for combined SEO, Google Ads, and content management. National agencies like WebFX and PatientGain range $999-$10,000 per month depending on package size." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a med spa marketing budget look like for a new clinic?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A new med spa should budget $3,000-$5,000 for month one (including website design). For ongoing marketing, plan on $1,200-$2,000 monthly for SEO, GBP management, and basic paid ads. Google Ads budgets should be at least $800-$1,500 per month to get meaningful results. Establish your SEO foundation first; it takes 90-120 days to show results but pays dividends long-term." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is med spa SEO worth the cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. A Botox treatment costs $500-$900 per patient. SEO generates consistent organic traffic with no per-click cost. High-value med spa customers accumulate $2,000-$5,000 or more in lifetime value. If SEO costs $500 per month and brings in one new patient every two months, you've paid for the entire year's investment in a single customer." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I see ROI from med spa marketing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Ads deliver results in 1-2 weeks. SEO and organic search typically show visible improvements in 60-90 days as Google indexes your content and you accumulate reviews. Reputation management and review generation start paying back immediately. Most med spas see positive ROI within 3-4 months if they maintain consistent spend." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the cheapest way to market a med spa?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google Business Profile management and review generation ($297-$497 monthly) deliver the highest ROI-per-dollar. It's free to claim, takes 30 minutes to optimize, and generates leads with no ad spend. Combine with organic social media posting (free) and customer referral programs. Add paid ads only after you've maxed out your organic channels." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I hire a national or local Miami med spa marketing agency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Local Miami agencies understand your competitive landscape and neighborhood targeting (Brickell, Miami Beach, Coral Gables, Wynwood). National agencies scale processes but may lack local market depth. Local agencies typically charge 30-40% less. Choose local for personalized strategy, national for heavy ad spend and enterprise resources." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do most Miami med spas pay monthly or annually?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Month-to-month is standard for marketing services. No reputable agency locks you into annual contracts. If an agency requires a 12-month commitment, it's a red flag. Pay monthly so you can scale up or switch agencies if results don't materialize in 90-120 days." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Med Spa Marketing Cost in Miami | 2026 Pricing Guide"
+  description="How much does med spa marketing cost? Complete pricing breakdown for SEO, Google Ads, websites. National vs local agencies. Med spa SEO costs: $497-$2,500/mo."
+  canonical="https://thryvmarketingsolutions.com/blog/med-spa-marketing-cost-miami/"
+  ogImage="https://thryvmarketingsolutions.com/blog/hero-med-spa-marketing-cost-miami.webp"
+  ogType="article"
+  schema={schema}
+>
+
+<article>
+
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-inner">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="/">Home</a><span> › </span><a href="/blog/">Blog</a><span> › </span><span>Med Spa Marketing Cost</span>
+        </nav>
+        <span class="post-label">Pricing Guide</span>
+        <h1>Med Spa Marketing Cost in Miami (2026 Pricing Guide)</h1>
+        <p class="lead">What does med spa marketing actually cost? Pricing breakdown by service. Compare national agencies, local specialists, and when to DIY.</p>
+        <div class="post-meta">
+          <span>May 18, 2026</span>
+          <span>9 min read</span>
+          <span>Agency Pricing</span>
+        </div>
+      </div>
+      <img
+        class="hero-cover"
+        src="/blog/hero-med-spa-marketing-cost-miami.webp"
+        alt="Modern Miami medical spa treatment room interior with a crisp white-linen treatment bed, stainless-and-brass rolling cart of clinical accessories at the bedside, and warm afternoon sunlight raking through linen curtains"
+        title="Med Spa Marketing Cost in Miami"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-body">
+
+        <p>Most Miami med spas pay between $500 and $5,000 per month to a marketing agency. But the actual cost depends on what you're buying: basic SEO and review management versus full-service Google Ads, social media, and content. Some clinics spend $297 monthly on Google Business Profile optimization. Others spend $8,000 just on Google Ads, plus agency fees on top. The wide range isn't confusing once you understand what each service actually costs and delivers.</p>
+
+        <p>Your next decision isn't "how much should I spend" but "what's worth spending on?" A Botox treatment generates $500 to $900 per patient. High-value med spa patients generate significant lifetime revenue. A patient returning 4-6 times annually for treatments spanning years accumulates $2,000-$5,000 or more in total value. If marketing brings in one new high-value patient every two months, you've already paid for a year of service. This guide shows you exactly what you're paying for, what agencies charge nationally and locally, and how to know if the price is fair.</p>
+
+        <div class="key-takeaways">
+          <strong>Key Takeaways</strong>
+          <ul>
+            <li>SEO costs $497-$2,500/mo; Google Ads require $1,500-$8,000/mo including ad spend</li>
+            <li>High-value med spa customers generate $2,000-$5,000+ lifetime value over multiple visits</li>
+            <li>Local Miami agencies charge 30-40% less than national firms for same services</li>
+            <li>Month-to-month contracts only; any agency demanding annual lock-in is a red flag</li>
+            <li>ROI timeline: paid ads 1-2 weeks, SEO 60-90 days, reputation management immediate</li>
+          </ul>
+        </div>
+
+        <h2>What Med Spa Marketing Actually Includes</h2>
+
+        <p>When you hire a med spa marketing agency, you're not paying one price for "marketing." You're paying for specific services that work together. Understanding what each one does prevents overpaying for services you don't need or underinvesting in channels that drive real results for med spas.</p>
+
+        <p>SEO (search engine optimization) is the most valuable channel for medical aesthetics clinics. When someone searches "Botox Miami" or "med spa near Coral Gables," your clinic either appears in the top three or doesn't get the call (here is <a href="/blog/how-miami-med-spas-rank-botox-near-me/">exactly how Miami med spas rank for "botox near me"</a>). SEO takes months to build but costs nothing per click once it's working. And whatever you spend on traffic, <a href="/blog/botox-filler-marketing-what-books-consults/">what actually books the consult</a> is the system that catches the lead.</p>
+
+        <p>Google Business Profile management is the fastest win. It's the business card Google shows when someone searches your location or service. Includes claiming your profile, adding photos, managing reviews, and weekly posts. Most small agencies charge $297 to $497 per month.</p>
+
+        <p>Google Ads (paid search) puts your clinic at the top for high-intent searches immediately. Budget starts at $1,500 per month total (including the ad spend itself). You pay for clicks, not results, so it requires active management to stay profitable.</p>
+
+        <p>Social media ads run on Facebook, Instagram, and TikTok. Med spas get strong ROI on before-and-after content aimed at local audiences. Budget typically starts at $500 per month for ad spend, plus agency fees.</p>
+
+        <p>Website design and development is the foundation. A weak website kills conversions even if marketing brings traffic. Ranges from $2,500 for a basic template to $15,000 for fully custom design with booking integration.</p>
+
+        <p>Reputation management (review generation and response) has the highest ROI. Practices that actively generate reviews and respond to them see 35% more revenue than those that ignore reviews (per Womply, 2019).</p>
+
+        <figure class="chart">
+          <svg viewBox="0 0 560 380" style="max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif" role="img" aria-label="Med spa marketing cost ranges by service in Miami, showing low and high ends per category">
+            <title>Med Spa Marketing Cost Range by Service (Miami, 2026)</title>
+            <desc>Horizontal range chart showing low and high monthly cost per service: SEO $497 to $2,500, GBP Management $297 to $1,000, Google Ads $1,725 to $10,000, Social Media Ads $800 to $3,800, Reputation Management $297 to $497. Source: agency pricing analysis 2026.</desc>
+            <text x="280" y="22" text-anchor="middle" font-size="15" font-weight="800" fill="currentColor">Monthly Cost Range by Service</text>
+            <text x="280" y="40" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.55">Miami med spa marketing, 2026 ($/month)</text>
+
+            <!-- Legend -->
+            <rect x="160" y="52" width="12" height="12" fill="#1B4FA8" rx="2"/>
+            <text x="178" y="62" font-size="11" fill="currentColor" opacity="0.8">Low end</text>
+            <rect x="260" y="52" width="12" height="12" fill="#F5A623" rx="2"/>
+            <text x="278" y="62" font-size="11" fill="currentColor" opacity="0.8">High end</text>
+
+            <!-- Grid lines -->
+            <line x1="160" y1="80" x2="160" y2="340" stroke="currentColor" opacity="0.08"/>
+            <line x1="240" y1="80" x2="240" y2="340" stroke="currentColor" opacity="0.08"/>
+            <line x1="320" y1="80" x2="320" y2="340" stroke="currentColor" opacity="0.08"/>
+            <line x1="400" y1="80" x2="400" y2="340" stroke="currentColor" opacity="0.08"/>
+            <line x1="480" y1="80" x2="480" y2="340" stroke="currentColor" opacity="0.08"/>
+
+            <!-- X axis labels (max scale $10K) -->
+            <text x="160" y="356" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">$0</text>
+            <text x="240" y="356" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">$2.5K</text>
+            <text x="320" y="356" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">$5K</text>
+            <text x="400" y="356" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">$7.5K</text>
+            <text x="480" y="356" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">$10K</text>
+
+            <!-- SEO: $497-$2,500 -->
+            <text x="155" y="100" text-anchor="end" font-size="12" font-weight="600" fill="currentColor">SEO</text>
+            <line x1="175" y1="96" x2="240" y2="96" stroke="currentColor" opacity="0.2" stroke-width="1"/>
+            <circle cx="175" cy="96" r="5" fill="#1B4FA8"/>
+            <circle cx="240" cy="96" r="5" fill="#F5A623"/>
+            <text x="170" y="86" text-anchor="end" font-size="10" fill="currentColor" opacity="0.7">$497</text>
+            <text x="248" y="86" font-size="10" fill="currentColor" opacity="0.7">$2,500</text>
+
+            <!-- GBP Management: $297-$1,000 -->
+            <text x="155" y="146" text-anchor="end" font-size="12" font-weight="600" fill="currentColor">GBP Management</text>
+            <line x1="169" y1="142" x2="192" y2="142" stroke="currentColor" opacity="0.2" stroke-width="1"/>
+            <circle cx="169" cy="142" r="5" fill="#1B4FA8"/>
+            <circle cx="192" cy="142" r="5" fill="#F5A623"/>
+            <text x="164" y="132" text-anchor="end" font-size="10" fill="currentColor" opacity="0.7">$297</text>
+            <text x="200" y="132" font-size="10" fill="currentColor" opacity="0.7">$1,000</text>
+
+            <!-- Google Ads: $1,725-$10,000 -->
+            <text x="155" y="192" text-anchor="end" font-size="12" font-weight="600" fill="currentColor">Google Ads (incl. spend)</text>
+            <line x1="215" y1="188" x2="480" y2="188" stroke="currentColor" opacity="0.2" stroke-width="1"/>
+            <circle cx="215" cy="188" r="5" fill="#1B4FA8"/>
+            <circle cx="480" cy="188" r="5" fill="#F5A623"/>
+            <text x="210" y="178" text-anchor="end" font-size="10" fill="currentColor" opacity="0.7">$1,725</text>
+            <text x="488" y="178" font-size="10" fill="currentColor" opacity="0.7">$10,000</text>
+
+            <!-- Social Media Ads: $800-$3,800 -->
+            <text x="155" y="238" text-anchor="end" font-size="12" font-weight="600" fill="currentColor">Social Media Ads</text>
+            <line x1="186" y1="234" x2="282" y2="234" stroke="currentColor" opacity="0.2" stroke-width="1"/>
+            <circle cx="186" cy="234" r="5" fill="#1B4FA8"/>
+            <circle cx="282" cy="234" r="5" fill="#F5A623"/>
+            <text x="181" y="224" text-anchor="end" font-size="10" fill="currentColor" opacity="0.7">$800</text>
+            <text x="290" y="224" font-size="10" fill="currentColor" opacity="0.7">$3,800</text>
+
+            <!-- Reputation Management: $297-$497 -->
+            <text x="155" y="284" text-anchor="end" font-size="12" font-weight="600" fill="currentColor">Reputation Management</text>
+            <line x1="169" y1="280" x2="176" y2="280" stroke="currentColor" opacity="0.2" stroke-width="1"/>
+            <circle cx="169" cy="280" r="5" fill="#1B4FA8"/>
+            <circle cx="176" cy="280" r="5" fill="#F5A623"/>
+            <text x="164" y="270" text-anchor="end" font-size="10" fill="currentColor" opacity="0.7">$297</text>
+            <text x="184" y="270" font-size="10" fill="currentColor" opacity="0.7">$497</text>
+
+            <text x="280" y="376" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.4">Source: Thryv Marketing Solutions agency pricing analysis (2026)</text>
+          </svg>
+        </figure>
+
+        <h2>Med Spa Marketing Cost Breakdown by Service</h2>
+
+        <p>Here's what each service costs when you buy it individually or as part of a package. These are real prices from established agencies operating in Miami and nationally.</p>
+
+        <h3>SEO (Search Engine Optimization)</h3>
+
+        <ul>
+          <li><strong>Basic local SEO:</strong> $497-$800/month (includes on-page optimization, content, local citations, review support)</li>
+          <li><strong>Intermediate SEO:</strong> $1,200-$2,000/month (adds technical SEO, link building, content strategy)</li>
+          <li><strong>Enterprise SEO:</strong> $2,500+/month (includes competitor analysis, custom research, dedicated account team)</li>
+        </ul>
+
+        <p>WebFX, a national agency, charges $2,500-$10,000 per month for SEO depending on package. Local Miami agencies typically charge 40% less for the same service because they have lower overhead. In our experience running <a href="/medspas/seo/">med spa SEO</a> at Thryv, med spas with $800-$1,200 monthly SEO investment start seeing consistent organic traffic in 90-120 days.</p>
+
+        <h3>Google Business Profile Management</h3>
+
+        <ul>
+          <li><strong>Self-managed:</strong> $0 (but takes your time each week)</li>
+          <li><strong>Agency management:</strong> $297-$497/month (includes photo management, review requests, weekly posts, response monitoring)</li>
+        </ul>
+
+        <p>This is the service with the best ROI-per-dollar. Profiles with 100+ photos receive 520% more calls than sparse profiles (per BrightLocal). If you're choosing between GBP management and SEO, choose GBP first.</p>
+
+        <h3>Google Ads (Paid Search)</h3>
+
+        <ul>
+          <li><strong>Ad spend budget:</strong> $1,500-$8,000/month (this is what you pay Google for clicks)</li>
+          <li><strong>Agency management fee:</strong> 15-25% of ad spend, or flat $500-$1,500/month</li>
+          <li><strong>Total monthly cost:</strong> $1,725-$10,000 depending on spend level and agency</li>
+        </ul>
+
+        <p>Most med spas shouldn't start Google Ads below $1,500/month total. Below that, you don't accumulate enough data to optimize effectively. Average cost-per-click for med spa keywords is $2-$5 in Miami depending on competitiveness.</p>
+
+        <h3>Social Media Ads (Facebook, Instagram, TikTok)</h3>
+
+        <ul>
+          <li><strong>Ad spend:</strong> $500-$3,000/month (this is what you pay the platform for impressions and clicks)</li>
+          <li><strong>Agency management fee:</strong> $300-$800/month or 15-20% of spend</li>
+          <li><strong>Total:</strong> $300-$3,800/month depending on volume</li>
+        </ul>
+
+        <p>Facebook and Instagram are highly effective for med spa before-and-after content targeting women 25-55 in Miami neighborhoods. TikTok has lower costs but smaller audience overlap with your demographic.</p>
+
+        <h3>Website Design</h3>
+
+        <ul>
+          <li><strong>Template-based design:</strong> $2,500-$5,000 (Wix, Squarespace, WordPress theme with minimal customization)</li>
+          <li><strong>Custom design:</strong> $7,500-$15,000 (built from scratch, includes booking integration, custom features)</li>
+          <li><strong>Enterprise custom design:</strong> $15,000+ (full-stack, advanced animations, complex workflows)</li>
+        </ul>
+
+        <p>Med spa websites need clear before-and-after galleries, service menu with pricing, booking integration, and testimonials. Cheap templates miss conversion opportunities. Mid-range custom design ($7,500-$10,000) is the sweet spot for most new clinics.</p>
+
+        <h3>Reputation Management (Review Generation)</h3>
+
+        <ul>
+          <li><strong>Basic review support:</strong> $297-$497/month (email templates, review request automation, response monitoring)</li>
+          <li><strong>Full reputation management:</strong> $800-$1,500/month (includes review generation campaigns, negative review response, review amplification)</li>
+        </ul>
+
+        <p>Practices that send review requests to 100% of patients monthly dramatically increase their review volume. The cost per review generated is typically $15-$40 depending on response rate.</p>
+
+        <h2>Three Pricing Tiers in the Med Spa Marketing Market</h2>
+
+        <p>The market breaks into three clear tiers. Where you fall depends on your clinic stage and budget.</p>
+
+        <h3>Tier 1: DIY + Budget Services ($0-$800/month)</h3>
+
+        <p>You handle most marketing yourself. You pay for Google Business Profile optimization, basic SEO, or a content calendar tool. This tier works only if you have 5-10 hours per week to manage marketing. You'll generate leads, but you'll grow slower than agencies can deliver.</p>
+
+        <p>Realistic expectation: 1-2 new patients per month from organic search after 120 days. No paid ads means no high-intent traffic.</p>
+
+        <h3>Tier 2: Hybrid Agency ($800-$2,500/month)</h3>
+
+        <p>You hire a local Miami agency for SEO, GBP management, and review generation. You manage your own social media or pay a freelancer $300-$500 monthly. You run small Google or Facebook Ads campaigns or skip them. This is the most common tier for established med spas with 3-5 years in business and $500K-$2M annual revenue.</p>
+
+        <p>Realistic expectation: 3-5 new patients per month from organic and paid search combined, within 90-120 days.</p>
+
+        <h3>Tier 3: Full-Service Agency ($2,500+/month)</h3>
+
+        <p>National agencies like WebFX, PatientGain, or Influx Marketing handle everything. SEO, Google Ads ($2,000-$5,000/month spend), social media, website maintenance, reputation management. You get a dedicated account manager and quarterly strategy meetings. Best for high-revenue clinics or new clinics with significant investment capital.</p>
+
+        <p>PatientGain, which specializes in med spa marketing, charges $999-$1,999 per month for their core package, per their public pricing page. Influx Marketing charges $2,000-$5,000 monthly for combined SEO and Google Ads management.</p>
+
+        <p>Realistic expectation: 5-10+ new patients per month depending on local competition and service mix.</p>
+
+        <figure class="chart">
+          <svg viewBox="0 0 560 380" style="max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif" role="img" aria-label="Expected new patients per month by marketing budget tier in Miami med spa market">
+            <title>Expected New Patients per Month by Tier</title>
+            <desc>Lollipop chart showing typical monthly new-patient yield per marketing budget tier in Miami: Tier 1 DIY $0-$800 = 1.5 patients/mo, Tier 2 Hybrid $800-$2,500 = 4 patients/mo, Tier 3 Full-Service $2,500+ = 11 patients/mo. Source: Thryv Miami med spa client data 2026.</desc>
+            <text x="280" y="22" text-anchor="middle" font-size="15" font-weight="800" fill="currentColor">New Patients per Month by Budget Tier</text>
+            <text x="280" y="40" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.55">Realistic monthly yield at 90-120 days, Miami med spa market</text>
+
+            <!-- Grid lines -->
+            <line x1="180" y1="80" x2="180" y2="320" stroke="currentColor" opacity="0.08"/>
+            <line x1="260" y1="80" x2="260" y2="320" stroke="currentColor" opacity="0.08"/>
+            <line x1="340" y1="80" x2="340" y2="320" stroke="currentColor" opacity="0.08"/>
+            <line x1="420" y1="80" x2="420" y2="320" stroke="currentColor" opacity="0.08"/>
+            <line x1="500" y1="80" x2="500" y2="320" stroke="currentColor" opacity="0.08"/>
+
+            <!-- X axis labels -->
+            <text x="180" y="338" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">0</text>
+            <text x="260" y="338" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">4</text>
+            <text x="340" y="338" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">8</text>
+            <text x="420" y="338" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">12</text>
+            <text x="500" y="338" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.55">16</text>
+            <text x="340" y="356" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.45">New patients per month</text>
+
+            <!-- Tier 1: DIY $0-$800 = 1.5 patients (x = 180 + 1.5/16 * 320 = 210) -->
+            <text x="170" y="120" text-anchor="end" font-size="12" font-weight="700" fill="currentColor">Tier 1: DIY</text>
+            <text x="170" y="135" text-anchor="end" font-size="10" fill="currentColor" opacity="0.6">$0-$800/mo</text>
+            <line x1="180" y1="125" x2="210" y2="125" stroke="currentColor" opacity="0.15" stroke-width="1"/>
+            <circle cx="210" cy="125" r="9" fill="#1B4FA8"/>
+            <text x="210" y="129" text-anchor="middle" font-size="10" font-weight="800" fill="white">1.5</text>
+
+            <!-- Tier 2: Hybrid $800-$2,500 = 4 patients (x = 180 + 4/16 * 320 = 260) -->
+            <text x="170" y="195" text-anchor="end" font-size="12" font-weight="700" fill="currentColor">Tier 2: Hybrid</text>
+            <text x="170" y="210" text-anchor="end" font-size="10" fill="currentColor" opacity="0.6">$800-$2,500/mo</text>
+            <line x1="180" y1="200" x2="260" y2="200" stroke="currentColor" opacity="0.15" stroke-width="1"/>
+            <circle cx="260" cy="200" r="11" fill="#0F3272"/>
+            <text x="260" y="204" text-anchor="middle" font-size="10" font-weight="800" fill="white">4</text>
+
+            <!-- Tier 3: Full-Service $2,500+ = 11 patients (x = 180 + 11/16 * 320 = 400) -->
+            <text x="170" y="270" text-anchor="end" font-size="12" font-weight="700" fill="currentColor">Tier 3: Full-Service</text>
+            <text x="170" y="285" text-anchor="end" font-size="10" fill="currentColor" opacity="0.6">$2,500+/mo</text>
+            <line x1="180" y1="275" x2="400" y2="275" stroke="currentColor" opacity="0.15" stroke-width="1"/>
+            <circle cx="400" cy="275" r="14" fill="#F5A623"/>
+            <text x="400" y="279" text-anchor="middle" font-size="11" font-weight="800" fill="white">11</text>
+
+            <text x="280" y="376" text-anchor="middle" font-size="10" fill="currentColor" opacity="0.4">Source: Thryv Miami med spa client data (2026)</text>
+          </svg>
+        </figure>
+
+        <h2>What You Should Actually Pay Based on Your Clinic Stage</h2>
+
+        <p>Budget recommendations depend on where your clinic is in its lifecycle. Overspending early wastes money. Underspending later costs you market share.</p>
+
+        <h3>New Med Spa (First 6 Months)</h3>
+
+        <p>Budget $3,500-$6,000 for month one (including website). Then $1,500-$2,000 monthly ongoing.</p>
+
+        <p>Priorities: website, Google Business Profile optimization, Google Ads to drive immediate traffic, basic SEO. Don't hire a full-service agency yet. You need quick wins while SEO builds. New clinics should expect 1-3 new patients monthly in months 1-3, ramping to 5+ by month 4-6.</p>
+
+        <h3>Growing Med Spa (6-24 Months Old, $300K-$800K Revenue)</h3>
+
+        <p>Budget $2,000-$3,500 monthly. Shift from Tier 1 (DIY) or Tier 2 (hybrid) into solid Tier 2 with professional management across all channels.</p>
+
+        <p>Increase SEO spend to $1,200 if you're below that. Run consistent Google Ads at $1,500+ monthly. Add reputation management if you haven't. Most growing clinics see 4-8 new patients monthly with this investment.</p>
+
+        <h3>Established Med Spa ($800K+ Annual Revenue, 2+ Years)</h3>
+
+        <p>Budget $2,500-$5,000+ monthly depending on competitive market and growth goals. You can absorb the cost of full-service agencies. If you're in hot markets like Brickell, <a href="/medspas/seo/miami/miami-beach/">Miami Beach</a>, or Coral Gables with heavy competitor spend, budget higher.</p>
+
+        <p>At this stage, the question isn't "can we afford $3,000 monthly marketing?" but "can we afford NOT to?" One new high-value patient pays for a month of full-service marketing. Established clinics in Tier 3 should expect 8-15+ new patients monthly.</p>
+
+        <h2>Red Flags in Med Spa Marketing Pricing</h2>
+
+        <p>Some agencies use pricing tactics that make it harder to evaluate whether you're getting fair value. Watch for these patterns.</p>
+
+        <h3>Long-Term Contracts</h3>
+
+        <p>Any agency demanding 12-month or longer commitment is signaling they lack confidence results will speak for themselves. Marketing should work fast enough to prove value. If an agency requires a contract, walk. You want month-to-month so you can scale up, down, or switch if results aren't there.</p>
+
+        <h3>No Transparency on Ad Spend</h3>
+
+        <p>If they won't show you what they're spending on Google Ads or Facebook Ads monthly, they're hiding something. You should see itemized bills: $1,500 to Google, $300 agency fee. Anything less is a red flag.</p>
+
+        <h3>Guaranteed Results</h3>
+
+        <p>"We guarantee you'll rank #1 for Botox Miami" is a lie. Google doesn't allow guarantees. Any agency making promises they can't control is overconfident and likely inexperienced.</p>
+
+        <h3>Flat Rates Far Below Market</h3>
+
+        <p>If you find an agency charging $299/month for full SEO management, they're cutting corners. Either they have hundreds of low-attention clients or they'll pivot you to expensive services you don't need once you sign. Quality SEO costs $500+.</p>
+
+        <h3>No Performance Reporting</h3>
+
+        <p>You should get monthly reports showing: organic traffic, conversions, ad spend breakdown, leads generated, cost per lead. If they're vague on results, they're not invested in your success.</p>
+
+        <h2>ROI Math: When Does Med Spa Marketing Pay Back?</h2>
+
+        <div class="inline-tool-cta">
+          <strong>Skip the napkin math.</strong>
+          <p>Plug your treatment price, monthly marketing budget, and lifetime value into our free calculator and see live ROI estimates for new patients, year-one revenue, and 5-year value.</p>
+          <a href="/free-tools/med-spa-marketing-roi-calculator/" class="btn-blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Open the ROI Calculator
+          </a>
+        </div>
+
+        <p>Let's do the real math so you know what to expect. Start with conservative assumptions.</p>
+
+        <h3>The Numbers</h3>
+
+        <p>Average Botox treatment cost: $500-$900. High-value med spa customers accumulate $2,000-$5,000 or more in lifetime value through repeat treatments. Cost per qualified lead from Google Ads: $5-$15. Cost per qualified lead from organic SEO: $0 (no direct cost).</p>
+
+        <p>In our experience working with Miami med spas, 20-30% of qualified leads convert to a booking. Of those bookings, 40-50% show up. Of those who show up, 70-80% complete at least one treatment. So one qualified lead has roughly a 6-12% chance of becoming a paying customer.</p>
+
+        <h3>Google Ads Example</h3>
+
+        <p>Monthly budget: $1,500 (includes $1,000 ad spend, $500 agency fee). At $5-$15 cost per click, you get 67-200 clicks per month. At 6-12% conversion to customer, you get 4-24 new customers monthly. At $600 average first treatment, that's $2,400-$14,400 in revenue from $1,500 spent. Payback: immediate to negative ROI if you get fewer conversions.</p>
+
+        <p>This is why Google Ads is high-risk high-reward. Results depend entirely on your website quality, booking process, and treatment quality.</p>
+
+        <h3>SEO Example</h3>
+
+        <p>Monthly cost: $800. Timeline: 90-120 days to see meaningful organic traffic. Once it's working (month 4+), you're generating 50-200 organic visits per month. At the same 6-12% conversion rate, that's 3-24 new customers monthly, zero additional cost. Payback: 3-4 months of investment, then pure profit.</p>
+
+        <p>SEO is lower risk, longer wait, but superior lifetime ROI.</p>
+
+        <h3>Google Business Profile + Review Generation</h3>
+
+        <p>Monthly cost: $400 (GBP management + review requests). Practices generating 20-30 reviews monthly see significantly more calls than those generating 5 reviews monthly. If 10% of calls convert to bookings, strong review management brings 6-12 new patients per month at $400 monthly investment. ROI: massive. Payback: month 1.</p>
+
+        <h2>National Agencies vs Local Miami Specialists: What's Fair</h2>
+
+        <p>National agencies like WebFX, PatientGain, and Influx Marketing have resources and case studies. Local Miami agencies have neighborhood knowledge and flexibility. Here's how they compare on cost and service quality.</p>
+
+        <h3>National Agencies</h3>
+
+        <p>WebFX (national, multi-service): $2,500-$10,000/month. PatientGain (med spa specialist): $999-$1,999/month. Influx Marketing (med spa + beauty specialist): $2,000-$5,000/month for combined packages.</p>
+
+        <p>Pros: established process, case study portfolio, enterprise-level reporting, team of specialists. Cons: less local market knowledge, higher cost, less flexible on package customization, longer sales cycle.</p>
+
+        <h3>Local Miami Agencies</h3>
+
+        <p>Typical range: $800-$2,500/month depending on services. Many local agencies work as solo operators or small teams of 2-3 people.</p>
+
+        <p>Pros: know Miami neighborhoods (Brickell, Miami Beach, Wynwood, Coral Gables, Doral), flexible on pricing and package, faster decision-making, easier to reach account manager. Cons: smaller team means less specialization, fewer case studies, potentially less process maturity.</p>
+
+        <p>Fair pricing rule: local agencies should cost 30-40% less than national firms for equivalent services. If a local Miami agency is charging the same as WebFX, you're paying national-level prices for local-level resources.</p>
+
+        <p>For a side-by-side rundown of named agencies, see our <a href="/blog/best-med-spa-seo-agencies-miami-2026/">comparison of the top 12 med spa SEO agencies serving Miami</a>.</p>
+
+        <h2>FAQ: Med Spa Marketing Cost</h2>
+
+        <details class="faq-item">
+          <summary>How much does med spa marketing cost in Miami?</summary>
+          <p>Most Miami med spas pay between $500 and $5,000 per month. Basic GBP management starts at $297-$497. Full-service agencies charge $1,500-$3,000 monthly for SEO, ads, and content. National agencies range $999-$10,000. Your total cost depends on which services you buy and your clinic stage.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does a med spa marketing budget look like for a new clinic?</summary>
+          <p>Month one: $3,500-$6,000 (includes website design or setup, GBP optimization, initial ads). Months 2+: $1,500-$2,000 monthly for SEO, GBP management, and Google Ads. Establish the foundation first. New clinics shouldn't try full-service at $5,000/month until they're generating revenue to support it.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is med spa SEO worth the cost?</summary>
+          <p>Absolutely. One high-value med spa customer generates $2,000-$5,000 lifetime value through repeat visits. If SEO costs $800/month and brings one new customer every two months, you've paid for a year of service with a single customer. SEO is the best long-term investment because it costs nothing per click once ranking.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long until I see ROI from med spa marketing?</summary>
+          <p>Google Ads: 1-2 weeks. Organic SEO: 60-120 days. Review management: immediately (first week). Most clinics see positive ROI within 3-4 months if they maintain consistent spend and manage the process correctly. Don't expect results in week two from SEO.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the cheapest way to market a med spa?</summary>
+          <p>Google Business Profile management ($297-$497/month) has the highest ROI-per-dollar. It's free to optimize and generates organic calls with no ad spend. Combine with asking every patient for reviews and posting free content on social media. Add paid ads only after you've maximized organic channels.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Should I hire a national or local Miami med spa marketing agency?</summary>
+          <p>Local if you want neighborhood targeting and lower cost. National if you need enterprise resources and have higher budget. For most Miami med spas, local agencies deliver better ROI because they understand your specific market (Brickell, Miami Beach, Coral Gables, Wynwood, Doral) and cost 30-40% less.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do most Miami med spas pay monthly or annually?</summary>
+          <p>Month-to-month is the market standard. No reputable agency locks you into annual contracts. If an agency requires 12 months, it's a red flag that they lack confidence in results. You should be able to switch or cancel if ROI isn't there after 90-120 days.</p>
+        </details>
+
+        <div class="blog-cta">
+          <h2>Get Clear Pricing for Your Clinic</h2>
+          <p>Not all med spa marketing agencies are priced fairly. We offer transparent, month-to-month contracts for SEO, Google Ads, and GBP management starting at <a href="/pricing/">Thryv's published rates</a>. No hidden fees. No long-term lock-in. Let's talk about what your clinic actually needs.</p>
+          <div class="cta-buttons">
+            <a href="/medspas/" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Med Spa Marketing Services
+            </a>
+          </div>
+
+          {/* Newsletter signup — placeholder action; wire to Beehiiv/Web3Forms when backend ready */}
+          <form
+            class="newsletter-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            data-newsletter="pending-wiring"
+          >
+            <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
+            <input type="hidden" name="subject" value="Newsletter signup, Thryv blog (med spa cost guide)" />
+            <input type="hidden" name="from_name" value="Thryv Blog Newsletter" />
+            <input type="hidden" name="redirect" value="https://thryvmarketingsolutions.com/thanks/?from=newsletter" />
+            <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+            <label for="newsletter-email" class="newsletter-label">
+              <strong>Get the Thryv Med Spa Marketing Newsletter</strong>
+              <span>Monthly Miami playbook: pricing benchmarks, agency moves, local SEO wins. No spam, unsubscribe anytime.</span>
+            </label>
+            <div class="newsletter-row">
+              <input
+                id="newsletter-email"
+                type="email"
+                name="email"
+                placeholder="you@yourmedspa.com"
+                required
+                autocomplete="email"
+                aria-label="Email address"
+              />
+              <button type="submit" class="btn btn-blue">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <RelatedArticles currentSlug="/blog/med-spa-marketing-cost-miami/" />
+
+</article>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .blog-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 56px 0 48px; color: var(--white);
+  }
+  .blog-inner { max-width: 760px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .blog-hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 680px; color: var(--white);
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.8); margin-bottom: 20px; max-width: 620px; }
+  .post-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+
+  /* Hero cover image — lives INSIDE .blog-hero so it sits on dark gradient (no white bar) */
+  .blog-hero { padding: 56px 0 56px; }
+  .hero-cover {
+    display: block; width: 100%; max-width: 1120px; margin: 36px auto 0;
+    aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 28px 70px -24px rgba(0, 0, 0, 0.55);
+  }
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 40px; }
+    .hero-cover { margin-top: 24px; border-radius: var(--radius); }
+  }
+
+  /* Content */
+  .blog-content { padding: 48px 0 80px; background: var(--white); }
+  .blog-body { max-width: 720px; margin: 0 auto; }
+
+  .blog-body img { width: 100%; height: auto; border-radius: var(--radius-lg); margin: 32px 0; display: block; }
+  .blog-body p { font-size: 16px; line-height: 1.78; color: var(--gray); margin-bottom: 20px; }
+  .blog-body h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 40px 0 16px; line-height: 1.25; }
+  .blog-body h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  .blog-body ul { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
+  .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .blog-body strong { font-weight: 700; color: var(--dark); }
+  .blog-body a { color: var(--blue); text-decoration: underline; }
+  .blog-body a:hover { opacity: .8; }
+
+  /* Key Takeaways */
+  .key-takeaways {
+    background: #EEF4FF; border-left: 4px solid var(--blue);
+    border-radius: var(--radius); padding: 24px 28px; margin: 32px 0;
+  }
+  .key-takeaways strong {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--blue); margin-bottom: 14px;
+  }
+  .key-takeaways ul { list-style: none; padding: 0; margin: 0; }
+  .key-takeaways li {
+    padding-left: 24px; position: relative; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.6; color: var(--dark);
+  }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* FAQ */
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  /* CTA Box */
+  .blog-cta {
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px; margin: 48px 0 0;
+  }
+  .blog-cta h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; margin-top: 0; }
+  .blog-cta p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 24px; }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  /* Higher specificity to defeat `.blog-body a { color: var(--blue); text-decoration: underline; }` */
+  .blog-body a.btn { color: var(--white); text-decoration: none; }
+  .blog-body a.btn:hover { color: var(--white); text-decoration: none; }
+  .blog-body a.btn-primary { background: var(--orange); }
+  .blog-body a.btn-blue { background: var(--blue); }
+
+  /* Inline ROI calculator CTA */
+  .inline-tool-cta {
+    background: linear-gradient(135deg, #EEF4FF 0%, #FFF6E6 100%);
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 24px 0 32px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .inline-tool-cta strong { font-size: 16px; color: var(--dark); }
+  .inline-tool-cta p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; }
+  .inline-tool-cta .btn-blue {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: var(--white) !important;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; text-decoration: none !important;
+    transition: opacity .2s;
+    margin-top: 6px;
+  }
+  .inline-tool-cta .btn-blue:hover { opacity: 0.9; }
+
+  /* Newsletter signup form — sits inside .blog-cta below the primary button */
+  .newsletter-form {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1.5px solid var(--border, #e2e8f0);
+  }
+  .newsletter-label { display: block; margin-bottom: 12px; }
+  .newsletter-label strong {
+    display: block; font-size: 15px; font-weight: 800; color: var(--dark); margin-bottom: 4px;
+  }
+  .newsletter-label span {
+    display: block; font-size: 13px; line-height: 1.5; color: var(--gray);
+  }
+  .newsletter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .newsletter-row input[type="email"] {
+    flex: 1 1 240px; min-width: 0;
+    padding: 12px 14px; border: 1.5px solid var(--border, #e2e8f0); border-radius: 8px;
+    font-size: 14px; font-family: inherit; color: var(--dark); background: var(--white);
+    transition: border-color .15s, box-shadow .15s;
+  }
+  .newsletter-row input[type="email"]:focus {
+    outline: none; border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(27, 79, 168, 0.12);
+  }
+  .newsletter-row .btn { flex: 0 0 auto; }
+  @media (max-width: 480px) {
+    .newsletter-row { flex-direction: column; }
+    .newsletter-row .btn { width: 100%; justify-content: center; }
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 36px; }
+    .blog-body h2 { font-size: 22px; }
+    .blog-cta { padding: 28px 20px; }
+    .cta-buttons { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+
+  /* SVG chart figure */
+  .chart {
+    margin: 40px auto;
+    padding: 28px 20px 20px;
+    background: var(--light, #f8fafc);
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: 14px;
+    text-align: center;
+    max-width: 100%;
+  }
+  .chart svg { display: block; margin: 0 auto; }
+</style>

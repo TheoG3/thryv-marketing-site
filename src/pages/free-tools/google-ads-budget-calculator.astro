@@ -1,0 +1,89 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+---
+
+<ToolPageLayout
+  slug="google-ads-budget-calculator"
+  title="Google Ads Budget Calculator"
+  metaTitle="Free Google Ads Budget Calculator for Service Businesses | Thryv"
+  description="Free Google Ads Budget Calculator. Pick your industry and lead goal, get a realistic monthly ad-spend range based on Miami market cost-per-lead benchmarks."
+  icon="📈"
+  pageLead="Pick your industry and your lead goal. Get a realistic monthly ad-spend range based on Miami market cost-per-lead benchmarks."
+  contactSubject="Google Ads Budget Calculator Inquiry | Thryv"
+  applicationCategory="FinanceApplication"
+>
+  <div class="calc-grid">
+    <div class="calc-form">
+      <div class="calc-field">
+        <label for="ads-industry">Your Industry</label>
+        <select id="ads-industry">
+          <option value="hvac">HVAC / Air Conditioning</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="roofing">Roofing</option>
+          <option value="dental">Dental</option>
+          <option value="legal">Legal / Law Firm</option>
+          <option value="pest">Pest Control</option>
+          <option value="cleaning">Cleaning Services</option>
+          <option value="other">Other Service Business</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="ads-leads">Target Leads Per Month</label>
+        <input type="number" id="ads-leads" placeholder="20" min="1" max="500" />
+      </div>
+      <button id="ads-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Budget</button>
+    </div>
+    <div class="calc-result" id="ads-result" style="display:none;">
+      <div class="result-label">Estimated Monthly Ad Spend</div>
+      <div class="result-amount" id="ads-result-amount">$0</div>
+      <p class="result-note" id="ads-result-note"></p>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--gray);">
+        Plus our flat management fee of <strong style="color:var(--dark);">$597/mo</strong>
+      </div>
+      <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get a Free Ads Audit</a>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <h2>How this calculator works</h2>
+    <p>The math is simple: target leads × industry cost-per-lead = monthly ad spend. The hard part is the cost-per-lead range. Our defaults are based on what we see in Miami service industries today.</p>
+    <p>Pre-conversion factors push CPL higher (weak landing pages, no call tracking, bidding on the wrong keywords). Post-launch optimization can pull CPL down by 20 to 40% within the first 60 to 90 days. The figure here is the unoptimized range, not the floor.</p>
+    <p>If you want a real audit of your campaigns (or a build-from-scratch), see our <a href="/services/google-ads/">Google Ads service</a>.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 12px; }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  const cpls: Record<string, [number, number]> = {
+    hvac:     [120, 200],
+    plumbing: [90,  160],
+    roofing:  [100, 220],
+    dental:   [80,  150],
+    legal:    [350, 800],
+    pest:     [60,  120],
+    cleaning: [40,  90],
+    other:    [80,  160],
+  };
+
+  document.getElementById('ads-calc-btn')?.addEventListener('click', () => {
+    const industry = (document.getElementById('ads-industry') as HTMLSelectElement).value;
+    const leads    = parseInt((document.getElementById('ads-leads') as HTMLInputElement).value) || 0;
+    if (!leads) return;
+    const [minCpl, maxCpl] = cpls[industry] ?? [80, 160];
+    const minSpend = Math.round((leads * minCpl) / 100) * 100;
+    const maxSpend = Math.round((leads * maxCpl) / 100) * 100;
+    const resultEl  = document.getElementById('ads-result')        as HTMLElement;
+    const amountEl  = document.getElementById('ads-result-amount') as HTMLElement;
+    const noteEl    = document.getElementById('ads-result-note')   as HTMLElement;
+    amountEl.textContent = '$' + minSpend.toLocaleString() + ' to $' + maxSpend.toLocaleString() + '/mo';
+    noteEl.textContent   = 'Estimated range based on typical cost-per-lead in your industry in the Miami market. Actual spend varies by targeting, competition, and ad quality.';
+    resultEl.style.display = 'block';
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

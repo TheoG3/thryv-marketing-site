@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "AI SEO",   "item": "https://thryvmarketingsolutions.com/services/ai-seo/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is AI SEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI SEO is the umbrella term for getting your business found across every search surface a customer uses today. That includes Google organic and Maps (classic SEO) and getting cited across the AI search engines like ChatGPT, Gemini, Perplexity, and Google's AI answers (GEO, Generative Engine Optimization). AEO, Answer Engine Optimization, is the on-page craft of structuring content so those engines can quote you. Each runs as its own service, but they share one content and authority foundation." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need all three: SEO, AEO, and GEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most Miami local businesses still earn the majority of leads from Google organic and Maps, so SEO is the foundation. AEO and GEO compound on top of that work because the same content quality, schema, citations, and reviews that rank on Google also drive AI citations. You can start with one channel and add the others, or run all three together." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AEO and GEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GEO (Generative Engine Optimization) is about getting cited across the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers. AEO (Answer Engine Optimization) is about structuring your content so those engines can quote it cleanly, with Google's AI Overview the clearest example. GEO is the reach; AEO is the readiness. They work together, and we run each as its own dedicated page." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Thryv cover all three under one plan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. The $797/mo AI SEO program bundles all three: classic SEO, AEO, and GEO. You can also buy each one separately at $697/mo (SEO), $397/mo (AEO), or $397/mo (GEO)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will AI Overviews hurt my website traffic?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For purely informational searches, AI Overviews can reduce clicks because Google answers the question on the page. But for local, high-intent searches like 'best roofer near me,' the win is being the business the AI names and links. That's exactly what we optimize for, so you capture the customer even when they never scroll to the blue links." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AI SEO Services Miami | Google, AI Overviews, ChatGPT | Thryv"
+  description="Miami AI SEO covers all three search channels: Google organic and Maps, AI Overviews, and ChatGPT/Gemini/Perplexity citations. One strategy. From $797/mo. No contracts."
+  canonical="https://thryvmarketingsolutions.com/services/ai-seo/"
+  ogImage="https://thryvmarketingsolutions.com/og-seo.jpg"
+  schema={schema}
+>
+
+  <section class="svc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><span>AI SEO</span>
+      </nav>
+      <span class="label">Service</span>
+      <h1>AI SEO for Miami Businesses</h1>
+      <p class="lead">Your next customer might Google you, ask an AI Overview, or open ChatGPT. <strong>AI SEO covers all three channels under one strategy</strong>, so you never lose a lead because you only optimized for one search surface.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Proposal
+        </a>
+        <div class="hero-price">Starting at <strong>$797/mo</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Month-to-month, no contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">2B</div><div class="stake-d">people use Google's AI Overviews every month</div></div>
+        <div class="stake"><div class="stake-n">Top of page</div><div class="stake-d">AI Overviews now sit above the classic blue links</div></div>
+        <div class="stake"><div class="stake-n">10%+</div><div class="stake-d">more searches where AI Overviews appear, per Google</div></div>
+      </div>
+      <p class="stakes-src">Figures published by <a href="https://blog.google/" target="_blank" rel="noopener">Google</a>.</p>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">AI SEO, explained</span>
+        <h2>What is AI SEO, really?</h2>
+        <p><strong>AI SEO means showing up everywhere your next customer looks for you, whether they search Google, read its AI answer, or ask ChatGPT.</strong> Everyone already knows regular SEO: ranking on Google. What's new is that Google and tools like ChatGPT now write the answer themselves and name a handful of businesses inside it. The newer work is simply about being one of the businesses they name.</p>
+        <p>Three plays sit under this roof, and each has its own page that goes deeper. <a href="/services/seo/">Local SEO</a> is the foundation: ranking in Google's regular results and on the map, where most local leads still come from today. <a href="/services/geo/">GEO</a>, Generative Engine Optimization, is getting your business cited across the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers. <a href="/services/aeo/">AEO</a>, Answer Engine Optimization, is structuring your content so those engines can lift a clean, quotable answer from your site, with Google's AI Overview the most visible example. GEO is the reach, AEO is the readiness, and they work hand in hand.</p>
+        <p>Here's how we structure it, plainly. <strong>SEO is the service we start everyone with. AEO and GEO are add-ons for businesses that specifically want to chase those AI answers.</strong> A strong SEO foundation improves your odds of getting cited by the AI too, since both pull from the same content, schema, and reviews. But being great at SEO is no guarantee of a jump in AI answers on its own. If showing up in ChatGPT or Google's AI Overview matters to you, it's a focus we add on purpose.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section diagram-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">The three channels</span>
+        <h2>One customer. Three places they might find you.</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">SEO is the foundation. AEO gets your content ready to be quoted, GEO earns citations across every AI engine. <strong>Each one builds on the last.</strong></p>
+      </div>
+      <div class="diagram diagram-3col">
+        <a class="diagram-channel diagram-channel-link reveal" href="/services/seo/">
+          <div class="ch-icon ch-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <div class="ch-label">SEO</div>
+          <div class="ch-sublabel">Google Search + Maps</div>
+          <div class="ch-desc">Rank for high-intent local keywords so buyers find you before they find your competitor.</div>
+          <div class="ch-example">"plumber miami" → your listing, page 1</div>
+          <div class="ch-cta">SEO services →</div>
+        </a>
+        <a class="diagram-channel diagram-channel-link reveal" href="/services/aeo/">
+          <div class="ch-icon ch-orange">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="ch-label">AEO</div>
+          <div class="ch-sublabel">Be the quotable answer</div>
+          <div class="ch-desc">Structure your content so AI engines can lift a clean answer from your site. Google's AI Overview is where it shows up first.</div>
+          <div class="ch-example">"best dentist in miami" → AI Overview quotes your page</div>
+          <div class="ch-cta">AEO services →</div>
+        </a>
+        <a class="diagram-channel diagram-channel-link reveal" href="/services/geo/">
+          <div class="ch-icon ch-green">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div class="ch-label">GEO</div>
+          <div class="ch-sublabel">All the AI search engines</div>
+          <div class="ch-desc">Get cited across ChatGPT, Gemini, Perplexity, and Google's AI answers when buyers ask them for a recommendation.</div>
+          <div class="ch-example">"best roofer in miami" → ChatGPT names you</div>
+          <div class="ch-cta">GEO services →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">Why one channel isn't enough</span>
+          <h2>Your buyer's search habits already split three ways.</h2>
+          <p>The 55-year-old condo owner still Googles "best HVAC company Miami." Her 32-year-old daughter asks ChatGPT instead. Her husband taps Google and reads the AI Overview without scrolling to the blue links. <strong>Same household, three different paths to a contractor.</strong></p>
+          <p style="margin-top:16px;">If you only show up on one of those paths, you're invisible to two-thirds of your market.</p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li>Google organic + Maps still drives most local lead volume today</li>
+            <li>AI Overviews now appear above the blue links on a growing share of queries</li>
+            <li>ChatGPT and Perplexity collectively get hundreds of millions of monthly users asking for recommendations</li>
+            <li>Each surface uses overlapping signals like content depth, schema, citations, and reviews</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <span class="label">Our approach</span>
+          <h2>One foundation. Three surfaces. Built to compound.</h2>
+          <p>We don't run three separate programs. We run <strong>one underlying SEO foundation</strong> covering content depth, technical hygiene, local schema, citation consistency, and review velocity. Then we layer the AEO and GEO formatting on top, so the same work earns visibility in three places instead of one.</p>
+          <p style="margin-top:16px;">That's why our AI SEO package is the same price as most agencies charge for organic SEO alone. The leverage is in the shared foundation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section children-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Pick your entry point</span>
+        <h2>Run the full program or start with one channel</h2>
+      </div>
+      <div class="children-grid children-grid-4">
+        <a href="/services/seo/" class="child-card reveal">
+          <div class="child-tag">The foundation</div>
+          <h3>Local SEO</h3>
+          <p class="child-price"><strong>$697/mo</strong></p>
+          <p>Google organic + Maps rankings. On-page optimization, citations, links, monthly content, GBP alignment.</p>
+          <ul class="child-list">
+            <li>Keyword research + targeting</li>
+            <li>On-page + technical hygiene</li>
+            <li>Citation building (50+ directories)</li>
+            <li>Authority link placements</li>
+            <li>Monthly content + rankings report</li>
+          </ul>
+          <span class="child-cta">See SEO services →</span>
+        </a>
+        <a href="/services/aeo/" class="child-card reveal">
+          <div class="child-tag">The readiness</div>
+          <h3>AEO</h3>
+          <p class="child-price"><strong>$397/mo</strong></p>
+          <p>Structure your content so AI engines can quote it cleanly. Answer-first writing, FAQ + HowTo schema, and the definitional blocks that win Google's AI Overview.</p>
+          <ul class="child-list">
+            <li>AI Overview answer-block targeting</li>
+            <li>Question-driven content map</li>
+            <li>FAQ + HowTo schema deployment</li>
+            <li>Featured snippet capture</li>
+            <li>Monthly AI Overview tracking</li>
+          </ul>
+          <span class="child-cta">See AEO services →</span>
+        </a>
+        <a href="/services/geo/" class="child-card reveal">
+          <div class="child-tag">The reach</div>
+          <h3>GEO</h3>
+          <p class="child-price"><strong>$397/mo</strong></p>
+          <p>Get cited across all the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers, when buyers ask them for a recommendation.</p>
+          <ul class="child-list">
+            <li>AI assistant citation seeding</li>
+            <li>Structured Q&amp;A for LLM extraction</li>
+            <li>Reddit + Quora authority signal building</li>
+            <li>Citation footprint across AI training sources</li>
+            <li>Monthly ChatGPT + Gemini + Perplexity scan</li>
+          </ul>
+          <span class="child-cta">See GEO services →</span>
+        </a>
+        <div class="child-card child-card-featured reveal">
+          <div class="child-tag child-tag-featured">All Three. Best Value.</div>
+          <h3>AI SEO Bundle</h3>
+          <p class="child-price"><strong>$797/mo</strong></p>
+          <p>SEO + AEO + GEO together. Shared content foundation, all three surfaces covered. <strong>$694/mo cheaper</strong> than buying them separately.</p>
+          <ul class="child-list">
+            <li>Everything in SEO</li>
+            <li>Everything in AEO</li>
+            <li>Everything in GEO</li>
+            <li>Unified content calendar across all three</li>
+            <li>Priority on-call response window</li>
+          </ul>
+          <a href="/contact/" class="btn btn-primary" style="margin-top:18px;">Start the Bundle</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how-it-works-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What the first 90 days look like</h2>
+      </div>
+      <div class="how-grid">
+        <div class="how-step reveal">
+          <div class="how-num">01</div>
+          <h3>Week 1: Audit + Strategy</h3>
+          <p>Full technical audit, keyword landscape analysis, competitor citation footprint, AI Overview presence check, baseline ChatGPT/Gemini/Perplexity citation scan. You get a written strategy doc.</p>
+        </div>
+        <div class="how-step reveal">
+          <div class="how-num">02</div>
+          <h3>Weeks 2 to 4: Foundation Work</h3>
+          <p>On-page optimization, schema markup deployment, citation cleanup across 50+ directories, FAQ + HowTo blocks for AI eligibility, internal linking restructure.</p>
+        </div>
+        <div class="how-step reveal">
+          <div class="how-num">03</div>
+          <h3>Weeks 5 to 12: Content + Authority</h3>
+          <p>Monthly long-form content tuned for both Google ranking and AI citation extraction. Authority link building. Review velocity push. Monthly rankings + AI citation tracking reports.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is AI SEO?</summary><p>AI SEO is the umbrella term for getting your business found across every search surface a customer uses today. That includes Google organic and Maps (classic SEO) and getting cited across the AI search engines like ChatGPT, Gemini, Perplexity, and Google's AI answers (GEO, Generative Engine Optimization). AEO, Answer Engine Optimization, is the on-page craft of structuring content so those engines can quote you. Each runs as its own service, but they share one content and authority foundation.</p></details>
+        <details class="faq-item reveal"><summary>Do I need all three: SEO, AEO, and GEO?</summary><p>Most Miami local businesses still earn the majority of leads from Google organic and Maps, so SEO is the foundation. AEO and GEO compound on top of that work because the same content quality, schema, citations, and reviews that rank on Google also drive AI citations. You can start with one channel and add the others, or run all three together.</p></details>
+        <details class="faq-item reveal"><summary>What is the difference between AEO and GEO?</summary><p>GEO (Generative Engine Optimization) is about getting cited across the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers. AEO (Answer Engine Optimization) is about structuring your content so those engines can quote it cleanly, with Google's AI Overview the clearest example. <strong>GEO is the reach; AEO is the readiness.</strong> They work together, and each has its own page.</p></details>
+        <details class="faq-item reveal"><summary>How long until I see results?</summary><p>SEO ranking improvements typically show in 90 to 120 days depending on competitive landscape and domain age. AI citations build faster, often inside 60 to 90 days as content indexes and AI training data refreshes. We set realistic expectations upfront based on your actual market, not a generic timeline.</p></details>
+        <details class="faq-item reveal"><summary>Can I start with just SEO and add AEO + GEO later?</summary><p>Yes. Many clients start with just classic SEO at $697/mo, prove the ranking gains, then add the AEO + GEO layer once the foundation is in place. Switching to the full $797/mo bundle later saves $397/mo versus the two services bought separately.</p></details>
+        <details class="faq-item reveal"><summary>Will AI Overviews hurt my website traffic?</summary><p>For purely informational searches, AI Overviews can reduce clicks, since Google answers right on the page. But for local, high-intent searches like "best roofer near me," the win is being the business the AI <em>names and links</em>. That's exactly what we optimize for, so you capture the customer even when they never scroll to the blue links.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <ToolCallout
+    href="/free-tools/local-seo-score-checker/"
+    icon="🔍"
+    title="Score your local SEO in 60 seconds"
+    desc="10 yes-or-no questions cover the levers that actually move the map pack. See where you stand before we even talk."
+  />
+
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Pairs with</span>
+        <h2>AI SEO compounds when you add these</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/google-business-profile/" class="related-card">
+          <h3>GBP Management</h3>
+          <p>SEO covers organic results. GBP covers the Maps pack. Together you own the entire first page of Google.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/reputation-management/" class="related-card">
+          <h3>Reputation Management</h3>
+          <p>Reviews are a direct Google ranking signal and an AI citation trust signal. More 5-star reviews accelerates everything AI SEO is trying to accomplish.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/google-ads/" class="related-card">
+          <h3>Google Ads</h3>
+          <p>SEO + GEO build long-term organic visibility. Google Ads captures immediate demand while that visibility compounds over time.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free proposal</span>
+          <h2>See where you stand across all three channels</h2>
+          <p class="lead" style="margin-bottom:24px;">We will check your keyword rankings, AI Overview presence, ChatGPT and Gemini citation footprint, and how you stack against your top local competitors.</p>
+        </div>
+        <ContactForm title="Get My Free AI SEO Proposal" subject="AI SEO Inquiry | Thryv" serviceDefault="seo" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .svc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .svc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .svc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .svc-hero .lead { color: rgba(255,255,255,.8); max-width: 620px; margin-bottom: 32px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+  .stakes { background: var(--blue-light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+  .diagram-section { background: var(--light); }
+  .diagram { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; margin-top: 48px; }
+  .diagram-3col { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .diagram-channel { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px 24px; text-align: center; }
+  .diagram-channel-link { text-decoration: none; color: inherit; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .diagram-channel-link:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .diagram-arrow { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0 12px; color: var(--gray); }
+  .diagram-arrow svg { color: var(--blue); opacity: .35; }
+  .diagram-arrow span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-light); white-space: nowrap; }
+  .ch-icon { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .ch-blue { background: #EEF4FF; color: var(--blue); }
+  .ch-orange { background: #FFF7ED; color: var(--orange); }
+  .ch-green { background: #F0FDF4; color: #16a34a; }
+  .ch-label { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
+  .ch-sublabel { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gray); margin-bottom: 14px; }
+  .ch-desc { font-size: 14px; line-height: 1.65; color: var(--gray); margin-bottom: 16px; }
+  .ch-example { font-size: 12px; color: var(--blue); background: #EEF4FF; border-radius: 8px; padding: 8px 12px; font-style: italic; font-weight: 500; margin-bottom: 14px; }
+  .ch-cta { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .problem-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .children-section { background: var(--light); }
+  .children-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .children-grid-4 { grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  @media (max-width: 1200px) { .children-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+  .child-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 32px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .child-card:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .child-card-featured { border: 2px solid var(--orange); background: linear-gradient(180deg, #fff 0%, #fffdf6 100%); }
+  .child-card-featured:hover { border-color: var(--orange); }
+  .child-tag { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); background: var(--blue-light); padding: 4px 10px; border-radius: 100px; align-self: flex-start; }
+  .child-tag-featured { color: var(--orange); background: rgba(245,166,35,.12); }
+  .child-card h3 { font-size: 20px; font-weight: 800; color: var(--dark); margin-top: 4px; }
+  .child-price { font-size: 18px; color: var(--dark); margin: 0; } .child-price strong { font-size: 22px; }
+  .child-card p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+  .child-list { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 7px; }
+  .child-list li { font-size: 13px; color: var(--dark); padding-left: 20px; position: relative; }
+  .child-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 800; }
+  .child-cta { margin-top: 12px; font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .how-it-works-section { background: var(--white); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+  .how-step { background: var(--light); border-radius: var(--radius-lg); padding: 32px; border: 1.5px solid var(--border); }
+  .how-num { font-size: 36px; font-weight: 800; color: var(--border); margin-bottom: 12px; }
+  .how-step h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .how-step p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .faq-section { background: var(--light); }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .faq-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .faq-list { grid-template-columns: 1fr; } }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+
+  .related-section { background: var(--white); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .explainer-section { background: var(--white); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+  .explainer p a { color: var(--blue); font-weight: 700; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 1024px) {
+    .diagram { grid-template-columns: 1fr; gap: 12px; }
+    .diagram-3col { grid-template-columns: 1fr; }
+    .diagram-arrow { flex-direction: row; padding: 4px 0; }
+    .diagram-arrow svg { transform: rotate(90deg); }
+  }
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .children-grid { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

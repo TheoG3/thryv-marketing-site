@@ -2,6 +2,36 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+// Home FAQ. Visible accordion plus FAQPage schema. Answers are plain text for schema validity.
+const faqs = [
+  { q: "Do I have to sign a long-term contract?", a: "No. Every Thryv engagement is month to month. No 12-month lock-in and no early termination fee. If we are not earning our keep, you can leave any time. We would rather keep your business by performing than by trapping you in a contract." },
+  { q: "How much does it cost?", a: "Plans start at $297/mo, and you can see every price on our pricing page without booking a sales call. No setup fees and no platform fees added later. You pay for the plan you pick, nothing buried." },
+  { q: "How soon will I see results?", a: "It depends on where you start and which services you run. Paid ads can drive calls within days, while local SEO and reputation work usually build over the first 60 to 90 days. We tell you honestly what to expect for your situation, and your monthly report shows the movement as it happens." },
+  { q: "Do you only work with Miami businesses?", a: "Miami is home and the market we know best, but we work with local businesses across the country. The playbook for ranking and getting found in a local market travels well." },
+  { q: "Can you work with us in Spanish?", a: "Yes. We run campaigns, manage listings, respond to reviews, and talk strategy fluently in English and Spanish." },
+  { q: "Who actually does the work?", a: "You work directly with the founder, not a rotating junior account manager. Every strategy is built and reviewed by the person whose name is on the company." },
+  { q: "Do I own my Google Ads account and Google Business Profile?", a: "Yes, always, and this matters more than most owners realize. Every account is created in your name from day one. You keep full access to every campaign, keyword, dollar spent, and your Google Business Profile. If we ever part ways, you walk away with everything. We never hold your accounts hostage." },
+  { q: "What industries do you work with?", a: "We work with local service businesses across Miami: HVAC, plumbing, electrical, dental and med spas, restaurants, law firms, roofing, and home services. The common thread is a business that depends on local search, Google Maps, and reviews to win new customers, which is exactly what our playbook is built for." },
+  { q: "What makes you an AI-powered marketing agency?", a: "Beyond the core marketing work, we offer AI add-ons built to capture leads around the clock: an AI phone receptionist that answers and books in English and Spanish, a website chat agent that qualifies visitors, lead follow-up designed to respond within seconds, and review automation. The goal is simple, stop letting leads slip through after hours." },
+  { q: "Which Miami neighborhoods and cities do you serve?", a: "We serve all of Miami-Dade, including Brickell, Coral Gables, Doral, Hialeah, Kendall, Miami Beach, Wynwood, and Aventura. Ranking in Brickell is not the same as ranking in Hialeah, and we build each plan around how customers actually search in your specific area." },
+];
+
+// "How It Works". Three-step process that removes the what-happens-next friction.
+const howSteps = [
+  { n: "01", title: "We Audit What You Have", desc: "Tell us about your business. We review your Google presence, your reviews, your website, and what local competitors are doing, then send you a plain-English breakdown of where you stand. Free, no commitment." },
+  { n: "02", title: "We Build Your Plan", desc: "You get a plan built for your market and your budget, not a template. We show you what we would do first, what it costs, and what it should move. You approve before any work starts." },
+  { n: "03", title: "We Execute and Report", desc: "We do the work and send you a monthly report that ties every action to an outcome you care about: calls booked, reviews earned, rankings climbed. Month to month, cancel any time." },
+];
+
+// Three-up focus row for the intro section (skimmable, keyword-natural).
+const focusPoints = [
+  { title: "Get Found", desc: "We put you in the Google map pack and local search when someone nearby looks up your exact service, not three pages deep where nobody scrolls." },
+  { title: "Get Chosen", desc: "More 5-star reviews, answered questions, and a complete Google Business Profile turn a search result into the obvious call over the business listed next to you." },
+  { title: "Get Booked", desc: "A fast website, click to call, and AI follow-up that answers in seconds turn that lead into a booked job instead of a missed voicemail." },
+];
+
+// NOTE: LocalBusiness schema now lives in BaseLayout.astro as `businessSchema` and is emitted on every page.
+// This homepage schema only carries the WebSite-level signal + the Organization shell (no duplicate LocalBusiness).
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -14,39 +44,47 @@ const schema = {
       "sameAs": ["https://twitter.com/thryvmarketing"]
     },
     {
-      "@type": "LocalBusiness",
-      "@id": "https://thryvmarketingsolutions.com/#localbusiness",
-      "name": "Thryv Marketing Solutions",
-      "description": "Miami-based growth marketing agency using AI automation, local SEO, and paid media to help businesses dominate their market. Month-to-month, no lock-ins.",
-      "url": "https://thryvmarketingsolutions.com",
-      "email": "hello@thryvmarketingsolutions.com",
-
-      "priceRange": "$$",
-      "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
-      "areaServed": "United States",
-      "serviceType": ["SEO","Google Business Profile Management","Google Ads","Website Design","Reputation Management","AI Marketing Automation"]
-    },
-    {
       "@type": "WebSite",
       "@id": "https://thryvmarketingsolutions.com/#website",
       "url": "https://thryvmarketingsolutions.com",
-      "name": "Thryv Marketing Solutions"
+      "name": "Thryv Marketing Solutions",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://thryvmarketingsolutions.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://thryvmarketingsolutions.com/#homefaq",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
     }
   ]
 };
 
 const services = [
-  { icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'Google Business Profile', desc: 'Show up in Google Maps before your competitors. Full listing management, posts, photos, and Q&A.', price: 'From $199/mo', slug: 'google-business-profile' },
-  { icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Reputation Management', desc: 'More 5-star reviews on autopilot. Automated requests, monitoring, and response management.', price: 'From $99/mo', slug: 'reputation-management' },
-  { icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'Local SEO', desc: 'Get found by customers searching your exact service in your exact neighborhood.', price: 'From $999/mo', slug: 'seo' },
-  { icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Website Builds', desc: 'Clean, fast, mobile-first websites built to convert visitors into paying customers.', price: 'From $2,500', slug: 'website-design' },
+  { icon: `<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>`, title: 'Google Business Profile', desc: 'Show up in Google Maps before your competitors. Full listing management, posts, photos, and Q&A.', price: 'From $297/mo', slug: 'google-business-profile' },
+  { icon: `<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>`, title: 'Reputation Management', desc: 'More 5-star reviews on autopilot. Automated requests, monitoring, and response management.', price: 'From $297/mo', slug: 'reputation-management' },
+  { icon: `<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>`, title: 'Local SEO', desc: 'Get found by customers searching your exact service in your exact neighborhood.', price: 'From $797/mo', slug: 'seo' },
+  { icon: `<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>`, title: 'Website Builds', desc: 'Clean, fast, mobile-first websites built to convert visitors into paying customers.', price: 'From $1,497', slug: 'website-design' },
   { icon: `<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>`, title: 'Google Ads', desc: 'Search campaigns built for local intent. Paid search that gets you in front of ready buyers.', price: 'Ask about availability', slug: 'google-ads' },
   { icon: `<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>`, title: 'Social Media Ads', desc: 'Instagram and Facebook ads targeting people in your zip code before they ever search Google.', price: 'Ask about availability', slug: 'social-media-ads' },
 ];
 
 const checkIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
 
-// Flip to true once you have real client quotes — section goes live instantly
+// AS SEEN IN. Flip to true ONLY after these directory listings are actually live and verifiable.
+// Real targets from the citation research (thryv-citation-directory-list-2026-05-25). Do not show before live.
+const showAsSeenIn = false;
+const directories = [
+  "Clutch", "Semrush Agency Directory", "UpCity", "GoodFirms", "DesignRush", "Google Partners",
+];
+
+// Flip to true once you have real client quotes. Section goes live instantly.
 const showTestimonials = false;
 
 const testimonials = [
@@ -75,8 +113,8 @@ const testimonials = [
 ---
 
 <BaseLayout
-  title="Thryv Marketing Solutions | AI-Powered Growth Marketing Agency"
-  description="Miami-based growth marketing agency. AI-powered local SEO, Google Ads, reputation management, and website builds. Month-to-month, no lock-ins. Free audit."
+  title="Miami AI-Powered Growth Marketing Agency | Thryv Marketing Solutions"
+  description="Miami AI-powered growth marketing agency. Local SEO, Google Ads, reputation management, and website builds for small operators. Month-to-month, no lock-ins. Free audit."
   canonical="https://thryvmarketingsolutions.com/"
   ogImage="https://thryvmarketingsolutions.com/og-home.jpg"
   schema={schema}
@@ -86,7 +124,7 @@ const testimonials = [
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-content">
+      <div class="hero-content" data-experiment="hero-headline">
         <div class="hero-eyebrow">
           <span></span> Miami-Based Growth Marketing Agency
         </div>
@@ -100,11 +138,11 @@ const testimonials = [
           AI-powered local marketing with results you can see and billing you can cancel any time.
         </p>
         <div class="hero-actions">
-          <a href="/contact/" class="btn btn-primary">
+          <a href="/contact/" class="btn btn-primary" data-experiment-cta="hero">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Get Free Audit
+            Get Free Proposal
           </a>
-          <a href="/pricing/" class="btn btn-outline">See Pricing</a>
+          <a href="/pricing/" class="btn btn-outline" data-experiment-cta="hero">See Pricing</a>
         </div>
         <div class="hero-pills">
           <div class="hero-pill">
@@ -142,7 +180,7 @@ const testimonials = [
         <div class="hero-card">
           <div class="hero-card-label">Our Promise</div>
           <div class="hero-card-metric" style="font-size:22px;line-height:1.3;">No lock-ins. No surprises. Cancel anytime.</div>
-          <div class="hero-card-sub" style="margin-top:8px;">Unlike Scorpion, Hibu, and Podium: we earn your business every month.</div>
+          <div class="hero-card-sub" style="margin-top:8px;">Unlike the big-agency model: we earn your business every month.</div>
         </div>
       </div>
     </div>
@@ -172,6 +210,31 @@ const testimonials = [
     </div>
   </div>
 </div>
+
+<!-- LOCAL MARKETING INTRO (indexable body copy) -->
+<section class="section intro-section">
+  <div class="container">
+    <div class="intro-head reveal">
+      <div class="label">Local Marketing, Done Right</div>
+      <h2>Marketing Built Around How Miami Customers Actually Find You</h2>
+    </div>
+    <div class="intro-body reveal reveal-delay-1">
+      <p>When someone in Miami needs a plumber, a dentist, or a med spa, <strong>they rarely scroll past the first screen.</strong> They open Google, glance at the map, read a few reviews, and call one of the first names they trust. If your business is not in that short list, <strong>you stay invisible for the searches that matter most,</strong> no matter how good your work is.</p>
+      <p>Thryv Marketing Solutions is built for that moment. We are a <strong>Miami-based, founder-led agency</strong> focused on the channels that put local businesses in front of ready buyers: your Google Business Profile, local SEO, your online reviews, a website that loads fast and converts, and paid search and social when the numbers make sense. <strong>No vanity metrics, and no bloated retainer</strong> for services you will never use.</p>
+      <p>Most agencies make you sit through a sales call just to learn what they charge, then lock you into a year. <strong>We do the opposite.</strong> Every price is published on our pricing page, <strong>every plan is month to month,</strong> and every report ties the work we did to the outcomes you actually care about. You can read what it costs right now, and <strong>you can cancel any time.</strong></p>
+      <p>We work fluently in <strong>English and Spanish,</strong> we know why ranking in Brickell looks different from ranking in Hialeah, and <strong>we treat your budget like it is real money, because it is.</strong> That is the difference between a partner who lives in your market and a national franchise running your account from a spreadsheet.</p>
+    </div>
+    <div class="intro-focus">
+      {focusPoints.map((f, i) => (
+        <div class={`intro-focus-card reveal reveal-delay-${i + 1}`}>
+          <div class="intro-focus-dot"></div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES PREVIEW -->
 <section class="section" id="services">
@@ -227,22 +290,22 @@ const testimonials = [
       <div class="ai-teaser-card reveal reveal-delay-1">
         <div class="ai-badge">24/7 Coverage</div>
         <h3>AI Phone Receptionist</h3>
-        <p>Answers every inbound call, qualifies leads, books appointments, and sends you a summary. In English and Spanish.</p>
+        <p>Answers inbound calls, qualifies leads, books appointments, and sends you a summary. In English and Spanish.</p>
       </div>
       <div class="ai-teaser-card reveal reveal-delay-2">
         <div class="ai-badge">Lead Capture</div>
         <h3>AI Website Chat Agent</h3>
-        <p>A smart chat widget that qualifies visitors and routes hot leads to you instantly via text or email, 24/7.</p>
+        <p>A smart chat widget that qualifies visitors and routes hot leads to you via text or email, designed to run 24/7.</p>
       </div>
       <div class="ai-teaser-card reveal reveal-delay-3">
         <div class="ai-badge">Speed to Lead</div>
         <h3>AI Lead Follow-Up</h3>
-        <p>Responds to new leads in under 60 seconds with personalized SMS and email. Most competitors take hours.</p>
+        <p>Designed to respond to new leads within 60 seconds with personalized SMS and email. Speed-to-lead is the strongest predictor of conversion.</p>
       </div>
       <div class="ai-teaser-card reveal reveal-delay-4">
         <div class="ai-badge">Reputation</div>
         <h3>AI Review Automation</h3>
-        <p>Auto-sends review requests after every job. Monitors Google, Yelp, and Facebook. Drafts responses for one-click approval.</p>
+        <p>Sends review requests automatically based on triggers you set. Monitors Google, Yelp, and Facebook. Drafts responses for one-click approval.</p>
       </div>
     </div>
     <div class="ai-cta reveal">
@@ -260,20 +323,20 @@ const testimonials = [
     <div class="section-head center why-head reveal">
       <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Why Thryv</div>
       <h2>We Do What the Big Agencies Won't</h2>
-      <p class="lead center" style="color:rgba(255,255,255,.6);">Scorpion, Hibu, and Podium hide their prices and lock you in for a year. We don't.</p>
+      <p class="lead center" style="color:rgba(255,255,255,.6);">Big national agencies hide their prices and lock you in for a year. We don't.</p>
     </div>
     <div class="why-grid">
       <div class="why-card reveal reveal-delay-1">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>No Hidden Fees</h3>
         <p>What you see is what you pay. No setup fees buried in the contract, no platform fees added later.</p>
-        <div class="vs">vs. Hibu, Scorpion, Podium: all have hidden fees</div>
+        <div class="vs">vs. the big-agency model: hidden fees are standard</div>
       </div>
       <div class="why-card reveal reveal-delay-2">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></div>
         <h3>Month-to-Month Only</h3>
         <p>No 12-month contracts. No early termination fees. We earn your business every month.</p>
-        <div class="vs">vs. Scorpion's 12-month SEO lock-in</div>
+        <div class="vs">vs. the standard 12-month SEO lock-in</div>
       </div>
       <div class="why-card reveal reveal-delay-3">
         <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
@@ -287,6 +350,32 @@ const testimonials = [
         <p>We run campaigns, manage listings, and communicate fluently in English and Espa&ntilde;ol.</p>
         <div class="vs">vs. national agencies with no bilingual capability</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">How It Works</div>
+      <h2>Getting Started Takes<br />One Conversation</h2>
+      <p class="lead center">No long onboarding and no runaround. Here is exactly what happens from the day you reach out.</p>
+    </div>
+    <div class="how-grid">
+      {howSteps.map((s, i) => (
+        <div class={`how-card reveal reveal-delay-${i + 1}`}>
+          <div class="how-num">{s.n}</div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+        </div>
+      ))}
+    </div>
+    <div class="section-cta reveal">
+      <a href="/contact/" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Start With a Free Proposal
+      </a>
     </div>
   </div>
 </section>
@@ -338,12 +427,26 @@ const testimonials = [
         <div class="trust-divider"></div>
         <div class="trust-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Miami-Based Team</span>
+          <span>Miami-Based, Founder-Led</span>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- AS SEEN IN (hidden until directory listings are live: showAsSeenIn = true) -->
+{showAsSeenIn && (
+<section class="as-seen-in">
+  <div class="container">
+    <div class="asi-inner reveal">
+      <div class="asi-label">Listed On</div>
+      <div class="asi-logos">
+        {directories.map((d) => (<span class="asi-item">{d}</span>))}
+      </div>
+    </div>
+  </div>
+</section>
+)}
 
 <!-- PRICING PREVIEW -->
 <section class="section" id="pricing">
@@ -373,7 +476,7 @@ const testimonials = [
         <ul class="ppf-list">
           <li>Everything in Starter</li>
           <li>Local SEO: on-page and citations</li>
-          <li>Monthly strategy call</li>
+          <li>Review request automation</li>
         </ul>
         <a href="/pricing/" class="btn btn-primary">See Full Package</a>
       </div>
@@ -404,7 +507,26 @@ const testimonials = [
     <div class="about-preview-grid">
       <div class="about-preview-image reveal">
         <div class="founder-photo-wrap">
-          <img src="/founder-theodore-grimes.jpg" alt="Theodore Grimes, Founder of Thryv Marketing Solutions" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <picture>
+            <source srcset="/founder-theodore-grimes.webp" type="image/webp" />
+            <img src="/founder-theodore-grimes.jpg" alt="Theodore Grimes, Founder of Thryv Marketing Solutions" title="Theodore Grimes, Founder" width="600" height="600" fetchpriority="high" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          </picture>
+        </div>
+        <div class="founder-identity">
+          <div class="founder-name-line">
+            <span class="founder-name-home">Theodore Grimes</span>
+            <a
+              href="https://www.linkedin.com/in/theodoregrimes"
+              class="founder-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Theodore Grimes on LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </div>
+          <div class="founder-title-home">Founder, Thryv Marketing Solutions</div>
         </div>
         <div class="founder-creds">
           <span class="founder-cred">
@@ -424,7 +546,7 @@ const testimonials = [
         <p>Every client works directly with me. Every strategy is built from scratch for your market, your competition, and your goals.</p>
         <div class="founder-quote">"Most agencies sell deliverables. I sell outcomes. That one distinction changes every decision we make."</div>
         <a href="/about/" class="btn btn-blue" style="margin-top:28px;">
-          Meet the Team
+          Who You'd Actually Work With
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -471,12 +593,40 @@ const testimonials = [
   </div>
 </section>
 
+<!-- HOME FAQ -->
+<section class="section faq-home-section" id="faq">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="label">Common Questions</div>
+      <h2>Straight Answers,<br />Before You Ask</h2>
+      <p class="lead center">The questions Miami business owners ask us most. No sales spin.</p>
+    </div>
+    <div class="faq-home-list reveal">
+      {faqs.map((f) => (
+        <details class="faq-home-item">
+          <summary>
+            <span>{f.q}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <div class="faq-home-answer"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+    <div class="section-cta reveal">
+      <a href="/faq/" class="btn btn-blue">
+        See All FAQs
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="section contact-section" id="contact">
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Free Audit</div>
+        <div class="label" style="background:rgba(245,166,35,.15);color:var(--orange);">Free Proposal</div>
         <h2>Let's See What You're Missing.</h2>
         <p class="lead">Tell us about your business. We'll review your local presence and send you a plain-English breakdown. No charge. No pressure.</p>
         <p style="margin-top:14px;font-size:15px;font-weight:600;color:var(--orange);">Prefieres en Espa&ntilde;ol? Esc&iacute;benos, hablamos con gusto.</p>
@@ -508,7 +658,35 @@ const testimonials = [
   </div>
 </section>
 
+<!-- LIMITED-TIME founding-client side tab (page-specific, matches GBP page). Delete this block to remove. -->
+<a href="/contact/" class="founding-tab" aria-label="Ask about Founding-Client pricing">
+  <span class="founding-tab-star" aria-hidden="true">★</span>
+  <span class="founding-tab-text"><strong>Founding-Client pricing</strong><span>Limited spots. Ask us.</span></span>
+</a>
+
 <style>
+  /* ── FOUNDING-CLIENT SIDE TAB (page-specific) ── */
+  .founding-tab { position: fixed; right: 0; top: 62%; transform: translateY(-50%); z-index: 90; display: flex; align-items: center; gap: 10px; background: var(--white); border: 1px solid var(--border); border-right: none; border-radius: 12px 0 0 12px; box-shadow: -6px 8px 30px rgba(0,0,0,.14); padding: 12px 16px; max-width: 230px; text-decoration: none; transition: transform .2s; }
+  .founding-tab:hover { transform: translateY(-50%) translateX(-4px); }
+  .founding-tab-star { color: var(--orange); font-size: 18px; }
+  .founding-tab-text strong { display: block; font-size: 13px; font-weight: 800; color: var(--dark); }
+  .founding-tab-text span { display: block; font-size: 11.5px; color: var(--gray); margin-top: 2px; }
+  @media (max-width: 600px) { .founding-tab { top: auto; bottom: 14px; right: 10px; transform: none; max-width: 210px; } .founding-tab:hover { transform: none; } }
+
+  /* ── LOCAL MARKETING INTRO ───────────────── */
+  .intro-section { background: var(--white); }
+  .intro-head { max-width: 800px; }
+  .intro-head h2 { font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--dark); line-height: 1.22; letter-spacing: -0.01em; margin-top: 12px; }
+  .intro-body { max-width: 800px; margin-top: 22px; }
+  .intro-body p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin: 0 0 16px; }
+  .intro-body p:last-child { margin-bottom: 0; }
+  .intro-focus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+  .intro-focus-card { background: var(--light); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 26px 24px; transition: transform .25s, box-shadow .25s; }
+  .intro-focus-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .intro-focus-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); margin-bottom: 14px; }
+  .intro-focus-card h3 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+  .intro-focus-card p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+
   /* ── HERO ────────────────────────────────── */
   .hero {
     background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue-dark) 60%, #1a3a7a 100%);
@@ -651,9 +829,16 @@ const testimonials = [
   .founder-photo-placeholder { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 40px; }
   .founder-photo-placeholder svg { width: 110px; height: 110px; }
   .founder-photo-placeholder-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; color: rgba(255,255,255,.28); text-transform: uppercase; }
-  .founder-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .founder-creds { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .founder-cred { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; background: var(--white); color: var(--dark); border: 1.5px solid var(--border); border-radius: 100px; padding: 6px 12px; box-shadow: 0 2px 6px rgba(0,0,0,.06); }
   .founder-cred svg { width: 13px; height: 13px; color: var(--blue); flex-shrink: 0; }
+  .founder-identity { margin-top: 20px; }
+  .founder-name-line { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .founder-name-home { font-weight: 800; font-size: 18px; color: var(--dark); letter-spacing: -.01em; }
+  .founder-linkedin { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; color: #0A66C2; padding: 4px 10px 4px 8px; border: 1.5px solid rgba(10,102,194,.25); border-radius: 100px; background: rgba(10,102,194,.06); transition: background .2s, border-color .2s, transform .15s; text-decoration: none; }
+  .founder-linkedin:hover { background: rgba(10,102,194,.12); border-color: rgba(10,102,194,.45); transform: translateY(-1px); }
+  .founder-linkedin svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .founder-title-home { font-size: 13px; color: var(--gray); margin-top: 4px; }
   .about-preview-content h2 { margin-bottom: 20px; }
   .about-preview-content p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-bottom: 16px; }
   .founder-quote { background: var(--blue-light); border-left: 3px solid var(--blue); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; font-size: 15px; font-style: italic; color: var(--blue-dark); line-height: 1.65; margin-top: 8px; }
@@ -682,6 +867,34 @@ const testimonials = [
   .contact-detail-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
   .contact-detail-text span { font-size: 14px; color: rgba(255,255,255,.6); }
 
+  /* ── HOW IT WORKS ────────────────────────── */
+  .how-section { background: var(--white); }
+  .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 12px; }
+  .how-card { position: relative; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 34px 28px 30px; transition: box-shadow .25s, transform .25s, border-color .25s; }
+  .how-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: transparent; }
+  .how-num { font-size: 38px; font-weight: 800; line-height: 1; color: var(--blue); opacity: .22; margin-bottom: 14px; letter-spacing: -.02em; }
+  .how-card h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+  .how-card p { font-size: 14.5px; line-height: 1.7; color: var(--gray); }
+
+  /* ── AS SEEN IN ──────────────────────────── */
+  .as-seen-in { background: var(--white); border-bottom: 1px solid var(--border); padding: 26px 0; }
+  .asi-inner { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; justify-content: center; }
+  .asi-label { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); }
+  .asi-logos { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; justify-content: center; }
+  .asi-item { font-size: 15px; font-weight: 700; color: var(--dark); opacity: .55; }
+
+  /* ── HOME FAQ ────────────────────────────── */
+  .faq-home-section { background: var(--white); }
+  .faq-home-list { max-width: 780px; margin: 8px auto 0; display: flex; flex-direction: column; gap: 12px; }
+  .faq-home-item { background: var(--light); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color .2s, box-shadow .2s, background .2s; }
+  .faq-home-item[open] { border-color: var(--blue); box-shadow: 0 4px 20px rgba(27,79,168,.08); background: var(--white); }
+  .faq-home-item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; cursor: pointer; padding: 19px 24px; font-size: 16px; font-weight: 700; color: var(--dark); list-style: none; }
+  .faq-home-item summary::-webkit-details-marker { display: none; }
+  .faq-home-item summary svg { width: 20px; height: 20px; color: var(--blue); flex-shrink: 0; transition: transform .25s; }
+  .faq-home-item[open] summary svg { transform: rotate(180deg); }
+  .faq-home-answer { padding: 0 24px 22px; }
+  .faq-home-answer p { font-size: 15px; line-height: 1.75; color: var(--gray); margin: 0; }
+
   /* ── ANIMATIONS ──────────────────────────── */
   @keyframes heroFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes heroScaleIn { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -708,6 +921,8 @@ const testimonials = [
     .services-grid { grid-template-columns: 1fr; }
     .ai-teaser-grid { grid-template-columns: 1fr; }
     .why-grid { grid-template-columns: 1fr; }
+    .intro-focus { grid-template-columns: 1fr; }
+    .how-grid { grid-template-columns: 1fr; }
     .pricing-preview-grid { grid-template-columns: 1fr; }
     .price-preview-card.featured { transform: none; }
     .about-preview-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -766,6 +981,76 @@ const testimonials = [
       }
     }, 900);
   }
+</script>
+
+<!-- A/B Test: homepage-hero-headline (PostHog feature flag) -->
+<script is:inline>
+  (function () {
+    var FLAG_KEY = 'homepage-hero-headline';
+    var VARIANTS = {
+      variant: {
+        h1: "Miami's Honest Marketing Agency.<br />Month-to-Month.<br /><em>No Lock-Ins.</em>",
+        sub: "Local SEO, Google Ads, and AI automation, billed monthly and cancellable anytime. No 12-month contracts, no hidden fees, no junior account managers."
+      }
+    };
+
+    function applyVariant(variantKey) {
+      if (!variantKey || variantKey === 'control') return;
+      var v = VARIANTS[variantKey];
+      if (!v) return;
+      var scope = document.querySelector('[data-experiment="hero-headline"]');
+      if (!scope) return;
+      var h1 = scope.querySelector('h1');
+      var sub = scope.querySelector('.hero-sub');
+      if (h1 && v.h1) h1.innerHTML = v.h1;
+      if (sub && v.sub) sub.textContent = v.sub;
+    }
+
+    function whenPostHogReady(fn) {
+      var tries = 0;
+      var iv = setInterval(function () {
+        if (window.posthog && typeof window.posthog.onFeatureFlags === 'function') {
+          clearInterval(iv);
+          window.posthog.onFeatureFlags(fn);
+        } else if (++tries > 100) {
+          clearInterval(iv);
+          fn('control');
+        }
+      }, 50);
+    }
+
+    whenPostHogReady(function () {
+      var variantKey = 'control';
+      try {
+        variantKey = window.posthog.getFeatureFlag(FLAG_KEY) || 'control';
+      } catch (e) {}
+      applyVariant(variantKey);
+      try {
+        var props = {};
+        props['$feature/' + FLAG_KEY] = variantKey;
+        window.posthog.register(props);
+        window.posthog.capture('experiment_viewed', {
+          experiment: FLAG_KEY,
+          variant: variantKey
+        });
+      } catch (e) {}
+    });
+
+    document.addEventListener('click', function (e) {
+      var cta = e.target.closest ? e.target.closest('[data-experiment-cta="hero"]') : null;
+      if (!cta || !window.posthog) return;
+      var variantKey = 'control';
+      try {
+        variantKey = window.posthog.getFeatureFlag(FLAG_KEY) || 'control';
+      } catch (err) {}
+      window.posthog.capture('hero_cta_click', {
+        experiment: FLAG_KEY,
+        variant: variantKey,
+        cta_text: (cta.textContent || '').trim(),
+        cta_href: cta.getAttribute('href')
+      });
+    });
+  })();
 </script>
 
 </BaseLayout>

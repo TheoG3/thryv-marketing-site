@@ -1,0 +1,93 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+
+const questions = [
+  'Is your Google Business Profile verified?',
+  'Does your profile have 10 or more photos?',
+  'Is your business description fully filled out?',
+  'Do you have your primary service category set correctly?',
+  'Are your hours listed and up to date?',
+  'Do you have at least 10 Google reviews?',
+  'Is your average rating 4.0 or above?',
+  'Have you posted to your GBP in the last 30 days?',
+  'Do you respond to all your reviews?',
+  'Does your website link in GBP go to a working page?',
+];
+---
+
+<ToolPageLayout
+  slug="gbp-audit-scorer"
+  title="GBP Audit Scorer"
+  metaTitle="Free Google Business Profile Audit Scorer (10 Questions) | Thryv"
+  description="Score your Google Business Profile in under a minute. 10 yes-or-no questions, instant score out of 10, and a clear next step to fix what is missing."
+  icon="📋"
+  pageLead="Ten yes-or-no questions. Score your Google Business Profile in under a minute. Get a clear picture of what is working and what is leaking leads."
+  contactSubject="GBP Audit Scorer Inquiry | Thryv"
+>
+  <form id="audit-form">
+    <ol class="audit-questions">
+      {questions.map((q, i) => (
+        <li class="audit-q">
+          <span class="q-text"><strong>{i + 1}.</strong> {q}</span>
+          <div class="q-opts">
+            <label><input type="radio" name={`q${i+1}`} value="1" required /> Yes</label>
+            <label><input type="radio" name={`q${i+1}`} value="0" /> No</label>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My Score</button>
+  </form>
+  <div class="audit-result" id="audit-result" style="display:none;">
+    <div class="score-display">
+      <span class="score-num" id="score-num">0</span><span class="score-denom">/10</span>
+    </div>
+    <p class="score-msg" id="score-msg"></p>
+    <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free GBP Proposal</a>
+    <button class="btn-retake" id="retake-btn">Retake the quiz</button>
+  </div>
+
+  <div class="how-it-works">
+    <h2>What your score means</h2>
+    <p><strong>0 to 4:</strong> Your Google Business Profile needs serious work. Most service businesses lose 30 to 50% of their potential local leads from a half-built profile.</p>
+    <p><strong>5 to 7:</strong> Halfway there. You have the basics covered, but a few targeted fixes (review velocity, weekly posts, photo refresh) typically lift map-pack visibility within 30 to 60 days.</p>
+    <p><strong>8 to 10:</strong> Solid foundation. At this level the question shifts from "fix the profile" to "expand the strategy" via reviews, local content, and citation cleanup.</p>
+    <p>If you want help closing the gaps, our <a href="/services/google-business-profile/">Google Business Profile Management service</a> handles all 10 items continuously.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .how-it-works strong { color: var(--dark); }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  const auditForm   = document.getElementById('audit-form')   as HTMLFormElement;
+  const auditResult = document.getElementById('audit-result') as HTMLElement;
+
+  auditForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(auditForm);
+    let score = 0;
+    for (let i = 1; i <= 10; i++) { if (data.get('q' + i) === '1') score++; }
+    (document.getElementById('score-num') as HTMLElement).textContent = String(score);
+    const msg = score <= 4
+      ? 'Your GBP needs serious work. Let us fix it.'
+      : score <= 7
+      ? 'You are halfway there. A few fixes could move the needle.'
+      : 'Solid GBP. Let us look at what else could be driving more leads.';
+    (document.getElementById('score-msg') as HTMLElement).textContent = msg;
+    auditForm.style.display   = 'none';
+    auditResult.style.display = 'block';
+    auditResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  document.getElementById('retake-btn')?.addEventListener('click', () => {
+    auditForm.reset();
+    auditForm.style.display   = 'block';
+    auditResult.style.display = 'none';
+  });
+</script>

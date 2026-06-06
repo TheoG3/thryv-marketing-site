@@ -1,0 +1,72 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+---
+
+<ToolPageLayout
+  slug="review-revenue-calculator"
+  title="Review Revenue Calculator"
+  metaTitle="Review Revenue Calculator: How Much Could a Higher Google Rating Earn You? | Thryv"
+  description="Free Review Revenue Calculator. Estimate how much additional monthly revenue a higher Google star rating could earn your local business in Miami."
+  icon="💰"
+  pageLead="See how much additional monthly revenue a higher Google rating could earn your business. Plug in your numbers, get an estimate, take it to your team."
+  contactSubject="Review Revenue Calculator Inquiry | Thryv"
+  applicationCategory="FinanceApplication"
+>
+  <div class="calc-grid">
+    <div class="calc-form">
+      <div class="calc-field">
+        <label for="monthly-revenue">Monthly Revenue</label>
+        <div class="input-prefix"><span>$</span><input type="number" id="monthly-revenue" placeholder="50000" min="0" /></div>
+      </div>
+      <div class="calc-field">
+        <label for="avg-ticket">Average Transaction Value</label>
+        <div class="input-prefix"><span>$</span><input type="number" id="avg-ticket" placeholder="500" min="1" /></div>
+      </div>
+      <div class="calc-field">
+        <label for="current-rating">Current Star Rating</label>
+        <select id="current-rating">
+          <option value="3.0">3.0 stars</option>
+          <option value="3.5">3.5 stars</option>
+          <option value="4.0">4.0 stars</option>
+          <option value="4.3">4.3 stars</option>
+          <option value="4.5" selected>4.5 stars</option>
+        </select>
+      </div>
+      <button id="calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Opportunity</button>
+    </div>
+    <div class="calc-result" id="calc-result" style="display:none;">
+      <div class="result-label">Estimated Additional Monthly Revenue</div>
+      <div class="result-amount" id="result-amount">$0</div>
+      <p class="result-note">Estimated additional revenue if your rating improved from <span id="result-from">0</span> to 4.8 stars, based on higher search conversion rates.</p>
+      <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get Help Improving My Rating</a>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <h2>How this calculator works</h2>
+    <p>Local businesses that move from a 3.5 to 4.5 star rating up to a 4.8+ rating typically see 5 to 15% lifts in search-driven conversion. This tool uses a conservative midpoint to estimate what the gap between your current rating and a 4.8 could be worth in additional monthly revenue. The math: <code>(monthly revenue) × (4.8 minus current rating) × 10%</code>, rounded to the nearest hundred.</p>
+    <p>If you want to close that gap, our <a href="/services/reputation-management/">Reputation Management service</a> handles review generation, response, and recovery on autopilot.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 12px; }
+  .how-it-works code { background: var(--light); padding: 2px 6px; border-radius: 4px; font-size: 13px; color: var(--dark); }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  document.getElementById('calc-btn')?.addEventListener('click', () => {
+    const revenue = parseFloat((document.getElementById('monthly-revenue') as HTMLInputElement).value) || 0;
+    const rating  = parseFloat((document.getElementById('current-rating') as HTMLSelectElement).value);
+    const gap = Math.max(0, 4.8 - rating);
+    const additional = Math.round(revenue * gap * 0.1 / 100) * 100;
+    const resultEl = document.getElementById('calc-result') as HTMLElement;
+    (document.getElementById('result-amount') as HTMLElement).textContent = '$' + additional.toLocaleString();
+    (document.getElementById('result-from') as HTMLElement).textContent = rating.toFixed(1);
+    resultEl.style.display = 'block';
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

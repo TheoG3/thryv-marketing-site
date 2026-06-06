@@ -1,0 +1,79 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+---
+
+<ToolPageLayout
+  slug="review-gap-calculator"
+  title="Review Gap Calculator"
+  metaTitle="Free Review Gap Calculator: Catch Up to Your Top Competitor | Thryv"
+  description="Free Review Gap Calculator. See exactly how many reviews behind your top competitor you are and how many months it will take to catch up at your current pace."
+  icon="⭐"
+  pageLead="Enter your review count, your top competitor's count, and your current monthly pace. Get a clear picture of the gap and the timeline to close it."
+  contactSubject="Review Gap Calculator Inquiry | Thryv"
+  applicationCategory="BusinessApplication"
+>
+  <div class="calc-grid">
+    <div class="calc-form">
+      <div class="calc-field">
+        <label for="rg-my-count">Your Google Review Count</label>
+        <input type="number" id="rg-my-count" placeholder="25" min="0" />
+      </div>
+      <div class="calc-field">
+        <label for="rg-comp-count">Top Competitor's Review Count</label>
+        <input type="number" id="rg-comp-count" placeholder="80" min="0" />
+      </div>
+      <div class="calc-field">
+        <label for="rg-monthly">Reviews You Get Per Month (avg)</label>
+        <input type="number" id="rg-monthly" placeholder="2" min="0" />
+      </div>
+      <button id="rg-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Gap</button>
+    </div>
+    <div class="calc-result" id="rg-result" style="display:none;">
+      <div class="result-label">Reviews Behind Competitor</div>
+      <div class="result-amount" id="rg-gap">0</div>
+      <p class="result-note" id="rg-note"></p>
+      <a href="/services/reputation-management/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See Reputation Management</a>
+    </div>
+  </div>
+
+  <div class="how-it-works">
+    <h2>How this calculator works</h2>
+    <p>Google weighs review velocity (how many you collect per week and per month) almost as heavily as total count. A competitor 50 reviews ahead with zero monthly velocity is catchable in a quarter. A competitor 50 reviews ahead with 6 per month is pulling away every week.</p>
+    <p>The calculator uses your monthly pace to project how long it would take to pass your competitor by 10 reviews (a comfortable lead, not a tie). If your monthly velocity is zero, the result shows "system needed" because the math says you cannot close the gap without one.</p>
+    <p>Want a structured review-generation system? Our <a href="/services/reputation-management/">Reputation Management service</a> covers ask cadence, recovery, and response on autopilot.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 12px; }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  document.getElementById('rg-calc-btn')?.addEventListener('click', () => {
+    const mine    = parseInt((document.getElementById('rg-my-count') as HTMLInputElement).value) || 0;
+    const comp    = parseInt((document.getElementById('rg-comp-count') as HTMLInputElement).value) || 0;
+    const monthly = parseFloat((document.getElementById('rg-monthly') as HTMLInputElement).value) || 0;
+    const gap = Math.max(0, comp - mine);
+    const target = Math.max(comp + 10, mine + 10);
+    const needed = Math.max(0, target - mine);
+    const months = monthly > 0 ? Math.ceil(needed / monthly) : null;
+    const gapEl    = document.getElementById('rg-gap') as HTMLElement;
+    const noteEl   = document.getElementById('rg-note') as HTMLElement;
+    const resultEl = document.getElementById('rg-result') as HTMLElement;
+    gapEl.textContent = gap === 0 ? 'Even' : String(gap);
+    gapEl.style.color = gap === 0 ? 'var(--blue)' : gap > 50 ? '#b91c1c' : gap > 20 ? '#92400e' : 'var(--blue)';
+    const msg = gap === 0
+      ? 'You are neck and neck. Focus on review velocity to pull ahead.'
+      : gap <= 20
+      ? `You need ${needed} more reviews to take the lead. At your current rate, that is ${months ? months + ' months' : 'achievable with a system in place'}.`
+      : gap <= 75
+      ? `A ${gap} review gap is closeable in ${months ? months + ' months' : 'a few months'} with a consistent ask system. Without one, this gap widens every week.`
+      : `A ${gap} review gap is significant. At your current rate that is ${months ? months + ' months' : 'a long runway without a system'}. This needs a structured review generation strategy now.`;
+    noteEl.textContent = msg;
+    resultEl.style.display = 'block';
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

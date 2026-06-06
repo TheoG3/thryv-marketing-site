@@ -1,0 +1,120 @@
+---
+// Sticky blog sidebar: "By the Numbers" facts card + newsletter signup.
+// Fills the dead white space beside the 720px content column on desktop.
+// Collapses below the article on mobile.
+//
+// Props:
+//   facts: { num: string; label: string }[]  -- compact stat list
+//   topic: string  -- used in the newsletter submission subject so signups are sortable
+//
+// Newsletter posts to the Cloudflare Pages Function at /api/subscribe, which
+// proxies to Beehiiv (key stays server-side, never in this page — RULE #1).
+// No credentials live in the client. See functions/api/subscribe.js for the
+// required Cloudflare env vars. The function does NOT run under `npm run dev`
+// (astro dev), so the form returns a 404 there during local design review.
+interface Fact { num: string; label: string; }
+interface Props { facts?: Fact[]; topic?: string; }
+const { facts = [], topic = "Blog" } = Astro.props;
+---
+
+<aside class="blog-aside">
+
+  {facts.length > 0 && (
+    <div class="aside-card facts-card">
+      <span class="aside-eyebrow">By the Numbers</span>
+      <ul class="facts-list">
+        {facts.map((f) => (
+          <li>
+            <span class="fact-num">{f.num}</span>
+            <span class="fact-label">{f.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+
+  <div class="aside-card nl-card">
+    <span class="aside-eyebrow light">Free Miami Marketing Tips</span>
+    <h3>Get the plays we use, in your inbox</h3>
+    <p>Short, practical local-marketing tips for Miami small businesses. No fluff, no spam, leave anytime.</p>
+    <div class="nl-embed">
+      <script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="fae51cd2-aeeb-4f3a-a73c-b9102bbc7160"></script>
+    </div>
+  </div>
+
+</aside>
+
+<script is:inline type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
+
+<style>
+  .blog-aside { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px; }
+
+  .aside-card { border-radius: var(--radius-lg); padding: 22px 22px; }
+
+  .aside-eyebrow {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .12em; color: var(--blue); margin-bottom: 14px;
+  }
+  .aside-eyebrow.light { color: rgba(255,255,255,.85); }
+
+  .facts-card { background: #EEF4FF; border: 1.5px solid #D6E4FF; }
+  .facts-list { list-style: none; padding: 0; margin: 0; }
+  .facts-list li {
+    display: flex; flex-direction: column; gap: 3px; padding: 12px 0;
+    border-top: 1px solid #D6E4FF;
+  }
+  .facts-list li:first-child { border-top: none; padding-top: 0; }
+  .facts-list li:last-child { padding-bottom: 0; }
+  .fact-num { font-size: 24px; font-weight: 800; color: var(--dark); line-height: 1; letter-spacing: -0.02em; }
+  .fact-label { font-size: 13px; line-height: 1.5; color: var(--gray); }
+
+  .nl-card { background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%); color: var(--white); }
+  .nl-card h3 { font-size: 18px; font-weight: 800; color: var(--white); margin: 0 0 8px; line-height: 1.25; }
+  .nl-card p { font-size: 13.5px; line-height: 1.6; color: rgba(255,255,255,.82); margin: 0 0 16px; }
+  .newsletter-form { display: flex; flex-direction: column; gap: 10px; }
+  .newsletter-form input[type="email"] {
+    width: 100%; padding: 11px 14px; border-radius: 8px; border: none;
+    font-size: 14px; color: var(--dark); background: var(--white);
+  }
+  .newsletter-form input[type="email"]::placeholder { color: #94a3b8; }
+  .newsletter-form button {
+    width: 100%; padding: 11px 14px; border: none; border-radius: 8px; cursor: pointer;
+    background: var(--orange); color: var(--dark); font-size: 14px; font-weight: 700;
+    transition: opacity .2s;
+  }
+  .newsletter-form button:hover { opacity: .9; }
+  .newsletter-form button:disabled { opacity: .6; cursor: default; }
+  .nl-success { font-size: 14px; line-height: 1.6; color: var(--white); font-weight: 600; margin: 4px 0 0; }
+  .nl-fineprint { display: block; font-size: 11.5px; color: rgba(255,255,255,.6); margin-top: 12px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  @media (max-width: 1024px) {
+    .blog-aside { position: static; flex-direction: row; flex-wrap: wrap; }
+    .aside-card { flex: 1 1 280px; }
+  }
+  @media (max-width: 560px) {
+    .blog-aside { flex-direction: column; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.newsletter-form').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button');
+      if (!btn) return;
+      const original = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending...';
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' },
+        });
+        const data = await res.json().catch(() => ({ success: res.ok }));
+        if (!res.ok || !data.success) throw new Error('not subscribed');
+        form.innerHTML = '<p class="nl-success">You are in. We will send the good stuff, not spam.</p>';
+      } catch {
+        btn.disabled = false; btn.textContent = original || 'Try again';
+      }
+    });
+  });
+</script>

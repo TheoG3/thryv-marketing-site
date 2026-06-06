@@ -1,5 +1,16 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { publishedPosts, getAllCategoriesWithCount } from '../../data/blog-posts';
+
+// Single source of truth: data/blog-posts.ts
+// publishedPosts respects the liveAfter gate (scheduled posts stay hidden until their date).
+// Sort by date descending so newest is first.
+const posts = [...publishedPosts].sort((a, b) => +new Date(b.date) - +new Date(a.date));
+
+// Category pills for the filter row.
+// Each pill knows whether it has a real /blog/category/<slug>/ page or is
+// filter-only (renders as a button, no href).
+const categories = getAllCategoriesWithCount();
 
 const schema = {
   "@context": "https://schema.org",
@@ -11,72 +22,20 @@ const schema = {
     "@type": "Organization",
     "name": "Thryv Marketing Solutions",
     "url": "https://thryvmarketingsolutions.com"
-  }
+  },
+  "blogPost": posts.slice(0, 10).map((p) => ({
+    "@type": "BlogPosting",
+    "headline": p.title,
+    "url": `https://thryvmarketingsolutions.com${p.slug}`,
+    "datePublished": p.date,
+    "articleSection": p.category,
+  })),
 };
-
-const posts = [
-  {
-    title: "How to Optimize Your Google Business Profile in 2026 (Step-by-Step)",
-    slug: "/blog/optimize-google-business-profile-2026/",
-    date: "May 7, 2026",
-    category: "GBP Management",
-    excerpt: "A complete, practical guide to claiming your profile, filling it out correctly, adding photos, managing reviews, and using the new AI features Google rolled out this year.",
-    readTime: "8 min read"
-  },
-  {
-    title: "Why Miami Local Businesses Lose to Competitors with Worse Services",
-    slug: "/blog/why-miami-local-businesses-lose-to-competitors/",
-    date: "April 28, 2026",
-    category: "Local SEO",
-    excerpt: "The business that ranks first on Google Maps isn't always the best one. It's the one that's been doing the right things consistently. Here's what that looks like in practice.",
-    readTime: "6 min read"
-  },
-  {
-    title: "Google Business Profile vs. Your Website: Which Actually Drives Calls?",
-    slug: "/blog/google-business-profile-vs-website/",
-    date: "April 20, 2026",
-    category: "GBP Management",
-    excerpt: "For most local service businesses, the GBP listing drives more inbound calls than the website. Understanding why changes how you prioritize your marketing budget.",
-    readTime: "5 min read"
-  },
-  {
-    title: "How Many 5-Star Reviews Do You Actually Need to Beat Your Competition?",
-    slug: "/blog/how-many-reviews-to-beat-competition/",
-    date: "April 12, 2026",
-    category: "Reputation",
-    excerpt: "It's not about having the most reviews. It's about having enough at the right rating threshold, with the right velocity. The math is simpler than you think.",
-    readTime: "4 min read"
-  },
-  {
-    title: "The Real Reason Agencies Lock You Into 12-Month Contracts",
-    slug: "/blog/why-agencies-lock-you-into-contracts/",
-    date: "April 5, 2026",
-    category: "Agency Transparency",
-    excerpt: "Long-term contracts aren't about aligning incentives. They're about protecting agencies from the consequences of underperformance. Here's how to spot the red flags.",
-    readTime: "6 min read"
-  },
-  {
-    title: "AI Phone Receptionists: What Actually Works for Local Service Businesses",
-    slug: "/blog/ai-phone-receptionist-local-business/",
-    date: "March 28, 2026",
-    category: "AI Automation",
-    excerpt: "Small businesses miss 62% of incoming calls on average. AI receptionists cost 87-97% less than a human and handle bilingual calls 24/7. Here's what actually works.",
-    readTime: "7 min read"
-  },
-  {
-    title: "Bilingual SEO in Miami: The Opportunity Most Agencies Miss Completely",
-    slug: "/blog/bilingual-seo-miami/",
-    date: "March 20, 2026",
-    category: "Local SEO",
-    excerpt: "35% of Miami-Dade searches happen in Spanish. 90% of Miami agencies don't optimize for it. Businesses that do see up to 89% more traffic. Here's the full strategy.",
-    readTime: "6 min read"
-  }
-];
 ---
 
 <BaseLayout
   title="Blog | Thryv Marketing Solutions"
-  description="Marketing insights, local SEO tips, and growth strategies for local businesses — from the team at Thryv Marketing Solutions."
+  description="Marketing insights, local SEO tips, and growth strategies for local businesses, from the team at Thryv Marketing Solutions."
   canonical="https://thryvmarketingsolutions.com/blog/"
   ogImage="https://thryvmarketingsolutions.com/og-blog.jpg"
   schema={schema}
@@ -95,17 +54,52 @@ const posts = [
   </div>
 </section>
 
+<section class="filter-bar" aria-label="Filter posts by topic">
+  <div class="container">
+    <div class="filter-row">
+      <button class="filter-pill is-active" data-filter="all" type="button" aria-pressed="true">
+        All Posts <span class="filter-count">{posts.length}</span>
+      </button>
+      {categories.map((c) => (
+        c.isRealPage ? (
+          <a
+            class="filter-pill"
+            href={`/blog/category/${c.meta.slug}/`}
+            data-filter={c.meta.label}
+            aria-label={`Browse all ${c.meta.label} posts`}
+          >
+            {c.meta.label} <span class="filter-count">{c.count}</span>
+          </a>
+        ) : (
+          <button
+            class="filter-pill"
+            data-filter={c.meta.label}
+            type="button"
+            aria-pressed="false"
+            aria-label={`Filter to ${c.meta.label} posts`}
+          >
+            {c.meta.label} <span class="filter-count">{c.count}</span>
+          </button>
+        )
+      ))}
+    </div>
+  </div>
+</section>
+
 <section class="posts-section">
   <div class="container">
-    <div class="posts-grid">
+    <div class="posts-grid" id="posts-grid">
       {posts.map((post, i) => (
-        <article class={`post-card reveal ${post.slug === '#' ? 'post-coming' : ''}`} style={`transition-delay:${(i % 3) * 0.08}s`}>
+        <article
+          class="post-card reveal"
+          data-category={post.category}
+          style={`transition-delay:${(i % 3) * 0.08}s`}
+        >
           <div class="post-category-row">
             <div class="post-category">{post.category}</div>
-            {post.slug === '#' && <div class="coming-badge">Coming Soon</div>}
           </div>
           <h2 class="post-title">
-            {post.slug === '#' ? post.title : <a href={post.slug}>{post.title}</a>}
+            <a href={post.slug}>{post.title}</a>
           </h2>
           <p class="post-excerpt">{post.excerpt}</p>
           <div class="post-meta">
@@ -115,6 +109,10 @@ const posts = [
         </article>
       ))}
     </div>
+
+    <p class="filter-empty" id="filter-empty" hidden>
+      No posts in this topic yet. <button type="button" class="filter-reset" data-reset>Show all posts</button>
+    </p>
 
     <div class="more-coming">
       <div class="label">Stay in the Loop</div>
@@ -156,7 +154,33 @@ const posts = [
   }
   .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.7); }
 
-  .posts-section { background: var(--light); padding: 64px 0; }
+  .filter-bar { background: var(--white); padding: 28px 0 8px; border-bottom: 1px solid var(--border); }
+  .filter-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    align-items: center;
+  }
+  .filter-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    color: var(--dark); background: var(--white);
+    border: 1.5px solid var(--border); border-radius: 100px;
+    padding: 7px 14px; cursor: pointer;
+    text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+  .filter-pill:hover { border-color: var(--blue); color: var(--blue); }
+  .filter-pill.is-active {
+    background: var(--blue); color: var(--white); border-color: var(--blue);
+  }
+  .filter-pill.is-active .filter-count { background: rgba(255,255,255,.22); color: var(--white); }
+  .filter-count {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 22px; height: 18px; padding: 0 6px;
+    background: var(--light); color: var(--gray);
+    border-radius: 100px; font-size: 11px; font-weight: 700;
+  }
+
+  .posts-section { background: var(--light); padding: 40px 0 64px; }
   .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -167,8 +191,9 @@ const posts = [
   .post-card {
     background: var(--white); border: 1px solid var(--border);
     border-radius: var(--radius-lg); padding: 32px;
-    transition: box-shadow .25s, transform .25s;
+    transition: box-shadow .25s, transform .25s, opacity .2s;
   }
+  .post-card.is-hidden { display: none; }
   .post-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.08); transform: translateY(-2px); }
 
   .post-category-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
@@ -177,12 +202,6 @@ const posts = [
     text-transform: uppercase; color: var(--blue); background: #EEF4FF;
     border-radius: 100px; padding: 4px 12px;
   }
-  .coming-badge {
-    display: inline-flex; font-size: 11px; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; color: var(--gray); background: var(--light);
-    border-radius: 100px; padding: 4px 10px; border: 1px solid var(--border);
-  }
-  .post-coming { opacity: .65; }
   .post-title { font-size: 17px; font-weight: 700; color: var(--dark); line-height: 1.35; margin-bottom: 12px; }
   .post-title a { color: inherit; text-decoration: none; }
   .post-title a:hover { color: var(--blue); }
@@ -191,6 +210,16 @@ const posts = [
     display: flex; justify-content: space-between;
     font-size: 12px; color: var(--gray-light);
     border-top: 1px solid var(--border); padding-top: 16px;
+  }
+
+  .filter-empty {
+    text-align: center; font-size: 15px; color: var(--gray);
+    padding: 32px 0;
+  }
+  .filter-reset {
+    background: none; border: none; color: var(--blue);
+    font: inherit; font-weight: 700; cursor: pointer;
+    text-decoration: underline;
   }
 
   .more-coming {
@@ -216,10 +245,9 @@ const posts = [
     padding: 12px 22px; border-radius: 8px; font-size: 14px;
     font-weight: 700; text-decoration: none; transition: opacity .2s;
   }
-  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary { background: var(--orange); color: var(--dark); }
   .btn-primary:hover { opacity: .9; }
 
-  /* reveal animation */
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
@@ -231,6 +259,7 @@ const posts = [
 </style>
 
 <script>
+  // Reveal animations
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => {
@@ -240,6 +269,57 @@ const posts = [
   );
   revealEls.forEach(el => observer.observe(el));
 
+  // Category filter (client-side only for filter-only pills; real-page pills are
+  // anchors and navigate normally). Persists last-clicked filter to URL hash.
+  const pills = document.querySelectorAll('button.filter-pill');
+  const cards = document.querySelectorAll<HTMLElement>('.post-card');
+  const emptyMsg = document.getElementById('filter-empty') as HTMLElement | null;
+
+  function applyFilter(filter: string) {
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const matches = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('is-hidden', !matches);
+      if (matches) visibleCount++;
+    });
+    pills.forEach((p) => {
+      const isActive = (p as HTMLElement).dataset.filter === filter;
+      p.classList.toggle('is-active', isActive);
+      p.setAttribute('aria-pressed', String(isActive));
+    });
+    if (emptyMsg) emptyMsg.hidden = visibleCount > 0;
+    // Update URL hash without scroll
+    if (filter === 'all') {
+      history.replaceState(null, '', location.pathname + location.search);
+    } else {
+      const slug = filter.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      history.replaceState(null, '', '#topic=' + slug);
+    }
+  }
+
+  pills.forEach((p) => {
+    p.addEventListener('click', (e) => {
+      e.preventDefault();
+      applyFilter((p as HTMLElement).dataset.filter || 'all');
+    });
+  });
+
+  // "Show all posts" reset link in the empty state
+  document.querySelector('[data-reset]')?.addEventListener('click', () => applyFilter('all'));
+
+  // Restore from URL hash on load
+  const hash = location.hash.match(/topic=([a-z0-9-]+)/);
+  if (hash) {
+    const slug = hash[1];
+    // Find the pill whose data-filter slugifies to this hash
+    pills.forEach((p) => {
+      const filter = (p as HTMLElement).dataset.filter || '';
+      const filterSlug = filter.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      if (filterSlug === slug) applyFilter(filter);
+    });
+  }
+
+  // Newsletter form
   const nlForm = document.getElementById('blog-newsletter') as HTMLFormElement | null;
   const nlSuccess = document.getElementById('nl-success');
   nlForm?.addEventListener('submit', async (e) => {

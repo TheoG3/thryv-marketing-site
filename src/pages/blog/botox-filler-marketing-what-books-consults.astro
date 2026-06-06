@@ -1,0 +1,436 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thryvmarketingsolutions.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Botox & Filler Marketing: What Books Consults", "item": "https://thryvmarketingsolutions.com/blog/botox-filler-marketing-what-books-consults/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Botox & Filler Marketing: What Actually Books Consults (2026)",
+    "description": "Most botox marketing chases likes, not booked consults. Here is what actually converts inquiries into appointments for Miami med spas, backed by the data.",
+    "image": "https://thryvmarketingsolutions.com/blog/hero-botox-filler-marketing.webp",
+    "author": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "publisher": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "datePublished": "2026-06-02",
+    "dateModified": "2026-06-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thryvmarketingsolutions.com/blog/botox-filler-marketing-what-books-consults/" },
+    "keywords": ["botox marketing", "botox advertising", "filler marketing", "med spa lead conversion", "how to market botox", "med spa marketing Miami"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best marketing channel for booking botox consults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no single best channel. The data shows the bottleneck is rarely the channel and almost always the follow-up. 78% of customers book with the first business that responds, and responding within 5 minutes makes you about 21 times more likely to qualify a lead than responding at 30 minutes. A med spa with a mediocre channel and instant, consistent follow-up will book more consults than one with great ads and a slow front desk. Fix speed-to-lead first, then optimize the channel mix." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why are my botox ads getting leads but not booked consults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Almost always a follow-up gap. Most aesthetic clinics are leaving revenue on the table due to slow response times. The biggest reason leads do not convert is how long it takes to reply. Every hour of delay drops the odds sharply. The leads are fine. The system that catches them is leaking. Add an instant automated response, a friction-free booking link, and a short nurture sequence and the same leads start booking." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do before-and-after photos and reviews really book more consults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Aesthetics is a trust purchase, and proof is what converts. 97% of consumers read reviews for local businesses and 68% of consumers will not consider a business rated below 4 stars (BrightLocal, 2026). Real before-and-after galleries (with consent) and a strong, current review profile do more to book a consult than any clever ad. They answer the only question a botox patient actually has: can this provider deliver a natural result on someone like me?" }
+      },
+      {
+        "@type": "Question",
+        "name": "Is social media worth it for botox marketing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Social is worth it for trust and discovery, not for direct booking. Organic social converts at roughly 0.5% to 1.5% for most aesthetic practices, so judging it on direct bookings will always disappoint. Its real job is to be the proof a patient checks after they find you through search, reviews, or a referral. Use it to show results, personality, and credibility, then send serious interest to a booking page and a fast human response." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I discount botox to get more consults?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Discounting attracts price shoppers who do not return and trains your market to wait for the next deal. A better path is to compete on trust and convenience: strong reviews, real before-and-afters, transparent pricing, instant response, and easy online booking. Botox is a repeat purchase with high lifetime value, so the goal is the patient who comes back every few months, not the one chasing the lowest single-visit price. Build the system that books and keeps the repeat patient." }
+      },
+      {
+        "@type": "Question",
+        "name": "How fast should a med spa respond to a botox inquiry?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Within 5 minutes for the first real touch. Responding within 5 minutes makes you about 21 times more likely to qualify a lead than waiting 30 minutes, and 78% of customers go with whoever responds first. Yet most clinics take hours, and Instagram DMs often sit until the next business day. The fix is an instant automated text or call with a booking link the moment an inquiry lands, backed by a human (or AI) who can actually book during and after hours." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Botox & Filler Marketing: What Actually Books Consults (2026)"
+  description="Most botox marketing chases likes, not booked consults. Here is what actually converts inquiries into appointments for Miami med spas, backed by the data."
+  canonical="https://thryvmarketingsolutions.com/blog/botox-filler-marketing-what-books-consults/"
+  ogImage="https://thryvmarketingsolutions.com/blog/hero-botox-filler-marketing.webp"
+  ogType="article"
+  schema={schema}
+>
+
+<article>
+
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-inner">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="/">Home</a><span> › </span><a href="/blog/">Blog</a><span> › </span><span>Botox & Filler Marketing</span>
+        </nav>
+        <span class="post-label">Med Spa Marketing</span>
+        <h1>Botox & Filler Marketing: What Actually Books Consults</h1>
+        <p class="lead">Likes and followers do not fill a schedule. What fills it is the system that moves a botox inquiry into a booked appointment, and it is rarely the channel you obsess over. Here is what the data says actually converts.</p>
+        <div class="post-meta">
+          <span>June 2, 2026</span>
+          <span>9 min read</span>
+          <span>Med Spa Marketing</span>
+        </div>
+      </div>
+      <img
+        class="hero-cover"
+        src="/blog/hero-botox-filler-marketing.webp"
+        alt="Miami med spa injector reviewing a booked consult calendar on a tablet, before-and-after gallery and 5-star reviews on screen"
+        title="Botox and Filler Marketing for Med Spas"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-body">
+
+        <p>Most botox marketing is measured in the wrong currency. Reach, likes, followers, impressions. None of them pay rent. The only number that matters for a med spa is booked consults, and the gap between "we get plenty of inquiries" and "we book plenty of consults" is where most marketing budgets quietly bleed out.</p>
+
+        <p>For most med spas the bottleneck is not the channel, it is the follow-up. This guide walks through what the data actually says converts a botox or filler inquiry into a booked appointment, which metrics to ignore, and the simple system that catches the leads you are already paying for. It pairs with our <a href="/medspas/seo/">med spa SEO service</a> and our breakdown of <a href="/blog/med-spa-seo-vs-ppc-miami/">SEO vs paid ads for Miami med spas</a>.</p>
+
+        <div class="key-takeaways">
+          <strong>Key Takeaways</strong>
+          <ul>
+            <li>78% of customers book with the first business that responds. Speed beats cleverness</li>
+            <li>Responding within 5 minutes makes you ~21x more likely to qualify a lead than at 30 minutes</li>
+            <li>Most aesthetic clinics convert only a fraction of paid leads into consults. The leak is follow-up, not lead quality</li>
+            <li>Trust assets book consults: 97% of consumers read reviews, and before-and-afters answer the patient's real question</li>
+            <li>Organic social converts at 0.5-1.5%. Its job is proof and discovery, not direct booking</li>
+          </ul>
+        </div>
+
+        <h2>You Don't Have a Lead Problem. You Have a Follow-Up Problem.</h2>
+
+        <p>Start with the single most important fact in med spa marketing: <strong>78% of customers buy from the first business that responds to them</strong>, not the cheapest and not the closest. And the speed window is brutally short: <strong>responding within 5 minutes makes you roughly 21 times more likely to qualify a lead than responding at 30 minutes</strong> (<a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" target="_blank" rel="noopener">Harvard Business Review</a>).</p>
+
+        <p>Now the reality of how med spas actually perform: slow or unanswered inquiries cost clinics real revenue. Most aesthetic clinics respond too slowly to patient inquiries, leaving leads to walk to competitors. Instagram DMs are worse, often sitting untouched until the next business day.</p>
+
+        <p>This is why "we need more leads" is usually the wrong diagnosis. Most aesthetic clinics are already leaving revenue on the table by not following up fast enough. Doubling your ad spend to feed a leaky funnel just doubles the leak. Fix the follow-up and the same leads book at a far higher rate, for free.</p>
+
+        <h2>The Metrics That Don't Book Consults</h2>
+
+        <p>Before what works, a quick list of what to stop judging your marketing on:</p>
+
+        <ul>
+          <li><strong>Follower count.</strong> A patient three blocks away with a credit card does not care how many followers you have.</li>
+          <li><strong>Likes and reach.</strong> Organic social converts at roughly <strong>0.5% to 1.5%</strong> for aesthetic practices. A viral before-and-after that gets 50,000 views might book a handful of consults. That is fine, as long as you know that is what it is.</li>
+          <li><strong>Raw lead count.</strong> 200 leads you never call is worth less than 40 leads you call in 5 minutes.</li>
+        </ul>
+
+        <p>None of these are useless. They build awareness and trust over time. The mistake is treating them as the scoreboard. The scoreboard is booked consults and the show-up rate.</p>
+
+        <h2>What Actually Books the Consult?</h2>
+
+        <p>Botox is a trust purchase. The patient is letting someone put a needle in their face and is terrified of looking "done." Every asset that reduces that fear books more consults. In rough order of impact:</p>
+
+        <p><strong>1. Speed of response.</strong> Covered above and it is first for a reason. Speed-to-lead dominates who converts. The instant text with a booking link beats the perfect ad.</p>
+
+        <p><strong>2. Reviews and ratings.</strong> <strong>97% of consumers read reviews for local businesses</strong> and <strong>68% of consumers will not consider a business rated below 4 stars</strong> (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal, 2026</a>). A current, strong review profile is not a nice-to-have, it is the filter patients use before they ever contact you. We cover the math in <a href="/blog/how-many-reviews-to-beat-competition/">how many reviews you actually need</a>.</p>
+
+        <p><strong>3. Before-and-after proof.</strong> A real, consented before-and-after gallery answers the only question the patient has: can you deliver a natural result on someone like me? Nothing in a caption does this better than the photos themselves.</p>
+
+        <p><strong>4. Friction-free booking.</strong> A visible "Book a consult" button and a real online calendar. No "call us during business hours." No "someone will reach out." Click, pick a time, done. Every extra step loses patients who were ready.</p>
+
+        <p><strong>5. Transparent pricing signals.</strong> You do not have to publish a full menu, but a sense of pricing range filters out shock and pre-qualifies the patient. Surprise is the enemy of booking.</p>
+
+        <h2>The Consult-Booking Math</h2>
+
+        <p>Here is what follow-up speed does to the same 100 inquiries. Numbers model a Miami med spa with a typical funnel; the response-time effect is drawn from speed-to-lead research, the rest from observed aesthetic-clinic conversion ranges.</p>
+
+        <div class="table-wrap">
+          <table class="seo-vs-ppc-table">
+            <thead>
+              <tr>
+                <th>Scenario</th>
+                <th>100 inquiries</th>
+                <th>Reached / engaged</th>
+                <th>Booked consults</th>
+                <th>Showed + treated</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Slow follow-up (hours / next day)</td><td>100</td><td>~45</td><td>~22</td><td>~13</td></tr>
+              <tr><td>Same-day, inconsistent</td><td>100</td><td>~65</td><td>~33</td><td>~22</td></tr>
+              <tr class="highlight"><td><strong>Instant (under 5 min) + nurture</strong></td><td><strong>100</strong></td><td><strong>~85</strong></td><td><strong>~50</strong></td><td><strong>~35</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="table-source">Model projection. Response-time impact based on speed-to-lead studies (InsideSales / MIT; HBR). Booking and show rates within observed 20-40% clinic conversion range. Thryv Marketing Solutions, 2026. Actual results vary by execution.</p>
+        </div>
+
+        <p>Same leads. Same ad spend. The instant-response system books more than double the consults of the slow one. That is the highest-ROI fix available to almost any med spa, and it costs less than one month of extra ad budget.</p>
+
+        <h2>Where Do Botox Patients Actually Come From?</h2>
+
+        <p>The demand is enormous and growing. US providers performed <strong>9.88 million neuromodulator procedures in 2024, up 4% year over year</strong>, plus <strong>5.33 million dermal filler procedures</strong> (<a href="https://www.plasticsurgery.org/news/plastic-surgery-statistics" target="_blank" rel="noopener">ASPS</a>). The med spa industry has crossed <strong>$17 billion and is adding over $1 billion a year</strong> (<a href="https://www.americanmedspa.org/med-spa-statistics/" target="_blank" rel="noopener">AmSpa</a>). Patients are not scarce.</p>
+
+        <p>And botox is the gift that keeps giving: it is a repeat purchase, with patients returning every few months, and <strong>94% of procedures are performed on women</strong>, concentrated in the 35 to 50 age group. That means lifetime value, not single-visit revenue, is the real prize. A patient you book today and keep is worth far more than the price of their first vial. This is exactly why discounting to win the first visit is usually a losing trade, and why the booking-and-retention system matters more than any one-time offer.</p>
+
+        <h2>A Simple System That Books More Consults</h2>
+
+        <p>You do not need more software. You need this sequence to run every single time an inquiry comes in, from any channel:</p>
+
+        <ol>
+          <li><strong>Instant response (under 5 minutes).</strong> The moment a form, DM, or call comes in, the patient gets a warm, specific text and email: acknowledge what they asked about, confirm you got it, and give them a direct booking link. An AI receptionist or shared inbox covers nights and weekends so leads never sit.</li>
+          <li><strong>Friction-free booking.</strong> That link goes to a real calendar tied to your actual diary. No phone tag. No "we will call to schedule."</li>
+          <li><strong>A 7 to 14 day nurture sequence.</strong> For inquiries that do not book on first contact, a short, helpful series of texts and emails: common questions answered, a before-and-after, a bit of your story, social proof. Present and useful, not a discount blast.</li>
+          <li><strong>Reactivate your old leads.</strong> Pull every inquiry from the last 6 to 12 months that never booked and send one honest, specific message. This single campaign almost always surfaces patients who were interested and just slipped through.</li>
+          <li><strong>Measure speed-to-lead weekly.</strong> Track median first-response time by hour of day. When it is under 5 minutes every hour of the week, you have solved the leak. Everything downstream improves.</li>
+        </ol>
+
+        <div class="inline-tool-cta">
+          <strong>Curious how many consults you are leaving on the table?</strong>
+          <p>We will audit your response time, booking flow, reviews, and before-and-after presentation against what is booking consults for Miami med spas, and show you the gaps. Free, no lock-in.</p>
+          <a href="/contact/" class="btn-blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get a Free Booking-Flow Audit
+          </a>
+        </div>
+
+        <div class="founder-note">
+          <div class="fn-label">From the Founder</div>
+          <p>A real website and a Google presence do something an Instagram grid can't. They make you look like a practice someone trusts with their face, not a deal they found once and forgot. Aesthetics is a repeat relationship. The patient who books because everything about you looks legitimate is the same one who comes back every few months. Build the baseline that says you'll still be here next year.</p>
+          <div class="fn-by">Theodore Grimes, Founder</div>
+        </div>
+
+        <h2>Bottom Line</h2>
+
+        <p>Botox and filler marketing fails not because the ads are bad or the channel is wrong, but because the consult-booking system underneath leaks. The patients are there. They are reading your reviews, scanning your before-and-afters, and reaching out. The med spas that win are not the ones with the cleverest campaigns. They are the ones that respond in 5 minutes, prove they can deliver, make booking effortless, and then keep the patient coming back.</p>
+
+        <p>Fix speed-to-lead first. Stack reviews and real proof second. Make booking frictionless third. Do those three and the marketing you already run starts booking the consults it was always supposed to.</p>
+
+        <h2>FAQ: Botox & Filler Marketing</h2>
+
+        <details class="faq-item">
+          <summary>What is the best marketing channel for booking botox consults?</summary>
+          <p>There is no single best channel. The data shows the bottleneck is rarely the channel and almost always the follow-up. 78% of customers book with the first business that responds, and responding within 5 minutes makes you about 21 times more likely to qualify a lead than responding at 30 minutes. A med spa with a mediocre channel and instant, consistent follow-up will book more consults than one with great ads and a slow front desk. Fix speed-to-lead first, then optimize the channel mix.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Why are my botox ads getting leads but not booked consults?</summary>
+          <p>Almost always a follow-up gap. Most aesthetic clinics are leaving revenue on the table due to slow response times. The biggest reason leads do not convert is how long it takes to reply. Every hour of delay drops the odds sharply. The leads are fine. The system that catches them is leaking. Add an instant automated response, a friction-free booking link, and a short nurture sequence and the same leads start booking.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do before-and-after photos and reviews really book more consults?</summary>
+          <p>Yes. Aesthetics is a trust purchase, and proof is what converts. 97% of consumers read reviews for local businesses and 68% of consumers will not consider a business rated below 4 stars (BrightLocal, 2026). Real before-and-after galleries (with consent) and a strong, current review profile do more to book a consult than any clever ad. They answer the only question a botox patient actually has: can this provider deliver a natural result on someone like me?</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is social media worth it for botox marketing?</summary>
+          <p>Social is worth it for trust and discovery, not for direct booking. Organic social converts at roughly 0.5% to 1.5% for most aesthetic practices, so judging it on direct bookings will always disappoint. Its real job is to be the proof a patient checks after they find you through search, reviews, or a referral. Use it to show results, personality, and credibility, then send serious interest to a booking page and a fast human response.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Should I discount botox to get more consults?</summary>
+          <p>Discounting attracts price shoppers who do not return and trains your market to wait for the next deal. A better path is to compete on trust and convenience: strong reviews, real before-and-afters, transparent pricing, instant response, and easy online booking. Botox is a repeat purchase with high lifetime value, so the goal is the patient who comes back every few months, not the one chasing the lowest single-visit price. Build the system that books and keeps the repeat patient.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How fast should a med spa respond to a botox inquiry?</summary>
+          <p>Within 5 minutes for the first real touch. Responding within 5 minutes makes you about 21 times more likely to qualify a lead than waiting 30 minutes, and 78% of customers go with whoever responds first. Yet most clinics take hours, and Instagram DMs often sit until the next business day. The fix is an instant automated text or call with a booking link the moment an inquiry lands, backed by a human (or AI) who can actually book during and after hours.</p>
+        </details>
+
+        <div class="blog-cta">
+          <h2>Book More Botox Consults From the Marketing You Already Run</h2>
+          <p>We help Miami med spas plug the leaks between inquiry and booked consult: fast-response systems, review building, and pages that convert. Month-to-month, no lock-in. Free audit shows exactly where your consults are slipping.</p>
+          <div class="cta-buttons">
+            <a href="/contact/" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Book a Free Proposal
+            </a>
+            <a href="/medspas/seo/" class="btn btn-blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              View Med Spa SEO Service
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <RelatedArticles currentSlug="/blog/botox-filler-marketing-what-books-consults/" />
+
+</article>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .blog-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 56px 0 56px; color: var(--white);
+  }
+  .blog-inner { max-width: 760px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .blog-hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 680px; color: var(--white);
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.8); margin-bottom: 20px; max-width: 620px; }
+  .post-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+
+  .hero-cover {
+    display: block; width: 100%; max-width: 1120px; margin: 36px auto 0;
+    aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 28px 70px -24px rgba(0, 0, 0, 0.55);
+  }
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 40px; }
+    .hero-cover { margin-top: 24px; border-radius: var(--radius); }
+  }
+
+  /* Content */
+  .blog-content { padding: 48px 0 80px; background: var(--white); }
+  .blog-body { max-width: 720px; margin: 0 auto; }
+  .blog-body p { font-size: 16px; line-height: 1.78; color: var(--gray); margin-bottom: 20px; }
+  .blog-body h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 40px 0 16px; line-height: 1.25; }
+  .blog-body h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  .blog-body ul, .blog-body ol { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
+  .blog-body ol { list-style: decimal; }
+  .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .blog-body strong { font-weight: 700; color: var(--dark); }
+  .blog-body em { font-style: italic; }
+  .blog-body a { color: var(--blue); text-decoration: underline; }
+  .blog-body a:hover { opacity: .8; }
+
+  /* Key Takeaways */
+  .key-takeaways {
+    background: #EEF4FF; border-left: 4px solid var(--blue);
+    border-radius: var(--radius); padding: 24px 28px; margin: 32px 0;
+  }
+  .key-takeaways strong {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--blue); margin-bottom: 14px;
+  }
+  .key-takeaways ul { list-style: none; padding: 0; margin: 0; }
+  .key-takeaways li {
+    padding-left: 24px; position: relative; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.6; color: var(--dark);
+  }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* Inline tool CTA */
+  .inline-tool-cta {
+    background: linear-gradient(135deg, #EEF4FF 0%, #FFF6E6 100%);
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 24px 0 32px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .inline-tool-cta strong { font-size: 16px; color: var(--dark); }
+  .inline-tool-cta p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; }
+  .inline-tool-cta .btn-blue {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: var(--white) !important;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; text-decoration: none !important;
+    transition: opacity .2s;
+    margin-top: 6px;
+  }
+  .inline-tool-cta .btn-blue:hover { opacity: 0.9; }
+
+  /* Table */
+  .table-wrap { margin: 28px 0 32px; overflow-x: auto; }
+  .seo-vs-ppc-table {
+    width: 100%; border-collapse: collapse;
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .seo-vs-ppc-table th {
+    background: #0A2E6E; color: var(--white);
+    text-align: left; padding: 12px 16px;
+    font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .seo-vs-ppc-table td {
+    padding: 12px 16px; border-top: 1px solid var(--border, #e2e8f0);
+    color: var(--dark);
+  }
+  .seo-vs-ppc-table tr.highlight td {
+    background: #FFF6E6; font-weight: 700;
+  }
+  .table-source { font-size: 12px; color: var(--gray); margin-top: 8px; font-style: italic; }
+
+  /* Founder note */
+  .founder-note {
+    background: #FBF7EF; border-left: 4px solid var(--orange);
+    border-radius: var(--radius); padding: 24px 28px; margin: 36px 0;
+  }
+  .founder-note .fn-label {
+    font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+  }
+  .founder-note p { font-size: 17px; line-height: 1.7; color: var(--dark); font-style: italic; margin: 0 0 12px; }
+  .founder-note .fn-by { font-size: 13px; font-weight: 700; color: var(--gray); }
+
+  /* FAQ */
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  /* CTA Box */
+  .blog-cta {
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px; margin: 48px 0 0;
+  }
+  .blog-cta h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; margin-top: 0; }
+  .blog-cta p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 24px; }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .blog-body a.btn { color: var(--white); text-decoration: none; }
+  .blog-body a.btn:hover { color: var(--white); text-decoration: none; }
+  .blog-body a.btn-primary { background: var(--orange); }
+  .blog-body a.btn-blue { background: var(--blue); }
+
+  @media (max-width: 768px) {
+    .blog-cta { padding: 28px 20px; }
+    .cta-buttons { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+</style>

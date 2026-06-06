@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import ExitPopup from '../components/ExitPopup.astro';
+import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string;
@@ -12,6 +13,7 @@ interface Props {
   ogType?: string;
   schema?: object | object[];
   lang?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   ogType = 'website',
   schema,
   lang = 'en',
+  noindex = false,
 } = Astro.props;
 
 const siteBase = 'https://thryvmarketingsolutions.com';
@@ -29,7 +32,84 @@ const pagePath = canonical.replace(siteBase, '').replace(/^\/es\//, '/').replace
 const enUrl = siteBase + pagePath;
 const esUrl = siteBase + '/es' + pagePath;
 
-const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? ('phc_n4RcWYKb807GDBJPtuE5m3h' + 'RQu1f2NJ2wgmK7qeL8bm');
+const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? '';
+
+// Sitewide LocalBusiness schema — emitted on every page for consistent local-entity signal.
+// Service-area-business variant: no streetAddress (no commercial office yet), uses serviceArea + areaServed.
+// telephone intentionally OMITTED until the phone-number decision lands; better than placeholder text.
+// See ~/Desktop/seo-runs/thryvmarketingsolutions.com/05-local/local-schema.json for full spec.
+const businessSchema = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@id": "https://thryvmarketingsolutions.com/#business",
+  "name": "Thryv Marketing Solutions",
+  "alternateName": ["Thryv Marketing", "Thryv MS"],
+  "url": "https://thryvmarketingsolutions.com",
+  "description": "Miami-based AI-powered growth marketing agency for medical spas, contractors, and local service businesses. SEO, Google Ads, GBP management, websites. Month-to-month, no lock-ins.",
+  "founder": {
+    "@type": "Person",
+    "name": "Theodore Grimes",
+    "jobTitle": "Founder, Search & Growth",
+    "url": "https://thryvmarketingsolutions.com/about/",
+    "image": "https://thryvmarketingsolutions.com/founder-theodore-grimes.jpg"
+  },
+  "foundingDate": "2025",
+  "email": "hello@thryvmarketingsolutions.com",
+  "image": [
+    "https://thryvmarketingsolutions.com/logos/logo-trimmed.png",
+    "https://thryvmarketingsolutions.com/founder-theodore-grimes.jpg"
+  ],
+  "logo": "https://thryvmarketingsolutions.com/logos/logo-trimmed.png",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Miami",
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Miami", "containedInPlace": { "@type": "State", "name": "Florida" } },
+    { "@type": "Place", "name": "Brickell, Miami, FL" },
+    { "@type": "Place", "name": "Wynwood, Miami, FL" },
+    { "@type": "Place", "name": "Coral Gables, FL" },
+    { "@type": "Place", "name": "Hialeah, FL" },
+    { "@type": "Place", "name": "Doral, FL" },
+    { "@type": "Place", "name": "Kendall, Miami, FL" },
+    { "@type": "Place", "name": "Miami Beach, FL" },
+    { "@type": "Place", "name": "Aventura, FL" },
+    { "@type": "Place", "name": "Coconut Grove, Miami, FL" },
+    { "@type": "Place", "name": "North Miami, FL" },
+    { "@type": "Place", "name": "Little Havana, Miami, FL" },
+    { "@type": "Place", "name": "Homestead, FL" }
+  ],
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 25.7617, "longitude": -80.1918 },
+    "geoRadius": "32000"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Marketing Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO, AEO & GEO", "url": "https://thryvmarketingsolutions.com/services/seo/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Business Profile Management", "url": "https://thryvmarketingsolutions.com/services/google-business-profile/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reputation Management", "url": "https://thryvmarketingsolutions.com/services/reputation-management/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads", "url": "https://thryvmarketingsolutions.com/services/google-ads/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Ads", "url": "https://thryvmarketingsolutions.com/services/social-media-ads/" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website Design", "url": "https://thryvmarketingsolutions.com/services/website-design/" } }
+    ]
+  },
+  "knowsAbout": [
+    "Medical spa marketing", "Med spa SEO", "Local SEO Miami", "Google Ads for healthcare",
+    "Google Business Profile optimization", "Reputation management",
+    "Bilingual SEO Spanish English", "AI search optimization GEO AEO"
+  ],
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00", "closes": "18:00"
+  }]
+};
 ---
 
 <!DOCTYPE html>
@@ -39,13 +119,13 @@ const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? ('phc_n4RcWYKb807GDBJPt
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang="en" href={enUrl} />
-  <link rel="alternate" hreflang="es" href={esUrl} />
+  {/* hreflang="es" hidden until ES pages are reviewed & approved */}
+  {/* <link rel="alternate" hreflang="es" href={esUrl} /> */}
   <link rel="alternate" hreflang="x-default" href={enUrl} />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -69,10 +149,31 @@ const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? ('phc_n4RcWYKb807GDBJPt
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 
   <script is:inline define:vars={{ posthogKey }}>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    if (posthogKey) posthog.init(posthogKey, {api_host: 'https://app.posthog.com'})
+    (function () {
+      var h = location.hostname;
+      var isDev = h === 'localhost' || h === '127.0.0.1' || h.endsWith('.local') || h.endsWith('.pages.dev');
+      var qs = location.search;
+      if (qs.indexOf('ph_optout=1') !== -1) { try { localStorage.setItem('ph_optout', '1'); } catch (e) {} }
+      if (qs.indexOf('ph_optin=1') !== -1)  { try { localStorage.removeItem('ph_optout'); } catch (e) {} }
+      var optedOut = false;
+      try { optedOut = localStorage.getItem('ph_optout') === '1'; } catch (e) {}
+      if (isDev || optedOut || !posthogKey) return;
+      function bootPostHog() {
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init(posthogKey, {api_host: 'https://app.posthog.com', opt_out_capturing_by_default: false});
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(bootPostHog, { timeout: 2000 });
+      } else {
+        setTimeout(bootPostHog, 0);
+      }
+    })();
   </script>
 
+  {/* Sitewide LocalBusiness signal — emitted on every page */}
+  <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+
+  {/* Page-specific schema (BlogPosting, FAQPage, BreadcrumbList, etc.) */}
   {schema && (
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   )}
@@ -84,6 +185,34 @@ const posthogKey = import.meta.env.PUBLIC_POSTHOG_KEY ?? ('phc_n4RcWYKb807GDBJPt
   </main>
   <Footer />
   <ExitPopup />
-  <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+  <CookieBanner />
+  <!--
+    TidyCal: load only on first interaction with a .tidycal-embed link OR on
+    /contact/ which renders the live booking iframe. This drops ~30KB + DNS
+    handshake from every other page's fully-loaded time. Source of fix:
+    Nico Gorrono "Find The Fix" review (2026-05-21) flagged 9s fully-loaded.
+  -->
+  <script is:inline>
+    (function () {
+      var loaded = false;
+      function loadTidyCal() {
+        if (loaded) return; loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://asset-tidycal.b-cdn.net/js/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      if (location.pathname.indexOf('/contact') === 0 || location.pathname.indexOf('/es/contact') === 0) {
+        loadTidyCal();
+      } else {
+        var triggers = document.querySelectorAll('.tidycal-embed');
+        triggers.forEach(function (el) {
+          el.addEventListener('mouseenter', loadTidyCal, { once: true, passive: true });
+          el.addEventListener('focus', loadTidyCal, { once: true, passive: true });
+          el.addEventListener('touchstart', loadTidyCal, { once: true, passive: true });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

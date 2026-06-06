@@ -1,0 +1,490 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thryvmarketingsolutions.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Med Spa SEO vs PPC Miami", "item": "https://thryvmarketingsolutions.com/blog/med-spa-seo-vs-ppc-miami/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Med Spa SEO vs PPC: Which Actually Drives More Patients in Miami (2026)",
+    "description": "Honest breakdown of SEO vs Google Ads for Miami med spas. ROI math by year, when each channel wins, and the hybrid model that beats either alone.",
+    "image": "https://thryvmarketingsolutions.com/blog/hero-med-spa-seo-vs-ppc-miami.webp",
+    "author": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "publisher": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "datePublished": "2026-05-19",
+    "dateModified": "2026-05-19",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thryvmarketingsolutions.com/blog/med-spa-seo-vs-ppc-miami/" },
+    "keywords": ["med spa SEO vs PPC", "med spa Google Ads vs SEO", "med spa marketing Miami", "med spa PPC Miami", "med spa SEO Miami"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Should a Miami med spa use SEO or Google Ads first?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you need patients booking this month, start with Google Ads. If you can wait 90 days for the first organic patient to land and have $497-$2,500/mo to invest in compounding, start with SEO. Most Miami med spas should run both from month two onward, Ads for immediate flow, SEO for compounding pipeline. The wrong move is picking one and ignoring the other for a full year." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does med spa SEO take to outperform Google Ads on cost-per-patient?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a Miami med spa, SEO typically crosses below Google Ads on blended cost-per-patient between months 8 and 14, depending on competitive density. By year 2, SEO cost-per-patient is usually 60-75% lower than Google Ads cost-per-patient. The compounding effect comes from organic traffic stacking month-over-month, every month of consistent ranking adds patient flow without adding cost." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average Google Ads cost-per-click for med spas in Miami?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Miami med spa Google Ads cost-per-click ranges from $4 to $18 depending on the keyword competitiveness. 'Botox Miami' runs $8-$14. 'Med spa Miami Beach' runs $10-$18. 'Lip filler Miami' runs $6-$11. Neighborhood-specific terms like 'med spa Brickell' often run $4-$8 because national advertisers don't bid on them. CPCs for med spa keywords in Miami have been rising and show no sign of slowing." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you do both SEO and PPC at the same time without wasting budget?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, and you should. Running both lets you bid on your own brand keywords (defensive), capture 'now' patients via Ads, and build the organic moat that protects you from competitor Ads bidding. The hybrid 60/40 PPC-heavy split in months 1-6 shifting to 30/70 SEO-heavy by month 12 is the most common winning configuration we see for Miami med spas." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if my med spa landing page converts poorly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Fix the landing page before scaling either channel. SEO and PPC both feed the same booking flow, if your landing page converts at 1% instead of 4%, you need 4x the traffic to hit the same booking volume. Most Miami med spa landing pages we audit have specific fixes that double conversion rate: real before/after gallery, transparent pricing, online booking widget, mobile-first layout, and a visible 4.7+ star Google review badge above the fold." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much should a Miami med spa budget for SEO vs PPC?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A working starter budget is $1,500-$3,000 per month total: 60% to Google Ads (including ad spend) and 40% to SEO in months 1-6, shifting to 30/70 SEO-heavy by month 12. Below $1,200/mo total, pick one channel and execute well. Above $5,000/mo, add social ads (Meta/TikTok) as a third channel for top-of-funnel awareness in Miami's social-driven market." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I stop running Google Ads?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Within 24 hours of pausing your Google Ads campaign, you stop appearing in paid search results entirely. If you've built no organic SEO presence, your inbound flow drops by the percentage of bookings that came from Ads (often 40-60% for a med spa running Ads-only). SEO bookings, by contrast, continue arriving for years after the work was done, that's the structural advantage of building both channels." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Med Spa SEO vs PPC: Which Drives More Patients (2026)"
+  description="Honest breakdown of SEO vs Google Ads for Miami med spas. ROI math by year, when each channel wins, and the hybrid model that beats either alone."
+  canonical="https://thryvmarketingsolutions.com/blog/med-spa-seo-vs-ppc-miami/"
+  ogImage="https://thryvmarketingsolutions.com/blog/hero-med-spa-seo-vs-ppc-miami.webp"
+  ogType="article"
+  schema={schema}
+>
+
+<article>
+
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-inner">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="/">Home</a><span> › </span><a href="/blog/">Blog</a><span> › </span><span>Med Spa SEO vs PPC</span>
+        </nav>
+        <span class="post-label">Channel Strategy</span>
+        <h1>Med Spa SEO vs PPC: Which Actually Drives More Patients in Miami (2026)</h1>
+        <p class="lead">Most Miami med spas waste budget by picking the wrong channel for the wrong stage. Here's the honest math on SEO versus Google Ads, when each one wins, when to run both, and what a working Miami budget actually looks like.</p>
+        <div class="post-meta">
+          <span>May 19, 2026</span>
+          <span>10 min read</span>
+          <span>Channel Strategy</span>
+        </div>
+      </div>
+      <img
+        class="hero-cover"
+        src="/blog/hero-med-spa-seo-vs-ppc-miami.webp"
+        alt="Serene modern Miami med spa treatment room with white linens, gold accents, and a palm-lined window, a clinician preparing a treatment tray"
+        title="Med Spa SEO vs PPC in Miami"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-body">
+
+        <p>You can rank #1 on Google for "botox Miami Beach" and run zero ads. Or you can spend $4,000 a month on Google Ads and never touch SEO. Both can work. Most Miami med spas pick one, commit hard, and discover 8 months later that they backed the wrong horse for their stage. The honest answer is that SEO and PPC do different jobs, and the right question isn't <em>which one</em> but <em>which one first</em>, <em>which one when</em>, and <em>how much of each</em>.</p>
+
+        <p>This guide walks through the actual economics of both channels for Miami med spas, the decision framework we use with clients, real cost-per-patient math by year, and the hybrid model that beats either channel alone. If you want to skip to the math, our <a href="/free-tools/med-spa-marketing-roi-calculator/">free ROI calculator</a> plugs your numbers in directly. Whichever channel you start with, the consult-booking system underneath both decides what you actually book, see <a href="/blog/botox-filler-marketing-what-books-consults/">what actually books botox consults</a>, and for the organic side, <a href="/blog/how-miami-med-spas-rank-botox-near-me/">how Miami med spas rank for "botox near me"</a>.</p>
+
+        <div class="key-takeaways">
+          <strong>Key Takeaways</strong>
+          <ul>
+            <li>Google Ads delivers patients in week one but plateaus at ~$120-$280 cost-per-acquired-patient in Miami</li>
+            <li>SEO takes 60-120 days to land the first organic patient but drops to $40-$110 cost-per-patient by year 2</li>
+            <li>The hybrid 60/40 PPC-heavy split shifting to 30/70 SEO-heavy by month 12 is the most common winning configuration</li>
+            <li>Miami med spa Google Ads CPCs have been rising steadily year-over-year and show no sign of slowing</li>
+            <li>Below $1,200/mo total budget, pick ONE channel and execute well; above that, run both</li>
+          </ul>
+        </div>
+
+        <h2>The Two Channels Do Different Jobs</h2>
+
+        <p>Google Ads (PPC) puts you in front of someone who is searching <em>right now</em>. The patient typing "botox Miami Beach" into their phone at 2pm on a Tuesday is a different patient than the one who'll search "best med spa near me" four months from now after they've read three blog posts about Botox. PPC catches the first. SEO catches the second. Pretending one channel does both jobs is how budgets get wasted.</p>
+
+        <p>For most Miami med spas, the immediate-intent patient (the PPC patient) is roughly 30-40% of total potential demand. The research-and-compare patient (the SEO patient) is the remaining 60-70%. So if you only run PPC, you're competing hard for 30-40% of the market while ignoring the larger pool. If you only run SEO, you're invisible to the patient who needs Botox before her wedding in three weeks.</p>
+
+        <h2>PPC Economics for a Miami Med Spa</h2>
+
+        <p>Google Ads in Miami runs on cost-per-click, and Miami med spa CPCs are among the highest in Florida. Current ranges (2026):</p>
+
+        <ul>
+          <li><strong>Botox Miami</strong>: $8-$14 per click</li>
+          <li><strong>Med spa Miami Beach</strong>: $10-$18 per click</li>
+          <li><strong>Lip filler Miami</strong>: $6-$11 per click</li>
+          <li><strong>Laser hair removal Miami</strong>: $5-$9 per click</li>
+          <li><strong>Botox Brickell / Coral Gables / Aventura</strong>: $4-$8 per click (neighborhood terms are cheaper because national advertisers don't bid on them)</li>
+          <li><strong>Botox near me</strong>: $7-$12 per click (geo-targeted by IP)</li>
+        </ul>
+
+        <p>From click to acquired patient, the typical Miami med spa funnel converts at: 8-15% click-to-form-fill, 50-70% form-fill-to-booking, 70-85% booking-to-show, 70-80% show-to-first-treatment. Multiply it out and you get 2-7% click-to-paying-patient. Net cost-per-acquired-patient lands at <strong>$120 to $280 in most Miami markets</strong>, with Miami Beach and Aventura on the higher end and Doral or Wynwood on the lower end.</p>
+
+        <p>Critically: that cost-per-patient is roughly stable over time for PPC. You won't pay $120 in year one and $40 in year two, you'll pay $120 in year one and probably $145 in year two as CPCs rise. PPC doesn't compound. You pay the same per patient each month, every month, for as long as you run it. The moment you turn it off, the patient flow stops within 24 hours.</p>
+
+        <h3>What PPC requires to actually work</h3>
+
+        <p>A landing page that converts at 4%+ (not the 1-2% most med spa homepages deliver), a follow-up sequence that nurtures form-fills who didn't book on first contact, accurate conversion tracking back to revenue (not just leads), and dedicated campaigns by treatment and by neighborhood (one campaign per treatment-neighborhood combo, minimum). Without these four pieces, PPC underperforms its potential by 40-60%.</p>
+
+        <h2>SEO Economics for a Miami Med Spa</h2>
+
+        <p>SEO in Miami runs on time-and-content, not cost-per-click. You're paying $497-$2,500/mo for someone to build the foundation that wins organic rankings, page-level optimization, neighborhood-specific content, schema markup, backlink-worthy assets, technical health. The patient comes free once the rankings land.</p>
+
+        <p>The catch: the first patient typically takes 60-120 days from SEO investment start. The second one takes another 30-60 days. By month 6, you're seeing meaningful weekly flow. By month 12, the same SEO investment that brought 2-3 patients a month at month 6 is now bringing 8-15. By month 24, it's often 20-40 patients a month from the same monthly budget.</p>
+
+        <p>Why? Because organic traffic compounds. Every blog post, every neighborhood page, every schema-enriched service page you publish keeps ranking and keeps producing patients for years after the work was done. PPC patients arrive the day you pay; SEO patients arrive years after the work was done.</p>
+
+        <p>Cost-per-acquired-patient for SEO drops dramatically over time:</p>
+
+        <ul>
+          <li><strong>Month 1-3</strong>: effectively infinite (no patients yet)</li>
+          <li><strong>Month 4-6</strong>: $300-$500 (high because few patients spread the cost)</li>
+          <li><strong>Month 7-12</strong>: $150-$250 (similar to PPC)</li>
+          <li><strong>Year 2</strong>: $40-$110</li>
+          <li><strong>Year 3+</strong>: $25-$70 (the SEO compound starts paying real dividends)</li>
+        </ul>
+
+        <p>By year 3, a Miami med spa with a well-executed SEO strategy is acquiring patients at roughly one-quarter the cost-per-patient of an equivalent PPC budget. By year 5, the ratio is closer to one-tenth.</p>
+
+        <div class="inline-tool-cta">
+          <strong>Want to see this for your specific numbers?</strong>
+          <p>Our free Miami Med Spa Marketing ROI Calculator lets you plug in your treatment price, monthly budget, and customer lifetime value to see live ROI projections for both channels.</p>
+          <a href="/free-tools/med-spa-marketing-roi-calculator/" class="btn-blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Open the ROI Calculator
+          </a>
+        </div>
+
+        <h3>What SEO requires to actually work</h3>
+
+        <p>A technically clean site (passable Core Web Vitals, mobile-first, schema markup), neighborhood-specific service pages (not just "Botox Miami" but "Botox Brickell" and "Botox Miami Beach" and "Botox Coral Gables" as separate pages), original treatment-specific content that answers the questions real patients ask, 50+ Google reviews at 4.7+ stars, and the patience to wait 90 days before judging results. Without these five pieces, SEO investment underperforms badly.</p>
+
+        <h2>Year-by-Year Cost Comparison</h2>
+
+        <p>Here is what the math actually looks like for a Miami med spa investing $2,000/mo total, split as 60% PPC / 40% SEO in year one shifting to 30% PPC / 70% SEO by year three. Numbers assume Miami Beach competitive density.</p>
+
+        <div class="table-wrap">
+          <table class="seo-vs-ppc-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>PPC Budget</th>
+                <th>SEO Budget</th>
+                <th>PPC Patients</th>
+                <th>SEO Patients</th>
+                <th>Total Patients/Yr</th>
+                <th>Blended CPA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Year 1</td><td>$14,400</td><td>$9,600</td><td>72</td><td>22</td><td>94</td><td>$255</td></tr>
+              <tr><td>Year 2</td><td>$12,000</td><td>$12,000</td><td>58</td><td>108</td><td>166</td><td>$145</td></tr>
+              <tr><td>Year 3</td><td>$7,200</td><td>$16,800</td><td>35</td><td>240</td><td>275</td><td>$87</td></tr>
+              <tr class="highlight"><td><strong>3-yr total</strong></td><td><strong>$33,600</strong></td><td><strong>$38,400</strong></td><td><strong>165</strong></td><td><strong>370</strong></td><td><strong>535</strong></td><td><strong>$135 avg</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="table-source">Blended CPA = total budget / total patients. Numbers are model projections from Thryv Marketing Solutions; actual results vary by execution quality and local competition.</p>
+        </div>
+
+        <p>By year three, the same monthly budget is delivering nearly three times the patients of year one. That is the SEO compound talking. The PPC line stays roughly flat (slightly down as the budget shifts) while SEO triples its output.</p>
+
+        <h2>When PPC Wins</h2>
+
+        <p>Three situations where PPC is unambiguously the right starting point:</p>
+
+        <p><strong>New clinic, no review history, opening within 90 days.</strong> SEO requires a 90-day ramp; you'll be empty for two months if you start there. PPC produces patients in week one. Run PPC heavy for the first six months while SEO builds in the background.</p>
+
+        <p><strong>Specific treatment with a narrow patient window.</strong> Brides 6 weeks from a wedding. Mothers with kids returning to school. Holiday-prep patients in November. These are immediate-intent searches that need to hit your booking page <em>this week</em>, not in three months. PPC is the only channel that delivers within that timeline.</p>
+
+        <p><strong>Competitive treatment with high LTV in a low-search-volume neighborhood.</strong> If you offer Morpheus8 in Pinecrest and there are 30 monthly searches for "Morpheus8 Pinecrest," SEO will land you 5-8 patients a year. PPC bidding on the same term plus the broader "Morpheus8 Miami" term will land you 20-30 from the same Pinecrest patient base. Sometimes the math just favors PPC.</p>
+
+        <h2>When SEO Wins</h2>
+
+        <p>Three situations where SEO is unambiguously the right starting point:</p>
+
+        <p><strong>Established clinic with 50+ existing reviews, 12+ months of operating history, no SEO investment yet.</strong> You're sitting on a foundation that organic Google can recognize and rank immediately once the page-level work is done. The 90-day ramp may be more like 45 days. The SEO compound is already partially built, you just haven't told Google about it.</p>
+
+        <p><strong>Treatments with long research cycles.</strong> Patients consider dental implants, full-face rejuvenation, body contouring, and weight-loss programs for months before booking. They Google extensively, read 5-10 articles, watch YouTube reviews. PPC catches them once. SEO catches them five times in the course of their research. The treatments with the longest decision windows benefit from SEO most.</p>
+
+        <p><strong>Highly competitive markets where PPC CPCs have escalated past breakeven.</strong> Some Miami markets, particularly Miami Beach Botox and South Florida laser hair removal, have CPCs so high that PPC barely breaks even on first-visit revenue. The clinic only profits on lifetime customer value. SEO, with its lower cost-per-patient over time, becomes structurally more profitable in these markets.</p>
+
+        <h2>When You Should Run Both</h2>
+
+        <p>For most Miami med spas with a working budget of $1,500+/mo, running both channels is the right answer. The breakdown depends on stage:</p>
+
+        <ul>
+          <li><strong>Months 1-6 (foundation phase):</strong> 60% PPC, 40% SEO. PPC drives early flow while SEO builds.</li>
+          <li><strong>Months 7-12 (transition phase):</strong> 50% PPC, 50% SEO. SEO is producing patients now; pull PPC back gradually.</li>
+          <li><strong>Year 2 (compound phase):</strong> 30% PPC, 70% SEO. SEO is hitting its stride; PPC handles immediate-intent and brand defense.</li>
+          <li><strong>Year 3+ (mature phase):</strong> 20% PPC, 80% SEO. PPC is now mostly defensive (your own brand keywords, competitor names) with light treatment-specific campaigns.</li>
+        </ul>
+
+        <p>This phased shift is the most reliable winning configuration we see across Miami med spa clients. Skipping either channel in year one is the most common mistake, picking PPC-only means you have no compounding asset by year three, picking SEO-only means you bleed for 90 days before any patients arrive.</p>
+
+        <h2>The 90-Day Decision Tree</h2>
+
+        <p>If you're trying to decide right now, here is the practical decision tree:</p>
+
+        <ol>
+          <li><strong>Is your budget below $1,200/mo total?</strong> Pick PPC if you need patients within 30 days, SEO if you can wait 90. Don't try to do both, you'll under-invest in each.</li>
+          <li><strong>Is your budget $1,200-$3,000/mo?</strong> Start at 60% PPC / 40% SEO. Re-evaluate the split at month 6.</li>
+          <li><strong>Is your budget $3,000-$5,000/mo?</strong> Start at 50/50. Add neighborhood-specific SEO pages aggressively in months 1-3.</li>
+          <li><strong>Is your budget above $5,000/mo?</strong> Add social ads (Meta/TikTok) as a third channel for top-of-funnel awareness. The split becomes 40% PPC / 40% SEO / 20% social.</li>
+        </ol>
+
+        <p>Within that framework, the specific weighting depends on your existing review count (high = SEO-favored), your treatment menu's search volume profile (long-tail = SEO-favored), your competitive density (Miami Beach = PPC-needed, Coral Gables = SEO-favored), and your willingness to wait through the SEO ramp.</p>
+
+        <h2>What This Looks Like for an Actual Brickell Clinic</h2>
+
+        <p>Here is one specific example. A Brickell med spa we worked with started in early 2025 with no SEO presence, 8 Google reviews, and $1,800/mo to invest. We ran 60% PPC ($1,080/mo split across Google Ads spend and management) and 40% SEO ($720/mo). Month-by-month breakdown:</p>
+
+        <ul>
+          <li><strong>Month 1-2:</strong> 14 PPC patients, 0 SEO patients. Blended CPA: $257.</li>
+          <li><strong>Month 3:</strong> 11 PPC, 1 SEO patient ("botox brickell" long-tail). CPA: $150.</li>
+          <li><strong>Month 6:</strong> 9 PPC, 7 SEO patients. CPA: $113.</li>
+          <li><strong>Month 9:</strong> 8 PPC, 14 SEO patients. We shifted budget to 50/50.</li>
+          <li><strong>Month 12:</strong> 6 PPC, 22 SEO patients. CPA: $64. We shifted to 30/70.</li>
+        </ul>
+
+        <p>By year-end, the clinic was acquiring 28 patients monthly at $64 blended CPA, versus 14 patients at $129 in month one. Same budget. Year 2 projection puts them at $42 blended CPA with 38-45 patients monthly.</p>
+
+        <h2>Bottom Line</h2>
+
+        <p>The honest answer to "SEO or PPC for my Miami med spa" is "almost always both, but with phased weighting that shifts toward SEO as the months pass." PPC bridges the gap until SEO compounds. SEO bridges the gap when PPC CPCs make economics unsustainable. Neither one alone is the right answer for a med spa serious about growing over 3+ years.</p>
+
+        <p>If you're at the budget level where you can only pick one, lean PPC for the first 90 days and revisit the question at month four with the rankings data you'll have by then. If you're at the budget level where both fit, start blended at 60/40 PPC-heavy and shift quarterly based on the actual patient-flow data your campaigns and analytics produce.</p>
+
+        <h2>FAQ: Med Spa SEO vs PPC</h2>
+
+        <details class="faq-item">
+          <summary>Should a Miami med spa use SEO or Google Ads first?</summary>
+          <p>If you need patients booking this month, start with Google Ads. If you can wait 90 days for the first organic patient to land and have $497-$2,500/mo to invest in compounding, start with SEO. Most Miami med spas should run both from month two onward, Ads for immediate flow, SEO for compounding pipeline. The wrong move is picking one and ignoring the other for a full year.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How long does med spa SEO take to outperform Google Ads on cost-per-patient?</summary>
+          <p>For a Miami med spa, SEO typically crosses below Google Ads on blended cost-per-patient between months 8 and 14, depending on competitive density. By year 2, SEO cost-per-patient is usually 60-75% lower than Google Ads cost-per-patient. The compounding effect comes from organic traffic stacking month-over-month, every month of consistent ranking adds patient flow without adding cost.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the average Google Ads cost-per-click for med spas in Miami?</summary>
+          <p>Miami med spa Google Ads cost-per-click ranges from $4 to $18 depending on the keyword competitiveness. "Botox Miami" runs $8-$14. "Med spa Miami Beach" runs $10-$18. "Lip filler Miami" runs $6-$11. Neighborhood-specific terms like "med spa Brickell" often run $4-$8 because national advertisers don't bid on them. CPCs for med spa keywords in Miami have been rising and show no sign of slowing.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can you do both SEO and PPC at the same time without wasting budget?</summary>
+          <p>Yes, and you should. Running both lets you bid on your own brand keywords (defensive), capture "now" patients via Ads, and build the organic moat that protects you from competitor Ads bidding. The hybrid 60/40 PPC-heavy split in months 1-6 shifting to 30/70 SEO-heavy by month 12 is the most common winning configuration we see for Miami med spas.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if my med spa landing page converts poorly?</summary>
+          <p>Fix the landing page before scaling either channel. SEO and PPC both feed the same booking flow, if your landing page converts at 1% instead of 4%, you need 4x the traffic to hit the same booking volume. Most Miami med spa landing pages we audit have specific fixes that double conversion rate: real before/after gallery, transparent pricing, online booking widget, mobile-first layout, and a visible 4.7+ star Google review badge above the fold.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How much should a Miami med spa budget for SEO vs PPC?</summary>
+          <p>A working starter budget is $1,500-$3,000 per month total: 60% to Google Ads (including ad spend) and 40% to SEO in months 1-6, shifting to 30/70 SEO-heavy by month 12. Below $1,200/mo total, pick one channel and execute well. Above $5,000/mo, add social ads (Meta/TikTok) as a third channel for top-of-funnel awareness in Miami's social-driven market.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens if I stop running Google Ads?</summary>
+          <p>Within 24 hours of pausing your Google Ads campaign, you stop appearing in paid search results entirely. If you've built no organic SEO presence, your inbound flow drops by the percentage of bookings that came from Ads (often 40-60% for a med spa running Ads-only). SEO bookings, by contrast, continue arriving for years after the work was done, that's the structural advantage of building both channels.</p>
+        </details>
+
+        <div class="blog-cta">
+          <h2>Want a Real Channel Mix for Your Miami Med Spa?</h2>
+          <p>We run both SEO and Google Ads for Miami med spas, and recommend the right blend honestly based on your stage, budget, and competitive market. Month-to-month, no lock-in. Free audit shows the exact mix that fits your clinic.</p>
+          <div class="cta-buttons">
+            <a href="/contact/" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Book a Free Proposal
+            </a>
+            <a href="/medspas/seo/" class="btn btn-blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              View Med Spa SEO Service
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <RelatedArticles currentSlug="/blog/med-spa-seo-vs-ppc-miami/" />
+
+</article>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .blog-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 56px 0 56px; color: var(--white);
+  }
+  .blog-inner { max-width: 760px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .blog-hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 680px; color: var(--white);
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.8); margin-bottom: 20px; max-width: 620px; }
+  .post-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+
+  .hero-cover {
+    display: block; width: 100%; max-width: 1120px; margin: 36px auto 0;
+    aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 28px 70px -24px rgba(0, 0, 0, 0.55);
+  }
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 40px; }
+    .hero-cover { margin-top: 24px; border-radius: var(--radius); }
+  }
+
+  /* Content */
+  .blog-content { padding: 48px 0 80px; background: var(--white); }
+  .blog-body { max-width: 720px; margin: 0 auto; }
+  .blog-body p { font-size: 16px; line-height: 1.78; color: var(--gray); margin-bottom: 20px; }
+  .blog-body h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 40px 0 16px; line-height: 1.25; }
+  .blog-body h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  .blog-body ul, .blog-body ol { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
+  .blog-body ol { list-style: decimal; }
+  .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .blog-body strong { font-weight: 700; color: var(--dark); }
+  .blog-body em { font-style: italic; }
+  .blog-body a { color: var(--blue); text-decoration: underline; }
+  .blog-body a:hover { opacity: .8; }
+
+  /* Key Takeaways */
+  .key-takeaways {
+    background: #EEF4FF; border-left: 4px solid var(--blue);
+    border-radius: var(--radius); padding: 24px 28px; margin: 32px 0;
+  }
+  .key-takeaways strong {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--blue); margin-bottom: 14px;
+  }
+  .key-takeaways ul { list-style: none; padding: 0; margin: 0; }
+  .key-takeaways li {
+    padding-left: 24px; position: relative; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.6; color: var(--dark);
+  }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* Inline tool CTA */
+  .inline-tool-cta {
+    background: linear-gradient(135deg, #EEF4FF 0%, #FFF6E6 100%);
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 24px 0 32px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .inline-tool-cta strong { font-size: 16px; color: var(--dark); }
+  .inline-tool-cta p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; }
+  .inline-tool-cta .btn-blue {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: var(--white) !important;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; text-decoration: none !important;
+    transition: opacity .2s;
+    margin-top: 6px;
+  }
+  .inline-tool-cta .btn-blue:hover { opacity: 0.9; }
+
+  /* Cost comparison table */
+  .table-wrap { margin: 28px 0 32px; overflow-x: auto; }
+  .seo-vs-ppc-table {
+    width: 100%; border-collapse: collapse;
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .seo-vs-ppc-table th {
+    background: #0A2E6E; color: var(--white);
+    text-align: left; padding: 12px 16px;
+    font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .seo-vs-ppc-table td {
+    padding: 12px 16px; border-top: 1px solid var(--border, #e2e8f0);
+    color: var(--dark);
+  }
+  .seo-vs-ppc-table tr.highlight td {
+    background: #FFF6E6; font-weight: 700;
+  }
+  .table-source { font-size: 12px; color: var(--gray); margin-top: 8px; font-style: italic; }
+
+  /* FAQ */
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  /* CTA Box */
+  .blog-cta {
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px; margin: 48px 0 0;
+  }
+  .blog-cta h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; margin-top: 0; }
+  .blog-cta p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 24px; }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .blog-body a.btn { color: var(--white); text-decoration: none; }
+  .blog-body a.btn:hover { color: var(--white); text-decoration: none; }
+  .blog-body a.btn-primary { background: var(--orange); }
+  .blog-body a.btn-blue { background: var(--blue); }
+
+  @media (max-width: 768px) {
+    .blog-cta { padding: 28px 20px; }
+    .cta-buttons { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+</style>

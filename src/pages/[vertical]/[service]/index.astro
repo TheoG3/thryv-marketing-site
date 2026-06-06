@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ContactForm from '../../../components/ContactForm.astro';
-import { verticals, getServiceDef, neighborhoods } from '../../../data/ecosystem.ts';
+import { verticals, getServiceDef, neighborhoods, cities, getServiceVerticalOverride } from '../../../data/ecosystem.ts';
 import type { ServiceSlug } from '../../../data/ecosystem.ts';
 
 export async function getStaticPaths() {
@@ -22,20 +22,33 @@ export async function getStaticPaths() {
 
 const { vertical: v, service: svc } = Astro.props;
 const config = v.serviceConfigs[svc.slug as ServiceSlug];
+const override = getServiceVerticalOverride(v.slug, svc.slug);
 
 const BASE = 'https://thryvmarketingsolutions.com';
 const canonical = `${BASE}/${v.slug}/${svc.slug}/`;
 
-const headline = config?.headline ?? `${svc.name} for Miami ${v.name}`;
-const lead = config?.lead ?? svc.defaultIncludes[0];
-const problem = config?.problem ?? '';
+const headline = override?.h1 ?? config?.headline ?? `${svc.name} for Miami ${v.name}`;
+const lead = override?.lead ?? config?.lead ?? svc.defaultIncludes[0];
+// Depth parity fallback: when a vertical hasn't published a custom problem text
+// for this service, weave the vertical's pillar problem framing into a service-
+// specific paragraph so every page renders a meaningful problem section.
+const problem = config?.problem ?? (
+  v.problemBody
+    ? `${svc.shortName} is one of the highest-leverage marketing moves for ${v.name.toLowerCase()} in Miami. ${v.problemBody} A focused ${svc.shortName.toLowerCase()} program closes that gap.`
+    : ''
+);
 const includes = config?.includes ?? svc.defaultIncludes;
-const faqs = svc.defaultFaqs;
+const faqs = override?.faqs ?? config?.faqs ?? svc.defaultFaqs;
 
-const pageTitle = `${svc.shortName} for Miami ${v.name} | Thryv Marketing Solutions`.slice(0, 60);
-const pageDesc = `${headline}. ${lead}`.slice(0, 160);
+const marketHeadline = override?.marketHeadline;
+const marketBody = override?.marketBody;
+const overrideSignals = override?.signals;
 
-const miamiNeighborhoods = neighborhoods.filter(n => n.citySlug === 'miami').slice(0, 8);
+const pageTitle = (override?.pageTitle ?? config?.pageTitle ?? `${svc.shortName} for Miami ${v.name} | Thryv Marketing Solutions`).slice(0, 60);
+const pageDesc = (override?.pageDesc ?? config?.pageDesc ?? `${headline}. ${lead}`).slice(0, 160);
+
+const miamiNeighborhoods = neighborhoods.filter(n => n.citySlug === 'miami');
+const soflaCities = cities.filter(c => c.slug !== 'miami');
 
 const schema = [
   {
@@ -74,7 +87,7 @@ const schema = [
       <div class="hero-ctas">
         <a href="#contact" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Get a Free Audit
+          Get a Free Proposal
         </a>
         <div class="hero-price">{svc.price}</div>
       </div>
@@ -95,6 +108,32 @@ const schema = [
             <h2>A {svc.shortName} Program Built for {v.name}</h2>
             <p>We do not apply a generic {svc.shortName.toLowerCase()} playbook to your business. Every strategy is built around how {v.name.toLowerCase()} get found in Miami: the specific searches, the specific neighborhoods, the specific trust signals that matter in your industry.</p>
           </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {marketBody && marketBody.length > 0 && (
+    <section class="section market-section">
+      <div class="container">
+        <div class="two-col">
+          <div class="reveal">
+            <span class="label">{v.name} · {svc.shortName}</span>
+            {marketHeadline && <h2>{marketHeadline}</h2>}
+            {marketBody.map((para, i) => (
+              <p set:html={para} style={i === 0 ? '' : 'margin-top:16px;'}></p>
+            ))}
+          </div>
+          {overrideSignals && (
+            <div class="local-pills reveal">
+              {overrideSignals.map(s => (
+                <div class="local-pill">
+                  <span class="pill-label">{s.label}</span>
+                  <span class="pill-val" set:html={s.val}></span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -140,7 +179,23 @@ const schema = [
           {miamiNeighborhoods.map(n => (
             <a href={`/${v.slug}/${svc.slug}/miami/${n.slug}/`} class="nbhd-chip">{n.name}</a>
           ))}
-          <a href={`/${v.slug}/${svc.slug}/miami/`} class="nbhd-chip nbhd-more">+ more →</a>
+        </div>
+      </div>
+
+      <div class="sofla-block">
+        <div class="sofla-head">
+          <span class="label">Beyond Miami-Dade</span>
+          <h3>South Florida Cities We Cover</h3>
+          <p>Same {svc.shortName.toLowerCase()} program, delivered across Broward and Palm Beach County for {v.name.toLowerCase()} operating outside Miami-Dade.</p>
+        </div>
+        <div class="sofla-grid">
+          {soflaCities.map(c => (
+            <a href={`/${v.slug}/${svc.slug}/${c.slug}/`} class="sofla-card">
+              <div class="sofla-card-name">{c.name}</div>
+              <div class="sofla-card-state">{c.state}</div>
+              <svg class="sofla-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          ))}
         </div>
       </div>
     </div>
@@ -156,7 +211,7 @@ const schema = [
         {faqs.map(f => (
           <details class="faq-item reveal">
             <summary>{f.q}</summary>
-            <p>{f.a}</p>
+            <p set:html={f.a}></p>
           </details>
         ))}
       </div>
@@ -167,7 +222,7 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Audit</span>
+          <span class="label">Free Proposal</span>
           <h2>See Where You Stand on {svc.shortName} Right Now</h2>
           <p class="lead" style="margin-bottom:24px;">We audit your current {svc.shortName.toLowerCase()} performance and show you exactly where the gaps are versus your top Miami competitors.</p>
           <p style="font-size:14px;color:var(--gray);">Hablamos Espa&ntilde;ol &middot; No contracts &middot; Results in 24 hours</p>
@@ -197,6 +252,30 @@ const schema = [
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .two-col h2 { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--dark); margin: 12px 0; line-height: 1.25; }
   .two-col p { font-size: 15px; line-height: 1.75; color: var(--gray); margin-top: 12px; }
+
+  .market-section { background: var(--white); padding: 56px 0; }
+  .market-section .label { background: var(--blue-deeper); color: var(--white); display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .market-section h2 { font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; color: var(--dark); margin: 0 0 16px; letter-spacing: -0.01em; }
+  .market-section p { font-size: 15px; line-height: 1.75; color: var(--gray); }
+  .market-section p a { color: var(--blue); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  .market-section p a:hover { color: var(--blue-deeper); }
+  .local-pills { display: flex; flex-direction: column; gap: 10px; }
+  .local-pill { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 14px 18px; }
+  .pill-label { display: block; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+  .pill-val { font-size: 14px; font-weight: 700; color: var(--dark); }
+
+  .sofla-block { margin-top: 32px; }
+  .sofla-head { margin-bottom: 20px; }
+  .sofla-head .label { background: var(--blue-deeper); color: var(--white); display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+  .sofla-head h3 { font-size: 22px; font-weight: 800; color: var(--dark); margin: 0 0 8px; }
+  .sofla-head p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; max-width: 640px; }
+  .sofla-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .sofla-card { display: flex; align-items: center; gap: 10px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 14px 16px; text-decoration: none; transition: border-color .2s, box-shadow .2s; }
+  .sofla-card:hover { border-color: var(--blue); box-shadow: 0 4px 12px rgba(27,79,168,.08); }
+  .sofla-card-name { font-size: 14px; font-weight: 700; color: var(--dark); flex: 1; }
+  .sofla-card-state { font-size: 12px; font-weight: 600; color: var(--gray); }
+  .sofla-arrow { stroke: var(--blue); opacity: .5; transition: opacity .2s, transform .2s; }
+  .sofla-card:hover .sofla-arrow { opacity: 1; transform: translateX(3px); }
 
   .includes-section { background: var(--light); }
   .includes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }

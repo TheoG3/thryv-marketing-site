@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  title = 'Request Your Free Audit',
+  title = 'Request Your Free Proposal',
   subject = 'New Audit Request | Thryv Marketing Solutions',
   serviceDefault = '',
   showOrgField = false,
@@ -16,6 +16,7 @@ const {
 
 <div class="contact-form-wrap">
   <div class="form-title">{title}</div>
+  <p class="form-key">Fields marked <span class="req" aria-hidden="true">*</span> are required.</p>
   <div id="form-status" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
   <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
     <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
@@ -24,25 +25,25 @@ const {
 
     <div class="form-row">
       <div class="form-group">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="first_name" placeholder="Juan" required />
+        <label for="fname">First Name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="fname" name="first_name" placeholder="Juan" aria-required="true" required />
       </div>
       <div class="form-group">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="last_name" placeholder="Garcia" required />
+        <label for="lname">Last Name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="lname" name="last_name" placeholder="Garcia" aria-required="true" required />
       </div>
     </div>
 
     {showOrgField && (
       <div class="form-group">
-        <label for="org">Organization Name</label>
-        <input type="text" id="org" name="organization" placeholder="Your Business or Org" required />
+        <label for="org">Organization Name <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="org" name="organization" placeholder="Your Business or Org" aria-required="true" required />
       </div>
     )}
 
     <div class="form-group">
-      <label for="email">Business Email</label>
-      <input type="email" id="email" name="email" placeholder="juan@yourbusiness.com" required />
+      <label for="email">Business Email <span class="req" aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" placeholder="juan@yourbusiness.com" aria-required="true" required />
     </div>
     <div class="form-group">
       <label for="phone">Phone Number</label>
@@ -69,7 +70,7 @@ const {
     <div class="form-submit">
       <button type="submit" class="btn btn-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Get My Free Audit
+        Get My Free Proposal
       </button>
     </div>
     <p class="form-note">We'll respond within 24 hours. No obligation.</p>
@@ -90,6 +91,9 @@ const {
   .form-group { margin-bottom: 18px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   label { display: block; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .req { color: #B91C1C; font-weight: 800; }
+  .form-key { font-size: 12px; color: var(--gray); margin: -10px 0 18px; }
+  .form-key .req { color: #B91C1C; }
   input, select, textarea {
     width: 100%; font-family: var(--font); font-size: 14px; color: var(--dark);
     background: var(--light); border: 1.5px solid var(--border);
@@ -134,7 +138,7 @@ const {
         if ((window as any).posthog) (window as any).posthog.capture('audit_request_submitted');
       } else { throw new Error(); }
     } catch {
-      btn.textContent = 'Get My Free Audit'; btn.disabled = false;
+      btn.textContent = 'Get My Free Proposal'; btn.disabled = false;
       formStatus.textContent = 'Error sending. Please email hello@thryvmarketingsolutions.com directly.';
       alert('Something went wrong. Please email us at hello@thryvmarketingsolutions.com');
     }

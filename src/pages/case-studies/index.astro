@@ -1,0 +1,218 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",         "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Case Studies", "item": "https://thryvmarketingsolutions.com/case-studies/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Thryv Marketing Solutions Case Studies",
+    "description": "Real results from real Miami businesses. Honest data, no cherry-picked numbers, no fabricated testimonials.",
+    "url": "https://thryvmarketingsolutions.com/case-studies/"
+  }
+];
+
+const inProgress = [
+  {
+    title: 'Thryv Marketing Solutions (Internal Case Study)',
+    slug: 'thryv-marketing-solutions',
+    status: 'Data collection',
+    timeline: 'Live data starts populating June 2026',
+    body: 'We are running every service on our own brand. SEO, GBP, reviews, AI Automation, PR. The case study publishes once we have 30 to 60 days of real data — GSC traffic, AI citation counts, GBP analytics, PR placements. No projections, no fluff.',
+  },
+];
+
+const placeholderClients = [
+  { vertical: 'Med Spa', neighborhood: 'Miami Beach',  status: 'Service starts when client onboards' },
+  { vertical: 'Junk Removal', neighborhood: 'Fort Lauderdale', status: 'Service starts when client onboards' },
+  { vertical: 'Dentist', neighborhood: 'Coral Gables', status: 'Service starts when client onboards' },
+];
+---
+
+<BaseLayout
+  title="Case Studies — Real Miami Marketing Results | Thryv"
+  description="Real data, real timelines, no cherry-picking. We publish full case studies once we have 30-60 days of measurable client results, not before."
+  canonical="https://thryvmarketingsolutions.com/case-studies/"
+  ogImage="https://thryvmarketingsolutions.com/og-default.jpg"
+  schema={schema}
+  noindex={true}
+>
+
+  <section class="hero-services">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>Case Studies</span>
+      </nav>
+      <span class="label">Real Results</span>
+      <h1>Case Studies — Real Data, Not Cherry-Picked Numbers</h1>
+      <p class="lead">Most marketing agencies publish case studies that read like fiction. Ours don't. We publish a case study once we have <strong>30 to 60 days</strong> of measurable client data — actual search rankings, actual review counts, actual leads — not before. If we are still building, we say so.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+
+      <div class="section-head">
+        <span class="label">In Progress</span>
+        <h2>Case Studies Currently Building</h2>
+        <p>Every active engagement listed below has a data collection plan and an estimated publish date. We share the timeline before the case study lands so there is no question about what gets measured.</p>
+      </div>
+
+      <div class="cs-list">
+        {inProgress.map(c => (
+          <article class="cs-card">
+            <div class="cs-card-head">
+              <h3 class="cs-card-title">{c.title}</h3>
+              <span class="cs-card-status">{c.status}</span>
+            </div>
+            <p class="cs-card-timeline"><strong>Publish window:</strong> {c.timeline}</p>
+            <p class="cs-card-body">{c.body}</p>
+          </article>
+        ))}
+
+        {placeholderClients.map(c => (
+          <article class="cs-card cs-card-placeholder">
+            <div class="cs-card-head">
+              <h3 class="cs-card-title">{c.vertical} — {c.neighborhood}</h3>
+              <span class="cs-card-status">Reserved</span>
+            </div>
+            <p class="cs-card-body">Reserved slot for the next {c.vertical.toLowerCase()} client onboarded in {c.neighborhood}. Case study publishes once we hit measurable results.</p>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section mtm-section">
+    <div class="container">
+      <div class="mtm-inner">
+        <div class="mtm-copy reveal">
+          <span class="label">Why So Few Case Studies?</span>
+          <h2>Because Honest Numbers Take Time</h2>
+          <p class="lead">We started Thryv Marketing Solutions in 2026. We will not invent testimonials, borrow case studies from a previous agency, or publish "results" before we have real data to share.</p>
+          <ul class="check-list">
+            <li><strong>Founding client rates</strong> are locked in for the businesses who came on early</li>
+            <li>Every engagement is <strong>month-to-month</strong> — if we are not delivering, you leave</li>
+            <li>All client data shown in case studies is <strong>verifiable</strong> in GSC, GBP analytics, or live SERPs</li>
+            <li>No fabricated quotes, no "we generated 10x leads" without screenshots</li>
+          </ul>
+          <a href="/contact/" class="btn btn-primary" style="margin-top:32px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get My Free Proposal
+          </a>
+        </div>
+        <div class="badges reveal">
+          <div class="badge-card">
+            <div class="badge-num">100%</div>
+            <div class="badge-lbl">Real client data, no fabrication</div>
+          </div>
+          <div class="badge-card">
+            <div class="badge-num">30-60</div>
+            <div class="badge-lbl">Days of data before publishing</div>
+          </div>
+          <div class="badge-card">
+            <div class="badge-num">0</div>
+            <div class="badge-lbl">Borrowed or invented testimonials</div>
+          </div>
+          <div class="badge-card">
+            <div class="badge-num">✓</div>
+            <div class="badge-lbl">Verifiable in GSC, GBP, and SERPs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-copy reveal">
+          <span class="label">Free Proposal</span>
+          <h2>Want To Be The Next Case Study?</h2>
+          <p class="lead" style="margin-bottom:24px;">Tell us about your business. If we think we can move the needle, we will tell you. If we do not, we will say so honestly.</p>
+          <ul class="check-list">
+            <li>Google Business Profile audit</li>
+            <li>Local keyword rank snapshot</li>
+            <li>Competitor positioning review</li>
+            <li>90-day projection with honest numbers</li>
+          </ul>
+        </div>
+        <div class="contact-form-wrap">
+          <ContactForm title="Get My Free Proposal" subject="Case Studies Page Inquiry | Thryv" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .cs-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  @media (min-width: 720px) {
+    .cs-list { grid-template-columns: repeat(2, 1fr); }
+  }
+  .cs-card {
+    background: var(--white, #fff);
+    border: 1px solid var(--gray-200, #e5e7eb);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cs-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+  .cs-card-placeholder { opacity: 0.7; }
+  .cs-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .cs-card-title {
+    font-size: 18px;
+    margin: 0;
+    color: var(--ink, #0a0e27);
+  }
+  .cs-card-status {
+    flex-shrink: 0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--brand-blue-50, #eff6ff);
+    color: var(--brand-blue, #1e40af);
+    font-weight: 600;
+  }
+  .cs-card-placeholder .cs-card-status {
+    background: var(--gray-100, #f3f4f6);
+    color: var(--gray-700, #374151);
+  }
+  .cs-card-timeline {
+    font-size: 14px;
+    color: var(--gray-700, #374151);
+    margin-bottom: 12px;
+  }
+  .cs-card-body {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--gray-600, #4b5563);
+    margin: 0;
+  }
+</style>

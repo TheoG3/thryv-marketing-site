@@ -1,0 +1,564 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",                "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services",            "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "Press & PR Services", "item": "https://thryvmarketingsolutions.com/services/press-pr/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does PR cost for a small business?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Our PR program is tiered. Press Starter begins at $397/mo and covers HARO management plus one monthly press release distribution. Press + Authority starts at $697/mo and adds 2-3 regional and national tier-2 placement pitches per month. Founder Visibility starts at $997/mo and adds executive positioning, podcast pitching, and ghost-written guest articles. On top of the base retainer, individual placement fees vary widely — some local outlets are free, regional placements run $300-$1,000, and national tier-2 outlets like Yahoo Finance or Inc can run $1,000-$3,000 each. We quote those transparently as they come up." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is PR pricing custom?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because the cost depends entirely on which outlets you pursue. A local Miami neighborhood blog might be free. A regional business journal might be $400. A national tier-2 outlet might be $2,000. A premium national tier-1 placement like Wall Street Journal might be $5,000+ if it's achievable at all. We start with a base retainer that covers the work — research, pitching, writing, distribution — and quote placement fees separately so you decide which ones to invest in." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's HARO and how does it help my business?",
+        "acceptedAnswer": { "@type": "Answer", "text": "HARO (Help a Reporter Out) is a daily email of journalist queries looking for expert sources. We monitor the queries every day, identify the ones where you can credibly comment, and write thoughtful pitches on your behalf. When a journalist accepts, you get quoted in their article — often on high-authority sites with a backlink to your business. It's one of the cheapest ways to build founder visibility and earn SEO backlinks." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will press coverage actually help my Google rankings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Often yes — when the placement is on a high-authority domain. A founder quote in Yahoo Finance, Forbes, Inc, or a major trade publication gives you a high-DR backlink that directly helps your local SEO. We deliberately target outlets that double as credibility signals and SEO assets, so your press budget pulls double duty. Local-only placements help with brand awareness but typically don't move SEO rankings the way national tier-2 placements do." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until I see results from PR?",
+        "acceptedAnswer": { "@type": "Answer", "text": "First HARO placements typically land inside 30 to 60 days for a credible operator with a specific angle. Press release distribution produces immediate syndication (AP News, Google News, Yahoo News) but the SEO and credibility lift compounds over months. Founder-led national placements typically take 60 to 120 days of consistent pitching to land the first hit, then compound from there." }
+      }
+    ]
+  }
+];
+
+const tiers = [
+  {
+    name: 'Press Starter',
+    price: 'From $397/mo',
+    desc: 'For the operator who wants founder visibility on a budget. HARO management + one monthly press release. Local and regional reach.',
+    inclusions: [
+      'Daily HARO query monitoring + strategic pitch writing',
+      '1 press release per month (written + distributed via national wire)',
+      'Press release syndication to AP News, Google News, Yahoo News',
+      'Monthly placement report (links + outlet domain authority)',
+      'Email-only support',
+    ],
+  },
+  {
+    name: 'Press + Authority',
+    price: 'From $697/mo',
+    desc: 'For the operator ready to pursue named placements in regional business journals and national tier-2 outlets. SEO backlink value compounds here.',
+    inclusions: [
+      'Everything in Press Starter',
+      'Direct journalist outreach (20-30 journalists per month)',
+      'Active pitching for 2-3 regional + national tier-2 placements per month',
+      'Featured.com + Qwoted account management',
+      'Quarterly strategy call',
+      'Coverage report with backlink-by-backlink Domain Authority breakdown',
+    ],
+  },
+  {
+    name: 'Founder Visibility',
+    price: 'From $997/mo',
+    desc: 'For the founder who wants to be the face of the business. Executive positioning, podcast pitching, guest article ghost-writing.',
+    inclusions: [
+      'Everything in Press + Authority',
+      'Personal brand positioning strategy (founder narrative + angle development)',
+      'Podcast pitching + booking support (relevant industry shows)',
+      '1-2 ghost-written guest articles per month placed on trade publications',
+      'Bi-weekly strategy calls',
+      'Executive bio + media kit creation',
+    ],
+  },
+];
+
+const placementCosts = [
+  { tier: 'Local & Hyperlocal',  range: 'Free – $500',     examples: 'Community blogs, neighborhood newspapers, local podcasts, Miami Herald neighborhood sections, Patch' },
+  { tier: 'Regional & State',    range: '$300 – $1,000',   examples: 'South Florida Business Journal, Florida Trend, regional trade publications, state-specific lifestyle magazines' },
+  { tier: 'National Tier-2',     range: '$1,000 – $3,000', examples: 'Yahoo Finance, Forbes (contributor), Inc.com, Entrepreneur, Business Insider, niche trade publications' },
+  { tier: 'National Tier-1',     range: '$3,000 – $5,000+', examples: 'Wall Street Journal, New York Times, CNBC, Bloomberg (and rarely achievable without a strong news hook)' },
+];
+---
+
+<BaseLayout
+  title="PR & Press Release Services in Miami | Thryv"
+  description="Founder-led press for small Miami operators. Tiered base pricing from $397/mo plus transparent placement fees that scale with where you want to show up. No contracts."
+  canonical="https://thryvmarketingsolutions.com/services/press-pr/"
+  ogImage="https://thryvmarketingsolutions.com/og-default.jpg"
+  schema={schema}
+>
+
+  <section class="svc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><span>Press & PR</span>
+      </nav>
+      <span class="label">Service</span>
+      <h1>Press & PR Services for Small Miami Operators</h1>
+      <p class="lead">Every agency quotes PR the same way: "it depends." We tell you exactly what depends on what. <strong>Tiered base pricing</strong> for the work we do, transparent placement fees for the outlets you choose to pursue. No contracts, no hidden upcharges, no "send us a brief and we'll get back to you."</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Proposal
+        </a>
+        <div class="hero-price">Starting at <strong>$397/mo</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Month-to-month, no contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">Top signal</div><div class="stake-d">links from trusted sites are among Google's strongest ranking factors</div></div>
+        <div class="stake"><div class="stake-n">E-E-A-T</div><div class="stake-d">Google rewards expertise, authority, and trust, which press builds</div></div>
+        <div class="stake"><div class="stake-n">Double duty</div><div class="stake-d">one placement earns a backlink, credibility, and brand searches at once</div></div>
+      </div>
+      <p class="stakes-src">Ranking guidance published by <a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener">Google Search</a>.</p>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">PR, explained</span>
+        <h2>What PR actually is, and why it still works</h2>
+        <p>PR is earned coverage: the mentions, quotes, and features you don't pay a platform to place, landing in news outlets, podcasts, and industry publications. Instead of advertising yourself, you get a trusted third party vouching for you. That's a fundamentally different kind of credibility than an ad.</p>
+        <p>It's one of the oldest plays in marketing, built on a truth that hasn't changed in a century: <strong>people trust what others say about you far more than what you say about yourself.</strong> What changed is the mechanics. Reporters now source experts through tools like HARO, placements live forever as searchable links, and a feature on a strong site quietly hands you an SEO backlink on the way out.</p>
+        <p>Our honest take: PR is a slow compounder, not a faucet. One placement rarely changes your month. But a steady drumbeat of credible mentions builds the kind of authority, with customers and with Google, that competitors can't buy overnight. That's why we run it as a patient, founder-led program, not a one-off blast.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>How earned coverage actually builds authority</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">A placement isn't just a mention. It's three assets at once, and each one compounds. Here's the mechanism we work every month.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">📰</div>
+          <h3>Newsworthiness</h3>
+          <p>A real angle a reporter will actually run: a milestone, a contrarian take, or local data nobody else has. No angle, no coverage. <strong>This is where every placement starts, and where we put the work first.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">📡</div>
+          <h3>Distribution &amp; syndication</h3>
+          <p>A release on a national wire syndicates across news sites like AP News, Google News, and Yahoo News, putting your name in front of readers and search crawlers in the same moment.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🔗</div>
+          <h3>Authority &amp; backlinks</h3>
+          <p>Coverage on trusted domains hands you backlinks and brand mentions, the exact signals Google and AI assistants weigh when deciding who to trust. <strong>One placement pulls triple duty: readers, rankings, and credibility.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Based on how earned media works and Google's own ranking guidance. We can't manufacture news, so we find the real angle and place it where it compounds.</p>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">The honest truth about PR costs</span>
+          <h2>Why PR pricing is tiered and custom</h2>
+          <p>Most agencies hide the real cost behind one "contact us" form. The truth is simpler than that. <strong>PR pricing has two parts.</strong> The base retainer covers the work — research, pitching, writing, distribution, account management. That part we publish openly, right on this page. The second part is the placement fees — and those depend entirely on which outlets you choose to pursue.</p>
+          <p style="margin-top:16px;">A neighborhood Miami blog might be free. A regional business journal might run <strong>$400</strong>. A national outlet like Inc or Yahoo Finance might be <strong>$2,000</strong>. A premium national placement might be <strong>$5,000+</strong> when it's achievable at all. We quote each opportunity as it comes up, and you decide which ones are worth the spend.</p>
+        </div>
+        <div class="reveal">
+          <span class="label">What this actually looks like</span>
+          <h2>Base + placements, both visible</h2>
+          <p>You pay the monthly retainer for the team doing the work. You pay separately — and only if you want to — for the placements that have outlet-side fees. Everything is itemized, nothing is hidden, and you stay in control of how aggressive the spend gets month to month.</p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li><strong>Tiered base retainer</strong> — pick the level of support that fits your goals</li>
+            <li><strong>Transparent placement fees</strong> — quoted per opportunity, never bundled</li>
+            <li><strong>You approve each placement</strong> before we pursue it</li>
+            <li><strong>No annual contracts</strong> — month-to-month with 30 days notice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Tiered base pricing</span>
+        <h2>Three tiers. Pick the one that fits where you're headed.</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">Each tier is the base retainer that covers our team's work. Placement fees (when outlets charge them) are quoted separately so you decide what to invest in.</p>
+      </div>
+
+      <div class="pr-tiers">
+        {tiers.map(t => (
+          <div class="pr-tier reveal">
+            <h3 class="pr-tier-name">{t.name}</h3>
+            <div class="pr-tier-price">{t.price}</div>
+            <p class="pr-tier-desc">{t.desc}</p>
+            <ul class="pr-tier-list">
+              {t.inclusions.map(i => <li>{i}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <p class="custom-note reveal" style="margin-top:32px;">Standard tiers don't fit every operator. If yours needs a different shape (multi-location coverage, specific industry focus, crisis support), we'll scope it and quote it. Just ask.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Placement costs by outlet tier</span>
+        <h2>Transparent ranges, quoted per opportunity</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">Here's what placement fees typically look like across outlet tiers. We quote each opportunity individually — these are the realistic ranges to budget against.</p>
+      </div>
+
+      <div class="pr-cost-table reveal">
+        <div class="pr-cost-row pr-cost-head">
+          <div>Outlet Tier</div>
+          <div>Typical Range</div>
+          <div>Examples</div>
+        </div>
+        {placementCosts.map(p => (
+          <div class="pr-cost-row">
+            <div class="pr-cost-tier"><strong>{p.tier}</strong></div>
+            <div class="pr-cost-range">{p.range}</div>
+            <div class="pr-cost-examples">{p.examples}</div>
+          </div>
+        ))}
+      </div>
+
+      <p class="pr-cost-note reveal">Many local and regional outlets cost nothing — they cover small businesses as part of community coverage. Paid syndication and sponsored editorial are the categories with real fees. Tier-1 placements are rare for small operators and require a strong news hook (significant milestone, unique angle, contrarian data).</p>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">Why press + SEO together</span>
+          <h2>Founder placements build backlinks that lift your rankings</h2>
+          <p>A quote in Inc, Forbes, Yahoo Finance, or a major trade publication does two things at once. It builds founder credibility your competitors can't match overnight. And it produces a <strong>high-Domain-Authority backlink</strong> that directly helps your local Google rankings. That's why we deliberately target outlets that double as credibility signals AND SEO assets.</p>
+          <p style="margin-top:16px;">Local-only placements help with brand awareness but typically don't move SEO. National tier-2 placements compound on both fronts.</p>
+        </div>
+        <div class="reveal">
+          <span class="label">Why founder visibility</span>
+          <h2>Customers trust people, not logos</h2>
+          <p>A small operator who shows up under their own name in real publications wins the trust battle against any national franchise location page. The work of building that visibility is what we manage — pitch development, journalist relationships, story angles, ghost-written guest articles when needed. The face stays yours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Find the angle</h3><p>We dig into your business for the stories a reporter will actually run, milestones, data, a contrarian point of view, and develop 3 to 5 angles worth pitching. No charge to start.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Build the list &amp; write</h3><p>We match each angle to the right journalists and outlets, then write the pitches, releases, and quotes in your voice.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Pitch &amp; distribute</h3><p>We pitch journalists directly, work HARO and Featured/Qwoted queries daily, and distribute releases across the wire. You approve any paid placement before we pursue it.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Report</h3><p>A monthly report on every placement, the outlet's domain authority, the backlinks earned, and which angles to chase next. No vanity metrics.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>How much does PR cost for a small business?</summary><p>Our PR program is tiered. <strong>Press Starter</strong> begins at <strong>$397/mo</strong> and covers HARO management plus one monthly press release. <strong>Press + Authority</strong> starts at <strong>$697/mo</strong> and adds direct journalist outreach for 2-3 regional and national tier-2 placement pitches per month. <strong>Founder Visibility</strong> starts at <strong>$997/mo</strong> and adds executive positioning, podcast pitching, and ghost-written guest articles. On top of the base retainer, placement fees vary by outlet — quoted transparently when opportunities surface.</p></details>
+        <details class="faq-item reveal"><summary>Why is PR pricing custom?</summary><p>Because the cost depends entirely on which outlets you pursue. A neighborhood Miami blog might be free. A regional business journal might be <strong>$400</strong>. A national tier-2 outlet like Yahoo Finance or Inc might be <strong>$1,000 to $3,000</strong>. A premium national tier-1 placement might be <strong>$5,000+</strong> if achievable. We start with a base retainer that covers the work and quote placement fees separately so you decide which ones to invest in.</p></details>
+        <details class="faq-item reveal"><summary>What's HARO and how does it help my business?</summary><p>HARO (Help a Reporter Out) is a daily email of journalist queries looking for expert sources. We monitor the queries every day, identify the ones where you can credibly comment, and write thoughtful pitches on your behalf. When a journalist accepts, you get quoted in their article — often on high-authority sites with a backlink to your business. It's one of the cheapest ways to build founder visibility and earn SEO backlinks.</p></details>
+        <details class="faq-item reveal"><summary>Will press coverage actually help my Google rankings?</summary><p>Often yes — when the placement lands on a high-authority domain. A founder quote in Yahoo Finance, Forbes, Inc, or a major trade publication gives you a high-DR backlink that directly helps your local SEO. We deliberately target outlets that double as credibility signals AND SEO assets, so your press budget pulls double duty. Local-only placements help brand awareness but typically don't move rankings the way national tier-2 placements do.</p></details>
+        <details class="faq-item reveal"><summary>How long until I see results from PR?</summary><p>First HARO placements typically land inside <strong>30 to 60 days</strong> for a credible operator with a specific angle. Press release distribution produces immediate syndication on AP News, Google News, and Yahoo News, but the SEO and credibility lift compounds over months. Founder-led national placements typically take <strong>60 to 120 days</strong> of consistent pitching to land the first hit, then compound from there.</p></details>
+        <details class="faq-item reveal"><summary>Can I cancel anytime?</summary><p>Yes. Every service at Thryv Marketing Solutions is month-to-month with 30 days notice. You keep all assets — press releases, journalist relationships, coverage reports, media kit — if you ever leave. No contracts, no hidden cancellation fees.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <ToolCallout
+    href="/free-tools/review-revenue-calculator/"
+    icon="💰"
+    title="What is a stronger reputation actually worth?"
+    desc="PR and reviews compound. Plug in your numbers and see the revenue gap between your current rating and a 4.8."
+  />
+
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Related services</span>
+        <h2>PR works hardest when paired with these</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/seo/" class="related-card">
+          <h3>SEO, AEO & GEO</h3>
+          <p>Press placements produce high-DR backlinks. SEO turns those backlinks into ranking lift for your local search terms.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/reputation-management/" class="related-card">
+          <h3>Reputation Management</h3>
+          <p>Press builds credibility outside your site. Reviews build credibility on the listings that close the deal.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/google-business-profile/" class="related-card">
+          <h3>GBP Management</h3>
+          <p>Press placements that mention your business reinforce the local entity signals Google uses to rank your GBP.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="contact-copy reveal">
+          <span class="label">Free proposal</span>
+          <h2>Let's map out where you should show up</h2>
+          <p class="lead" style="margin-bottom:24px;">Tell us about your business. We'll look at your current press presence, your story angles, and which outlets would actually move the needle for your specific situation.</p>
+          <ul class="check-list">
+            <li>Current press footprint audit</li>
+            <li>Story angle brainstorm (3-5 angles minimum)</li>
+            <li>Outlet target list (local + regional + national if relevant)</li>
+            <li>90-day projection with honest placement probabilities</li>
+          </ul>
+        </div>
+        <div class="contact-form-wrap">
+          <ContactForm title="Get My Free Proposal" subject="Press & PR Services Inquiry | Thryv" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .svc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .svc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .svc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 720px; }
+  .svc-hero .lead { color: rgba(255,255,255,.8); max-width: 640px; margin-bottom: 32px; }
+  .svc-hero .lead strong { color: var(--white); }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+  .stakes { background: var(--light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 28px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+
+  .section-head { max-width: 680px; margin-bottom: 8px; }
+  .section-head.center { margin: 0 auto 8px; text-align: center; }
+  .section-head .label { margin-bottom: 12px; display: inline-block; }
+  .problem-section { background: var(--white); }
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .two-col p strong { color: var(--dark); }
+  .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; padding: 0; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; flex-shrink: 0; }
+  .pricing-section { background: var(--light); }
+  .custom-note { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 14px; font-style: italic; color: var(--gray); line-height: 1.65; }
+
+  .faq-section { background: var(--light); }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; max-width: none; margin: 0; }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p strong { color: var(--dark); } .faq-item p a { color: var(--blue); font-weight: 700; }
+
+  .related-section { background: var(--white); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .contact-section { background: var(--light); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 8px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 8px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; gap: 40px; } .contact-split { grid-template-columns: 1fr; gap: 40px; } .related-grid { grid-template-columns: 1fr; } .faq-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 600px) { .faq-list { grid-template-columns: 1fr; } }
+
+  .pr-tiers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  @media (min-width: 860px) {
+    .pr-tiers { grid-template-columns: repeat(3, 1fr); }
+  }
+  .pr-tier {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+  }
+  .pr-tier-name {
+    font-size: 20px;
+    margin: 0 0 6px;
+    color: var(--dark);
+  }
+  .pr-tier-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+  .pr-tier-desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .pr-tier-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pr-tier-list li {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.5;
+    padding: 8px 0 8px 22px;
+    position: relative;
+    border-top: 1px solid var(--border);
+  }
+  .pr-tier-list li:first-child { border-top: none; }
+  .pr-tier-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--orange-dark);
+    font-weight: 700;
+  }
+
+  .pr-cost-table {
+    margin-top: 32px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .pr-cost-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    gap: 16px;
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    align-items: start;
+    font-size: 14px;
+  }
+  .pr-cost-row:first-child { border-top: none; }
+  .pr-cost-head {
+    background: var(--light);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  .pr-cost-tier { color: var(--dark); }
+  .pr-cost-range { color: var(--blue); font-weight: 700; }
+  .pr-cost-examples { color: var(--gray); line-height: 1.5; }
+
+  @media (max-width: 720px) {
+    .pr-cost-row {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .pr-cost-head { display: none; }
+    .pr-cost-tier::before { content: "Tier: "; font-weight: 500; color: var(--gray-light); }
+    .pr-cost-range::before { content: "Typical range: "; font-weight: 500; color: var(--gray-light); }
+  }
+
+  .pr-cost-note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

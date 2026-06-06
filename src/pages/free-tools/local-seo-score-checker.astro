@@ -1,0 +1,96 @@
+---
+import ToolPageLayout from '../../layouts/ToolPageLayout.astro';
+
+const questions = [
+  'Does your business appear on page 1 of Google for your main service + city?',
+  'Is your Google Business Profile fully filled out (description, categories, hours, photos)?',
+  'Is your business name, address, and phone number identical across all directories?',
+  'Does your website have unique title tags and meta descriptions on every page?',
+  'Does your website load in under 3 seconds on mobile?',
+  'Is your business listed on Yelp, Apple Maps, and Bing Places with accurate info?',
+  'Does your website have a dedicated page for each core service you offer?',
+  'Do you have at least 20 Google reviews with a 4.0 or higher average rating?',
+  'Have you published any blog posts or articles targeting local keywords in the past year?',
+  'Does your website have schema markup (structured data) set up?',
+];
+---
+
+<ToolPageLayout
+  slug="local-seo-score-checker"
+  title="Local SEO Score Checker"
+  metaTitle="Free Local SEO Score Checker (10 Questions) | Thryv"
+  description="Free Local SEO Score Checker. 10 yes-or-no questions, instant score out of 10, and a clear breakdown of which local SEO levers are leaking leads."
+  icon="🔍"
+  pageLead="Ten yes-or-no questions cover the local-SEO levers that actually move the map pack: NAP consistency, on-page, citations, reviews, schema, content."
+  contactSubject="Local SEO Score Checker Inquiry | Thryv"
+>
+  <form id="seo-form">
+    <ol class="audit-questions">
+      {questions.map((q, i) => (
+        <li class="audit-q">
+          <span class="q-text"><strong>{i + 1}.</strong> {q}</span>
+          <div class="q-opts">
+            <label><input type="radio" name={`sq${i+1}`} value="1" required /> Yes</label>
+            <label><input type="radio" name={`sq${i+1}`} value="0" /> No</label>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My SEO Score</button>
+  </form>
+  <div class="audit-result" id="seo-result" style="display:none;">
+    <div class="score-display">
+      <span class="score-num" id="seo-score-num">0</span><span class="score-denom">/10</span>
+    </div>
+    <p class="score-msg" id="seo-score-msg"></p>
+    <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free SEO Proposal</a>
+    <button class="btn-retake" id="seo-retake-btn">Retake the quiz</button>
+  </div>
+
+  <div class="how-it-works">
+    <h2>What your score means</h2>
+    <p><strong>0 to 3:</strong> Foundational gaps. You are likely losing the majority of "near me" and "in [city]" search traffic to competitors who fixed these levers years ago.</p>
+    <p><strong>4 to 6:</strong> Moderate presence. The basics are partially there. Closing the gaps (schema, citation cleanup, page-per-service) typically moves rankings within 60 to 90 days.</p>
+    <p><strong>7 to 8:</strong> Good foundation. A few targeted improvements (review velocity, content velocity, internal links) could push you to the top 3.</p>
+    <p><strong>9 to 10:</strong> Strong local SEO. The next move is dominance: more service pages, more neighborhood pages, faster review velocity than competitors.</p>
+    <p>Want help closing the gap? Our <a href="/services/seo/">SEO, AEO, and GEO service</a> covers all 10 levers in a single program.</p>
+  </div>
+</ToolPageLayout>
+
+<style>
+  .how-it-works { max-width: 720px; margin: 40px auto 0; padding-top: 32px; border-top: 1px solid var(--border); }
+  .how-it-works h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
+  .how-it-works p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .how-it-works strong { color: var(--dark); }
+  .how-it-works a { color: var(--blue); font-weight: 700; }
+</style>
+
+<script>
+  const seoForm   = document.getElementById('seo-form')   as HTMLFormElement;
+  const seoResult = document.getElementById('seo-result') as HTMLElement;
+
+  seoForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = new FormData(seoForm);
+    let score = 0;
+    for (let i = 1; i <= 10; i++) { if (data.get('sq' + i) === '1') score++; }
+    (document.getElementById('seo-score-num') as HTMLElement).textContent = String(score);
+    const msg = score <= 3
+      ? 'Your SEO foundation needs serious work. You are missing leads every day.'
+      : score <= 6
+      ? 'Moderate SEO presence. Fixing the gaps could significantly increase your rankings.'
+      : score <= 8
+      ? 'Good foundation. A few targeted improvements could push you to the top.'
+      : 'Strong local SEO. Let us look at what is left to dominate your market.';
+    (document.getElementById('seo-score-msg') as HTMLElement).textContent = msg;
+    seoForm.style.display   = 'none';
+    seoResult.style.display = 'block';
+    seoResult.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  document.getElementById('seo-retake-btn')?.addEventListener('click', () => {
+    seoForm.reset();
+    seoForm.style.display   = 'block';
+    seoResult.style.display = 'none';
+  });
+</script>

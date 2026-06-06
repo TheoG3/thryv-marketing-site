@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = 'May 23, 2026';
+---
+
+<BaseLayout
+  title="Accessibility Statement | Thryv Marketing Solutions"
+  description="Thryv Marketing Solutions is committed to digital accessibility and works to meet WCAG 2.2 Level AA. Read our accessibility commitment and how to request assistance."
+  canonical="https://thryvmarketingsolutions.com/accessibility/"
+>
+
+  <section class="legal-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true"> › </span><span>Accessibility</span>
+      </nav>
+      <h1>Accessibility Statement</h1>
+      <p class="last-updated">Last updated: {updated}</p>
+    </div>
+  </section>
+
+  <section class="legal-body">
+    <div class="container">
+      <div class="legal-content">
+
+        <section class="legal-section">
+          <h2>Our commitment</h2>
+          <p>Thryv Marketing Solutions is committed to making this website usable by as many people as possible, including people with disabilities. We believe everyone should be able to find information about our services and contact us regardless of how they access the web.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Standard we aim for</h2>
+          <p>We aim to conform to the <strong>Web Content Accessibility Guidelines (WCAG) 2.2, Level AA</strong>, published by the World Wide Web Consortium (W3C). These guidelines explain how to make web content more accessible for people with a wide range of disabilities, including visual, auditory, physical, speech, cognitive, and neurological disabilities.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Current status</h2>
+          <p>This website is <strong>partially conformant</strong> with WCAG 2.2 Level AA: most of the site meets the standard, and we are actively working to resolve the remaining items. Accessibility is an ongoing effort, not a one-time project. We review the site regularly and address issues as they are identified.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>What we have done</h2>
+          <p>Measures we have built into the site include: descriptive text alternatives for images, a "skip to main content" link for keyboard users, a consistent visible keyboard focus indicator, support for reduced-motion preferences, properly labelled forms, valid page language and heading structure, and color contrast that meets the AA standard for text and controls.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Known limitations</h2>
+          <p>Despite our efforts, some limitations may remain. Some content provided by third parties (for example, embedded scheduling or analytics tools) is outside our direct control and may not fully meet our standard. If you encounter a barrier anywhere on this site, please tell us using the contact details below and we will do our best to fix it promptly.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>Need help, or found a problem?</h2>
+          <p>If you have difficulty using any part of this website, or need information on this site in a different format, we want to help. Contact us and we will respond within 2 business days:</p>
+          <p>
+            Email: <a href="mailto:hello@thryvmarketingsolutions.com">hello@thryvmarketingsolutions.com</a><br />
+            Please include the page address (URL) and a short description of the problem.
+          </p>
+          <p>We will work with you to provide the information, service, or assistance you need through an accessible method.</p>
+        </section>
+
+        <section class="legal-section">
+          <h2>How this statement was prepared</h2>
+          <p>This statement reflects an internal accessibility review of the site against WCAG 2.2 Level AA, including automated testing and manual evaluation. It was last reviewed on {updated} and is reviewed on an ongoing basis.</p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .legal-hero { padding: 64px 0 40px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .legal-hero h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; color: var(--white); margin: 16px 0 8px; }
+  .last-updated { font-size: 14px; color: rgba(255,255,255,.6); }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+
+  .legal-body { padding: 64px 0 96px; background: var(--white); }
+  .legal-content { max-width: 760px; }
+  .legal-section { margin-bottom: 40px; }
+  .legal-section h2 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+  .legal-section p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-bottom: 12px; }
+  .legal-section a { color: var(--blue); font-weight: 600; }
+</style>

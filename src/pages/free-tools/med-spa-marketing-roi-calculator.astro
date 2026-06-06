@@ -1,0 +1,398 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const BASE = 'https://thryvmarketingsolutions.com';
+const canonical = `${BASE}/free-tools/med-spa-marketing-roi-calculator/`;
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE}/` },
+      { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": `${BASE}/free-tools/` },
+      { "@type": "ListItem", "position": 3, "name": "Med Spa Marketing ROI Calculator", "item": canonical },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": canonical,
+    "url": canonical,
+    "name": "Miami Med Spa Marketing ROI Calculator",
+    "description": "Free calculator that estimates new patients, cost-per-acquisition, year-one revenue, and 5-year lifetime value from your med spa's monthly marketing budget. Built for Miami clinics, math model published transparently.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. HTML5.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@id": `${BASE}/#business` },
+    "isAccessibleForFree": true,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to use the Med Spa Marketing ROI Calculator",
+    "totalTime": "PT2M",
+    "step": [
+      { "@type": "HowToStep", "position": 1, "name": "Enter average treatment price", "text": "Slide the average treatment price input to match your clinic's typical Botox or filler ticket. The Miami industry average is $800 per session." },
+      { "@type": "HowToStep", "position": 2, "name": "Enter monthly marketing budget", "text": "Enter what you spend (or plan to spend) on marketing each month. Most Miami med spas spend $1,200 to $3,000 per month across SEO, ads, and reputation." },
+      { "@type": "HowToStep", "position": 3, "name": "Adjust customer lifetime value", "text": "Slide the lifetime value to match your typical patient. Miami med spa LTV averages $2,500 over 5 years (per MediaBistro 2025)." },
+      { "@type": "HowToStep", "position": 4, "name": "Read your ROI results", "text": "The calculator shows estimated new patients per month, cost per acquired patient, year-one revenue, 5-year lifetime revenue, and ROI percentage compared to the industry baseline." },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Med Spa Marketing ROI Calculator | Miami Practice Tool"
+  description="Free ROI calculator for Miami med spas. Enter marketing budget, treatment price, and LTV. See new patients per month, cost-per-acquisition, year-one revenue, and 5-year value."
+  canonical={canonical}
+  schema={schema}
+>
+
+  <section class="calc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/free-tools/">Free Tools</a><span> › </span><span>Med Spa Marketing ROI Calculator</span>
+      </nav>
+      <span class="post-label">Free Tool</span>
+      <h1>Miami Med Spa Marketing ROI Calculator</h1>
+      <p class="lead">
+        Plug in your treatment price, monthly marketing budget, and customer lifetime value. Get an honest estimate of new patients per month, cost-per-acquisition, year-one revenue, and 5-year value. Math model published below, no black box.
+      </p>
+    </div>
+  </section>
+
+  <section class="calc-section">
+    <div class="container">
+      <div class="calc-shell">
+        <div class="calc-inputs" id="roi-inputs">
+          <label class="calc-field">
+            <span class="calc-label-row">
+              <span>Average treatment price</span>
+              <span class="calc-value" id="val-treatment">$800</span>
+            </span>
+            <input type="range" id="treatment" min="200" max="2500" value="800" step="50" />
+            <span class="calc-helper">Miami industry average is $800/session (Botox + minor filler combo). Range covers basic facials to full-face fillers.</span>
+          </label>
+
+          <label class="calc-field">
+            <span class="calc-label-row">
+              <span>Monthly marketing budget</span>
+              <span class="calc-value" id="val-budget">$1,500</span>
+            </span>
+            <input type="range" id="budget" min="497" max="10000" value="1500" step="50" />
+            <span class="calc-helper">Most Miami med spas spend $1,200 to $3,000/mo across SEO, ads, and reputation. <a href="/blog/med-spa-marketing-cost-miami/">See full pricing breakdown ↗</a></span>
+          </label>
+
+          <label class="calc-field">
+            <span class="calc-label-row">
+              <span>Customer lifetime value</span>
+              <span class="calc-value" id="val-ltv">$2,500</span>
+            </span>
+            <input type="range" id="ltv" min="1000" max="10000" value="2500" step="100" />
+            <span class="calc-helper">Miami med spa LTV averages $2,500 over 5 years (per <a href="https://www.mediabistro.com/datablog/why-med-spa-customers-spend-more/" target="_blank" rel="noopener">MediaBistro 2025</a>). High-AOV neighborhoods (Aventura, Coral Gables) skew higher.</span>
+          </label>
+        </div>
+
+        <div class="calc-results" id="roi-results">
+          <div class="result-card primary">
+            <span class="result-label">Estimated new patients per month</span>
+            <span class="result-value" id="out-patients">2</span>
+            <span class="result-sub">Range based on 20% lead-to-booking conversion blend</span>
+          </div>
+          <div class="result-grid">
+            <div class="result-card">
+              <span class="result-label">Cost per acquired patient</span>
+              <span class="result-value" id="out-cac">$750</span>
+            </div>
+            <div class="result-card">
+              <span class="result-label">Year-one revenue</span>
+              <span class="result-value" id="out-y1">$19,200</span>
+            </div>
+            <div class="result-card">
+              <span class="result-label">5-year lifetime revenue</span>
+              <span class="result-value" id="out-ltv">$60,000</span>
+            </div>
+            <div class="result-card highlight">
+              <span class="result-label">Year-one ROI</span>
+              <span class="result-value" id="out-roi-y1">7%</span>
+            </div>
+            <div class="result-card highlight">
+              <span class="result-label">5-year ROI</span>
+              <span class="result-value" id="out-roi-5">233%</span>
+            </div>
+            <div class="result-card">
+              <span class="result-label">Break-even point</span>
+              <span class="result-value" id="out-breakeven">2 patients/mo</span>
+            </div>
+          </div>
+          <div class="result-cta">
+            <p>Want a marketing plan that actually hits these numbers for your Miami clinic?</p>
+            <a href="/contact/?from=roi-calculator" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Get a Free Proposal for Your Clinic
+            </a>
+            <a href="/medspas/" class="btn-secondary">Med Spa Marketing Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="calc-math">
+    <div class="container">
+      <h2>The Math Behind the Calculator</h2>
+      <p>
+        Everything above is computed in your browser using a transparent formula set. No tracking on your inputs, no server-side anything. The math is published in full so anyone can audit it.
+      </p>
+
+      <details class="calc-math-details">
+        <summary>
+          <span class="summary-label">Show the formulas</span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <pre><code>// Industry blend assumptions (Miami med spa baseline, 2025-2026 data)
+const CONVERSION_RATE  = 0.20;   // 20% lead-to-booking from blended SEO + paid ads
+const SHOWUP_RATE      = 0.85;   // 85% of bookings show up
+const TREATMENT_COMPLETION = 0.75;  // 75% complete at least one paid treatment
+
+// Cost-per-lead assumed at ~$50 blended (SEO contributes 0, Google Ads ~$80, Meta ~$45)
+const COST_PER_LEAD = 50;
+
+// Y1 visit cadence: ~12 visits/year for active patients (per MediaBistro 2025)
+const Y1_VISIT_COUNT = 12;
+
+// Inputs from sliders
+const treatment = TREATMENT_PRICE;
+const budget = MONTHLY_BUDGET;
+const ltv = CUSTOMER_LTV;
+
+// Derived
+const leads_per_month     = budget / COST_PER_LEAD;
+const new_patients_per_mo = leads_per_month * CONVERSION_RATE * SHOWUP_RATE * TREATMENT_COMPLETION;
+const cost_per_patient    = budget / new_patients_per_mo;
+const year_one_revenue    = new_patients_per_mo * Y1_VISIT_COUNT * treatment;
+const lifetime_revenue    = new_patients_per_mo * 12 * ltv;
+const y1_roi_percent      = ((year_one_revenue - 12 * budget) / (12 * budget)) * 100;
+const five_year_roi_pct   = ((lifetime_revenue - 60 * budget) / (60 * budget)) * 100;
+const breakeven_patients  = (12 * budget) / (Y1_VISIT_COUNT * treatment);
+</code></pre>
+      </details>
+
+      <p class="calc-disclaimer">
+        These are blended industry estimates derived from public pricing and conversion-rate data. Real-world results depend on local competition, treatment menu, review velocity, and existing brand recognition. Use this as a sanity check, not a prediction. Want a real, site-specific projection? <a href="/contact/?from=roi-calculator">Book a free proposal</a>.
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    const $ = (id) => document.getElementById(id);
+    const treatmentInput = $('treatment');
+    const budgetInput = $('budget');
+    const ltvInput = $('ltv');
+
+    function fmtMoney(n) {
+      if (n >= 1000000) return '$' + (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000) return '$' + Math.round(n).toLocaleString();
+      return '$' + Math.round(n);
+    }
+    function fmtPct(n) {
+      if (!isFinite(n)) return 'n/a';
+      if (Math.abs(n) >= 1000) return Math.round(n).toLocaleString() + '%';
+      return Math.round(n) + '%';
+    }
+
+    function recompute() {
+      const treatment = +treatmentInput.value;
+      const budget = +budgetInput.value;
+      const ltv = +ltvInput.value;
+
+      $('val-treatment').textContent = fmtMoney(treatment);
+      $('val-budget').textContent = fmtMoney(budget) + '/mo';
+      $('val-ltv').textContent = fmtMoney(ltv);
+
+      const COST_PER_LEAD = 50;
+      const CONVERSION = 0.20;
+      const SHOWUP = 0.85;
+      const COMPLETION = 0.75;
+      const Y1_VISITS = 12;
+
+      const leads = budget / COST_PER_LEAD;
+      const newPatientsMo = leads * CONVERSION * SHOWUP * COMPLETION;
+      const cac = newPatientsMo > 0 ? budget / newPatientsMo : Infinity;
+      const y1Rev = newPatientsMo * Y1_VISITS * treatment;
+      const lifetimeRev = newPatientsMo * 12 * ltv;
+      const y1Roi = ((y1Rev - 12 * budget) / (12 * budget)) * 100;
+      const fiveYrRoi = ((lifetimeRev - 60 * budget) / (60 * budget)) * 100;
+      const breakeven = (12 * budget) / (Y1_VISITS * treatment);
+
+      $('out-patients').textContent = newPatientsMo.toFixed(1);
+      $('out-cac').textContent = isFinite(cac) ? fmtMoney(cac) : 'n/a';
+      $('out-y1').textContent = fmtMoney(y1Rev);
+      $('out-ltv').textContent = fmtMoney(lifetimeRev);
+      $('out-roi-y1').textContent = fmtPct(y1Roi);
+      $('out-roi-5').textContent = fmtPct(fiveYrRoi);
+      $('out-breakeven').textContent = breakeven.toFixed(1) + ' patients/mo';
+    }
+
+    [treatmentInput, budgetInput, ltvInput].forEach((el) => {
+      if (el) el.addEventListener('input', recompute);
+    });
+    recompute();
+  })();
+</script>
+
+<style>
+  .calc-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 56px 0 48px; color: var(--white);
+  }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .calc-hero h1 {
+    font-size: clamp(28px, 4.5vw, 42px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 800px; color: var(--white);
+  }
+  .calc-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.85); max-width: 760px; }
+
+  .calc-section { background: var(--white); padding: 56px 0; }
+  .calc-shell {
+    display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px;
+    max-width: 1120px; margin: 0 auto;
+  }
+  .calc-inputs {
+    background: var(--light, #f8fafc);
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg, 14px); padding: 28px;
+    display: flex; flex-direction: column; gap: 26px;
+  }
+  .calc-field { display: flex; flex-direction: column; gap: 8px; }
+  .calc-label-row {
+    display: flex; align-items: baseline; justify-content: space-between;
+    font-size: 14px; font-weight: 700; color: var(--dark);
+  }
+  .calc-value { color: var(--blue); font-weight: 800; font-size: 16px; }
+  .calc-field input[type="range"] {
+    width: 100%; accent-color: var(--blue); height: 6px;
+  }
+  .calc-helper { font-size: 12px; line-height: 1.55; color: var(--gray); }
+  .calc-helper a { color: var(--blue); }
+  .calc-helper a:hover { text-decoration: underline; }
+
+  .calc-results {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .result-card {
+    background: var(--white); border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius, 10px); padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .result-card.primary {
+    background: linear-gradient(135deg, var(--blue, #1B4FA8) 0%, #0A2E6E 100%);
+    color: var(--white); border: none;
+    box-shadow: 0 14px 30px -14px rgba(10, 46, 110, 0.45);
+  }
+  .result-card.highlight {
+    background: #FFF6E6; border-color: var(--orange);
+  }
+  .result-label {
+    font-size: 11px; font-weight: 800; letter-spacing: .1em;
+    text-transform: uppercase; opacity: 0.65;
+  }
+  .result-value { font-size: 28px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.15; }
+  .result-card:not(.primary) .result-value { color: var(--dark); }
+  .result-card.highlight .result-value { color: #B25D00; }
+  .result-card .result-sub { font-size: 12px; opacity: 0.75; margin-top: 4px; }
+
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .result-cta {
+    background: var(--white); border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg, 14px); padding: 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 6px;
+  }
+  .result-cta p { font-size: 15px; line-height: 1.55; color: var(--dark); margin: 0; font-weight: 600; }
+  .result-cta a {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700;
+    text-decoration: none; transition: opacity .2s;
+  }
+  .btn-primary { background: var(--orange); color: var(--dark); }
+  .btn-primary:hover { opacity: .9; color: var(--dark); }
+  .btn-secondary { background: transparent; color: var(--blue); border: 1.5px solid var(--blue); justify-content: center; }
+  .btn-secondary:hover { background: var(--blue); color: var(--white); }
+
+  .calc-math {
+    background: var(--light, #f8fafc);
+    border-top: 1.5px solid var(--border, #e2e8f0);
+    padding: 56px 0;
+  }
+  .calc-math .container { max-width: 920px; }
+  .calc-math h2 {
+    font-size: clamp(22px, 2.5vw, 28px); font-weight: 800; color: var(--dark);
+    margin: 0 0 16px; letter-spacing: -0.01em;
+  }
+  .calc-math p { font-size: 15px; line-height: 1.65; color: var(--gray); margin: 0 0 18px; }
+  .calc-math-details {
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg, 14px);
+    background: var(--white);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .calc-math-details summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 22px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--dark);
+    background: var(--white);
+    transition: background .15s;
+  }
+  .calc-math-details summary::-webkit-details-marker { display: none; }
+  .calc-math-details summary:hover { background: #F4F7FB; }
+  .summary-icon {
+    color: var(--blue);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform .2s ease;
+  }
+  .calc-math-details[open] .summary-icon { transform: rotate(45deg); }
+  .calc-math-details[open] .summary-label::after {
+    content: " (open)";
+    color: var(--gray);
+    font-weight: 600;
+  }
+  .calc-math-details pre {
+    background: #0A2E6E; color: #E0EAFF;
+    padding: 22px 26px; font-size: 13px; line-height: 1.65;
+    overflow-x: auto; font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    margin: 0;
+    border-top: 1.5px solid var(--border, #e2e8f0);
+  }
+  .calc-math-details code { font-family: inherit; color: inherit; }
+  .calc-disclaimer { font-size: 13px; font-style: italic; color: var(--gray); }
+  .calc-disclaimer a { color: var(--blue); }
+  .calc-disclaimer a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .calc-shell { grid-template-columns: 1fr; }
+    .result-grid { grid-template-columns: 1fr; }
+  }
+</style>

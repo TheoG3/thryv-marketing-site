@@ -40,6 +40,16 @@ img { display: block; max-width: 100%; }
 .skip-link { position: absolute; top: -48px; left: 0; background: var(--blue); color: var(--white); padding: 10px 18px; text-decoration: none; z-index: 200; border-radius: 0 0 8px 0; font-size: 14px; font-weight: 700; transition: top .2s; }
 .skip-link:focus { top: 0; outline: 3px solid var(--orange); outline-offset: 2px; }
 
+/* ── KEYBOARD FOCUS (WCAG 2.4.7) ──────────────── */
+/* blue ring on light surfaces; white ring on dark sections so it's always visible */
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 3px; }
+.hero :focus-visible, footer :focus-visible, .contact-section :focus-visible,
+.why-section :focus-visible, .ai-section :focus-visible, .custom-plan :focus-visible,
+.mobile-menu :focus-visible, .stats-bar :focus-visible { outline-color: #FFFFFF; }
+
+/* ── SR-ONLY (visually hidden, screen-reader available) ── */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
 /* ── UTILITY ─────────────────────────────── */
 .container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
 .section   { padding: 96px 0; }
@@ -52,7 +62,7 @@ img { display: block; max-width: 100%; }
   background: var(--blue-light); border-radius: 100px;
   padding: 6px 14px; margin-bottom: 20px;
 }
-.label-orange { color: var(--orange-dark); background: #FFF8EC; }
+.label-orange { color: #8A5A00; background: #FFF8EC; } /* a11y: #D4890A on #FFF8EC was 2.69:1; #8A5A00 = 5.6:1 */
 
 .section-head { max-width: 640px; margin-bottom: 56px; }
 .section-head.center { margin: 0 auto 56px; text-align: center; }
@@ -82,11 +92,12 @@ h2 {
 }
 .btn:hover::after { transform: translateX(260%) skewX(-20deg); }
 .btn-primary {
-  background: var(--orange); color: var(--white);
+  /* a11y: dark text on brand orange #F5A623 = 8.58:1 (white-on-orange was 2.03:1, failed WCAG 1.4.3) */
+  background: var(--orange); color: var(--dark);
   padding: 14px 28px;
   box-shadow: 0 4px 16px rgba(245,166,35,.35);
 }
-.btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,166,35,.45); }
+.btn-primary:hover { background: var(--orange-dark); color: var(--dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,166,35,.45); }
 .btn-outline {
   background: transparent; color: var(--white);
   padding: 13px 28px; border: 2px solid rgba(255,255,255,.4);
@@ -100,7 +111,8 @@ h2 {
 .btn-blue:hover { background: var(--blue-dark); transform: translateY(-1px); }
 
 /* ── NAV ─────────────────────────────────── */
-nav {
+/* Scoped to .site-nav so it doesn't bleed into other <nav> elements (e.g. blog breadcrumbs) */
+nav.site-nav {
   position: sticky; top: 0; z-index: 100;
   background: var(--white);
   border-bottom: 1px solid transparent;
@@ -285,18 +297,20 @@ textarea { resize: vertical; min-height: 100px; }
 
 /* ── FOOTER ──────────────────────────────── */
 footer { background: #04080F; padding: 60px 0 32px; }
-.footer-grid { display: grid; grid-template-columns: 1.8fr repeat(4, 1fr); gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 32px; }
+.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(5, 1fr); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 32px; }
+@media (max-width: 1100px) { .footer-grid { grid-template-columns: 1fr 1fr 1fr; } }
+@media (max-width: 700px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
 .footer-brand img { height: 40px; margin-bottom: 16px; }
 .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.55); max-width: 260px; margin-bottom: 20px; }
 .footer-social { display: flex; gap: 10px; }
 .footer-social a { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.5); transition: background .2s, color .2s; }
 .footer-social a:hover { background: var(--orange); color: var(--white); }
-.footer-col h4 { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.footer-col h3 { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; }
 .footer-col a { display: block; font-size: 14px; color: rgba(255,255,255,.55); margin-bottom: 10px; transition: color .2s; }
 .footer-col a:hover { color: var(--white); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
-.footer-bottom p { font-size: 13px; color: rgba(255,255,255,.35); }
-.footer-bottom p a { color: rgba(255,255,255,.35); transition: color .2s; }
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,.62); } /* a11y: .35 was 3.09:1; .62 = ~7:1 */
+.footer-bottom p a { color: rgba(255,255,255,.82); transition: color .2s; text-decoration: underline; }
 .footer-bottom p a:hover { color: rgba(255,255,255,.7); }
 .footer-bottom .hablamos { font-size: 13px; font-weight: 700; color: var(--orange); }
 

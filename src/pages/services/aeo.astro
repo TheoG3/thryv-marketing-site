@@ -1,0 +1,407 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "AEO",      "item": "https://thryvmarketingsolutions.com/services/aeo/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is AEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AEO stands for Answer Engine Optimization. It is the practice of structuring your content (answer-first writing, clear question headings, FAQ and HowTo schema) so AI search engines can lift a clean, quotable answer from your site. Google's AI Overview, the answer box above the blue links, is where most local businesses see it first. AEO pairs with GEO, which earns citations across all the AI search engines." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is AEO different from SEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "SEO is about ranking your page in the blue-link organic results. AEO is about getting your content cited as the actual answer inside Google's AI Overview block at the top of the page. They use overlapping signals like content quality, schema, and authority, but AEO requires a different content format. Specifically, an answer-first structure with clear question headings and concise paragraphs that the AI can lift verbatim." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is AEO different from GEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AEO (Answer Engine Optimization) is the on-page craft of structuring your content so AI engines can quote it cleanly, with Google's AI Overview the clearest example. GEO (Generative Engine Optimization) is the broader practice of getting cited across all the AI search engines, including ChatGPT, Gemini, Perplexity, and Google's AI answers. AEO is the readiness; GEO is the reach. Most clients run both, and each has its own page." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you guarantee my business gets cited in AI Overviews?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No agency can guarantee AI Overview citations. Google's selection logic is opaque and changes frequently. What we can do is structure your content to meet every known AEO best practice and track which queries cite you each month so we know what is working." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="AEO Services Miami | Google AI Overview Optimization | Thryv"
+  description="Miami AEO services. Get cited in Google AI Overviews when buyers search questions. Answer-first content, FAQ schema, and answer-block targeting. $397/mo, no contracts."
+  canonical="https://thryvmarketingsolutions.com/services/aeo/"
+  ogImage="https://thryvmarketingsolutions.com/og-seo.jpg"
+  schema={schema}
+>
+
+  <section class="svc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><a href="/services/ai-seo/">AI SEO</a><span> › </span><span>AEO</span>
+      </nav>
+      <span class="label">Service</span>
+      <h1>AEO for Miami Businesses</h1>
+      <p class="lead">Answer Engine Optimization structures your content so AI engines can lift a clean answer straight from your site, <strong>starting with Google's AI Overview</strong>, the AI-summarized answer that now appears above the blue links. Be the answer your customer reads first.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Proposal
+        </a>
+        <div class="hero-price">Starting at <strong>$397/mo</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Month-to-month, no contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">2B</div><div class="stake-d">people use Google's AI Overviews every month</div></div>
+        <div class="stake"><div class="stake-n">Above the links</div><div class="stake-d">the AI answer now appears before the organic results</div></div>
+        <div class="stake"><div class="stake-n">10%+</div><div class="stake-d">more searches where AI Overviews appear, per Google</div></div>
+      </div>
+      <p class="stakes-src">Figures published by <a href="https://blog.google/" target="_blank" rel="noopener">Google</a>.</p>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">The problem</span>
+          <h2>The AI Overview ate your click.</h2>
+          <p>When Google shows an AI Overview, a large share of users read it and never scroll past. The blue links you spent years ranking for are suddenly below the fold of attention. If the Overview cites a competitor instead of you, that buyer is theirs without ever seeing your listing.</p>
+          <p style="margin-top:16px;">The good news: AI Overviews don't pull from the top-ranking page. They pull from the page with the cleanest answer-first structure. <strong>That's a winnable game even for businesses that aren't ranked first.</strong></p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li>Question-style queries trigger AI Overviews most often</li>
+            <li>Local "best of" searches increasingly trigger AI Overviews</li>
+            <li>FAQ-structured content with proper schema gets cited disproportionately</li>
+            <li>Answer-first paragraphs (40 to 60 words) outperform long intros</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <span class="label">Our solution</span>
+          <h2>Structure every page to be the answer.</h2>
+          <p>We rebuild your top pages with the format Google's Overview rewards. Question-shaped H2s, answer-first paragraphs, FAQ and HowTo schema, and concise definitional blocks the AI can lift verbatim.</p>
+          <p style="margin-top:16px;">Then we track which queries cite you each month, so you see the exact wins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">AEO, explained</span>
+        <h2>What is answer engine optimization, really?</h2>
+        <p><strong>AEO is the craft of structuring your content so AI engines can lift a clean answer straight from your site, instead of skipping you for a competitor it can read more easily.</strong> The clearest example is Google's AI Overview, the box Google now writes and drops at the top of the page, above the blue links, and for a fast-growing share of searches it's the only thing people read before they decide who to call.</p>
+        <p>It's a genuinely new surface. Google began rolling AI Overviews into Search in 2024 and has kept widening the queries that trigger them ever since. Unlike the old ten blue links, the Overview doesn't simply reward whoever ranks first, it lifts the clearest, best-structured answer it can find and names that source.</p>
+        <p>That's the part that levels the field. The Overview doesn't care that you aren't the biggest name in town; it cares whether your page answers the question cleanly, in a format it can quote. Structuring your content to be that answer is exactly what we do.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>How Google's AI Overview decides what to quote</h2>
+        <p class="lead" style="margin:0 auto;">The Overview pulls from pages it can read, trust, and lift cleanly. Each of those is something you can engineer, and that's where the work goes.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">🏷️</div>
+          <h3>Structured data</h3>
+          <p>FAQPage and HowTo schema make your answers machine-readable, so the model can tell exactly which sentence answers the question. <strong>The single highest-leverage technical signal for Overview eligibility.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">✂️</div>
+          <h3>Answer-first clarity</h3>
+          <p>A clear question heading followed by a concise, direct answer the AI can quote verbatim. Long, throat-clearing intros get skipped; tight 40-to-60-word answers get lifted.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🎓</div>
+          <h3>Topical authority &amp; E-E-A-T</h3>
+          <p>Depth across a topic and visible signals of experience and trust tell Google your answer is safe to surface. <strong>The Overview cites sources it can stand behind.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Based on Google's published guidance on AI Overviews and structured data. Selection logic is opaque and shifts often, so we structure for every known signal and track what actually gets cited.</p>
+    </div>
+  </section>
+
+  <section class="section includes-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">What's included</span>
+        <h2>Everything in the $397/mo AEO program</h2>
+      </div>
+      <div class="includes-grid">
+        <div class="inc-card reveal">
+          <div class="inc-icon">❓</div>
+          <h3>Question Keyword Map</h3>
+          <p>We pull every question-shaped query your audience asks across Google, People-Also-Ask, and AI Overview triggers. Then we prioritize the ones with intent to buy.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">✂️</div>
+          <h3>Answer-First Rewrites</h3>
+          <p>Top pages restructured into the answer-first pattern AI Overviews reward: clear question H2, concise 40 to 60 word answer, then deeper supporting context underneath.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">🏷️</div>
+          <h3>FAQ + HowTo Schema</h3>
+          <p>We deploy FAQPage and HowTo structured data sitewide. This is the single highest-leverage technical signal for AI Overview eligibility.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📋</div>
+          <h3>Definitional Blocks</h3>
+          <p>Short, citation-ready blocks on every service page that define what the service is, what it costs, and who it's for. The exact format Google's Overview likes to quote.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">🏆</div>
+          <h3>Featured Snippet Capture</h3>
+          <p>Featured snippets and AI Overviews share an underlying logic. We target both and track which queries trigger which surface for you.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📊</div>
+          <h3>Monthly AI Overview Tracking</h3>
+          <p>Each month we re-run your top 50 query targets and report which ones now show your business in the AI Overview block. Wins, losses, and what to fix next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Audit your footprint</h3><p>We run your top question queries through Google and show you which ones already trigger an AI Overview, whether you're cited, and where the quick wins are. No charge.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Restructure</h3><p>We rebuild your top pages into the answer-first format the Overview rewards: question H2s, concise answers, and definitional blocks the AI can lift.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Deploy schema</h3><p>FAQPage and HowTo structured data go out sitewide, then we publish and get everything indexed so Google can read it cleanly.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Track &amp; report</h3><p>Each month we re-run your target queries and report which now cite your business in the Overview block. Wins, losses, and what to fix next.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="pricing-box reveal">
+        <div>
+          <span class="label">Pricing</span>
+          <h2>$397/mo (Month-to-Month)</h2>
+          <p class="lead">No contracts. Cancel with 30 days notice. <strong>Save $694/mo</strong> by bundling AEO with SEO and GEO under the <a href="/services/ai-seo/">$797/mo AI SEO program</a>.</p>
+          <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">Get Started</a>
+        </div>
+        <div class="pricing-note-list">
+          <div class="pnl-item"><span class="pnl-check">✓</span> Question keyword map</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Answer-first rewrites on top pages</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> FAQ + HowTo schema deployment</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Definitional blocks sitewide</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Featured snippet capture</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Monthly AI Overview citation tracking</div>
+        </div>
+      </div>
+      <p class="custom-note reveal">AEO works best stacked with SEO and GEO. Most clients run all three under the AI SEO bundle for the price of one mid-tier service.</p>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is AEO?</summary><p>AEO stands for Answer Engine Optimization. It is the practice of structuring your content (answer-first writing, clear question headings, FAQ and HowTo schema) so AI search engines can lift a clean, quotable answer from your site. Google's AI Overview, the answer box above the blue links, is where most local businesses see it first. AEO pairs with <a href="/services/geo/">GEO</a>, which earns citations across all the AI search engines.</p></details>
+        <details class="faq-item reveal"><summary>How is AEO different from SEO?</summary><p>SEO is about ranking your page in the blue-link organic results. AEO is about getting your content cited as the actual answer inside Google's AI Overview block at the top of the page. They use overlapping signals like content quality, schema, and authority, but AEO requires a different content format. Specifically, an answer-first structure with clear question headings and concise paragraphs that the AI can lift verbatim.</p></details>
+        <details class="faq-item reveal"><summary>How is AEO different from GEO?</summary><p>AEO is the on-page craft of structuring your content so AI engines can quote it cleanly, with Google's AI Overview the clearest example. <a href="/services/geo/">GEO</a> is the broader practice of getting cited across all the AI search engines, including ChatGPT, Gemini, Perplexity, and Google's AI answers. <strong>AEO is the readiness; GEO is the reach.</strong> Most clients run both.</p></details>
+        <details class="faq-item reveal"><summary>Can you guarantee my business gets cited in AI Overviews?</summary><p>No agency can guarantee AI Overview citations. Google's selection logic is opaque and changes frequently. What we can do is structure your content to meet every known AEO best practice and track which queries cite you each month so we know what is working.</p></details>
+        <details class="faq-item reveal"><summary>How long until I see AI Overview citations?</summary><p>Typically 60 to 90 days after the answer-first rewrites are live and indexed. Some queries flip faster, especially long-tail or question-shaped local queries with thin competition.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <ToolCallout
+    href="/free-tools/local-seo-score-checker/"
+    icon="🔍"
+    title="Score your local SEO in 60 seconds"
+    desc="10 yes-or-no questions cover the levers that move both Google rankings and AI Overview eligibility."
+  />
+
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Pairs with</span>
+        <h2>AEO compounds when you add these</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/seo/" class="related-card">
+          <h3>Local SEO</h3>
+          <p>SEO ranks your page in the blue links. AEO gets you cited above them. Run both and you own the top half of the results page.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/geo/" class="related-card">
+          <h3>GEO</h3>
+          <p>AEO covers Google AI Overviews. GEO covers ChatGPT, Gemini, and Perplexity. Same content foundation, two different AI surfaces.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/ai-seo/" class="related-card">
+          <h3>AI SEO Bundle</h3>
+          <p>All three (SEO + AEO + GEO) under one $797/mo program. Save $694/mo versus buying each separately.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free proposal</span>
+          <h2>See your current AI Overview footprint</h2>
+          <p class="lead" style="margin-bottom:24px;">We will run your top 25 question queries through Google and report which ones already show an AI Overview, whether you're cited, and where the quick wins are.</p>
+        </div>
+        <ContactForm title="Get My Free AEO Proposal" subject="AEO Inquiry | Thryv" serviceDefault="seo" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .svc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .svc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .svc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .svc-hero .lead { color: rgba(255,255,255,.8); max-width: 620px; margin-bottom: 32px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+  .stakes { background: var(--blue-light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+  .problem-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .includes-section { background: var(--light); }
+  .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .inc-icon { font-size: 36px; margin-bottom: 12px; } .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; } .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .pricing-section { background: var(--white); }
+  .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
+  .custom-note { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 14px; font-style: italic; color: var(--gray); line-height: 1.65; }
+  .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
+  .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
+  .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
+  .faq-section { background: var(--light); }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .faq-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .faq-list { grid-template-columns: 1fr; } }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p a { color: var(--blue); font-weight: 700; }
+
+  .related-section { background: var(--light); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .includes-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-box { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

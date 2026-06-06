@@ -1,0 +1,765 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thryvmarketingsolutions.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "AI Marketing Agency in Miami: What It Actually Means in 2026", "item": "https://thryvmarketingsolutions.com/blog/ai-marketing-agency-miami/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "AI Marketing Agency in Miami: What It Actually Means in 2026",
+    "description": "Most agencies say they are AI-powered. Most mean they use ChatGPT for subject lines. Here is what AI actually changes for a Miami small business, and the questions that separate real from buzzword.",
+    "image": "https://thryvmarketingsolutions.com/blog/hero-ai-marketing-agency-miami.webp",
+    "author": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "publisher": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "datePublished": "2026-06-09",
+    "dateModified": "2026-06-09",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thryvmarketingsolutions.com/blog/ai-marketing-agency-miami/" },
+    "keywords": ["ai marketing agency miami", "ai marketing miami", "answer engine optimization", "AEO Miami", "AI search optimization", "Miami digital marketing"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is answer engine optimization (AEO)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Answer engine optimization is the practice of structuring your business information, reviews, citations, and FAQ content so that when someone asks ChatGPT, Perplexity, or Google AI Overviews a question (like 'best HVAC company in Doral'), your business gets named in the AI's response. Unlike Google search, which ranks pages, AI engines cite specific businesses from sources they trust. AEO is the discipline of becoming one of those cited sources." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I optimize my Miami business for answer engine optimization?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Start with the AEO Readiness Checklist: ensure your NAP (name, address, phone) is identical across all directories, keep reviews updated within the last 90 days, add FAQ schema to service pages, maintain consistent citations in industry directories and local lists, structure case studies with specific outcomes, and keep your content fresh (within 30 days). AI engines cite sources they recognize and trust; consistency and freshness are the two signals they weight most heavily." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does an AI marketing agency actually do differently?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A real AI-native agency uses AI to compress research, produce more content per dollar, analyze campaigns faster, and optimize for AI search results, not just Google. The strategy, the local market knowledge, and the quality control still come from people. If an agency cannot name the specific tools they use and the workflow, the AI label is just marketing." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my Miami business need answer engine optimization?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If your customers search for you on Google, they will increasingly search for you on ChatGPT and Perplexity. Only 1.2% of local businesses currently appear in ChatGPT recommendations, but 45% of consumers now use ChatGPT to find local businesses, up from just 6% one year ago (BrightLocal Local Consumer Review Survey 2026). That gap is the window. If you want to capture referrals from AI search, AEO is no longer optional." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is AI marketing cheaper than a traditional agency in Miami?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Not necessarily cheaper, but more output for the same budget. AI shifts cost away from repetitive production and toward strategy and quality control. If an agency is dramatically cheaper purely because it uses AI, ask how it checks the output, because unedited AI content that does not rank is worse than no content at all." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI replace knowing the Miami market?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. AI accelerates the work, it does not replace local knowledge. A campaign for a Doral HVAC company needs to know Doral: the Spanish-language preference, the service radius, the competition. Roughly two thirds of Miami-Dade residents speak Spanish at home, so a tool that cannot account for that misses most of the market." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Thryv Marketing Solutions",
+    "url": "https://thryvmarketingsolutions.com",
+    "areaServed": [
+      { "@type": "Place", "name": "Miami-Dade County, Florida" },
+      { "@type": "Place", "name": "Broward County, Florida" },
+      { "@type": "Place", "name": "Doral, Florida" },
+      { "@type": "Place", "name": "Coral Gables, Florida" },
+      { "@type": "Place", "name": "Hialeah, Florida" }
+    ],
+    "serviceType": ["AI Marketing", "Answer Engine Optimization", "SEO", "Google Business Profile Optimization", "Bilingual Marketing"]
+  }
+];
+---
+
+<BaseLayout
+  title="AI Marketing Agency in Miami: What It Means in 2026 | Thryv"
+  description="Most agencies say AI-powered but mean ChatGPT subject lines. Here is what AI really changes for a Miami small business, and 5 questions that expose fakes."
+  canonical="https://thryvmarketingsolutions.com/blog/ai-marketing-agency-miami/"
+  ogImage="https://thryvmarketingsolutions.com/blog/hero-ai-marketing-agency-miami.webp"
+  ogType="article"
+  schema={schema}
+>
+
+<article>
+
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-inner">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="/">Home</a><span> › </span><a href="/blog/">Blog</a><span> › </span><span>AI Marketing Agency in Miami</span>
+        </nav>
+        <span class="post-label">AI Automation</span>
+        <h1>AI Marketing Agency in Miami: What It Actually Means in 2026</h1>
+        <p class="lead">Every agency website says "AI-powered" now. Most of them mean someone on the team uses ChatGPT to draft email subject lines. Here is what it looks like when AI is actually built into how an agency runs, and why it matters more in Miami than almost anywhere else.</p>
+        <div class="post-meta">
+          <span>June 9, 2026</span>
+          <span>8 min read</span>
+          <span>AI Automation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-body">
+
+        <img src="/blog/hero-ai-marketing-agency-miami.webp" alt="Miami small business owner checking AI search results on her phone, illustrating what an AI marketing agency does in 2026" title="AI Marketing Agency in Miami" loading="lazy" width="1600" height="900" />
+
+        <p>"AI-powered" has become the most overused phrase in marketing. The label is everywhere and it almost never comes with an explanation. So before you hire anyone in Miami waving that flag, it helps to know what AI genuinely changes about marketing work, what it does not change at all, and the one shift that most local agencies have not caught up to yet.</p>
+
+        <div class="stat-band">
+          <div class="stat-card">
+            <span class="stat-num">45%</span>
+            <span class="stat-label">of consumers now use ChatGPT or AI tools to find local businesses, up from just 6% one year ago. Adoption is accelerating fast (BrightLocal, 2026).</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">1.2%</span>
+            <span class="stat-label">of local businesses appear in ChatGPT recommendations. That means 98.8% of Miami operators are invisible when customers ask for recommendations.</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">~66%</span>
+            <span class="stat-label">of Miami-Dade residents speak Spanish at home (U.S. Census). AI makes running truly bilingual campaigns affordable for the first time.</span>
+          </div>
+        </div>
+
+        <div class="key-takeaways">
+          <strong>Key Takeaways</strong>
+          <ul>
+            <li>AI genuinely changes four things: research speed, content volume, campaign analysis, and answer engine optimization (AEO).</li>
+            <li>It does not change strategy, local market knowledge, creative judgment, or the trust that comes from real results.</li>
+            <li><strong>45%</strong> of consumers now use ChatGPT to find local businesses, but only <strong>1.2%</strong> of businesses appear in those recommendations. The gap is wide open.</li>
+            <li>Roughly <strong>66%</strong> of Miami-Dade speaks Spanish at home, and AI-native workflows now make bilingual campaigns cost-effective.</li>
+            <li>The fastest way to vet an "AI agency" is to ask which tools they use, for what, and to see AI-assisted work that actually ranked.</li>
+          </ul>
+        </div>
+
+        <h2>What AI Actually Changes in Marketing</h2>
+
+        <p>AI has genuinely shifted what is possible in four areas, and being specific about them is the easiest way to tell a real AI-native agency from one that just bought the sticker. None of these four replace a marketer. They make a good one faster.</p>
+
+        <div class="stat-callout right">
+          <span class="callout-num">1.2%</span>
+          <p>of local businesses get named when someone asks ChatGPT for a recommendation. That puts 98.8% of Miami operators at zero AI visibility, a gap that is still wide open for whoever moves first.</p>
+          <span class="callout-src">SOCi Local Visibility Index, 2026</span>
+        </div>
+
+        <h3>1. Research Speed</h3>
+        <p>Market research that used to take a week (the competitor teardown, the keyword map, the content gap analysis) now takes hours when you know which tools to point at the problem. For a small business on a tight budget, that means you get the research depth that used to require hiring a much larger agency.</p>
+
+        <h3>2. Content at Scale</h3>
+        <p>A single strategy can now produce <strong>20 location pages, 10 service pages, and 6 blog posts</strong> in the time it used to take to produce one. The output still needs expert editing and real human judgment. But the production speed changes what is actually affordable for a local operator.</p>
+
+        <div class="stat-callout right">
+          <span class="callout-num">83%</span>
+          <p>of AI-using small businesses use AI for writing and marketing. It is the #1 use case by a wide margin.</p>
+          <span class="callout-src">Federal Reserve SBCS, 2025</span>
+        </div>
+
+        <h3>3. Campaign Analysis</h3>
+        <p>AI tools can process ad performance data, surface patterns, and flag what to change in minutes. A human still makes the final call on budget and creative. They just make a better-informed call, faster, and catch waste sooner.</p>
+
+        <div class="stat-callout left">
+          <span class="callout-num">54%</span>
+          <p>of small businesses are already using AI in their marketing. Your competitors are moving. The question is whether your agency is ahead of them or still figuring it out.</p>
+          <span class="callout-src">SBE Council, 2026</span>
+        </div>
+
+        <h3>4. Answer Engine Optimization</h3>
+        <p>This one is new, and most Miami agencies are not doing it yet. When someone asks ChatGPT or Perplexity "best HVAC company near me," the answer is built from a different set of signals than a normal Google search. <strong>54%</strong> of small businesses now use AI tools in their own marketing (SBE Council, 2026), which tells you where buyer behavior is heading. Optimizing to be the business the AI names is a different discipline, and AI tools make it far more tractable to do well.</p>
+
+        <p><strong>What AI does not change:</strong> strategy, relationship building, real-world creative judgment, understanding a specific local market, and the trust that only comes from genuine results. Anyone selling AI as a replacement for those is selling you the wrong thing.</p>
+
+        <div class="split-visual">
+          <div class="split-col yes">
+            <div class="split-head"><span class="split-icon">&#10003;</span> AI Genuinely Helps</div>
+            <ul>
+              <li>Faster research and competitor analysis</li>
+              <li>More content produced per dollar</li>
+              <li>Quicker campaign analysis and waste-cutting</li>
+              <li>Optimizing for AI search, not just Google</li>
+              <li>Affordable bilingual content at scale</li>
+            </ul>
+          </div>
+          <div class="split-col no">
+            <div class="split-head"><span class="split-icon">&#10005;</span> AI Does Not Replace</div>
+            <ul>
+              <li>The strategy behind the work</li>
+              <li>Knowing the Miami market block by block</li>
+              <li>Creative judgment and brand voice</li>
+              <li>The relationship and the accountability</li>
+              <li>Real results you can point to</li>
+            </ul>
+          </div>
+        </div>
+
+        <h2>Why Miami Is the Market Where This Matters Most</h2>
+
+        <p>Miami is an unusually strong fit for AI-driven marketing, for three reasons that stack on top of each other.</p>
+
+        <div class="stat-callout right">
+          <span class="callout-num">~66%</span>
+          <p>of Miami-Dade residents speak Spanish at home. AI makes running a real bilingual campaign affordable for the first time, not a translated afterthought but a full parallel strategy reaching both audiences equally.</p>
+          <span class="callout-src">U.S. Census Bureau</span>
+        </div>
+
+        <p><strong>Bilingual demand.</strong> Roughly <strong>66%</strong> of Miami-Dade residents speak Spanish at home (U.S. Census), with Spanish dominant in Hialeah, Doral, Westchester, and much of the southwest. Producing high-quality Spanish content alongside English used to require a translator, a separate copywriter, and a separate strategy. AI compresses that to a fraction of the cost while maintaining native-quality output when a human editor who knows the market is in the loop. For operators serving both communities, that is a structural cost advantage that was not available three years ago. Our <a href="/blog/bilingual-seo-miami/">bilingual SEO playbook for Miami</a> breaks down exactly how to structure it.</p>
+
+        <h3>Bilingual AEO: A Miami-Specific Angle</h3>
+
+        <p>AEO is especially powerful in bilingual markets. When a Spanish-speaking Miami homeowner opens ChatGPT and asks "mejor plomero en Doral" (best plumber in Doral), the response is built from different sources than an English-language query. Spanish language directories (BuscaLocal, Thumbtack, neighborhood Facebook groups), Spanish-language review sites, and Spanish content on business websites all carry different weight in Spanish-language AI search than they do in English.</p>
+
+        <p>Most Miami agencies treat Spanish as an afterthought: they translate English content, leave reviews in English only, and do not invest in Spanish citations. AI search punishes this hard. If you want to be cited when Spanish speakers ask for recommendations, treat Spanish as a first-class channel. That means keeping Spanish reviews fresh at the same pace as English reviews, appearing in Spanish-language directories alongside English ones, and writing service content in Spanish that is equally detailed and recent as your English equivalent. This is where AI-accelerated content production unlocks a real advantage. You can now publish bilingual content at a pace that manual translation never allowed.</p>
+
+        <p><strong>Hyper-local search intent.</strong> Brickell, Coral Gables, Doral, Kendall, and Hialeah behave like distinct markets with distinct search habits. AI lets you build neighborhood-specific pages at a scale that would be impractical to write by hand, so each area gets content that actually speaks to it.</p>
+
+        <p><strong>An underserved small-business market.</strong> Most AI-native agencies chased enterprise and SaaS clients. For Miami's local service businesses (the HVAC techs, dentists, restaurants, and home-service crews), finding a digital marketing agency in Miami that actually runs an AI-native workflow is still rare. Most are still served by shops running a 2018 playbook. That gap is getting wider, and it is where the real opportunity sits for businesses willing to move first.</p>
+
+        <h3>The Miami Verticals Where This Matters Most</h3>
+        <p>Not every local business faces the same urgency. These five verticals stand to gain the most from an AI-native approach in Miami right now:</p>
+        <ul>
+          <li><strong>Real estate and property management.</strong> Brickell condos, Coral Gables estates, Wynwood commercial space: each neighborhood has a distinct buyer profile and search behavior. AI makes running genuinely differentiated campaigns for each one affordable for the first time.</li>
+          <li><strong>Med spas and cosmetic practices.</strong> A hyper-competitive, review-driven vertical where speed to content and AI Overviews visibility create a real edge. We have a full breakdown of <a href="/blog/best-med-spa-seo-agencies-miami-2026/">what separates effective med spa SEO in Miami</a> if this is your space.</li>
+          <li><strong>Restaurants and hospitality.</strong> High-frequency, high-intent local search. Getting into AI recommendations for "best Cuban restaurant in Little Havana" or "rooftop bar Brickell" is a different target than a Google ranking, and almost nobody is optimizing for it yet.</li>
+          <li><strong>Home services: HVAC, plumbing, roofing, pressure washing.</strong> Miami's year-round heat and humidity make emergency home services the highest-frequency local searches in the metro. AI-accelerated content and GBP optimization are direct revenue drivers, with faster feedback loops than almost any other vertical. <a href="/blog/pressure-washing-seo-vs-google-ads-miami/">See how pressure washing companies are capturing AI referrals</a>.</li>
+          <li><strong>Legal and professional services.</strong> High-value clients, long research cycles, heavy reliance on AI-generated answers to vetting questions. AEO matters enormously in legal and it is largely untouched by Miami firms right now.</li>
+        </ul>
+
+        <h2>The Answer Engine Opening Most Agencies Are Missing</h2>
+
+        <p>Here is the shift almost nobody in Miami is pricing in yet: a growing share of buying decisions now starts with an AI assistant instead of a search bar. Someone looking for an HVAC company might Google it, or they might just ask ChatGPT "who should I call for AC repair in Doral." Those two results are built from completely different signals.</p>
+
+        <p>Consumer adoption is accelerating fast. BrightLocal's 2026 survey found <strong>45%</strong> of consumers now ask ChatGPT or similar tools for local business recommendations, up from just 6% a year ago. Yet only <strong>1.2%</strong> of local businesses appear in those recommendations. AI Overviews now appear in roughly <strong>25%</strong> of all Google searches as of Q1 2026 (Conductor). Strong Google rankings do not automatically carry over to AI results either, so being the business an AI names is a separate job.</p>
+
+        <h3>How AEO Works: A Concrete Example</h3>
+
+        <p>Say a Doral homeowner's AC unit breaks on a Friday night. They open ChatGPT and type: "best AC repair company in Doral that can come out tonight." ChatGPT does not have a list of Doral HVAC companies in its training data (it has a knowledge cutoff). Instead, it searches the live web and looks for businesses that appear in multiple trustworthy sources. It looks for recent reviews, case studies, FAQ pages, and citations from directories it trusts.</p>
+
+        <p><strong>Company A (doing AEO right):</strong> Shows up in Google Business Profile, has 47 reviews updated within the last month, is listed in industry directories (Angie's List, HomeAdvisor), has a blog post on their site titled "Emergency AC Repair in Doral: 24/7 Service," and has schema markup on their FAQ page answering "How fast can you come out for emergency service?" ChatGPT sees all these signals pointing to the same business and mentions them first.</p>
+
+        <p><strong>Company B (missing AEO entirely):</strong> Has a strong website and ranks first on Google for "AC repair Doral," but has no recent reviews, no structured FAQ schema, is listed in only one directory, and has not published content in three months. ChatGPT finds them on the SERP but does not see the consistent citation pattern and freshness signals. They get mentioned third, or not at all.</p>
+
+        <p>The difference? Company A invested in becoming a trusted source across multiple channels. Company B optimized only for search rank. In the AI world, being visible on Google does not mean being trusted by ChatGPT.</p>
+
+        <h3>AEO Readiness Checklist</h3>
+
+        <p>Here are the signals AI engines weight most heavily. Audit yourself against each:</p>
+
+        <div class="aeo-checklist">
+          <div class="checklist-item">
+            <input type="checkbox" id="cb1" disabled>
+            <label for="cb1"><strong>NAP Consistency:</strong> Your name, address, and phone are identical across Google Business Profile, your website, and all major directories (Yelp, Facebook, industry-specific listings).</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb2" disabled>
+            <label for="cb2"><strong>Review Freshness:</strong> You have at least one new review or rating within the last 90 days. AI engines treat stale reviews as a freshness penalty.</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb3" disabled>
+            <label for="cb3"><strong>FAQ Schema:</strong> Your service pages include FAQ content marked with FAQ schema (schema.org/FAQPage). AI engines extract these directly.</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb4" disabled>
+            <label for="cb4"><strong>Citation Diversity:</strong> You appear in at least 5-7 industry-specific and local directories relevant to your vertical (not just Google, Yelp, and Facebook).</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb5" disabled>
+            <label for="cb5"><strong>Content Recency:</strong> You published new service content, case studies, or blog posts within the last 30 days. AI engines treat older content as less authoritative.</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb6" disabled>
+            <label for="cb6"><strong>Bilingual Parity:</strong> If your market speaks Spanish (Miami does), your Spanish content is equally fresh, detailed, and cited as your English content.</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb7" disabled>
+            <label for="cb7"><strong>Case Study Structure:</strong> You have 2-3 detailed examples on your site showing specific outcomes (e.g., "Emergency call came in at 11pm, technician on-site by 11:47pm, AC running by 12:15am"). AI engines cite specificity.</label>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" id="cb8" disabled>
+            <label for="cb8"><strong>Local Authority:</strong> You have content that answers hyper-local questions (e.g., "Do you service Doral?" "What is the humidity like in Doral AC units?" "Doral neighborhood challenges"). This builds trust in local AI search.</label>
+          </div>
+        </div>
+
+        <p>Count how many you check. 6-8: You are AI-ready. 4-5: You have real AEO work ahead. Fewer than 4: You are in the same position as 98% of local Miami businesses, which is exactly where the opportunity sits.</p>
+
+        <h3>AI Search vs. Google: How Signals Differ</h3>
+
+        <p>Not all search engines weight the same signals equally. Here is the breakdown:</p>
+
+        <div class="aeo-comparison-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Signal</th>
+                <th>Google SERP</th>
+                <th>ChatGPT</th>
+                <th>Perplexity</th>
+                <th>Google AI Overview</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Freshness</strong></td>
+                <td>Days to weeks</td>
+                <td>Static (knowledge cutoff)</td>
+                <td>Real-time, critical</td>
+                <td>Recent preferred</td>
+              </tr>
+              <tr>
+                <td><strong>Citation sources</strong></td>
+                <td>Links, domain authority</td>
+                <td>Web data trained into model</td>
+                <td>Explicit citations required</td>
+                <td>Featured snippets, reviews</td>
+              </tr>
+              <tr>
+                <td><strong>Local signals</strong></td>
+                <td>GBP, NAP, reviews</td>
+                <td>Brand authority, reviews</td>
+                <td>Local authority, freshness</td>
+                <td>Local pack, reviews</td>
+              </tr>
+              <tr>
+                <td><strong>FAQ schema</strong></td>
+                <td>Optional</td>
+                <td>Helpful if present</td>
+                <td>Extracted when available</td>
+                <td>Directly used</td>
+              </tr>
+              <tr>
+                <td><strong>Bilingual content</strong></td>
+                <td>Language-matched</td>
+                <td>English dominant</td>
+                <td>Both equal priority</td>
+                <td>Language-matched</td>
+              </tr>
+              <tr>
+                <td><strong>Content recency</strong></td>
+                <td>Favors fresh</td>
+                <td>Irrelevant (static)</td>
+                <td>Critical signal</td>
+                <td>Important</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>The tactical takeaway: If you want to rank on Google, focus on links and domain authority. If you want to be cited in ChatGPT, focus on brand authority and review freshness. If you want Perplexity to mention you, focus on content recency and explicit citations. Google AI Overviews are closest to traditional search, but with a local-pack bias.</p>
+
+        <p>And the field is wide open. The businesses that move first will own those answers while the rest are still arguing about meta tags. Your AEO starts with <a href="/blog/optimize-google-business-profile-2026/">optimizing your Google Business Profile</a>, and it extends to ensuring you are cited consistently across all platforms. If you want to automate your response to AI-generated leads, see how <a href="/blog/ai-phone-receptionist-local-business/">AI receptionists handle ChatGPT and Perplexity referrals</a> 24/7. Our <a href="/services/seo/">SEO, AEO, and GEO services</a> are built to hit all three channels, and the window to move first is closing fast.</p>
+
+        <h2>Should You Hire an AI Marketing Agency or Build It In-House?</h2>
+
+        <p>Not every business needs an external agency. Here is the honest make-vs-buy decision:</p>
+
+        <p><strong>Build it in-house if:</strong> You have a dedicated marketing person or team, you can afford $300-500/month in AI tools (ChatGPT Pro, Perplexity, SEO platforms), and you have 10-15 hours per week to spend on research, content production, and campaign testing. In-house gives you full control and eventually becomes cheaper. The catch: you have to do the work yourself, and your first six months of output will be rough while you learn the tools and the market.</p>
+
+        <p><strong>Hire an agency if:</strong> You do not have a dedicated marketing person, you need to launch in the next 30-60 days, or you want expert guidance on strategy and market-specific nuances (like Miami's bilingual opportunity). An agency brings pre-built workflows, market knowledge, and editing discipline. You pay more upfront ($800-5,000/month depending on scope), but you avoid the learning curve and the output quality is higher from day one.</p>
+
+        <p><strong>Hybrid approach (most realistic):</strong> Hire an agency for strategy and the first 3-6 months of content/campaign setup. Once you understand what works in your market, bring some of that work in-house (e.g., you handle ongoing content updates, they handle quarterly strategy reviews). This gives you the expert launch without the long-term agency fee, and you retain the knowledge.</p>
+
+        <p>No matter which path you choose, the AEO fundamentals are the same: consistency, freshness, and citations win. Choose an approach that you can sustain over the next 12 months. One-off campaigns do not work in AI search.</p>
+
+        <h2>5 Questions to Ask Any "AI Marketing Agency" in Miami</h2>
+
+        <p>Before you hire anyone using the AI label, put these five questions on the table. The answers sort the real from the buzzword in about ten minutes. For each answer, score 1 point if it is specific and credible, 0 if it is vague or evasive. Anything below 3 points means keep looking.</p>
+
+        <div class="vetting-scorecard">
+          <div class="scorecard-item">
+            <h4>1. Which specific AI tools do you use, and for what?</h4>
+            <p><strong>What to listen for:</strong> They name tools (Claude, ChatGPT, Perplexity, SEMrush, Jasper, etc.) and explain a workflow (e.g., "We use Claude for market research, SEMrush for keyword gaps, ChatGPT for first drafts, then a human editor reviews against search intent and brand voice").</p>
+            <p><strong>Red flag:</strong> "We leverage AI to optimize your results" or "Our proprietary AI platform" with no specifics. That means nothing.</p>
+            <p><strong>Score:</strong> 1 point = specific tools named with workflow. 0 = vague or defensive.</p>
+          </div>
+
+          <div class="scorecard-item">
+            <h4>2. How do you keep local market knowledge in the loop?</h4>
+            <p><strong>What to listen for:</strong> They describe a research process specific to Miami or your neighborhood (e.g., "We research competitor sites in your area, check which directories serve your vertical, audit local Spanish-language opportunities, understand your service radius").</p>
+            <p><strong>Red flag:</strong> "AI understands context" or a generic onboarding call with no follow-up research. AI does not know Doral unless you teach it.</p>
+            <p><strong>Score:</strong> 1 point = they describe neighborhood/market research. 0 = generic approach.</p>
+          </div>
+
+          <div class="scorecard-item">
+            <h4>3. Do you optimize for ChatGPT and AI search, not just Google?</h4>
+            <p><strong>What to listen for:</strong> They explain AEO principles unprompted, mention citation diversity and review freshness as ranking factors, and discuss Perplexity and ChatGPT as distinct channels.</p>
+            <p><strong>Red flag:</strong> Blank stare, or they conflate Google SEO with AI search optimization. Most agencies do not do this yet, which tells you they are not actually AI-native.</p>
+            <p><strong>Score:</strong> 1 point = they own AEO strategy. 0 = they default to traditional SEO only.</p>
+          </div>
+
+          <div class="scorecard-item">
+            <h4>4. Can you show AI-assisted content that actually ranked?</h4>
+            <p><strong>What to listen for:</strong> They show 2-3 examples of content they created or assisted with that either ranked on Google within 30-90 days or appeared in ChatGPT recommendations. Not a list of clients, but actual ranking content with dates and keywords.</p>
+            <p><strong>Red flag:</strong> "We have many happy clients" with no examples. Or examples from 2023-2024 (AI tools have changed). AI content that does not rank signals thin quality and can hurt you.</p>
+            <p><strong>Score:</strong> 1 point = fresh examples with proof. 0 = vague or outdated.</p>
+          </div>
+
+          <div class="scorecard-item">
+            <h4>5. Who edits the AI output, and what is the standard?</h4>
+            <p><strong>What to listen for:</strong> They name a specific person (or role) who edits every piece before it ships. They describe an edit standard (e.g., "Everything must align with brand voice, be fact-checked against search intent, and meet readability >60 on Flesch index").</p>
+            <p><strong>Red flag:</strong> "AI does the work, then we publish" or "Minimal editing for speed and cost." Unedited AI content is worse than no content.</p>
+            <p><strong>Score:</strong> 1 point = they describe an edit process and standard. 0 = no human quality gate.</p>
+          </div>
+
+          <div class="scorecard-total">
+            <p><strong>Score 4-5:</strong> They are real AI-native. Hire them.</p>
+            <p><strong>Score 3:</strong> They have potential but are still learning. Ask for references and a small test project first.</p>
+            <p><strong>Score 0-2:</strong> They are not as advanced as they claim. Keep looking or expect to teach them how AI actually works in your market.</p>
+          </div>
+        </div>
+
+        <h2>What AI Marketing Costs in Miami</h2>
+
+        <p>AI does not erase agency cost, it moves it. Less money on repetitive production, more on strategy and quality control. Expect an AI-native agency to price in the same range as a traditional one but deliver more output for the budget. As a rough 2026 guide for Miami:</p>
+
+        <ul>
+          <li><strong>Local SEO with AI-accelerated content:</strong> $800 to $2,500 per month</li>
+          <li><strong>Google Ads with AI optimization:</strong> $600 to $1,800 per month plus ad spend</li>
+          <li><strong>Full-service AI marketing:</strong> $2,500 to $5,000 per month</li>
+        </ul>
+
+        <p>These are ranges, not quotes. Real pricing depends on your industry, how competitive your market is, and what results you need by when. For a fuller breakdown of what agencies in town actually charge, see our <a href="/blog/miami-marketing-agency-pricing-2026/">Miami marketing agency pricing guide</a>.</p>
+
+        <h2>How Thryv Uses AI in Practice</h2>
+
+        <div class="stat-callout left">
+          <span class="callout-num">16%</span>
+          <p>of brands currently track their AI search performance. That gap is still wide open for businesses that move first.</p>
+          <span class="callout-src">McKinsey, 2025</span>
+        </div>
+
+        <p>We use AI tools throughout our workflow, with one rule: anything that goes out under a client's name has to meet the bar we would set if we wrote it by hand. AI drafts get edited by someone who knows the market. AI research gets checked against real search data. AI content gets validated against actual search intent before it publishes.</p>
+
+        <p>The goal is not more content for its own sake. It is better strategy at a price that makes sense for a local business in Miami. If you want to see what that looks like for your shop, our <a href="/ai/">AI tools and automation page</a> walks through where it pays off first.</p>
+
+        <h2>FAQ: AI Marketing Agencies in Miami</h2>
+
+        <details class="faq-item">
+          <summary>What is answer engine optimization (AEO)?</summary>
+          <p>Answer engine optimization is the practice of structuring your business information, reviews, citations, and FAQ content so that when someone asks ChatGPT, Perplexity, or Google AI Overviews a question (like "best HVAC company in Doral"), your business gets named in the AI's response. Unlike Google search, which ranks pages, AI engines cite specific businesses from sources they trust. AEO is the discipline of becoming one of those cited sources.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How do I optimize my Miami business for answer engine optimization?</summary>
+          <p>Start with the AEO Readiness Checklist: ensure your NAP (name, address, phone) is identical across all directories, keep reviews updated within the last 90 days, add FAQ schema to service pages, maintain consistent citations in industry directories and local lists, structure case studies with specific outcomes, and keep your content fresh (within 30 days). AI engines cite sources they recognize and trust; consistency and freshness are the two signals they weight most heavily.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What does an AI marketing agency actually do differently?</summary>
+          <p>A real AI-native agency uses AI to compress research, produce more content per dollar, analyze campaigns faster, and optimize for AI search results, not just Google. The strategy, the local market knowledge, and the quality control still come from people. If an agency cannot name the specific tools they use and the workflow, the AI label is just marketing.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does my Miami business need answer engine optimization?</summary>
+          <p>If your customers search for you on Google, they will increasingly search for you on ChatGPT and Perplexity. Only 1.2% of local businesses currently appear in ChatGPT recommendations, but 45% of consumers now use ChatGPT to find local businesses, up from just 6% one year ago (BrightLocal Local Consumer Review Survey 2026). That gap is the window. If you want to capture referrals from AI search, AEO is no longer optional.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is AI marketing cheaper than a traditional agency in Miami?</summary>
+          <p>Not necessarily cheaper, but more output for the same budget. AI shifts cost away from repetitive production and toward strategy and quality control. If an agency is dramatically cheaper purely because it uses AI, ask how it checks the output, because unedited AI content that does not rank is worse than no content at all.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can AI replace knowing the Miami market?</summary>
+          <p>No. AI accelerates the work, it does not replace local knowledge. A campaign for a Doral HVAC company needs to know Doral: the Spanish-language preference, the service radius, the competition. Roughly two thirds of Miami-Dade residents speak Spanish at home, so a tool that cannot account for that misses most of the market.</p>
+        </details>
+
+        <div class="blog-cta">
+          <h2>Want to See What AI-Powered Local Marketing Could Do for Your Business?</h2>
+          <p>We will show you where your business stands in both Google and AI search, in plain language, with no contract and no pressure. Month-to-month, full asset ownership, real results you can measure.</p>
+          <div class="cta-buttons">
+            <a href="/pricing/" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              See Our Pricing
+            </a>
+            <a href="https://tidycal.com/theogrimes/30-minute-meeting" class="btn btn-blue tidycal-embed">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Book a Free Call
+            </a>
+            <button type="button" class="btn btn-nl js-nl-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0 1.1.9 2 2 2z"/><polyline points="22,6 12,12 2,6"/></svg>
+              Get Free Tips
+            </button>
+          </div>
+          <div class="nl-cta-wrap">
+            <script is:inline async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="fae51cd2-aeeb-4f3a-a73c-b9102bbc7160"></script>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <RelatedArticles currentSlug="/blog/ai-marketing-agency-miami/" heading="More on AI & Local Marketing" />
+
+</article>
+
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    background: linear-gradient(150deg, #0A2E6E 0%, #1a4fa8 60%, #2563eb 100%);
+    padding: 56px 0 48px; color: var(--white);
+  }
+  .blog-inner { max-width: 760px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .blog-hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 680px; color: var(--white);
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.8); margin-bottom: 20px; max-width: 640px; }
+  .post-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+
+  .blog-content { padding: 48px 0 80px; background: var(--white); }
+  .blog-content .container { max-width: 860px; }
+  .blog-body { max-width: 760px; margin: 0 auto; }
+  .blog-body img { width: 100%; height: auto; border-radius: var(--radius-lg); margin: 32px 0; display: block; }
+  .blog-body p { font-size: 16px; line-height: 1.78; color: var(--gray); margin-bottom: 20px; }
+  .blog-body h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 40px 0 16px; line-height: 1.25; clear: both; }
+  .blog-body h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  .blog-body ul { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
+  .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .blog-body strong { font-weight: 700; color: var(--dark); }
+
+  .aeo-checklist { background: #f9fafb; border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin: 28px 0; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .checklist-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .checklist-item input { flex-shrink: 0; margin-top: 2px; width: 18px; height: 18px; cursor: not-allowed; }
+  .checklist-item label { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; cursor: default; }
+  .checklist-item strong { color: var(--dark); }
+
+  .aeo-comparison-table { overflow-x: auto; margin: 28px 0; }
+  .aeo-comparison-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .aeo-comparison-table th { background: #0A2E6E; color: var(--white); font-weight: 700; padding: 12px; text-align: left; border: none; }
+  .aeo-comparison-table td { padding: 12px; border: 1px solid var(--border); color: var(--gray); }
+  .aeo-comparison-table tr:nth-child(even) { background: #f9fafb; }
+  .aeo-comparison-table strong { color: var(--dark); }
+
+  .vetting-scorecard { background: #f9fafb; border-left: 4px solid #0A2E6E; border-radius: var(--radius); padding: 24px; margin: 28px 0; }
+  .scorecard-item { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .scorecard-item:last-of-type { margin-bottom: 0; border-bottom: none; }
+  .scorecard-item h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin: 0 0 10px; }
+  .scorecard-item p { font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0 0 8px; }
+  .scorecard-total { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; margin-top: 0; }
+  .scorecard-total p { font-size: 14px; line-height: 1.6; margin: 0 0 8px; color: var(--gray); }
+  .scorecard-total p:last-child { margin-bottom: 0; }
+  .blog-body a:not(.btn) { color: var(--blue); text-decoration: underline; }
+  .blog-body a:not(.btn):hover { opacity: .8; }
+
+  .stat-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 32px 0; }
+  .stat-card {
+    background: linear-gradient(135deg, #b45309 0%, #d97706 55%, #F5A623 100%);
+    color: var(--white); border-radius: var(--radius-lg); padding: 22px 20px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .stat-num { font-size: 34px; font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+  .stat-label { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.9); }
+
+  .key-takeaways {
+    background: #0A2E6E; border-radius: var(--radius-lg); padding: 28px 32px; margin: 32px 0;
+  }
+  .key-takeaways strong {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .1em; color: #fb923c; margin-bottom: 16px;
+  }
+  .key-takeaways ul { list-style: none; padding: 0; margin: 0; }
+  .key-takeaways li {
+    padding-left: 26px; position: relative; margin-bottom: 12px;
+    font-size: 14px; line-height: 1.65; color: rgba(255,255,255,.85);
+  }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: #fb923c; font-weight: 700; }
+  .key-takeaways li strong { color: #fbbf24; font-weight: 700; }
+
+  .stat-callout {
+    width: 210px; border-top: 3px solid #F5A623; background: #fff7ed;
+    border-radius: var(--radius); padding: 16px 18px;
+  }
+  .stat-callout.right { float: right; margin: 4px 0 16px 28px; }
+  .stat-callout.left  { float: left;  margin: 4px 28px 16px 0; }
+  .callout-num {
+    display: block; font-size: 38px; font-weight: 800; color: #d97706;
+    letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px;
+  }
+  .stat-callout p { font-size: 12.5px; line-height: 1.6; color: var(--gray); margin: 0 0 8px; }
+  .callout-src { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9ca3af; }
+
+  .split-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; clear: both; }
+  .split-col { border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--border); }
+  .split-head {
+    padding: 14px 20px; font-size: 13px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .06em; display: flex; align-items: center; gap: 8px;
+  }
+  .split-icon { font-size: 15px; }
+  .split-col.yes .split-head { background: #ccfbf1; color: #0f766e; }
+  .split-col.no  .split-head { background: #fef3c7; color: #92400e; }
+  .split-col ul { list-style: none; padding: 0; margin: 0; background: var(--light); }
+  .split-col li { padding: 10px 20px; font-size: 14px; line-height: 1.55; color: var(--gray); border-top: 1px solid var(--border); }
+  .split-col li::before { content: none; }
+
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  .blog-cta {
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px; margin: 48px 0 0; clear: both;
+  }
+  .blog-cta h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; margin-top: 0; }
+  .blog-cta p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 24px; }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .btn-primary { background: var(--orange); color: var(--dark); }
+  .btn-blue { background: var(--blue); color: var(--white); }
+  .btn:hover { opacity: .9; text-decoration: none; }
+
+  /* ── SIDEBAR ─────────────────────────────── */
+  .blog-sidebar { display: flex; flex-direction: column; gap: 18px; position: sticky; top: 88px; }
+  .sidebar-card { border-radius: var(--radius-lg); padding: 22px; }
+
+  .numbers-card { background: #fff7ed; border: 1.5px solid #fde68a; }
+  .sidebar-eyebrow {
+    display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
+  }
+  .sidebar-stats { list-style: none; padding: 0; margin: 0; }
+  .sidebar-stats li { padding: 12px 0; border-top: 1px solid rgba(0,0,0,.07); }
+  .sidebar-stats li:first-child { border-top: none; padding-top: 0; }
+  .sidebar-stats li:last-child { padding-bottom: 0; }
+  .sn { display: block; font-size: 28px; font-weight: 800; color: #d97706; letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+  .sl { display: block; font-size: 12.5px; line-height: 1.55; color: var(--gray); margin-bottom: 3px; }
+  .ss { display: block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #9ca3af; }
+
+  .cta-card { background: linear-gradient(150deg, #0A2E6E, #1a4fa8); }
+  .cta-card h3 { font-size: 15.5px; font-weight: 800; color: var(--white); margin: 0 0 8px; line-height: 1.3; }
+  .cta-card p { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.8); margin: 0 0 16px; }
+  .sidebar-btn {
+    display: block; text-align: center; padding: 11px 16px;
+    background: var(--orange); color: var(--dark); border-radius: 8px;
+    font-size: 13.5px; font-weight: 700; text-decoration: none; margin-bottom: 8px; transition: opacity .2s;
+  }
+  .sidebar-btn:hover { opacity: .88; text-decoration: none; }
+  .sidebar-ghost-btn {
+    display: block; text-align: center; padding: 9px 16px;
+    color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.25); border-radius: 8px;
+    font-size: 13px; font-weight: 600; text-decoration: none; transition: opacity .2s;
+  }
+  .sidebar-ghost-btn:hover { color: var(--white); text-decoration: none; }
+
+  .nl-card { background: linear-gradient(150deg, #0A2E6E, #1B4FA8); }
+  .nl-eye { color: rgba(255,255,255,.65); }
+  .nl-blurb { font-size: 13px; line-height: 1.6; color: rgba(255,255,255,.8); margin: 0 0 12px; }
+  .nl-embed-wrap { background: rgba(255,255,255,.06); border-radius: var(--radius); padding: 4px; min-height: 80px; }
+
+  .links-card { background: var(--light); border: 1.5px solid var(--border); }
+  .sidebar-links { list-style: none; padding: 0; margin: 0; }
+  .sidebar-links li { border-top: 1px solid var(--border); }
+  .sidebar-links li:first-child { border-top: none; }
+  .sidebar-links a { display: block; padding: 10px 0; font-size: 13.5px; font-weight: 600; color: var(--blue); text-decoration: none; transition: opacity .2s; }
+  .sidebar-links a:hover { opacity: .75; text-decoration: none; }
+
+  /* ── ANIMATION ───────────────────────────── */
+  .stat-card { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .stat-card.visible { opacity: 1; transform: none; }
+  .key-takeaways { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s; }
+  .key-takeaways.visible { opacity: 1; transform: none; }
+
+  /* ── NEWSLETTER BUTTON IN CTA ────────────── */
+  .btn-nl {
+    background: transparent; border: 1.5px solid var(--blue); color: var(--blue);
+    cursor: pointer; font-family: var(--font);
+  }
+  .btn-nl:hover { background: var(--blue-light); opacity: 1; }
+  .nl-cta-wrap { display: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .nl-cta-wrap.open { display: block; }
+
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 36px; }
+    .blog-body h2 { font-size: 22px; }
+    .stat-band { grid-template-columns: 1fr; }
+    .split-visual { grid-template-columns: 1fr; }
+    .blog-cta { padding: 28px 20px; }
+    .cta-buttons { flex-direction: column; }
+    .btn { justify-content: center; }
+    .stat-callout { float: none; width: 100%; margin: 0 0 24px; }
+  }
+</style>
+
+<script>
+  function animateNum(el: HTMLElement) {
+    const raw = el.textContent?.trim() ?? '';
+    const prefix = raw.startsWith('~') ? '~' : '';
+    const suffix = raw.endsWith('%') ? '%' : '';
+    const val = parseFloat(raw.replace(/[^0-9.]/g, ''));
+    if (isNaN(val) || val === 0) return;
+    const decimals = raw.includes('.') ? 1 : 0;
+    const t0 = performance.now();
+    const dur = 1300;
+    function step(now: number) {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + (ease * val).toFixed(decimals) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Count-up on stat-callout scroll-in
+  const calloutObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      if (el.dataset.counted) return;
+      el.dataset.counted = '1';
+      el.querySelectorAll<HTMLElement>('.callout-num').forEach(animateNum);
+      calloutObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll<HTMLElement>('.stat-callout').forEach(el => calloutObs.observe(el));
+
+  // Fade-up + count-up on block stat elements
+  const blockObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target as HTMLElement;
+      const siblings = [...(el.parentElement?.querySelectorAll<HTMLElement>('.stat-card') ?? [])];
+      const idx = siblings.indexOf(el);
+      if (idx >= 0) el.style.transitionDelay = `${idx * 0.1}s`;
+      el.classList.add('visible');
+      el.querySelectorAll<HTMLElement>('.stat-num, .pull-num').forEach(animateNum);
+      blockObs.unobserve(el);
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll<HTMLElement>('.stat-card, .key-takeaways').forEach(el => blockObs.observe(el));
+
+  // Newsletter reveal
+  document.querySelectorAll<HTMLButtonElement>('.js-nl-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const wrap = btn.closest('.blog-cta')?.querySelector<HTMLElement>('.nl-cta-wrap');
+      if (wrap) { wrap.classList.add('open'); btn.style.display = 'none'; }
+    });
+  });
+</script>

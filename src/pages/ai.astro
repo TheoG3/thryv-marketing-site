@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
+import ToolCallout from '../components/ToolCallout.astro';
 
 const schema = {
   "@context": "https://schema.org",
@@ -59,7 +60,7 @@ const schema = {
         <div class="tool-card reveal">
           <span class="tool-icon">📊</span>
           <h3>Monthly Report Generator</h3>
-          <p>Pulls your GBP, ads, and SEO data and generates a plain-English performance summary every month, automatically, before your strategy call.</p>
+          <p>Pulls your GBP, ads, and SEO data and generates a plain-English performance summary every month, automatically. You see the numbers without having to sit on a call.</p>
           <div class="tool-benefit">Spend less time in spreadsheets</div>
         </div>
         <div class="tool-card reveal">
@@ -116,6 +117,13 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <ToolCallout
+    href="/free-tools/missed-call-revenue-calculator/"
+    icon="📞"
+    title="See what unanswered calls cost you each month"
+    desc="Most service businesses miss 50 to 70% of inbound calls. Plug in your numbers and find out what an AI receptionist could recover."
+  />
 
   <section class="section contact-section">
     <div class="container">

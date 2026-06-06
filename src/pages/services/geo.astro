@@ -1,0 +1,407 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://thryvmarketingsolutions.com/services/" },
+      { "@type": "ListItem", "position": 3, "name": "GEO",      "item": "https://thryvmarketingsolutions.com/services/geo/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is GEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GEO stands for Generative Engine Optimization. It is the practice of getting your business cited across all the AI search engines, ChatGPT, Gemini, Claude, Perplexity, and Google's AI answers, when people ask them for a recommendation or research a provider. Where classic SEO targets Google's rankings, GEO targets the AI answers that increasingly come before those rankings." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does GEO actually work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "AI assistants pull from three layers: their training data (your historical web footprint), their live retrieval (current search results and authoritative sources they query at runtime), and citation-friendly structure (content the model can extract and quote cleanly). GEO works on all three. We seed mentions on the sources AI models trust (Reddit, Quora, industry publications), structure your site for clean LLM extraction, and track which AI assistants now surface your business each month." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is GEO different from AEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GEO is about getting cited across the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers. AEO (Answer Engine Optimization) is the on-page craft of structuring your content so those engines can quote it cleanly, with Google's AI Overview the clearest example. GEO is the reach; AEO is the readiness. Most clients run both, and each has its own page." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can you guarantee AI assistant citations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No agency can guarantee a specific citation in ChatGPT or Gemini. AI training data refreshes irregularly and retrieval rules change. What we can do is optimize every known signal these models pay attention to and run a monthly citation scan that tells you exactly which AI assistants now surface your business and on which queries." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="GEO Services Miami | ChatGPT, Gemini, Perplexity Citations | Thryv"
+  description="Miami GEO services. Get cited when ChatGPT, Gemini, Claude, and Perplexity recommend local businesses. Citation seeding, LLM-extractable content, monthly tracking. $397/mo."
+  canonical="https://thryvmarketingsolutions.com/services/geo/"
+  ogImage="https://thryvmarketingsolutions.com/og-seo.jpg"
+  schema={schema}
+>
+
+  <section class="svc-hero">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><a href="/services/ai-seo/">AI SEO</a><span> › </span><span>GEO</span>
+      </nav>
+      <span class="label">Service</span>
+      <h1>GEO for Miami Businesses</h1>
+      <p class="lead">Generative Engine Optimization gets your business <strong>cited across the AI search engines</strong>, ChatGPT, Gemini, Perplexity, and Google's AI answers, when buyers ask them for a recommendation. Be in the AI's answer, not the link they have to scroll for.</p>
+      <div class="hero-ctas">
+        <a href="/contact/" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Get Free Proposal
+        </a>
+        <div class="hero-price">Starting at <strong>$397/mo</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">Month-to-month, no contracts</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">800M+</div><div class="stake-d">people use ChatGPT every week</div></div>
+        <div class="stake"><div class="stake-n">Ask first</div><div class="stake-d">more buyers ask an AI assistant before they ever search</div></div>
+        <div class="stake"><div class="stake-n">Be on the list</div><div class="stake-d">the AI answers with a shortlist, and you want to be named on it</div></div>
+      </div>
+      <p class="stakes-src">Weekly-user figure reported by <a href="https://openai.com/" target="_blank" rel="noopener">OpenAI</a>.</p>
+    </div>
+  </section>
+
+  <section class="section problem-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="reveal">
+          <span class="label">The problem</span>
+          <h2>Your buyer asked ChatGPT. ChatGPT recommended your competitor.</h2>
+          <p>Every month more buyers ask an AI assistant first. <strong>"Who's the best HVAC company in Miami?" "What's a good dentist in Coral Gables?"</strong> The AI gives them a shortlist. If you're not on it, you're invisible regardless of where you rank on Google.</p>
+          <p style="margin-top:16px;">AI assistants don't read every webpage. They pull from a curated set of sources they trust. <strong>Most small businesses have zero presence on those sources.</strong></p>
+          <ul class="check-list" style="margin-top:24px;">
+            <li>ChatGPT, Gemini, Claude, and Perplexity each use different source priorities</li>
+            <li>Reddit, Quora, and industry directories carry outsized weight in AI training</li>
+            <li>Schema markup and clean answer structure determine if the AI can extract you</li>
+            <li>"Best of" lists and roundups are AI-citation magnets when seeded correctly</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <span class="label">Our solution</span>
+          <h2>Plant your business in the sources AI models trust.</h2>
+          <p>GEO is part content engineering, part PR. We structure your site so AI models can extract and cite it cleanly, then we seed mentions on the high-authority sources (Reddit, Quora, niche directories, industry publications) that AI assistants reach for when answering local-recommendation queries.</p>
+          <p style="margin-top:16px;">Each month we re-scan ChatGPT, Gemini, and Perplexity on your priority queries and report exactly which AI now surfaces your business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">GEO, explained</span>
+        <h2>What is generative engine optimization, really?</h2>
+        <p><strong>GEO gets your business cited across the AI search engines, so when someone asks ChatGPT, Gemini, or Perplexity who to call, your name comes up.</strong> More buyers now open an AI assistant before they ever open Google. They ask a question, it answers with a short list of names, and they reach out to one. GEO is the work of putting your business on that list.</p>
+        <p>It's genuinely new ground. These assistants don't crawl and rank the whole web the way Google does; they answer from what they've absorbed and from a small set of sources they reach for in the moment. Get described well across those sources and the model "knows" you exist; stay invisible there and it simply can't name you, no matter how good your business is.</p>
+        <p>That's what makes it winnable. The assistant isn't impressed by the biggest ad budget, it's looking for the business that shows up clearly and consistently across the web. Becoming the source it pulls from is exactly what we engineer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ranking-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>How AI assistants decide who to recommend</h2>
+        <p class="lead" style="margin:0 auto;">Assistants surface businesses they can find, parse, and trust across the web. Each of those is something you can build, and that's where the work goes.</p>
+      </div>
+      <div class="factors-grid">
+        <div class="factor reveal">
+          <div class="factor-ic">💬</div>
+          <h3>Mentions across the web</h3>
+          <p>The more authoritative places describe you (industry sites, directories, the threads people actually cite), the more confidently a model can name you. <strong>The biggest lever, and the one most small businesses have never touched.</strong></p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🧩</div>
+          <h3>Structured, authoritative content</h3>
+          <p>Clean, well-organized pages with clear entities and schema let the model parse exactly what you do, where, and for whom, so it can lift and quote you without guessing.</p>
+        </div>
+        <div class="factor reveal">
+          <div class="factor-ic">🔄</div>
+          <h3>Freshness &amp; consistency</h3>
+          <p>Recent, consistent information across every source tells the assistant your details are current and safe to repeat. <strong>Contradictory or stale listings get skipped.</strong></p>
+        </div>
+      </div>
+      <p class="factor-source">Based on how large language models surface and cite sources. Retrieval and training rules shift often, so we build every known signal and run a monthly scan to see what actually gets cited.</p>
+    </div>
+  </section>
+
+  <section class="section includes-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">What's included</span>
+        <h2>Everything in the $397/mo GEO program</h2>
+      </div>
+      <div class="includes-grid">
+        <div class="inc-card reveal">
+          <div class="inc-icon">🎯</div>
+          <h3>AI Citation Audit</h3>
+          <p>Baseline scan across ChatGPT, Gemini, Claude, and Perplexity. We run 50+ of your priority queries and report which AI cites you today, which cites competitors, and where the quick-win gaps are.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📚</div>
+          <h3>LLM-Extractable Content</h3>
+          <p>Site pages restructured so AI models can lift clean, citable chunks. Definitional blocks, named entities, comparison tables, and the answer-first patterns LLMs reward.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">💬</div>
+          <h3>Reddit + Quora Seeding</h3>
+          <p>Authentic, value-first contributions on the threads AI assistants pull from. We don't spam your brand name. We seed expert answers tied to your category that earn citation alongside your website.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">🏛️</div>
+          <h3>Industry Authority Placement</h3>
+          <p>Quarterly placements on the publications and directories that LLM training pipelines prioritize for local-recommendation queries. Niche and local press, not generic spam.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">🏷️</div>
+          <h3>Schema for LLM Extraction</h3>
+          <p>LocalBusiness, Service, Offer, and Review schema deployed sitewide. AI models use schema as a confidence boost when deciding which business to cite.</p>
+        </div>
+        <div class="inc-card reveal">
+          <div class="inc-icon">📊</div>
+          <h3>Monthly Multi-AI Citation Report</h3>
+          <p>Every month we re-run your top 50 queries across all four major AI assistants and report which now cite you. Wins, losses, and the next 5 queries we're chasing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Audit the AIs</h3><p>We scan ChatGPT, Gemini, and Perplexity on your priority queries and show you who they cite today, whether you're on the list, and where the gaps are. No charge.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Build authority</h3><p>We seed value-first mentions on the high-trust sources these models reach for, and earn placements on the publications and directories they prioritize.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Structure for citation</h3><p>Your site gets restructured into clean, LLM-extractable chunks with the schema that helps a model confidently lift and quote you.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Track &amp; report</h3><p>Each month we re-run your queries across all four assistants and report which now name your business. Wins, losses, and the next queries we're chasing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing-section">
+    <div class="container">
+      <div class="pricing-box reveal">
+        <div>
+          <span class="label">Pricing</span>
+          <h2>$397/mo (Month-to-Month)</h2>
+          <p class="lead">No contracts. Cancel with 30 days notice. <strong>Save $694/mo</strong> by bundling GEO with SEO and AEO under the <a href="/services/ai-seo/">$797/mo AI SEO program</a>.</p>
+          <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">Get Started</a>
+        </div>
+        <div class="pricing-note-list">
+          <div class="pnl-item"><span class="pnl-check">✓</span> Multi-AI citation audit</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> LLM-extractable content restructure</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Reddit + Quora authority seeding</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Industry publication placement</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> LocalBusiness + Service schema</div>
+          <div class="pnl-item"><span class="pnl-check">✓</span> Monthly ChatGPT + Gemini + Perplexity scan</div>
+        </div>
+      </div>
+      <p class="custom-note reveal">GEO works best stacked with SEO and AEO. Most clients run all three under the AI SEO bundle for the price of one mid-tier service.</p>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-head center"><h2>Common questions</h2></div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>What is GEO?</summary><p>GEO stands for Generative Engine Optimization. It is the practice of getting your business cited across all the AI search engines, ChatGPT, Gemini, Claude, Perplexity, and Google's AI answers, when people ask them for a recommendation or research a provider. Where classic SEO targets Google's rankings, GEO targets the AI answers that increasingly come before those rankings.</p></details>
+        <details class="faq-item reveal"><summary>How does GEO actually work?</summary><p>AI assistants pull from three layers: their training data (your historical web footprint), their live retrieval (current search results and authoritative sources they query at runtime), and citation-friendly structure (content the model can extract and quote cleanly). GEO works on all three. We seed mentions on the sources AI models trust (Reddit, Quora, industry publications), structure your site for clean LLM extraction, and track which AI assistants now surface your business each month.</p></details>
+        <details class="faq-item reveal"><summary>How is GEO different from AEO?</summary><p>GEO is about getting cited across the AI search engines: ChatGPT, Gemini, Perplexity, and Google's AI answers. <a href="/services/aeo/">AEO</a> is the on-page craft of structuring your content so those engines can quote it cleanly, with Google's AI Overview the clearest example. <strong>GEO is the reach; AEO is the readiness.</strong> Most clients run both.</p></details>
+        <details class="faq-item reveal"><summary>Can you guarantee AI assistant citations?</summary><p>No agency can guarantee a specific citation in ChatGPT or Gemini. AI training data refreshes irregularly and retrieval rules change. What we can do is optimize every known signal these models pay attention to and run a monthly citation scan that tells you exactly which AI assistants now surface your business and on which queries.</p></details>
+        <details class="faq-item reveal"><summary>How long until I see AI citations?</summary><p>First citations typically appear in 60 to 90 days, faster for ChatGPT with live web browsing and Perplexity (real-time retrieval) than for Gemini or Claude (slower training refresh). We set the baseline scan upfront so progress is visible month over month.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <ToolCallout
+    href="/free-tools/local-seo-score-checker/"
+    icon="🔍"
+    title="Score your local SEO in 60 seconds"
+    desc="10 yes-or-no questions cover the levers that compound across Google rankings and AI citation eligibility."
+  />
+
+  <section class="section related-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Pairs with</span>
+        <h2>GEO compounds when you add these</h2>
+      </div>
+      <div class="related-grid">
+        <a href="/services/seo/" class="related-card">
+          <h3>Local SEO</h3>
+          <p>SEO authority signals (links, citations, content depth) are exactly what AI models look at when deciding who to cite. Strong SEO makes GEO faster.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/aeo/" class="related-card">
+          <h3>AEO</h3>
+          <p>GEO covers ChatGPT, Gemini, Claude, Perplexity. AEO covers Google AI Overviews. Same content foundation, two complementary AI surfaces.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+        <a href="/services/ai-seo/" class="related-card">
+          <h3>AI SEO Bundle</h3>
+          <p>All three (SEO + AEO + GEO) under one $797/mo program. Save $694/mo versus buying each separately.</p>
+          <span class="related-link">Learn more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact-section">
+    <div class="container">
+      <div class="contact-split">
+        <div class="reveal">
+          <span class="label">Free proposal</span>
+          <h2>See where ChatGPT and Gemini already cite you</h2>
+          <p class="lead" style="margin-bottom:24px;">We will scan your top 25 priority queries across ChatGPT, Gemini, and Perplexity and report which AI assistants surface your business and where the quick-win gaps are.</p>
+        </div>
+        <ContactForm title="Get My Free GEO Proposal" subject="GEO Inquiry | Thryv" serviceDefault="seo" />
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .svc-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
+  .svc-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
+  .svc-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 680px; }
+  .svc-hero .lead { color: rgba(255,255,255,.8); max-width: 620px; margin-bottom: 32px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+  .stakes { background: var(--blue-light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+
+  .problem-section { background: var(--white); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
+  .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
+  .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
+  .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .includes-section { background: var(--light); }
+  .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
+  .inc-icon { font-size: 36px; margin-bottom: 12px; } .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; } .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .pricing-section { background: var(--white); }
+  .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
+  .custom-note { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 14px; font-style: italic; color: var(--gray); line-height: 1.65; }
+  .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
+  .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
+  .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
+  .faq-section { background: var(--light); }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
+  @media (max-width: 900px) { .faq-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .faq-list { grid-template-columns: 1fr; } }
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p a { color: var(--blue); font-weight: 700; }
+
+  .related-section { background: var(--light); }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
+  .related-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+  .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
+  .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
+  .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
+
+  .contact-section { background: var(--white); }
+  .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+
+  .ranking-section { background: var(--white); }
+  .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .factor { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); }
+  .factor-ic { font-size: 32px; margin-bottom: 12px; }
+  .factor h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .factor p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+  .factor p strong { color: var(--dark); }
+  .factor-source { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 13px; font-style: italic; color: var(--gray); line-height: 1.6; }
+  @media (max-width: 768px) { .factors-grid { grid-template-columns: 1fr; } }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .includes-grid { grid-template-columns: 1fr 1fr; }
+    .pricing-box { grid-template-columns: 1fr; }
+    .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>

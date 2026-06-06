@@ -1,0 +1,451 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import RelatedArticles from '../../components/RelatedArticles.astro';
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://thryvmarketingsolutions.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://thryvmarketingsolutions.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "How Miami Med Spas Rank for Botox Near Me", "item": "https://thryvmarketingsolutions.com/blog/how-miami-med-spas-rank-botox-near-me/" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How Miami Med Spas Rank for 'Botox Near Me' (2026 Local SEO Guide)",
+    "description": "The local SEO and Google Business Profile playbook that gets Miami med spas into the map pack for 'botox near me'. Ranking factors, review math, and a 30-day checklist.",
+    "image": "https://thryvmarketingsolutions.com/blog/hero-botox-near-me-map-pack-miami.webp",
+    "author": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "publisher": { "@type": "Organization", "name": "Thryv Marketing Solutions", "url": "https://thryvmarketingsolutions.com" },
+    "datePublished": "2026-06-02",
+    "dateModified": "2026-06-02",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://thryvmarketingsolutions.com/blog/how-miami-med-spas-rank-botox-near-me/" },
+    "keywords": ["botox near me", "med spa local SEO Miami", "botox Miami ranking", "med spa Google Business Profile", "med spa map pack Miami"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How long does it take a Miami med spa to rank for 'botox near me'?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If your Google Business Profile is already claimed and you have a base of reviews, focused work on the map pack typically shows movement in 30 to 90 days. A brand-new profile with few reviews takes longer, usually 90 to 180 days, because prominence (review volume, mentions, and links) is the slowest ranking signal to build. The fastest wins come from completing a half-finished profile, fixing the primary category, and turning on a steady review request habit." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the Google map pack and why does it matter for botox searches?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The map pack (also called the local 3-pack) is the set of three business listings with a map that Google shows at the top of local search results. For a high-intent search like 'botox near me' it sits above the regular blue links, so it captures most of the clicks and calls. Businesses inside the 3-pack get about 126% more traffic and 93% more actions like calls and direction requests than businesses ranked 4 to 10. For a med spa, the map pack is the single most valuable piece of real estate on the page." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many Google reviews does a Miami med spa need to rank for botox?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no fixed number, but consumer behavior gives a working target. Most consumers expect a business to have at least 20+ reviews before they trust its star rating. Most will not consider a business rated below 4 stars. For a competitive Miami botox market, aim to clear 50 reviews at a 4.7 star average or higher, then keep a steady flow of new reviews coming in every week. Review velocity, not just total count, signals prominence to Google." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does my Google Business Profile primary category affect botox rankings?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, heavily. The primary category is one of the strongest relevance signals Google uses for the map pack. A med spa offering injectables should usually set 'Medical spa' as the primary category and add specific secondary categories that match services offered, such as 'Skin care clinic' or 'Facial spa'. The wrong primary category, or a generic one like 'Spa', can keep you out of the pack for injectable searches even when you are physically close to the searcher." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I make separate pages for botox in different Miami neighborhoods?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you draw patients from more than one neighborhood, yes. A single 'Botox Miami' page competes against everyone in the metro. Dedicated pages for 'Botox Brickell', 'Botox Coral Gables', and 'Botox Aventura' each target a tighter search with less competition and let you speak to that neighborhood's patients specifically. The key is real, specific content on each page, not the same text with the neighborhood name swapped in. Thin duplicate pages get ignored or penalized." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is proximity the only thing that decides who ranks for 'botox near me'?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Proximity matters, but Google blends it with relevance (how well your profile and website match the search) and prominence (reviews, mentions, links, and overall authority). A med spa slightly farther from the searcher can outrank a closer one that has an incomplete profile and few reviews. That is good news for Miami med spas: you cannot move your building, but you can win on relevance and prominence, which are the two factors you actually control." }
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="How Miami Med Spas Rank for 'Botox Near Me' (2026)"
+  description="The local SEO and Google Business Profile playbook that gets Miami med spas into the map pack for 'botox near me'. Ranking factors, reviews, and a 30-day plan."
+  canonical="https://thryvmarketingsolutions.com/blog/how-miami-med-spas-rank-botox-near-me/"
+  ogImage="https://thryvmarketingsolutions.com/blog/hero-botox-near-me-map-pack-miami.webp"
+  ogType="article"
+  schema={schema}
+>
+
+<article>
+
+  <section class="blog-hero">
+    <div class="container">
+      <div class="blog-inner">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <a href="/">Home</a><span> › </span><a href="/blog/">Blog</a><span> › </span><span>Botox Near Me Ranking</span>
+        </nav>
+        <span class="post-label">Med Spa Marketing</span>
+        <h1>How Miami Med Spas Rank for "Botox Near Me"</h1>
+        <p class="lead">When someone types "botox near me" in Miami, they are not researching. They are ready to book. Here is the local SEO and Google Business Profile playbook that puts your med spa in front of them at the exact moment they decide.</p>
+        <div class="post-meta">
+          <span>June 2, 2026</span>
+          <span>9 min read</span>
+          <span>Med Spa Marketing</span>
+        </div>
+      </div>
+      <img
+        class="hero-cover"
+        src="/blog/hero-botox-near-me-map-pack-miami.webp"
+        alt="Hand holding a phone showing a med spa local map result with star rating and three map-pack pins, inside a bright luxe Miami med spa lobby"
+        title="How Miami Med Spas Rank for Botox Near Me"
+        width="1600"
+        height="900"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </section>
+
+  <section class="blog-content">
+    <div class="container">
+      <div class="blog-body">
+
+        <p>There is a difference between a patient Googling "is botox worth it" and one Googling "botox near me." The first is months from booking. The second is often minutes from picking up the phone. <strong>Most "near me" mobile searches lead to a visit within 24 hours (Think with Google)</strong>, and local searches carry unmatched buying intent. For a Miami med spa, no other search on the internet carries that kind of intent and urgency.</p>
+
+        <p>The problem: that search is decided in a tiny box at the top of Google called the map pack, and most Miami med spas have never deliberately optimized for it. This guide walks through exactly how Google decides who shows up for "botox near me," what you control, and a 30-day plan to climb. It pairs directly with our <a href="/medspas/seo/">med spa SEO service</a>, which is built around this exact playbook.</p>
+
+        <div class="key-takeaways">
+          <strong>Key Takeaways</strong>
+          <ul>
+            <li>"Botox near me" is the highest-intent search a Miami med spa can win: near-me searches convert to visits within 24 hours at rates far above other search types (Think with Google)</li>
+            <li>The map pack (top 3 listings) captures the clicks: 3-pack businesses get 126% more traffic and 93% more calls/directions than ranks 4-10</li>
+            <li>Google ranks local med spas on three things: proximity, relevance, and prominence. You control two of them</li>
+            <li>Your Google Business Profile is the engine. Primary category, completeness, and photos move the needle most</li>
+            <li>Reviews are the underused lever: aim for 50+ reviews at 4.7 stars and a steady weekly flow, not a one-time push</li>
+          </ul>
+        </div>
+
+        <h2>Why "Botox Near Me" Is the Search Worth Winning</h2>
+
+        <p>For aesthetics specifically, the intent of "near me" searches is razor-sharp. Botox is a repeat, time-sensitive purchase. Patients re-treat every few months, they often decide impulsively, and when they search "near me" they want a chair this week, not a blog to read. The search volume is real and growing. These are high-intent, ready-to-buy patients at scale.</p>
+
+        <p>The demand underneath the search is real and growing. US providers performed <strong>9.88 million neuromodulator (Botox-type) procedures in 2024, up 4% year over year</strong> (<a href="https://www.plasticsurgery.org/news/plastic-surgery-statistics" target="_blank" rel="noopener">ASPS 2024 statistics</a>), and the US medical spa market continues to expand. Miami is one of the densest aesthetics markets in the country. The patients are searching. The only question is whether your med spa is the one they see.</p>
+
+        <h2>The Map Pack Is the Real Prize</h2>
+
+        <p>When you search "botox near me," Google shows a map and three business listings before any of the normal blue links. That block is the map pack, also called the local 3-pack, and it is where the clicks go. <strong>42% of searchers click a result inside the local pack</strong>, and businesses that land in the 3-pack receive <strong>126% more traffic and 93% more actions</strong> (calls, website clicks, direction requests) than businesses ranked 4 through 10 (<a href="https://www.soci.ai/blog/local-seo-statistics/" target="_blank" rel="noopener">local search data, SOCi</a>).</p>
+
+        <p>Translation: ranking 4th for "botox near me" is not "almost there." It is below the fold of the part that matters. The entire game is getting into those top three slots for searches happening near your location. Everything below is about how Google decides who gets in.</p>
+
+        <h2>What Does Google Actually Rank Local Med Spas On?</h2>
+
+        <p>Google's local ranking comes down to three factors. Understanding which ones you control changes where you spend your effort.</p>
+
+        <p><strong>1. Proximity.</strong> How close is your med spa to the person searching? You cannot change your address, and Google weighs distance heavily for "near me" searches. This is the one factor you do not control, which is exactly why the other two matter so much.</p>
+
+        <p><strong>2. Relevance.</strong> How well does your Google Business Profile and website match "botox" and "med spa"? This is your category settings, your services list, your profile content, and the pages on your site. You control all of it, and most Miami med spas leave easy relevance points on the table.</p>
+
+        <p><strong>3. Prominence.</strong> How well-known and trusted is your med spa? Google reads this from your review count and rating, how often people mention and link to you, and your overall authority. This is slower to build but it is the factor that lets a med spa a few blocks farther away beat a closer competitor.</p>
+
+        <p>This is where a smaller med spa wins: a closer competitor with a half-finished profile and 11 reviews loses to one slightly farther out with a complete profile and 140 reviews. You cannot move your building, but you can win on relevance and prominence. That is the whole strategy.</p>
+
+        <h2>Your Google Business Profile Is the Engine</h2>
+
+        <p>For "botox near me," your Google Business Profile does more work than your website. Get these right first:</p>
+
+        <ul>
+          <li><strong>Primary category.</strong> Set it to "Medical spa." This is one of the strongest relevance signals there is. A generic "Spa" category can keep you out of the pack for injectable searches entirely. Add accurate secondary categories like "Skin care clinic" and "Facial spa."</li>
+          <li><strong>Complete every field.</strong> Hours, phone, website, services, attributes, booking link, service area. A complete profile drives more clicks, calls, and direction requests from prospective patients. Completeness is also a ranking input, not just a trust signal.</li>
+          <li><strong>Services and descriptions.</strong> List Botox, Dysport, and your other injectables as named services with real descriptions. This is where the word "botox" lives on your profile.</li>
+          <li><strong>Photos.</strong> Real interior, exterior, team, and (compliant) treatment photos. Profiles with current photos get more clicks and more direction requests. Refresh them. Stale profiles look closed.</li>
+          <li><strong>Google Posts.</strong> Post offers and updates regularly. It keeps the profile active and gives Google fresh signals.</li>
+        </ul>
+
+        <p>If your profile is half-filled right now, this is the single fastest win available to you. We cover the full process in our <a href="/blog/optimize-google-business-profile-2026/">step-by-step Google Business Profile guide</a>, and it is the foundation of our <a href="/services/google-business-profile/">GBP management service</a>.</p>
+
+        <h2>Reviews: The Lever Most Miami Med Spas Underuse</h2>
+
+        <p>Reviews do two jobs at once. They are a prominence signal that helps you rank, and they are the deciding factor for the patient choosing between the three med spas in the pack. <strong>97% of consumers read reviews for local businesses</strong>, and <strong>41% now read them every single time</strong> (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal Local Consumer Review Survey</a>).</p>
+
+        <p>The math on what patients expect is clear:</p>
+
+        <ul>
+          <li><strong>Most consumers will not consider a business rated below 4 stars.</strong> (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" target="_blank" rel="noopener">BrightLocal, 2026</a>) A 4.7+ average is the real entry point in a competitive market like Miami botox.</li>
+          <li>Most consumers expect a business to have a solid review history before they trust it. Below 20 reviews, even a perfect rating reads as "too new to judge."</li>
+          <li><strong>Responding matters.</strong> Consumers who see business responses to reviews are more likely to engage. Reply to every review, good and bad.</li>
+        </ul>
+
+        <p>The mistake most med spas make is treating reviews as a one-time campaign: a blast of requests, 30 reviews in a month, then silence. Google reads velocity. A steady flow of new reviews every week signals an active, trusted business far better than a stale pile from last year. Build a habit, not a campaign: a review request at every visit, by text, with a direct link.</p>
+
+        <h2>One "Botox Miami" Page Is Not Enough</h2>
+
+        <p>The map pack handles the "near me" searcher standing near your door. But plenty of Miami patients search by neighborhood: "botox Brickell," "botox Coral Gables," "botox Aventura." A single "Botox Miami" page competes against the entire metro for all of them and wins none cleanly.</p>
+
+        <p>Dedicated neighborhood pages each target a tighter, less competitive search and let you speak directly to that area's patients. The rule that makes or breaks this: each page needs real, specific content, not the same paragraph with the neighborhood name swapped in. Mention the actual area, the patients you see there, parking, nearby landmarks, the specific concerns that come up. Thin duplicate pages get ignored. This neighborhood-page strategy is the core of how our <a href="/medspas/seo/">med spa SEO service</a> builds compounding organic traffic on top of the map pack.</p>
+
+        <h2>The Ranking Factors, Ranked by What You Control</h2>
+
+        <div class="table-wrap">
+          <table class="seo-vs-ppc-table">
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>What Google reads</th>
+                <th>Your control</th>
+                <th>First move</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Proximity</td><td>Distance to searcher</td><td>None</td><td>Win the other two instead</td></tr>
+              <tr><td>Primary category</td><td>"Medical spa" vs generic</td><td>Full</td><td>Fix today, 5 minutes</td></tr>
+              <tr><td>Profile completeness</td><td>Every field filled</td><td>Full</td><td>Complete this week</td></tr>
+              <tr><td>Services + keywords</td><td>"Botox", "Dysport" named</td><td>Full</td><td>Add named services</td></tr>
+              <tr><td>Review rating</td><td>4.7+ stars</td><td>High</td><td>Reply to all, fix issues</td></tr>
+              <tr><td>Review volume + velocity</td><td>50+ and steady weekly</td><td>High</td><td>Request at every visit</td></tr>
+              <tr class="highlight"><td><strong>Neighborhood pages</strong></td><td><strong>Specific local content</strong></td><td><strong>Full</strong></td><td><strong>Build Brickell first</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="table-source">Factors reflect Google local ranking signals (proximity, relevance, prominence). Effort ranked by what a Miami med spa actually controls. Thryv Marketing Solutions, 2026.</p>
+        </div>
+
+        <h2>The 30-Day "Botox Near Me" Checklist</h2>
+
+        <ol>
+          <li><strong>Days 1-2:</strong> Claim and verify your Google Business Profile if you have not. Set primary category to "Medical spa." Add accurate secondary categories.</li>
+          <li><strong>Days 3-7:</strong> Complete every profile field. Add Botox and your injectables as named services with descriptions. Upload 15+ current photos. Add your booking link.</li>
+          <li><strong>Days 8-14:</strong> Reply to every existing review. Set up a review request habit: a text with a direct review link sent to every patient after their visit.</li>
+          <li><strong>Days 15-21:</strong> Audit your website. Make sure "Botox Miami" and your injectables have a real, dedicated page that loads fast on mobile and has a visible booking button and a 4.7+ review badge above the fold.</li>
+          <li><strong>Days 22-30:</strong> Build your first neighborhood page (start with your strongest patient catchment, often Brickell or Coral Gables). Publish your first Google Post. Set a recurring weekly review-request and posting cadence.</li>
+        </ol>
+
+        <div class="inline-tool-cta">
+          <strong>Want to know if "botox near me" is winnable for your location?</strong>
+          <p>We will pull your current map pack position, profile gaps, and review standing against the Miami med spas ranking above you, and show you the exact moves to climb. Free, no lock-in.</p>
+          <a href="/contact/" class="btn-blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            Get a Free Med Spa SEO Audit
+          </a>
+        </div>
+
+        <div class="founder-note">
+          <div class="fn-label">From the Founder</div>
+          <p>Here's something most med spas miss. If you're pulling a steady stream of DMs off Instagram, good, that's real demand. Now picture that same volume coming in from Google too, from people typing "botox near me" the second they decide. Getting your Google profile right doesn't replace what's already working. It spreads the wealth, so one slow week on one platform doesn't empty your calendar.</p>
+          <div class="fn-by">Theodore Grimes, Founder</div>
+        </div>
+
+        <h2>Bottom Line</h2>
+
+        <p>"Botox near me" is the most valuable search a Miami med spa can win because the person typing it is ready to book. You will not win it by accident. You win it by getting into the map pack, and you get into the map pack by stacking the two factors you control: relevance (your Google Business Profile, category, and named services) and prominence (a steady flow of 4.7-star reviews and real neighborhood content). Proximity is fixed. Everything else is a decision.</p>
+
+        <p>Most Miami med spas have a half-finished profile and a stale review pile. That is not a problem. It is the opening. Fix the profile this week, build the review habit this month, and start the neighborhood pages. The patients are already searching.</p>
+
+        <h2>FAQ: Ranking for "Botox Near Me" in Miami</h2>
+
+        <details class="faq-item">
+          <summary>How long does it take a Miami med spa to rank for "botox near me"?</summary>
+          <p>If your Google Business Profile is already claimed and you have a base of reviews, focused work on the map pack typically shows movement in 30 to 90 days. A brand-new profile with few reviews takes longer, usually 90 to 180 days, because prominence (review volume, mentions, and links) is the slowest ranking signal to build. The fastest wins come from completing a half-finished profile, fixing the primary category, and turning on a steady review request habit.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What is the Google map pack and why does it matter for botox searches?</summary>
+          <p>The map pack (also called the local 3-pack) is the set of three business listings with a map that Google shows at the top of local search results. For a high-intent search like "botox near me" it sits above the regular blue links, so it captures most of the clicks and calls. Businesses inside the 3-pack get about 126% more traffic and 93% more actions like calls and direction requests than businesses ranked 4 to 10. For a med spa, the map pack is the single most valuable piece of real estate on the page.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How many Google reviews does a Miami med spa need to rank for botox?</summary>
+          <p>There is no fixed number, but consumer behavior gives a working target. Most consumers expect a business to have at least 20+ reviews before they trust its star rating. Most will not consider a business rated below 4 stars. For a competitive Miami botox market, aim to clear 50 reviews at a 4.7 star average or higher, then keep a steady flow of new reviews coming in every week. Review velocity, not just total count, signals prominence to Google.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Does my Google Business Profile primary category affect botox rankings?</summary>
+          <p>Yes, heavily. The primary category is one of the strongest relevance signals Google uses for the map pack. A med spa offering injectables should usually set "Medical spa" as the primary category and add specific secondary categories that match services offered, such as "Skin care clinic" or "Facial spa." The wrong primary category, or a generic one like "Spa", can keep you out of the pack for injectable searches even when you are physically close to the searcher.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Should I make separate pages for botox in different Miami neighborhoods?</summary>
+          <p>If you draw patients from more than one neighborhood, yes. A single "Botox Miami" page competes against everyone in the metro. Dedicated pages for "Botox Brickell", "Botox Coral Gables", and "Botox Aventura" each target a tighter search with less competition and let you speak to that neighborhood's patients specifically. The key is real, specific content on each page, not the same text with the neighborhood name swapped in. Thin duplicate pages get ignored or penalized.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is proximity the only thing that decides who ranks for "botox near me"?</summary>
+          <p>No. Proximity matters, but Google blends it with relevance (how well your profile and website match the search) and prominence (reviews, mentions, links, and overall authority). A med spa slightly farther from the searcher can outrank a closer one that has an incomplete profile and few reviews. That is good news for Miami med spas: you cannot move your building, but you can win on relevance and prominence, which are the two factors you actually control.</p>
+        </details>
+
+        <div class="blog-cta">
+          <h2>Want to Own "Botox Near Me" in Your Miami Neighborhood?</h2>
+          <p>We get Miami med spas into the map pack and keep them there: profile optimization, review systems, and neighborhood pages that compound. Month-to-month, no lock-in. Free audit shows exactly where you stand against the spas ranking above you.</p>
+          <div class="cta-buttons">
+            <a href="/contact/" class="btn btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Book a Free Proposal
+            </a>
+            <a href="/medspas/seo/" class="btn btn-blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              View Med Spa SEO Service
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <RelatedArticles currentSlug="/blog/how-miami-med-spas-rank-botox-near-me/" />
+
+</article>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .blog-hero {
+    background: linear-gradient(135deg, #0A2E6E 0%, var(--blue) 100%);
+    padding: 56px 0 56px; color: var(--white);
+  }
+  .blog-inner { max-width: 760px; }
+  .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 20px; flex-wrap: wrap; }
+  .breadcrumb a { color: rgba(255,255,255,.55); }
+  .breadcrumb a:hover { color: var(--white); }
+  .post-label {
+    display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; background: rgba(255,255,255,.15);
+    border-radius: 100px; padding: 4px 12px; margin-bottom: 16px; color: var(--white);
+  }
+  .blog-hero h1 {
+    font-size: clamp(26px, 4.5vw, 44px); font-weight: 800; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 16px; max-width: 680px; color: var(--white);
+  }
+  .blog-hero .lead { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,.8); margin-bottom: 20px; max-width: 620px; }
+  .post-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,.55); flex-wrap: wrap; }
+
+  .hero-cover {
+    display: block; width: 100%; max-width: 1120px; margin: 36px auto 0;
+    aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 28px 70px -24px rgba(0, 0, 0, 0.55);
+  }
+  @media (max-width: 768px) {
+    .blog-hero { padding: 40px 0 40px; }
+    .hero-cover { margin-top: 24px; border-radius: var(--radius); }
+  }
+
+  /* Content */
+  .blog-content { padding: 48px 0 80px; background: var(--white); }
+  .blog-body { max-width: 720px; margin: 0 auto; }
+  .blog-body p { font-size: 16px; line-height: 1.78; color: var(--gray); margin-bottom: 20px; }
+  .blog-body h2 { font-size: 26px; font-weight: 800; color: var(--dark); margin: 40px 0 16px; line-height: 1.25; }
+  .blog-body h3 { font-size: 19px; font-weight: 700; color: var(--dark); margin: 28px 0 12px; }
+  .blog-body ul, .blog-body ol { list-style: disc; margin: 20px 0 20px 4px; padding-left: 20px; }
+  .blog-body ol { list-style: decimal; }
+  .blog-body li { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 10px; }
+  .blog-body strong { font-weight: 700; color: var(--dark); }
+  .blog-body em { font-style: italic; }
+  .blog-body a { color: var(--blue); text-decoration: underline; }
+  .blog-body a:hover { opacity: .8; }
+
+  /* Key Takeaways */
+  .key-takeaways {
+    background: #EEF4FF; border-left: 4px solid var(--blue);
+    border-radius: var(--radius); padding: 24px 28px; margin: 32px 0;
+  }
+  .key-takeaways strong {
+    display: block; font-size: 11px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--blue); margin-bottom: 14px;
+  }
+  .key-takeaways ul { list-style: none; padding: 0; margin: 0; }
+  .key-takeaways li {
+    padding-left: 24px; position: relative; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.6; color: var(--dark);
+  }
+  .key-takeaways li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* Inline tool CTA */
+  .inline-tool-cta {
+    background: linear-gradient(135deg, #EEF4FF 0%, #FFF6E6 100%);
+    border: 1.5px solid var(--blue);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 24px 0 32px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .inline-tool-cta strong { font-size: 16px; color: var(--dark); }
+  .inline-tool-cta p { font-size: 14px; line-height: 1.6; color: var(--gray); margin: 0; }
+  .inline-tool-cta .btn-blue {
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--blue); color: var(--white) !important;
+    padding: 10px 18px; border-radius: 8px;
+    font-size: 14px; font-weight: 700; text-decoration: none !important;
+    transition: opacity .2s;
+    margin-top: 6px;
+  }
+  .inline-tool-cta .btn-blue:hover { opacity: 0.9; }
+
+  /* Table */
+  .table-wrap { margin: 28px 0 32px; overflow-x: auto; }
+  .seo-vs-ppc-table {
+    width: 100%; border-collapse: collapse;
+    border: 1.5px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .seo-vs-ppc-table th {
+    background: #0A2E6E; color: var(--white);
+    text-align: left; padding: 12px 16px;
+    font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  }
+  .seo-vs-ppc-table td {
+    padding: 12px 16px; border-top: 1px solid var(--border, #e2e8f0);
+    color: var(--dark);
+  }
+  .seo-vs-ppc-table tr.highlight td {
+    background: #FFF6E6; font-weight: 700;
+  }
+  .table-source { font-size: 12px; color: var(--gray); margin-top: 8px; font-style: italic; }
+
+  /* Founder note */
+  .founder-note {
+    background: #FBF7EF; border-left: 4px solid var(--orange);
+    border-radius: var(--radius); padding: 24px 28px; margin: 36px 0;
+  }
+  .founder-note .fn-label {
+    font-size: 11px; font-weight: 800; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+  }
+  .founder-note p { font-size: 17px; line-height: 1.7; color: var(--dark); font-style: italic; margin: 0 0 12px; }
+  .founder-note .fn-by { font-size: 13px; font-weight: 700; color: var(--gray); }
+
+  /* FAQ */
+  .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); margin-bottom: 10px; background: var(--white); overflow: hidden; }
+  .faq-item summary {
+    padding: 18px 24px; font-size: 15px; font-weight: 700; cursor: pointer;
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+    color: var(--dark);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-size: 20px; color: var(--blue); font-weight: 400; flex-shrink: 0; transition: transform .2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+
+  /* CTA Box */
+  .blog-cta {
+    background: var(--light); border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg); padding: 40px; margin: 48px 0 0;
+  }
+  .blog-cta h2 { font-size: 22px; font-weight: 800; color: var(--dark); margin-bottom: 12px; margin-top: 0; }
+  .blog-cta p { font-size: 15px; line-height: 1.7; color: var(--gray); margin-bottom: 24px; }
+  .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px;
+    border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity .2s;
+  }
+  .blog-body a.btn { color: var(--white); text-decoration: none; }
+  .blog-body a.btn:hover { color: var(--white); text-decoration: none; }
+  .blog-body a.btn-primary { background: var(--orange); }
+  .blog-body a.btn-blue { background: var(--blue); }
+
+  @media (max-width: 768px) {
+    .blog-cta { padding: 28px 20px; }
+    .cta-buttons { flex-direction: column; }
+    .btn { justify-content: center; }
+  }
+</style>

@@ -2,19 +2,97 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
+const liveTools = [
+  {
+    href: 'https://thryv-map-report.pages.dev',
+    icon: '🗺️',
+    name: 'Local Map Report (Free)',
+    desc: 'See where you rank vs competitors for local searches in your market',
+    isExternal: true,
+  },
+  {
+    href: 'https://thryv-ada-scanner.theodoreg3.workers.dev',
+    icon: '♿',
+    name: 'ADA Accessibility Scanner',
+    desc: 'Free scan of your website for ADA compliance issues and fixes',
+    isExternal: true,
+  },
+];
+
+const tools = [
+  {
+    href: '/free-tools/review-revenue-calculator/',
+    icon: '💰',
+    name: 'Review Revenue Calculator',
+    desc: 'See how much a higher Google rating could earn you',
+  },
+  {
+    href: '/free-tools/gbp-audit-scorer/',
+    icon: '📋',
+    name: 'GBP Audit Scorer',
+    desc: '10 yes or no questions to score your Google Business Profile',
+  },
+  {
+    href: '/free-tools/local-seo-score-checker/',
+    icon: '🔍',
+    name: 'Local SEO Score Checker',
+    desc: '10 questions to find out where your local SEO stands',
+  },
+  {
+    href: '/free-tools/google-ads-budget-calculator/',
+    icon: '📈',
+    name: 'Google Ads Budget Calculator',
+    desc: 'See what ad spend it takes to hit your lead goal',
+  },
+  {
+    href: '/free-tools/review-gap-calculator/',
+    icon: '⭐',
+    name: 'Review Gap Calculator',
+    desc: 'See how far behind your top competitor you are on reviews',
+  },
+  {
+    href: '/free-tools/missed-call-revenue-calculator/',
+    icon: '📞',
+    name: 'Missed Call Revenue Calculator',
+    desc: 'See how much unanswered calls are costing you each month',
+  },
+  {
+    href: '/free-tools/med-spa-marketing-roi-calculator/',
+    icon: '💉',
+    name: 'Med Spa Marketing ROI Calculator',
+    desc: 'New patients, CAC, year-one revenue, and 5-year LTV for Miami med spas',
+  },
+];
+
+const allTools = [...liveTools, ...tools];
 const schema = {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://thryvmarketingsolutions.com/free-tools/" }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://thryvmarketingsolutions.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Free Tools", "item": "https://thryvmarketingsolutions.com/free-tools/" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Free Marketing Tools for Miami Businesses",
+      "numberOfItems": allTools.length,
+      "itemListElement": allTools.map((t, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": t.isExternal ? t.href : `https://thryvmarketingsolutions.com${t.href}`,
+        "name": t.name
+      }))
+    }
   ]
 };
 ---
 
 <BaseLayout
   title="Free Marketing Tools for Miami Businesses | Thryv Marketing Solutions"
-  description="Free review revenue calculator and Google Business Profile audit scorer. See what your online presence is costing you — or earning you."
+  description="Free calculators and audit tools for Miami local businesses. Review revenue, missed call revenue, Google Business Profile audit, local SEO score, Google Ads budget, med spa ROI."
   canonical="https://thryvmarketingsolutions.com/free-tools/"
   ogImage="https://thryvmarketingsolutions.com/og-free-tools.jpg"
   schema={schema}
@@ -27,316 +105,73 @@ const schema = {
       </nav>
       <span class="label">Free Tools</span>
       <h1>Free Marketing Tools for Miami Businesses</h1>
-      <p class="lead">Six free tools. Click a card to open. No email required.</p>
+      <p class="lead">Two live ranking tools powered by real SEO and accessibility APIs, plus seven calculators to benchmark your marketing. Pick one, run it, and get a real answer in under two minutes.</p>
+    </div>
+  </section>
+
+  <section class="section live-tools-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Real-Time Ranking Data</span>
+        <h2>Two Live Tools, No Signup Required</h2>
+        <p class="lead center" style="max-width:680px;margin:0 auto;">These tools hit real SEO APIs and accessibility scanners on demand. See where you actually rank, spot ADA compliance gaps, and understand what to fix.</p>
+      </div>
+      <div class="live-tools-grid">
+        {liveTools.map((t) => (
+          <a href={t.href} target={t.isExternal ? '_blank' : undefined} rel={t.isExternal ? 'noopener noreferrer' : undefined} class="live-tool-card reveal" aria-label={`Open ${t.name}`}>
+            <div class="lt-icon">{t.icon}</div>
+            <h3>{t.name}</h3>
+            <p>{t.desc}</p>
+            <span class="lt-cta">Open Tool →</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
   <section class="section tools-section">
     <div class="container">
-
-      <!-- Tile row -->
       <div class="tiles-row">
-
-        <!-- TOOL 1 -->
-        <div class="tool-accordion reveal" id="acc-1">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-1" data-acc="1">
+        {tools.map((t) => (
+          <a href={t.href} class="tile-card reveal" aria-label={`Open ${t.name}`}>
             <div class="tile-left">
-              <span class="tile-icon">💰</span>
-              <div>
-                <div class="tile-name">Review Revenue Calculator</div>
-                <div class="tile-desc">See how much a higher Google rating could earn you</div>
+              <span class="tile-icon" aria-hidden="true">{t.icon}</span>
+              <div class="tile-text">
+                <div class="tile-name">{t.name}</div>
+                <div class="tile-desc">{t.desc}</div>
               </div>
             </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="tile-arrow" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
             </span>
-          </button>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
 
-          <div class="tool-body" id="body-1" role="region" aria-labelledby="acc-1" hidden>
-            <div class="tool-body-inner">
-              <div class="calc-grid">
-                <div class="calc-form">
-                  <div class="calc-field">
-                    <label for="monthly-revenue">Monthly Revenue</label>
-                    <div class="input-prefix"><span>$</span><input type="number" id="monthly-revenue" placeholder="50000" min="0" /></div>
-                  </div>
-                  <div class="calc-field">
-                    <label for="avg-ticket">Average Transaction Value</label>
-                    <div class="input-prefix"><span>$</span><input type="number" id="avg-ticket" placeholder="500" min="1" /></div>
-                  </div>
-                  <div class="calc-field">
-                    <label for="current-rating">Current Star Rating</label>
-                    <select id="current-rating">
-                      <option value="3.0">3.0 stars</option>
-                      <option value="3.5">3.5 stars</option>
-                      <option value="4.0">4.0 stars</option>
-                      <option value="4.3">4.3 stars</option>
-                      <option value="4.5" selected>4.5 stars</option>
-                    </select>
-                  </div>
-                  <button id="calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Opportunity</button>
-                </div>
-                <div class="calc-result" id="calc-result" style="display:none;">
-                  <div class="result-label">Estimated Additional Monthly Revenue</div>
-                  <div class="result-amount" id="result-amount">$0</div>
-                  <p class="result-note">Estimated additional revenue if your rating improved from <span id="result-from">—</span> to 4.8 stars, based on higher search conversion rates.</p>
-                  <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get Help Improving My Rating</a>
-                </div>
-              </div>
-            </div>
-          </div>
+  <section class="section coming-soon-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Building Now</span>
+        <h2>One More Tool in Development</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">The next tool pulls real keywords and search volumes on demand. Drop your email below to be first in line when it ships.</p>
+      </div>
+      <div class="cs-grid single">
+        <div class="cs-card reveal">
+          <div class="cs-tag">Coming Soon</div>
+          <div class="cs-icon">🎯</div>
+          <h3>Keyword Opportunity Finder</h3>
+          <p>Paste a competitor URL. We pull every keyword they rank for that you don't, with monthly search volume and difficulty score. Built on the same data source pro SEOs pay $400/mo for.</p>
         </div>
-
-        <!-- TOOL 2 -->
-        <div class="tool-accordion reveal" id="acc-2">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-2" data-acc="2">
-            <div class="tile-left">
-              <span class="tile-icon">📋</span>
-              <div>
-                <div class="tile-name">GBP Audit Scorer</div>
-                <div class="tile-desc">10 yes/no questions to get your Google profile score</div>
-              </div>
-            </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-
-          <div class="tool-body" id="body-2" role="region" aria-labelledby="acc-2" hidden>
-            <div class="tool-body-inner">
-              <form id="audit-form">
-                <ol class="audit-questions">
-                  {[
-                    'Is your Google Business Profile verified?',
-                    'Does your profile have 10 or more photos?',
-                    'Is your business description fully filled out?',
-                    'Do you have your primary service category set correctly?',
-                    'Are your hours listed and up to date?',
-                    'Do you have at least 10 Google reviews?',
-                    'Is your average rating 4.0 or above?',
-                    'Have you posted to your GBP in the last 30 days?',
-                    'Do you respond to all your reviews?',
-                    'Does your website link in GBP go to a working page?',
-                  ].map((q, i) => (
-                    <li class="audit-q">
-                      <span class="q-text">{q}</span>
-                      <div class="q-opts">
-                        <label><input type="radio" name={`q${i+1}`} value="1" required /> Yes</label>
-                        <label><input type="radio" name={`q${i+1}`} value="0" /> No</label>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My Score</button>
-              </form>
-              <div class="audit-result" id="audit-result" style="display:none;">
-                <div class="score-display">
-                  <span class="score-num" id="score-num">0</span><span class="score-denom">/10</span>
-                </div>
-                <p class="score-msg" id="score-msg"></p>
-                <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free GBP Audit</a>
-                <button class="btn-retake" id="retake-btn">Retake the quiz</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- TOOL 3 -->
-        <div class="tool-accordion reveal" id="acc-3">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-3" data-acc="3">
-            <div class="tile-left">
-              <span class="tile-icon">🔍</span>
-              <div>
-                <div class="tile-name">Local SEO Score Checker</div>
-                <div class="tile-desc">10 questions to find out where your local SEO stands</div>
-              </div>
-            </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="tool-body" id="body-3" role="region" aria-labelledby="acc-3" hidden>
-            <div class="tool-body-inner">
-              <form id="seo-form">
-                <ol class="audit-questions">
-                  {[
-                    'Does your business appear on page 1 of Google for your main service + city?',
-                    'Is your Google Business Profile fully filled out (description, categories, hours, photos)?',
-                    'Is your business name, address, and phone number identical across all directories?',
-                    'Does your website have unique title tags and meta descriptions on every page?',
-                    'Does your website load in under 3 seconds on mobile?',
-                    'Is your website listed on Yelp, Apple Maps, and Bing Places with accurate info?',
-                    'Does your website have a dedicated page for each core service you offer?',
-                    'Do you have at least 20 Google reviews with a 4.0 or higher average rating?',
-                    'Have you published any blog posts or articles targeting local keywords in the past year?',
-                    'Does your website have schema markup (structured data) set up?',
-                  ].map((q, i) => (
-                    <li class="audit-q">
-                      <span class="q-text">{q}</span>
-                      <div class="q-opts">
-                        <label><input type="radio" name={`sq${i+1}`} value="1" required /> Yes</label>
-                        <label><input type="radio" name={`sq${i+1}`} value="0" /> No</label>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:24px;">Get My SEO Score</button>
-              </form>
-              <div class="audit-result" id="seo-result" style="display:none;">
-                <div class="score-display">
-                  <span class="score-num" id="seo-score-num">0</span><span class="score-denom">/10</span>
-                </div>
-                <p class="score-msg" id="seo-score-msg"></p>
-                <a href="/contact/" class="btn btn-primary" style="margin-top:20px;justify-content:center;">Get a Free SEO Audit</a>
-                <button class="btn-retake" id="seo-retake-btn">Retake the quiz</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOOL 4 -->
-        <div class="tool-accordion reveal" id="acc-4">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-4" data-acc="4">
-            <div class="tile-left">
-              <span class="tile-icon">📈</span>
-              <div>
-                <div class="tile-name">Google Ads Budget Calculator</div>
-                <div class="tile-desc">See what ad spend it takes to hit your lead goal</div>
-              </div>
-            </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="tool-body" id="body-4" role="region" aria-labelledby="acc-4" hidden>
-            <div class="tool-body-inner">
-              <div class="calc-grid">
-                <div class="calc-form">
-                  <div class="calc-field">
-                    <label for="ads-industry">Your Industry</label>
-                    <select id="ads-industry">
-                      <option value="hvac">HVAC / Air Conditioning</option>
-                      <option value="plumbing">Plumbing</option>
-                      <option value="roofing">Roofing</option>
-                      <option value="dental">Dental</option>
-                      <option value="legal">Legal / Law Firm</option>
-                      <option value="pest">Pest Control</option>
-                      <option value="cleaning">Cleaning Services</option>
-                      <option value="other">Other Service Business</option>
-                    </select>
-                  </div>
-                  <div class="calc-field">
-                    <label for="ads-leads">Target Leads Per Month</label>
-                    <input type="number" id="ads-leads" placeholder="20" min="1" max="500" />
-                  </div>
-                  <button id="ads-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Budget</button>
-                </div>
-                <div class="calc-result" id="ads-result" style="display:none;">
-                  <div class="result-label">Estimated Monthly Ad Spend</div>
-                  <div class="result-amount" id="ads-result-amount">$0</div>
-                  <p class="result-note" id="ads-result-note"></p>
-                  <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--gray);">
-                    Plus our flat management fee of <strong style="color:var(--dark);">$597/mo</strong>
-                  </div>
-                  <a href="/contact/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">Get a Free Ads Audit</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOOL 5 -->
-        <div class="tool-accordion reveal" id="acc-5">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-5" data-acc="5">
-            <div class="tile-left">
-              <span class="tile-icon">⭐</span>
-              <div>
-                <div class="tile-name">Review Gap Calculator</div>
-                <div class="tile-desc">See how far behind your top competitor you are on reviews</div>
-              </div>
-            </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="tool-body" id="body-5" role="region" aria-labelledby="acc-5" hidden>
-            <div class="tool-body-inner">
-              <div class="calc-grid">
-                <div class="calc-form">
-                  <div class="calc-field">
-                    <label for="rg-my-count">Your Google Review Count</label>
-                    <input type="number" id="rg-my-count" placeholder="25" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
-                  </div>
-                  <div class="calc-field">
-                    <label for="rg-comp-count">Top Competitor's Review Count</label>
-                    <input type="number" id="rg-comp-count" placeholder="80" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
-                  </div>
-                  <div class="calc-field">
-                    <label for="rg-monthly">Reviews You Get Per Month (avg)</label>
-                    <input type="number" id="rg-monthly" placeholder="2" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
-                  </div>
-                  <button id="rg-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Gap</button>
-                </div>
-                <div class="calc-result" id="rg-result" style="display:none;">
-                  <div class="result-label">Reviews Behind Competitor</div>
-                  <div class="result-amount" id="rg-gap">—</div>
-                  <p class="result-note" id="rg-note"></p>
-                  <a href="/services/reputation-management/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See Reputation Management</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TOOL 6 -->
-        <div class="tool-accordion reveal" id="acc-6">
-          <button class="tile-btn" aria-expanded="false" aria-controls="body-6" data-acc="6">
-            <div class="tile-left">
-              <span class="tile-icon">📞</span>
-              <div>
-                <div class="tile-name">Missed Call Revenue Calculator</div>
-                <div class="tile-desc">See how much unanswered calls are costing you each month</div>
-              </div>
-            </div>
-            <span class="tile-chevron" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="tool-body" id="body-6" role="region" aria-labelledby="acc-6" hidden>
-            <div class="tool-body-inner">
-              <div class="calc-grid">
-                <div class="calc-form">
-                  <div class="calc-field">
-                    <label for="mc-job-value">Average Job or Sale Value</label>
-                    <div class="input-prefix"><span>$</span><input type="number" id="mc-job-value" placeholder="350" min="1" /></div>
-                  </div>
-                  <div class="calc-field">
-                    <label for="mc-calls">Calls Received Per Month</label>
-                    <input type="number" id="mc-calls" placeholder="60" min="0" style="border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;width:100%;outline:none;font-family:var(--font);" />
-                  </div>
-                  <div class="calc-field">
-                    <label for="mc-answer-rate">Current Answer Rate</label>
-                    <select id="mc-answer-rate" style="width:100%;border:1.5px solid var(--border);border-radius:10px;padding:11px 14px;font-size:14px;color:var(--dark);background:var(--white);font-family:var(--font);outline:none;">
-                      <option value="0.15">Under 20% — most calls missed</option>
-                      <option value="0.30" selected>About 30% — industry average</option>
-                      <option value="0.50">About 50% — half answered</option>
-                      <option value="0.70">About 70% — mostly answered</option>
-                    </select>
-                  </div>
-                  <button id="mc-calc-btn" class="btn btn-primary" style="width:100%;justify-content:center;">Calculate My Lost Revenue</button>
-                </div>
-                <div class="calc-result" id="mc-result" style="display:none;">
-                  <div class="result-label">Monthly Revenue Lost to Missed Calls</div>
-                  <div class="result-amount" id="mc-monthly-lost">—</div>
-                  <p class="result-note" id="mc-note"></p>
-                  <a href="/ai/" class="btn btn-blue" style="margin-top:20px;justify-content:center;width:100%;">See AI Receptionist Setup</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      </div>
+      <div class="cs-waitlist reveal">
+        <ContactForm
+          title="Get Early Access (Free)"
+          subject="Free Tools Early-Access Waitlist | Thryv"
+        />
       </div>
     </div>
   </section>
@@ -349,7 +184,7 @@ const schema = {
           <h2>Want Us to Fix What the Tools Found?</h2>
           <p class="lead" style="margin-bottom:24px;">Get a free professional audit from our team. We will dig into your GBP, reviews, SEO, and website and tell you exactly what to fix.</p>
         </div>
-        <ContactForm title="Get Your Free Audit" subject="New Free Tools Page Inquiry | Thryv" />
+        <ContactForm title="Get Your Free Proposal" subject="New Free Tools Page Inquiry | Thryv" />
       </div>
     </div>
   </section>
@@ -360,70 +195,105 @@ const schema = {
   .tools-hero { padding: 80px 0 64px; background: linear-gradient(135deg, var(--blue-deeper) 0%, var(--blue) 100%); color: var(--white); }
   .tools-hero .label { background: rgba(255,255,255,.15); color: var(--white); }
   .tools-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin: 16px 0; color: var(--white); max-width: 640px; }
-  .tools-hero .lead { color: rgba(255,255,255,.8); }
+  .tools-hero .lead { color: rgba(255,255,255,.85); max-width: 720px; }
+  .tools-disclaimer { margin-top: 18px; padding: 12px 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; color: rgba(255,255,255,.7); font-size: 12.5px; line-height: 1.55; max-width: 720px; }
   .breadcrumb { display: flex; align-items: center; gap: 4px; font-size: 13px; color: rgba(255,255,255,.6); margin-bottom: 24px; }
-  .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
+  .breadcrumb a { color: rgba(255,255,255,.6); }
+  .breadcrumb a:hover { color: var(--white); }
+
+  .live-tools-section { background: var(--white); border-top: 1px solid var(--border); }
+  .live-tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; max-width: 920px; margin-left: auto; margin-right: auto; }
+  .live-tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(20,140,202,.02) 0%, rgba(20,140,202,.04) 100%);
+    border: 1.5px solid var(--blue-lighter);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .live-tool-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 12px 36px rgba(20,140,202,.12);
+    transform: translateY(-2px);
+  }
+  .live-tool-card:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+  }
+  .lt-icon { font-size: 40px; line-height: 1; }
+  .live-tool-card h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin: 0; }
+  .live-tool-card p { font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .lt-cta { font-size: 13px; font-weight: 700; color: var(--blue); margin-top: 8px; transition: transform .18s ease; }
+  .live-tool-card:hover .lt-cta { transform: translateX(4px); }
+
+  .coming-soon-section { background: var(--light); border-top: 1px solid var(--border); }
+  .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; max-width: 880px; margin-left: auto; margin-right: auto; }
+  .cs-grid.single { grid-template-columns: 1fr; max-width: 480px; }
+  .cs-card { background: var(--white); border: 1.5px dashed var(--orange); border-radius: var(--radius-lg); padding: 32px; position: relative; }
+  .cs-tag { position: absolute; top: 18px; right: 18px; font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); background: rgba(245,166,35,.12); padding: 5px 10px; border-radius: 100px; }
+  .cs-icon { font-size: 36px; margin-bottom: 14px; }
+  .cs-card h3 { font-size: 19px; font-weight: 800; color: var(--dark); margin-bottom: 10px; }
+  .cs-card p { font-size: 14px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .cs-waitlist { max-width: 560px; margin: 40px auto 0; }
+  @media (max-width: 720px) {
+    .cs-grid { grid-template-columns: 1fr; }
+    .live-tools-grid { grid-template-columns: 1fr; }
+  }
 
   .tools-section { background: var(--white); }
-  .tiles-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; align-items: start; }
-
-  /* ── ACCORDION ─────────────────────────── */
-  .tool-accordion { border: 1.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow .2s; }
-  .tool-accordion.open { box-shadow: var(--shadow-lg); border-color: var(--blue); }
-
-  .tile-btn {
-    width: 100%; display: flex; align-items: center; justify-content: space-between;
-    gap: 16px; padding: 24px 28px;
-    background: var(--white); border: none; cursor: pointer;
-    text-align: left; font-family: var(--font);
-    transition: background .15s;
+  .tiles-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 1200px;
+    margin: 0 auto;
   }
-  .tile-btn:hover { background: var(--light); }
-  .tool-accordion.open .tile-btn { background: var(--blue-light); }
 
-  .tile-left { display: flex; align-items: center; gap: 18px; }
+  .tile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 132px;
+    padding: 20px 24px;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+  }
+  .tile-card:hover {
+    border-color: var(--blue);
+    box-shadow: 0 12px 32px rgba(0,0,0,.08);
+    transform: translateY(-2px);
+  }
+  .tile-card:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 3px;
+  }
+
+  .tile-left { display: flex; align-items: center; gap: 18px; min-width: 0; }
   .tile-icon { font-size: 36px; line-height: 1; flex-shrink: 0; }
-  .tile-name { font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-  .tile-desc { font-size: 14px; color: var(--gray); }
-
-  .tile-chevron svg { color: var(--blue); transition: transform .25s ease; flex-shrink: 0; }
-  .tool-accordion.open .tile-chevron svg { transform: rotate(180deg); }
-
-  /* ── BODY ANIMATION ────────────────────── */
-  .tool-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s ease; }
-  .tool-body:not([hidden]) { display: grid; }
-  .tool-body[hidden] { display: grid; visibility: hidden; }
-  .tool-accordion.open .tool-body { grid-template-rows: 1fr; }
-  .tool-accordion.open .tool-body[hidden] { visibility: visible; }
-  .tool-body-inner { overflow: hidden; padding: 0 28px; }
-  .tool-accordion.open .tool-body-inner { padding: 0 28px 32px; }
-
-  /* ── CALCULATOR ────────────────────────── */
-  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; padding-top: 24px; }
-  .calc-field { margin-bottom: 16px; }
-  .calc-field label { display: block; font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-  .input-prefix { display: flex; align-items: center; border: 1.5px solid var(--border); border-radius: 10px; background: var(--white); overflow: hidden; }
-  .input-prefix span { padding: 11px 14px; background: var(--light); color: var(--gray); font-weight: 700; font-size: 14px; border-right: 1.5px solid var(--border); }
-  .input-prefix input { flex: 1; border: none; outline: none; padding: 11px 14px; font-size: 14px; color: var(--dark); background: var(--white); font-family: var(--font); }
-  .calc-field select { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; font-size: 14px; color: var(--dark); background: var(--white); font-family: var(--font); outline: none; }
-  .calc-result { background: var(--light); border-radius: var(--radius-lg); padding: 28px; text-align: center; border: 1.5px solid var(--border); }
-  .result-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--gray); margin-bottom: 8px; }
-  .result-amount { font-size: 52px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; line-height: 1; margin-bottom: 12px; }
-  .result-note { font-size: 13px; line-height: 1.6; color: var(--gray); }
-
-  /* ── GBP AUDIT ─────────────────────────── */
-  .audit-questions { display: flex; flex-direction: column; gap: 10px; padding: 24px 0 0; list-style: none; }
-  .audit-q { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: var(--light); border: 1.5px solid var(--border); border-radius: var(--radius); gap: 16px; }
-  .q-text { font-size: 14px; color: var(--dark); font-weight: 500; flex: 1; }
-  .q-opts { display: flex; gap: 20px; flex-shrink: 0; }
-  .q-opts label { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 600; color: var(--gray); cursor: pointer; }
-  .q-opts input[type="radio"] { accent-color: var(--blue); }
-  .audit-result { text-align: center; padding: 32px 0 8px; }
-  .score-display { display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 12px; }
-  .score-num { font-size: 80px; font-weight: 800; color: var(--blue); line-height: 1; }
-  .score-denom { font-size: 28px; color: var(--gray); }
-  .score-msg { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-  .btn-retake { display: block; margin: 10px auto 0; background: none; border: none; color: var(--blue); font-size: 13px; font-weight: 700; cursor: pointer; text-decoration: underline; font-family: var(--font); }
+  .tile-text { min-width: 0; }
+  .tile-name {
+    font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 4px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .tile-desc {
+    font-size: 14px; color: var(--gray);
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .tile-arrow {
+    color: var(--blue);
+    flex-shrink: 0;
+    transition: transform .18s ease;
+  }
+  .tile-card:hover .tile-arrow { transform: translateX(4px); }
 
   .contact-section { background: var(--light); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
@@ -434,178 +304,16 @@ const schema = {
   @media (max-width: 1024px) {
     .tiles-row { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 860px) {
-    .tiles-row { grid-template-columns: 1fr; max-width: 800px; }
-    .calc-grid { grid-template-columns: 1fr; }
-    .tile-btn { padding: 20px; }
-    .tool-body-inner { padding: 0 20px; }
-    .tool-accordion.open .tool-body-inner { padding: 0 20px 24px; }
+  @media (max-width: 720px) {
+    .tiles-row { grid-template-columns: 1fr; max-width: 600px; }
+    .tile-card { padding: 18px 20px; }
     .contact-split { grid-template-columns: 1fr; gap: 40px; }
-  }
-  @media (max-width: 560px) {
-    .audit-q { flex-direction: column; align-items: flex-start; gap: 10px; }
   }
 </style>
 
 <script>
-  // Scroll reveal
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // Accordion
-  document.querySelectorAll<HTMLButtonElement>('.tile-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const accId = btn.dataset.acc!;
-      const accordion = document.getElementById('acc-' + accId)!;
-      const body      = document.getElementById('body-' + accId)!;
-      const isOpen    = accordion.classList.contains('open');
-
-      if (isOpen) {
-        accordion.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        body.setAttribute('hidden', '');
-      } else {
-        accordion.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-        body.removeAttribute('hidden');
-      }
-    });
-  });
-
-  // Revenue Calculator
-  document.getElementById('calc-btn')?.addEventListener('click', () => {
-    const revenue = parseFloat((document.getElementById('monthly-revenue') as HTMLInputElement).value) || 0;
-    const rating  = parseFloat((document.getElementById('current-rating') as HTMLSelectElement).value);
-    const gap = Math.max(0, 4.8 - rating);
-    const additional = Math.round(revenue * gap * 0.1 / 100) * 100;
-    const resultEl = document.getElementById('calc-result') as HTMLElement;
-    (document.getElementById('result-amount') as HTMLElement).textContent = '$' + additional.toLocaleString();
-    (document.getElementById('result-from') as HTMLElement).textContent = rating.toFixed(1);
-    resultEl.style.display = 'block';
-  });
-
-  // GBP Audit
-  const auditForm   = document.getElementById('audit-form')   as HTMLFormElement;
-  const auditResult = document.getElementById('audit-result') as HTMLElement;
-
-  auditForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(auditForm);
-    let score = 0;
-    for (let i = 1; i <= 10; i++) { if (data.get('q' + i) === '1') score++; }
-    (document.getElementById('score-num') as HTMLElement).textContent = String(score);
-    const msg = score <= 4
-      ? 'Your GBP needs serious work. Let us fix it.'
-      : score <= 7
-      ? 'You are halfway there. A few fixes could move the needle.'
-      : 'Solid GBP. Let us look at what else could be driving more leads.';
-    (document.getElementById('score-msg') as HTMLElement).textContent = msg;
-    auditForm.style.display   = 'none';
-    auditResult.style.display = 'block';
-  });
-
-  document.getElementById('retake-btn')?.addEventListener('click', () => {
-    (auditForm as HTMLFormElement).reset();
-    auditForm.style.display   = 'block';
-    auditResult.style.display = 'none';
-  });
-
-  // Local SEO Score Checker
-  const seoForm   = document.getElementById('seo-form')   as HTMLFormElement;
-  const seoResult = document.getElementById('seo-result') as HTMLElement;
-
-  seoForm?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const data = new FormData(seoForm);
-    let score = 0;
-    for (let i = 1; i <= 10; i++) { if (data.get('sq' + i) === '1') score++; }
-    (document.getElementById('seo-score-num') as HTMLElement).textContent = String(score);
-    const msg = score <= 3
-      ? 'Your SEO foundation needs serious work. You are missing leads every day.'
-      : score <= 6
-      ? 'Moderate SEO presence. Fixing the gaps could significantly increase your rankings.'
-      : score <= 8
-      ? 'Good foundation. A few targeted improvements could push you to the top.'
-      : 'Strong local SEO. Let us look at what is left to dominate your market.';
-    (document.getElementById('seo-score-msg') as HTMLElement).textContent = msg;
-    seoForm.style.display   = 'none';
-    seoResult.style.display = 'block';
-  });
-
-  document.getElementById('seo-retake-btn')?.addEventListener('click', () => {
-    seoForm.reset();
-    seoForm.style.display   = 'block';
-    seoResult.style.display = 'none';
-  });
-
-  // Review Gap Calculator
-  document.getElementById('rg-calc-btn')?.addEventListener('click', () => {
-    const mine  = parseInt((document.getElementById('rg-my-count') as HTMLInputElement).value) || 0;
-    const comp  = parseInt((document.getElementById('rg-comp-count') as HTMLInputElement).value) || 0;
-    const monthly = parseFloat((document.getElementById('rg-monthly') as HTMLInputElement).value) || 0;
-    const gap = Math.max(0, comp - mine);
-    const target = Math.max(comp + 10, mine + 10);
-    const needed = Math.max(0, target - mine);
-    let months = monthly > 0 ? Math.ceil(needed / monthly) : null;
-    const gapEl   = document.getElementById('rg-gap') as HTMLElement;
-    const noteEl  = document.getElementById('rg-note') as HTMLElement;
-    const resultEl = document.getElementById('rg-result') as HTMLElement;
-    gapEl.textContent = gap === 0 ? 'Even' : String(gap);
-    gapEl.style.color = gap === 0 ? 'var(--blue)' : gap > 50 ? '#b91c1c' : gap > 20 ? '#92400e' : 'var(--blue)';
-    let msg = gap === 0
-      ? 'You are neck and neck. Focus on review velocity to pull ahead.'
-      : gap <= 20
-      ? `You need ${needed} more reviews to take the lead. At your current rate, that is ${months ? months + ' months' : 'achievable with a system in place'}.`
-      : gap <= 75
-      ? `A ${gap}-review gap is closeable in ${months ? months + ' months' : 'a few months'} with a consistent ask system. Without one, this gap widens every week.`
-      : `A ${gap}-review gap is significant. At your current rate that is ${months ? months + ' months' : 'a long runway without a system'}. This needs a structured review generation strategy now.`;
-    noteEl.textContent = msg;
-    resultEl.style.display = 'block';
-  });
-
-  // Missed Call Revenue Calculator
-  document.getElementById('mc-calc-btn')?.addEventListener('click', () => {
-    const jobValue   = parseFloat((document.getElementById('mc-job-value') as HTMLInputElement).value) || 0;
-    const calls      = parseInt((document.getElementById('mc-calls') as HTMLInputElement).value) || 0;
-    const answerRate = parseFloat((document.getElementById('mc-answer-rate') as HTMLSelectElement).value);
-    const closeRate  = 0.30;
-    const missedCalls = Math.round(calls * (1 - answerRate));
-    const lostRevenue = Math.round(missedCalls * closeRate * jobValue);
-    const annualLost  = lostRevenue * 12;
-    const monthlyEl  = document.getElementById('mc-monthly-lost') as HTMLElement;
-    const noteEl     = document.getElementById('mc-note') as HTMLElement;
-    const resultEl   = document.getElementById('mc-result') as HTMLElement;
-    monthlyEl.textContent = '$' + lostRevenue.toLocaleString();
-    noteEl.textContent = `${missedCalls} calls go unanswered each month. At a 30% close rate and $${jobValue} per job, that is $${annualLost.toLocaleString()} lost per year — before accounting for referrals those customers would have sent. An AI receptionist runs $600–$4,800/year.`;
-    resultEl.style.display = 'block';
-  });
-
-  // Google Ads Budget Calculator
-  const cpls: Record<string, [number, number]> = {
-    hvac:     [120, 200],
-    plumbing: [90,  160],
-    roofing:  [100, 220],
-    dental:   [80,  150],
-    legal:    [350, 800],
-    pest:     [60,  120],
-    cleaning: [40,  90],
-    other:    [80,  160],
-  };
-
-  document.getElementById('ads-calc-btn')?.addEventListener('click', () => {
-    const industry = (document.getElementById('ads-industry') as HTMLSelectElement).value;
-    const leads    = parseInt((document.getElementById('ads-leads') as HTMLInputElement).value) || 0;
-    if (!leads) return;
-    const [minCpl, maxCpl] = cpls[industry] ?? [80, 160];
-    const minSpend = Math.round((leads * minCpl) / 100) * 100;
-    const maxSpend = Math.round((leads * maxCpl) / 100) * 100;
-    const resultEl  = document.getElementById('ads-result')        as HTMLElement;
-    const amountEl  = document.getElementById('ads-result-amount') as HTMLElement;
-    const noteEl    = document.getElementById('ads-result-note')   as HTMLElement;
-    amountEl.textContent = '$' + minSpend.toLocaleString() + ' – $' + maxSpend.toLocaleString() + '/mo';
-    noteEl.textContent   = 'Estimated range based on typical cost-per-lead in your industry in the Miami market. Actual spend varies by targeting, competition, and ad quality.';
-    resultEl.style.display = 'block';
-  });
 </script>

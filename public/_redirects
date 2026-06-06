@@ -2,3 +2,8 @@
 /services/local-seo/ /services/seo/ 301
 
 /ai-tools/ /ai/ 301
+
+# /tools/ consolidated under /free-tools/ on 2026-05-20
+/tools/ /free-tools/ 301
+/tools/med-spa-marketing-roi-calculator/ /free-tools/med-spa-marketing-roi-calculator/ 301
+/tools/* /free-tools/:splat 301

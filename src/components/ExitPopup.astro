@@ -1,35 +1,36 @@
 ---
-interface Props {
-  title?: string;
-  offer?: string;
-}
-
-const {
-  title = "Before You Go...",
-  offer = "Get a free audit before you leave. We will look at your Google Business Profile, reviews, and website, no charge, no obligation.",
-} = Astro.props;
+// Path-aware exit popup with multi-trigger logic.
+// Variant routing is internal: caller no longer passes title/offer.
 ---
 
 <div id="exitPopup" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
   <div class="popup-card">
     <button id="popupClose" class="popup-close" aria-label="Close popup">&times;</button>
 
-    <div class="popup-badge">Free Audit</div>
-    <h2 id="popup-title">{title}</h2>
-    <p>{offer}</p>
+    <div id="popupBadge" class="popup-badge">12-point scorecard</div>
+    <h2 id="popup-title">The audit we charge agencies for. On us.</h2>
+    <p id="popupBody">
+      One PDF. Twelve checks across Google Business Profile, reviews, on-page SEO, and local pack rankings.
+      <span class="anchor-strike">Other agencies bill $300 to $800</span>
+      <span class="anchor-now">$0 from us</span>.
+      We would rather earn your trust than your retainer.
+    </p>
 
     <form id="popupForm" action="https://api.web3forms.com/submit" method="POST" class="popup-form">
       <input type="hidden" name="access_key" value="d1c9b652-c7bb-46e0-86fc-57e0f59f8e02" />
-      <input type="hidden" name="subject" value="Exit Popup | Free Audit Request" />
+      <input type="hidden" name="subject" id="popupSubject" value="Exit Popup | Free Scorecard Request" />
+      <input type="hidden" name="variant" id="popupVariantField" value="anchoring" />
+      <input type="hidden" name="trigger" id="popupTriggerField" value="" />
+      <input type="hidden" name="page"    id="popupPageField"    value="" />
       <input type="text" name="honeypot" class="honeypot" tabindex="-1" autocomplete="off" />
 
-      <input type="text"  name="name"  placeholder="Your name"        required />
-      <input type="email" name="email" placeholder="Business email"   required />
-      <input type="tel"   name="phone" placeholder="Phone (optional)" />
+      <input id="popupName"    type="text"  name="name"    placeholder="Your name"            aria-label="Your name"        aria-required="true" required />
+      <input id="popupEmail"   type="email" name="email"   placeholder="Business email"       aria-label="Business email"   aria-required="true" required />
+      <input id="popupWebsite" type="url"   name="website" placeholder="Website to audit"     aria-label="Website to audit" aria-required="true" required />
 
-      <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+      <button id="popupSubmit" type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Send My Free Audit
+        <span id="popupCta">Send my scorecard</span>
       </button>
     </form>
 
@@ -40,7 +41,9 @@ const {
       <p>Got it. We will be in touch within 24 hours.</p>
     </div>
 
-    <p class="popup-note">No spam. No obligation. Cancel anytime.</p>
+    <p class="popup-trust" id="popupTrust">
+      <strong>Google Ads Certified. Meta Blueprint trained.</strong> Based in Miami.
+    </p>
   </div>
 </div>
 
@@ -52,15 +55,15 @@ const {
     background: rgba(7,15,43,.6); backdrop-filter: blur(4px);
     display: flex; align-items: center; justify-content: center;
     padding: 20px;
-    opacity: 0; pointer-events: none;
-    transition: opacity .3s ease;
+    opacity: 0; pointer-events: none; visibility: hidden; /* a11y: hidden state removes form fields from tab order (fixes aria-hidden-focus) */
+    transition: opacity .3s ease, visibility 0s linear .3s;
   }
-  .popup-overlay.active { opacity: 1; pointer-events: auto; }
-  .popup-overlay[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+  .popup-overlay.active,
+  .popup-overlay[aria-hidden="false"] { opacity: 1; pointer-events: auto; visibility: visible; transition: opacity .3s ease, visibility 0s; }
 
   .popup-card {
     background: var(--white); border-radius: var(--radius-lg);
-    padding: 40px 36px; max-width: 440px; width: 100%;
+    padding: 40px 36px; max-width: 460px; width: 100%;
     box-shadow: 0 24px 80px rgba(0,0,0,.25);
     position: relative;
     transform: translateY(20px); transition: transform .3s ease;
@@ -68,12 +71,14 @@ const {
   .popup-overlay.active .popup-card { transform: translateY(0); }
 
   .popup-close {
-    position: absolute; top: 14px; right: 18px;
-    background: none; border: none; font-size: 24px; line-height: 1;
-    color: var(--gray-light); cursor: pointer;
-    transition: color .2s;
+    position: absolute; top: 8px; right: 10px;
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; /* a11y: WCAG 2.5.8 target size */
+    background: none; border: none; font-size: 26px; line-height: 1;
+    color: var(--gray); cursor: pointer; border-radius: 8px; /* a11y: --gray #4B5563 = 7.5:1, was --gray-light 2.54:1 */
+    transition: color .2s, background .2s;
   }
-  .popup-close:hover { color: var(--dark); }
+  .popup-close:hover { color: var(--dark); background: var(--light); }
 
   .popup-badge {
     display: inline-flex; font-size: 11px; font-weight: 800;
@@ -82,10 +87,13 @@ const {
     border-radius: 100px; padding: 4px 12px; margin-bottom: 12px;
   }
 
-  .popup-card h2 { font-size: 24px; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.2; }
-  .popup-card > p { font-size: 15px; line-height: 1.65; color: var(--gray); margin-bottom: 24px; }
+  .popup-card h2 { font-size: 23px; font-weight: 800; color: var(--dark); margin-bottom: 10px; line-height: 1.25; }
+  .popup-card > p { font-size: 15px; line-height: 1.6; color: var(--gray); margin-bottom: 22px; }
 
-  .popup-form { display: flex; flex-direction: column; gap: 12px; }
+  .anchor-strike { text-decoration: line-through; color: var(--gray-light); margin-right: 4px; }
+  .anchor-now   { color: var(--orange-dark); font-weight: 800; }
+
+  .popup-form { display: flex; flex-direction: column; gap: 10px; }
   .popup-form input {
     width: 100%; font-family: var(--font); font-size: 14px; color: var(--dark);
     background: var(--light); border: 1.5px solid var(--border);
@@ -94,7 +102,8 @@ const {
   }
   .popup-form input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(27,79,168,.12); }
 
-  .popup-note { font-size: 12px; color: var(--gray-light); text-align: center; margin-top: 12px; }
+  .popup-trust { font-size: 12px; color: var(--gray); text-align: center; margin-top: 14px; line-height: 1.55; }
+  .popup-trust strong { color: var(--dark); font-weight: 700; }
 
   .popup-success { text-align: center; padding: 16px 0; }
   .popup-check { width: 56px; height: 56px; border-radius: 50%; background: #DCFCE7; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
@@ -103,76 +112,248 @@ const {
 </style>
 
 <script>
-  const STORAGE_KEY = 'thryv_popup_dismissed';
-  const overlay = document.getElementById('exitPopup') as HTMLElement;
-  const closeBtn = document.getElementById('popupClose') as HTMLButtonElement;
-  const form     = document.getElementById('popupForm') as HTMLFormElement;
-  const success  = document.getElementById('popupSuccess') as HTMLElement;
+  // === CONFIG ============================================================
+  const ARM_MS         = 45_000;
+  const IDLE_MS        = 25_000;
+  const SCROLL_FIRE_PCT = 80;
+  const SCROLL_REVERSAL_PX  = 30;
+  const SCROLL_REVERSAL_MS  = 100;
+  const SCROLL_REVERSAL_MIN_PCT = 50;
+  const SUPPRESS_NO_ENGAGE_HRS = 4;
+  const SUPPRESS_ENGAGED_HRS   = 24 * 7;
 
-  function showPopup() {
-    overlay.setAttribute('aria-hidden', 'false');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const SUPPRESS_KEY  = 'thryv_popup_suppress_until';
+  const CONVERTED_KEY = 'thryv_popup_converted';
+
+  // === VARIANTS ==========================================================
+  type Variant = {
+    badge: string;
+    title: string;
+    bodyHTML: string;
+    cta: string;
+    subject: string;
+  };
+
+  const VARIANTS: Record<string, Variant> = {
+    anchoring: {
+      badge: '12-point scorecard',
+      title: 'The audit we charge agencies for. On us.',
+      bodyHTML: 'One PDF. Twelve checks across Google Business Profile, reviews, on-page SEO, and local pack rankings. <span class="anchor-strike">Other agencies bill $300 to $800</span> <span class="anchor-now">$0 from us</span>. We would rather earn your trust than your retainer.',
+      cta: 'Send my scorecard',
+      subject: 'Exit Popup | Free Scorecard Request',
+    },
+    info_gap: {
+      badge: 'Local SEO scorecard',
+      title: 'Three things we usually spot on Miami service-business sites in 10 minutes.',
+      bodyHTML: 'Tell us where to send yours. We run the same checklist we use with paying clients: Google Business Profile, review velocity, site speed, local rankings. No call required to see it.',
+      cta: 'Show me what I am missing',
+      subject: 'Exit Popup | Info-Gap Audit Request',
+    },
+  };
+
+  // Route by pathname to pick a variant. Some paths skip the popup entirely.
+  function pickVariant(path: string): keyof typeof VARIANTS | null {
+    if (/^\/contact(\/|$)/.test(path)) return null; // already converting
+    if (/^\/blog(\/|$)/.test(path))    return null; // no popups on blog per Theodore
+    if (/^\/free-tools(\/|$)/.test(path)) return 'info_gap';
+    if (/^\/ai-tools(\/|$)/.test(path))   return 'info_gap';
+    if (/^\/resources(\/|$)/.test(path))  return 'info_gap';
+    return 'anchoring';
   }
 
-  function hidePopup() {
-    overlay.setAttribute('aria-hidden', 'true');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    sessionStorage.setItem(STORAGE_KEY, '1');
+  // === EARLY EXITS =======================================================
+  const variantKey = pickVariant(location.pathname);
+  if (!variantKey) {
+    // Path explicitly excluded — bail. The DOM stays but no triggers wire up.
+  } else {
+
+    const suppressUntil = parseInt(localStorage.getItem(SUPPRESS_KEY) || '0', 10);
+    const alreadyConverted = localStorage.getItem(CONVERTED_KEY) === '1';
+
+    if (!alreadyConverted && Date.now() >= suppressUntil) {
+      mountPopup(variantKey);
+    }
   }
 
-  // Don't show if already dismissed this session or already converted
-  if (!sessionStorage.getItem(STORAGE_KEY) && !localStorage.getItem(STORAGE_KEY + '_converted')) {
+  // === MOUNT =============================================================
+  function mountPopup(key: keyof typeof VARIANTS) {
+    const v = VARIANTS[key];
+    const overlay  = document.getElementById('exitPopup') as HTMLElement;
+    const closeBtn = document.getElementById('popupClose') as HTMLButtonElement;
+    const form     = document.getElementById('popupForm') as HTMLFormElement;
+    const success  = document.getElementById('popupSuccess') as HTMLElement;
 
-    // Only arm triggers after 45 seconds on page — prevents firing on bounces
-    const ARM_DELAY = 45_000;
-    let armed = false;
-    setTimeout(() => { armed = true; }, ARM_DELAY);
+    // Apply variant content
+    (document.getElementById('popupBadge')   as HTMLElement).textContent = v.badge;
+    (document.getElementById('popup-title')  as HTMLElement).textContent = v.title;
+    (document.getElementById('popupBody')    as HTMLElement).innerHTML   = v.bodyHTML;
+    (document.getElementById('popupCta')     as HTMLElement).textContent = v.cta;
+    (document.getElementById('popupSubject') as HTMLInputElement).value  = v.subject;
+    (document.getElementById('popupVariantField') as HTMLInputElement).value = key;
+    (document.getElementById('popupPageField')    as HTMLInputElement).value = location.pathname;
 
-    // Exit intent — desktop only, must be armed first
-    document.addEventListener('mouseleave', (e) => {
+    let armed       = false;
+    let isShown     = false;
+    let formEngaged = false;
+    let lastTrigger = '';
+    let lastFocused: HTMLElement | null = null;
+
+    // a11y: make the rest of the page inert while the modal is open
+    function setBackgroundInert(on: boolean) {
+      ['header', 'main', 'footer'].forEach((sel) => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        if (on) { el.setAttribute('inert', ''); el.setAttribute('aria-hidden', 'true'); }
+        else { el.removeAttribute('inert'); el.removeAttribute('aria-hidden'); }
+      });
+    }
+
+    // a11y: keep keyboard focus inside the dialog (WCAG 2.4.3 / 2.1.2)
+    function trapTab(e: KeyboardEvent) {
+      if (e.key !== 'Tab') return;
+      const card = overlay.querySelector('.popup-card') as HTMLElement;
+      const nodes = Array.from(card.querySelectorAll<HTMLElement>('button, [href], input:not([type=hidden]), select, textarea, [tabindex]:not([tabindex="-1"])'))
+        .filter((el) => el.offsetParent !== null && !(el as HTMLButtonElement).disabled);
+      if (!nodes.length) return;
+      const first = nodes[0], last = nodes[nodes.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+
+    setTimeout(() => { armed = true; }, ARM_MS);
+
+    function showPopup(trigger: string) {
+      if (isShown) return;
+      isShown = true;
+      lastTrigger = trigger;
+      (document.getElementById('popupTriggerField') as HTMLInputElement).value = trigger;
+      lastFocused = document.activeElement as HTMLElement;
+      overlay.setAttribute('aria-hidden', 'false');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setBackgroundInert(true);
+      document.addEventListener('keydown', trapTab, true);
+      setTimeout(() => closeBtn?.focus(), 60); // move focus into the dialog
+      const w = window as any;
+      if (w.posthog) w.posthog.capture('exit_popup_shown', { variant: key, trigger, path: location.pathname });
+    }
+
+    function hidePopup() {
+      overlay.setAttribute('aria-hidden', 'true');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+      setBackgroundInert(false);
+      document.removeEventListener('keydown', trapTab, true);
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus(); // restore focus
+      const hrs = formEngaged ? SUPPRESS_ENGAGED_HRS : SUPPRESS_NO_ENGAGE_HRS;
+      localStorage.setItem(SUPPRESS_KEY, String(Date.now() + hrs * 3600 * 1000));
+      const w = window as any;
+      if (w.posthog) w.posthog.capture('exit_popup_dismissed', {
+        variant: key, trigger: lastTrigger, engaged: formEngaged, suppress_hours: hrs
+      });
+    }
+
+    // === TRIGGERS ========================================================
+
+    // 1) Any-edge mouse leave (desktop). No clientY constraint — fires on
+    //    every edge: top, bottom, sides. Mouse leaving viewport at all.
+    document.addEventListener('mouseleave', () => {
       if (!armed) return;
-      if (e.clientY <= 0) showPopup();
-    }, { once: false });
+      showPopup('mouseleave_any_edge');
+    });
 
-    // Scroll-based trigger — mobile fallback, 80% scroll + armed + 1.5s delay
-    let scrollTriggered = false;
+    // 2) Tab/window visibility change — user switched tabs or minimized.
+    document.addEventListener('visibilitychange', () => {
+      if (!armed) return;
+      if (document.visibilityState === 'hidden') showPopup('tab_switch');
+    });
+
+    // 3) Scroll-up reversal (mobile-friendly intent signal).
+    let lastScrollY = 0;
+    let lastScrollTime = performance.now();
+    let scrollReversalFired = false;
     window.addEventListener('scroll', () => {
-      if (scrollTriggered || !armed) return;
-      const scrollPct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPct >= 80) {
-        scrollTriggered = true;
-        setTimeout(showPopup, 1500);
+      if (!armed || scrollReversalFired) return;
+      const y = window.scrollY;
+      const now = performance.now();
+      const denom = document.body.scrollHeight - window.innerHeight;
+      const pct = denom > 0 ? (y / denom) * 100 : 0;
+      const deltaUp = lastScrollY - y;
+      const dt = now - lastScrollTime;
+      if (pct > SCROLL_REVERSAL_MIN_PCT && deltaUp > SCROLL_REVERSAL_PX && dt < SCROLL_REVERSAL_MS) {
+        scrollReversalFired = true;
+        showPopup('scroll_up_reversal');
+      }
+      lastScrollY = y;
+      lastScrollTime = now;
+    }, { passive: true });
+
+    // 4) 80% scroll depth (original mobile fallback, kept for engaged readers).
+    let scrollDepthFired = false;
+    window.addEventListener('scroll', () => {
+      if (!armed || scrollDepthFired) return;
+      const denom = document.body.scrollHeight - window.innerHeight;
+      const pct = denom > 0 ? (window.scrollY / denom) * 100 : 0;
+      if (pct >= SCROLL_FIRE_PCT) {
+        scrollDepthFired = true;
+        setTimeout(() => showPopup('scroll_depth_80'), 1500);
       }
     }, { passive: true });
-  }
 
-  // Close handlers
-  closeBtn?.addEventListener('click', hidePopup);
-  overlay?.addEventListener('click', (e) => {
-    if (e.target === overlay) hidePopup();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && overlay.classList.contains('active')) hidePopup();
-  });
-
-  // Form submit
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
-    btn.textContent = 'Sending...'; btn.disabled = true;
-    try {
-      const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
-      if (res.ok) {
-        form.style.display  = 'none';
-        success.style.display = 'block';
-        localStorage.setItem(STORAGE_KEY + '_converted', '1');
-        if ((window as any).posthog) (window as any).posthog.capture('exit_popup_submitted');
-        setTimeout(hidePopup, 3000);
-      } else { throw new Error(); }
-    } catch {
-      btn.textContent = 'Send My Free Audit'; btn.disabled = false;
+    // 5) Idle past-fold trigger. No mouse/key/scroll/touch activity for 25s
+    //    AND user has scrolled past the first viewport.
+    let idleTimer: number | undefined;
+    function resetIdle() {
+      if (idleTimer) window.clearTimeout(idleTimer);
+      idleTimer = window.setTimeout(() => {
+        if (!armed) return;
+        if (window.scrollY > window.innerHeight * 0.5) showPopup('idle_past_fold');
+      }, IDLE_MS);
     }
-  });
+    ['mousemove', 'keydown', 'scroll', 'touchstart'].forEach((ev) => {
+      document.addEventListener(ev, resetIdle, { passive: true });
+    });
+    resetIdle();
+
+    // === CLOSE HANDLERS ===================================================
+    closeBtn?.addEventListener('click', hidePopup);
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) hidePopup();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) hidePopup();
+    });
+
+    // === ENGAGEMENT TRACKING (for tiered suppression) =====================
+    form.querySelectorAll('input').forEach((input) => {
+      input.addEventListener('focus', () => { formEngaged = true; }, { once: true });
+    });
+
+    // === FORM SUBMIT ======================================================
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('popupSubmit') as HTMLButtonElement;
+      const ctaSpan = document.getElementById('popupCta') as HTMLElement;
+      const originalLabel = ctaSpan.textContent;
+      ctaSpan.textContent = 'Sending...';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        if (res.ok) {
+          form.style.display = 'none';
+          (document.getElementById('popupTrust') as HTMLElement).style.display = 'none';
+          success.style.display = 'block';
+          localStorage.setItem(CONVERTED_KEY, '1');
+          const w = window as any;
+          if (w.posthog) w.posthog.capture('exit_popup_submitted', {
+            variant: key, trigger: lastTrigger, path: location.pathname
+          });
+          setTimeout(hidePopup, 3000);
+        } else { throw new Error('submit_failed'); }
+      } catch {
+        ctaSpan.textContent = originalLabel;
+        btn.disabled = false;
+      }
+    });
+  }
 </script>

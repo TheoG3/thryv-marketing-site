@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import ToolCallout from '../../components/ToolCallout.astro';
 
 const schema = [
   {
@@ -23,13 +24,23 @@ const schema = [
       },
       {
         "@type": "Question",
+        "name": "How much does a website cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Our builds start at $1,497 as a one-time fee, and the final price depends on the number of pages and features. We give you a fixed quote before any work starts, with no hourly billing and no surprises. Compared to the lead a fast, professional site can bring in, it usually pays for itself quickly." }
+      },
+      {
+        "@type": "Question",
         "name": "How long does it take to build a website?",
         "acceptedAnswer": { "@type": "Answer", "text": "A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch. Timeline depends on how quickly you provide content, photos, and feedback during the review rounds." }
       },
       {
         "@type": "Question",
         "name": "What platform do you build on?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We build on Astro for maximum speed and SEO performance, or WordPress for clients who want easy self-service content management. We recommend the platform that fits your team's technical comfort and long-term goals." }
+        "acceptedAnswer": { "@type": "Answer", "text": "We build on Astro for maximum speed and SEO, WordPress for easy self-service content management, Shopify for product e-commerce, or Webflow for design-forward visual editing. We recommend the platform that fits your team's workflow and long-term goals, not the one we'd profit most from." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I own my website?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. You own your website, your domain, and your content outright. We build it for you and hand over full access. You are never locked into us to make changes, which is the opposite of how a lot of cheap website builders operate." }
       },
       {
         "@type": "Question",
@@ -47,8 +58,8 @@ const schema = [
 ---
 
 <BaseLayout
-  title="Website Design for Miami Businesses | Thryv Marketing Solutions"
-  description="Fast, mobile-first websites built to convert visitors into leads. Custom design, on-page SEO included. Starting from $1,497 one-time. Miami-based team."
+  title="Website Design Services in Miami | WordPress, Astro, Shopify | Thryv"
+  description="Miami website design and development on WordPress, Astro, Shopify, or Webflow. Fast, mobile-first, on-page SEO included. From $1,497 one-time."
   canonical="https://thryvmarketingsolutions.com/services/website-design/"
   ogImage="https://thryvmarketingsolutions.com/og-website-design.jpg"
   schema={schema}
@@ -60,8 +71,8 @@ const schema = [
         <a href="/">Home</a><span> › </span><a href="/services/">Services</a><span> › </span><span>Website Design</span>
       </nav>
       <span class="label">Service</span>
-      <h1>Website Design for Miami Businesses</h1>
-      <p class="lead">Fast, mobile-first websites built to turn visitors into phone calls and form fills. Every site includes on-page SEO setup so you rank from day one.</p>
+      <h1>Miami Website Design + Development</h1>
+      <p class="lead">Fast, mobile-first websites built to turn visitors into phone calls and form fills. Built on the platform that fits your business: <strong>WordPress, Astro, Shopify, or Webflow</strong>. Every site includes on-page SEO setup so you rank from day one.</p>
       <div class="hero-ctas">
         <a href="/contact/" class="btn btn-primary">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -72,66 +83,152 @@ const schema = [
     </div>
   </section>
 
+  <section class="trust-bar">
+    <div class="container">
+      <div class="trust-items">
+        <span class="trust-item">Google Ads Certified</span>
+        <span class="trust-item">Meta Blueprint trained</span>
+        <span class="trust-item">Miami-based, Hablamos Español</span>
+        <span class="trust-item">You own your site, no lock-in</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="stakes">
+    <div class="container">
+      <div class="stakes-grid">
+        <div class="stake"><div class="stake-n">53%</div><div class="stake-d">of mobile visitors leave if your page takes over 3 seconds to load</div></div>
+        <div class="stake"><div class="stake-n">32%</div><div class="stake-d">higher bounce rate when load time goes from 1 to 3 seconds</div></div>
+        <div class="stake"><div class="stake-n">Ranking factor</div><div class="stake-d">Google uses page speed (Core Web Vitals) to rank you</div></div>
+      </div>
+      <p class="stakes-src">All figures published by <a href="https://www.thinkwithgoogle.com/" target="_blank" rel="noopener">Google</a>.</p>
+    </div>
+  </section>
+
   <section class="section problem-section">
     <div class="container">
       <div class="two-col">
         <div class="reveal">
-          <span class="label">The Problem</span>
-          <h2>A Slow or Outdated Website Costs You Leads Every Day</h2>
-          <p>Most local business websites fail the basics: they load slowly on mobile, have no clear call to action, and were not built with SEO in mind. Visitors arrive and leave without contacting you.</p>
+          <span class="label">The problem</span>
+          <h2>A slow or outdated website costs you leads every day</h2>
+          <p>Most local business websites fail the basics: they load slowly on a phone, have no clear call to action, and weren't built with SEO in mind. Visitors arrive and leave without ever contacting you.</p>
           <ul class="check-list" style="margin-top:24px;">
-            <li>Slow load times cause visitors to bounce before seeing your offer</li>
+            <li>Slow load times make visitors bounce before they see your offer</li>
             <li>No mobile optimization means losing the majority of local searches</li>
-            <li>Outdated design signals low credibility to potential customers</li>
-            <li>Missing on-page SEO means Google can not rank your pages</li>
+            <li>Outdated design quietly signals low credibility to customers</li>
+            <li>Missing on-page SEO means Google can't rank your pages</li>
           </ul>
         </div>
         <div class="reveal">
-          <span class="label">Our Solution</span>
-          <h2>A Website Built for Speed, Mobile, and Conversions</h2>
-          <p>We design and build websites that look professional, load in under 2 seconds, and guide every visitor toward taking action: calling, filling out a form, or booking an appointment.</p>
+          <span class="label">Our solution</span>
+          <h2>A website built for speed, mobile, and conversions</h2>
+          <p>We design and build sites that look professional, load in under 2 seconds, and guide every visitor toward one clear action: calling, filling out a form, or booking an appointment.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section explainer-section">
+    <div class="container">
+      <div class="explainer">
+        <span class="label">Web design, explained</span>
+        <h2>What actually makes a website work</h2>
+        <p>A pretty website isn't the goal. A website that <strong>loads fast, works perfectly on a phone, and points every visitor at one clear next step</strong> is the goal. Looks matter, but they come after the fundamentals, because a gorgeous site nobody can use on their phone still loses the customer.</p>
+        <p>Two shifts made this non-negotiable. First, most local searches now happen on a phone, so "mobile-first" stopped being a nice-to-have. Second, Google made <strong>page speed and stability an actual ranking factor</strong> through Core Web Vitals, so a slow site loses twice: visitors bounce, and Google ranks you lower for it.</p>
+        <p>Here's how we see it: we build for the thumb and the click, not for design awards. Every choice serves either speed, clarity, or the next step a customer takes. That's the difference between a website that looks busy and one that actually books work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section platforms-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">Platforms we build on</span>
+        <h2>One stack for every type of business</h2>
+        <p class="lead center" style="max-width:620px;margin:0 auto;">We pick the platform that fits your team's workflow, your content velocity, and your long-term goals. Not the platform we want to upsell you on.</p>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-card reveal">
+          <div class="platform-name">WordPress</div>
+          <div class="platform-tag">Most flexible. Easy self-service.</div>
+          <p>Best for content-heavy businesses, blogs, multi-author teams, or anyone who wants to publish updates without calling us. Native plugin ecosystem for booking, reviews, and integrations. Powers roughly 43% of the web for a reason.</p>
+          <div class="platform-fit"><strong>Best fit:</strong> service businesses with a blog, multi-location ops, anyone publishing 2+ pages per month.</div>
+        </div>
+        <div class="platform-card reveal">
+          <div class="platform-name">Astro</div>
+          <div class="platform-tag">Fastest load times. Highest SEO ceiling.</div>
+          <p>Best for marketing sites that need to load in well under 2 seconds. Static-rendered for raw speed, programmatic page generation for location × service architectures, and the cleanest Core Web Vitals scores available today.</p>
+          <div class="platform-fit"><strong>Best fit:</strong> marketing sites, lead-gen sites, multi-location programmatic SEO builds.</div>
+        </div>
+        <div class="platform-card reveal">
+          <div class="platform-name">Shopify</div>
+          <div class="platform-tag">Built for product e-commerce.</div>
+          <p>Best for businesses selling physical products with inventory, variants, and shipping. Native checkout, payments, and abandoned-cart recovery. We build custom themes (not template installs) so your store doesn't look like every other Shopify site.</p>
+          <div class="platform-fit"><strong>Best fit:</strong> retail, DTC product brands, businesses with SKUs and shipping.</div>
+        </div>
+        <div class="platform-card reveal">
+          <div class="platform-name">Webflow</div>
+          <div class="platform-tag">Designer-friendly. Visual editing.</div>
+          <p>Best for design-forward brands that want a polished visual editor for the team to make edits without touching code. Built-in CMS, animations, and hosting bundled. Great for portfolios, agencies, and brand-led sites.</p>
+          <div class="platform-fit"><strong>Best fit:</strong> design-forward brands, agencies, portfolio sites, businesses where visual polish matters most.</div>
+        </div>
+      </div>
+      <p class="platform-note reveal">Already on Squarespace, Wix, GoDaddy Builder, or a legacy platform? <a href="/contact/">Tell us what you have</a> and we'll quote a migration to the platform that actually fits your business.</p>
     </div>
   </section>
 
   <section class="section includes-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">What's Included</span>
-        <h2>Every Website Comes With</h2>
+        <span class="label">What's included</span>
+        <h2>Every website comes with</h2>
       </div>
       <div class="includes-grid">
         <div class="inc-card reveal">
           <div class="inc-icon">🎨</div>
-          <h3>Custom Design</h3>
+          <h3>Custom design</h3>
           <p>A unique design built around your brand, not a recycled template. We match your colors, fonts, and tone.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📱</div>
-          <h3>Mobile-First Development</h3>
+          <h3>Mobile-first development</h3>
           <p>Built to look and perform perfectly on every device, from iPhone to desktop to tablet.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">⚡</div>
-          <h3>Performance Optimization</h3>
+          <h3>Performance optimization</h3>
           <p>Optimized for Google PageSpeed and Core Web Vitals so your site loads fast and ranks well.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">🔍</div>
-          <h3>On-Page SEO Setup</h3>
+          <h3>On-page SEO setup</h3>
           <p>Title tags, meta descriptions, schema markup, and keyword targeting set up from the start.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">📬</div>
-          <h3>Contact Form Integration</h3>
+          <h3>Contact form integration</h3>
           <p>Every form submission goes directly to your inbox. We also set up spam filtering and autoresponse emails.</p>
         </div>
         <div class="inc-card reveal">
           <div class="inc-icon">🔧</div>
-          <h3>30 Days Post-Launch Support</h3>
+          <h3>30 days post-launch support</h3>
           <p>We handle all revision requests and bug fixes in the 30 days after your site goes live.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section process-section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="label">How it works</span>
+        <h2>What working with us actually looks like</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">1</div><h3>Discovery</h3><p>We learn your business, your customers, and the one action you most want visitors to take, then pick the right platform for you.</p></div>
+        <div class="step reveal"><div class="step-n">2</div><h3>Design</h3><p>You see the design before we build it. We refine it together until it's right, on your brand and built around the conversion.</p></div>
+        <div class="step reveal"><div class="step-n">3</div><h3>Build &amp; optimize</h3><p>We develop it mobile-first, wire up your forms, and bake in the on-page SEO and speed work so it ranks from launch.</p></div>
+        <div class="step reveal"><div class="step-n">4</div><h3>Launch &amp; support</h3><p>We launch it, hand you full ownership, and cover every fix and revision for 30 days after go-live.</p></div>
       </div>
     </div>
   </section>
@@ -141,7 +238,7 @@ const schema = [
       <div class="pricing-box reveal">
         <div>
           <span class="label">Pricing</span>
-          <h2>From $1,497 (One-Time Fee)</h2>
+          <h2>From $1,497 (one-time fee)</h2>
           <p class="lead">Price depends on the number of pages and features. We provide a fixed quote before any work begins. No surprises.</p>
           <a href="/contact/" class="btn btn-primary" style="margin-top:24px;">Get a Quote</a>
         </div>
@@ -159,22 +256,31 @@ const schema = [
 
   <section class="section faq-section">
     <div class="container">
-      <div class="section-head center"><h2>Common Questions</h2></div>
+      <div class="section-head center"><h2>Common questions</h2></div>
       <div class="faq-list">
         <details class="faq-item reveal"><summary>What does a website build include?</summary><p>Every build includes design, development, mobile-first layout, on-page SEO setup (title tags, meta descriptions, schema markup), contact form integration, Google Analytics, and up to 30 days of revisions after launch.</p></details>
+        <details class="faq-item reveal"><summary>How much does a website cost?</summary><p>Builds start at $1,497 as a one-time fee, and the final price depends on pages and features. You get a fixed quote before any work starts, with no hourly billing and no surprises. Against the leads a fast, professional site brings in, it usually pays for itself quickly.</p></details>
         <details class="faq-item reveal"><summary>How long does it take to build a website?</summary><p>A standard 5-page business website typically takes 2 to 3 weeks from kickoff to launch. Timeline depends on how quickly you provide content, photos, and feedback during review rounds.</p></details>
-        <details class="faq-item reveal"><summary>What platform do you build on?</summary><p>We build on Astro for maximum speed and SEO performance, or WordPress for clients who want easy self-service content management. We recommend the platform that fits your team's technical comfort and long-term goals.</p></details>
-        <details class="faq-item reveal"><summary>Will my new website help me rank on Google?</summary><p>Yes, if built correctly. Every site we build includes on-page SEO setup from day one: page titles, meta descriptions, schema markup, image alt text, and a clean URL structure. Site speed and mobile-friendliness, both of which we optimize for, are also direct Google ranking factors.</p></details>
-        <details class="faq-item reveal"><summary>Do you offer website hosting and maintenance?</summary><p>We host on Cloudflare Pages, which is fast, secure, and globally distributed. Hosting is included during the first year. After the 30-day post-launch support period, ongoing maintenance plans are available for content updates, security patches, and performance monitoring.</p></details>
+        <details class="faq-item reveal"><summary>What platform do you build on?</summary><p>We build on <strong>WordPress</strong> (most flexible, easy self-service), <strong>Astro</strong> (fastest, best for marketing + programmatic SEO), <strong>Shopify</strong> (e-commerce), or <strong>Webflow</strong> (designer-friendly visual editing). We recommend the platform that fits your workflow, not the one we'd profit most from upselling. Migrations from Squarespace, Wix, and GoDaddy Builder are quoted on request.</p></details>
+        <details class="faq-item reveal"><summary>Do I own my website?</summary><p>Yes. You own your website, your domain, and your content outright. We build it for you and hand over full access, so you're never locked into us to make a change. That's the opposite of how a lot of cheap website builders operate.</p></details>
+        <details class="faq-item reveal"><summary>Will my new website help me rank on Google?</summary><p>Yes, if built correctly. Every site includes on-page SEO from day one: titles, meta descriptions, schema, image alt text, and a clean URL structure. Site speed and mobile-friendliness, both of which we optimize for, are direct Google ranking factors.</p></details>
+        <details class="faq-item reveal"><summary>Do you offer hosting and maintenance?</summary><p>We host on Cloudflare Pages: fast, secure, and globally distributed. Hosting is included the first year. After the 30-day support period, ongoing maintenance plans cover content updates, security patches, and performance monitoring.</p></details>
       </div>
     </div>
   </section>
 
+  <ToolCallout
+    href="/free-tools/local-seo-score-checker/"
+    icon="🔍"
+    title="See if your current site is SEO-ready"
+    desc="A new site only earns leads if Google can find it. Score your local SEO foundation in 60 seconds before you redesign."
+  />
+
   <section class="section related-section">
     <div class="container">
       <div class="section-head center">
-        <span class="label">Related Services</span>
-        <h2>A Website Performs Best With These</h2>
+        <span class="label">Related services</span>
+        <h2>A website performs best with these</h2>
       </div>
       <div class="related-grid">
         <a href="/services/seo/" class="related-card">
@@ -200,9 +306,9 @@ const schema = [
     <div class="container">
       <div class="contact-split">
         <div class="reveal">
-          <span class="label">Free Consultation</span>
-          <h2>Tell Us About Your Website Project</h2>
-          <p class="lead" style="margin-bottom:24px;">Fill out the form and we will review your current site, discuss your goals, and give you a fixed quote within 24 hours.</p>
+          <span class="label">Free consultation</span>
+          <h2>Tell us about your website project</h2>
+          <p class="lead" style="margin-bottom:24px;">Fill out the form and we'll review your current site, discuss your goals, and give you a fixed quote within 24 hours.</p>
         </div>
         <ContactForm title="Get a Free Quote" subject="Website Design Inquiry | Thryv" serviceDefault="website" />
       </div>
@@ -220,29 +326,74 @@ const schema = [
   .breadcrumb a { color: rgba(255,255,255,.6); } .breadcrumb a:hover { color: var(--white); }
   .hero-ctas { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
   .hero-price { font-size: 15px; color: rgba(255,255,255,.8); } .hero-price strong { color: var(--white); }
+
+  .trust-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 0; }
+  .trust-items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; }
+  .trust-item { font-size: 13px; font-weight: 600; color: var(--dark); display: inline-flex; align-items: center; gap: 6px; }
+  .trust-item::before { content: '✓'; color: var(--blue); font-weight: 800; }
+
+  .stakes { background: var(--light); border-bottom: 1px solid var(--border); padding: 36px 0; }
+  .stakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+  .stake-n { font-size: 32px; font-weight: 800; color: var(--blue); line-height: 1.1; }
+  .stake-d { font-size: 13.5px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+  .stakes-src { text-align: center; font-size: 11.5px; color: var(--gray); margin-top: 20px; }
+  .stakes-src a { color: var(--blue); text-decoration: underline; }
+
   .problem-section { background: var(--white); }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
   .two-col p { font-size: 16px; line-height: 1.75; color: var(--gray); margin-top: 16px; }
   .check-list { display: flex; flex-direction: column; gap: 12px; list-style: none; }
   .check-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--dark); }
   .check-list li::before { content: ''; display: inline-flex; min-width: 20px; height: 20px; border-radius: 50%; background: var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center no-repeat; margin-top: 2px; }
+
+  .explainer-section { background: var(--blue-light); }
+  .explainer { max-width: 760px; margin: 0 auto; }
+  .explainer h2 { margin: 14px 0 18px; }
+  .explainer p { font-size: 16.5px; line-height: 1.8; color: var(--gray); margin-bottom: 16px; }
+  .explainer p:last-child { margin-bottom: 0; }
+  .explainer p strong { color: var(--dark); }
+
+  .platforms-section { background: var(--white); border-top: 1px solid var(--border); }
+  .platforms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 32px; }
+  .platform-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; transition: border-color .2s, transform .2s; box-shadow: var(--shadow); }
+  .platform-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .platform-name { font-size: 22px; font-weight: 800; color: var(--dark); }
+  .platform-tag { font-size: 12px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .06em; margin: 4px 0 14px; }
+  .platform-card p { font-size: 14px; line-height: 1.7; color: var(--gray); margin: 0 0 14px; }
+  .platform-fit { font-size: 13px; color: var(--dark); padding: 12px 14px; background: var(--light); border-radius: var(--radius); border-left: 3px solid var(--blue); }
+  .platform-note { max-width: 720px; margin: 28px auto 0; text-align: center; font-size: 14px; color: var(--gray); }
+  .platform-note a { color: var(--blue); font-weight: 700; }
+
   .includes-section { background: var(--light); }
   .includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .inc-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; }
   .inc-icon { font-size: 36px; margin-bottom: 12px; } .inc-card h3 { font-size: 17px; font-weight: 800; color: var(--dark); margin-bottom: 8px; } .inc-card p { font-size: 14px; line-height: 1.7; color: var(--gray); }
+
+  .process-section { background: var(--white); border-top: 1px solid var(--border); }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .step { text-align: center; }
+  .step-n { width: 48px; height: 48px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 18px; font-weight: 800; display: grid; place-items: center; margin: 0 auto 14px; }
+  .step:nth-child(2) .step-n { background: var(--orange); color: var(--dark); }
+  .step:nth-child(4) .step-n { background: var(--blue-dark); }
+  .step h3 { font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
+  .step p { font-size: 14px; line-height: 1.65; color: var(--gray); }
+
   .pricing-section { background: var(--white); }
   .pricing-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; background: var(--light); border-radius: var(--radius-lg); padding: 48px; border: 1.5px solid var(--border); }
   .pricing-note-list { display: flex; flex-direction: column; gap: 14px; }
   .pnl-item { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--dark); font-weight: 500; }
   .pnl-check { color: var(--blue); font-weight: 800; font-size: 16px; }
+
   .faq-section { background: var(--light); }
-  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: start; }
   .faq-item { border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--white); }
-  .faq-item summary { padding: 18px 24px; font-size: 16px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .faq-item summary { padding: 16px 18px; font-size: 15px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .faq-item summary::-webkit-details-marker { display: none; }
   .faq-item summary::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--blue); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p { padding: 0 24px 18px; font-size: 15px; line-height: 1.7; color: var(--gray); margin: 0; }
+  .faq-item p { padding: 0 18px 16px; font-size: 14px; line-height: 1.65; color: var(--gray); margin: 0; }
+  .faq-item p strong { color: var(--dark); }
+
   .related-section { background: var(--light); }
   .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .related-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; transition: border-color .2s, transform .2s; }
@@ -250,18 +401,23 @@ const schema = [
   .related-card h3 { font-size: 16px; font-weight: 800; color: var(--dark); }
   .related-card p { font-size: 14px; line-height: 1.65; color: var(--gray); flex: 1; }
   .related-link { font-size: 13px; font-weight: 700; color: var(--blue); }
-  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
+
   .contact-section { background: var(--white); }
   .contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
+
   @media (max-width: 900px) {
     .two-col { grid-template-columns: 1fr; gap: 40px; }
+    .platforms-grid { grid-template-columns: 1fr; }
     .includes-grid { grid-template-columns: 1fr 1fr; }
     .pricing-box { grid-template-columns: 1fr; }
     .contact-split { grid-template-columns: 1fr; gap: 40px; }
+    .faq-list { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px) { .stakes-grid { grid-template-columns: 1fr; gap: 18px; } }
+  @media (max-width: 600px) { .includes-grid { grid-template-columns: 1fr; } .faq-list { grid-template-columns: 1fr; } .steps { grid-template-columns: 1fr; } }
 </style>
 <script>
   const io = new IntersectionObserver(entries => {
